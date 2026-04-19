@@ -17,6 +17,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23C4A080'>◉</text></svg>">
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -226,6 +229,68 @@
             border-color: var(--primary);
         }
 
+        /* New Hero Styling */
+        .hero-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            animation: slideInLeft 0.8s ease;
+        }
+
+        .hero-title-main {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            animation: slideInLeft 0.8s ease 0.1s both;
+        }
+
+        .hero-title-accent {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            animation: slideInLeft 0.8s ease 0.15s both;
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            animation: slideInLeft 0.8s ease 0.2s both;
+        }
+
+        .cta-primary {
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .cta-primary:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .cta-secondary:hover {
+            background: var(--accent);
+            color: var(--text-dark);
+        }
+
         .hero-image {
             background: linear-gradient(135deg, var(--accent) 0%, var(--bg-light) 100%);
             border-radius: 20px;
@@ -236,6 +301,295 @@
             font-size: 4rem;
             animation: slideInRight 0.8s ease;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-placeholder {
+            font-size: 5rem;
+            opacity: 0.7;
+        }
+
+        /* Updated Hero Section Styles */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 140px 60px 60px;
+            gap: 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5ede0 0%, #ede3d5 100%) !important;
+        }
+
+        .decoration {
+            position: absolute;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 300px;
+            font-weight: 700;
+            color: rgba(184, 149, 106, 0.08);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .hero-content {
+            z-index: 10;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content.delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .tagline {
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #b8956a;
+            margin-bottom: 30px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tagline::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: #b8956a;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 84px;
+            line-height: 1.15;
+            margin-bottom: 32px;
+            font-weight: 400;
+            color: #2a2a2a;
+        }
+
+        .hero-title .accent {
+            color: #b8956a;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #5a5a5a;
+            margin-bottom: 40px;
+            max-width: 500px;
+            font-weight: 400;
+        }
+
+        .cta-group {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            margin-bottom: 80px;
+        }
+
+        .btn {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 3px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #b8956a 0%, #a67c52 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(184, 149, 106, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(184, 149, 106, 0.35);
+        }
+
+        .btn-secondary {
+            background: none;
+            color: #2a2a2a;
+            border-bottom: 1.5px solid #2a2a2a;
+            padding: 14px 0;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            color: #b8956a;
+            border-color: #b8956a;
+        }
+
+        .stats {
+            display: flex;
+            gap: 60px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(184, 149, 106, 0.2);
+            margin-top: 60px;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 400;
+            color: #2a2a2a;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #8a7a6a;
+            font-weight: 500;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 600px;
+            animation: fadeInRight 0.8s ease-out;
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .image-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(184, 149, 106, 0.3);
+            border-left: none;
+            border-bottom: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(184, 149, 106, 0.05) 0%, rgba(184, 149, 106, 0.02) 100%);
+            position: relative;
+        }
+
+        .camera-icon {
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(184, 149, 106, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 40px;
+        }
+
+        .image-label {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #b8956a;
+            text-align: center;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cta-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #b8956a;
+            font-weight: 600;
+            z-index: 20;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #b8956a;
+            border-radius: 50%;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #b8956a;
+            animation: bounce 2s infinite;
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
         }
 
         @keyframes slideInLeft {
@@ -769,7 +1123,69 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 120px 40px 40px;
+                gap: 40px;
+            }
+
+            .hero-title {
+                font-size: 64px;
+            }
+
+            .hero-image {
+                height: 500px;
+            }
+
+            .stats {
+                gap: 40px;
+            }
+
+            .decoration {
+                font-size: 200px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 100px 24px 30px;
+                gap: 30px;
+            }
+
+            .hero-title {
+                font-size: 44px;
+            }
+
+            .description {
+                font-size: 15px;
+            }
+
+            .hero-image {
+                height: 400px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 32px;
+                margin-top: 40px;
+            }
+
+            .decoration {
+                font-size: 120px;
+            }
+
             h1 {
                 font-size: 2rem;
             }
@@ -785,10 +1201,6 @@
             .hero-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            .hero-image {
-                height: 300px;
             }
 
             .about-container {
@@ -875,7 +1287,7 @@
 </head>
 <body>
     <!-- Header Navigation -->
-    <header>
+    <header id="header">
         <div class="header-container">
             <a href="#" class="logo">NOW STUDIO</a>
             <nav>
@@ -892,20 +1304,64 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Redesigned) -->
     <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <h1>Lưu Giữ Khoảnh Khắc Yêu Thương</h1>
-                <p>NOW Studio - Nơi ghi lại những khoảnh khắc trọng đại nhất của ngày cưới bạn. Với đội ngũ nhiếp ảnh gia chuyên nghiệp và trang thiết bị hiện đại, chúng tôi cam kết mang lại cho bạn những bức ảnh cưới tuyệt vời, tràn đầy cảm xúc và tự nhiên.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="cta-button">Liên Hệ Ngay</a>
-                    <a href="#portfolio" class="btn-secondary">Xem Portfolio</a>
+        <!-- Decorative Background -->
+        <div class="decoration">01</div>
+
+        <!-- Left Content -->
+        <div class="hero-content">
+            <p class="tagline">Những ảnh chân dung & cưới</p>
+
+            <h1 class="hero-title">
+                Lưu Giữ<br>
+                <span class="accent">Khoảnh Khắc</span><br>
+                Yêu Thương
+            </h1>
+
+            <p class="description">
+                Mỗi khoảnh khắc độc đáo được ghi lại theo cách đặc nhất. Chúng tôi tạo nên những bức ảnh không chỉ đẹp mà còn kể câu chuyện của riêng bạn — chân thực, ấm ấp và đầy cảm xúc.
+            </p>
+
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary">Đặt Lịch Ngay</a>
+                <a href="#portfolio" class="btn btn-secondary">Xem Bộ Sưu Tập</a>
+            </div>
+
+            <!-- Stats -->
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">500.</div>
+                    <div class="stat-label">Cặp Đôi</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">8<span style="font-size: 28px;">năm</span></div>
+                    <div class="stat-label">Kinh Nghiệm</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">12<span style="font-size: 28px;">k</span></div>
+                    <div class="stat-label">Bức Ảnh</div>
                 </div>
             </div>
-            <div class="hero-image">📸</div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="hero-image">
+            <div class="image-frame">
+                <div class="image-placeholder">
+                    <div class="camera-icon">📷</div>
+                    <div class="image-label">
+                        Ảnh Studio<br>
+                        Portrait
+                    </div>
+                </div>
+            </div>
+            <div class="cta-badge">Đăng Nhân Lịch Tháng 5</div>
         </div>
     </section>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">Cuộn Xuống</div>
 
     <!-- Services Section -->
     <section id="services" class="bg-light-section">
@@ -1267,6 +1723,16 @@
     </script>
 
     <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
         // FAQ Toggle
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
