@@ -17,6 +17,9 @@
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23C4A080'>◉</text></svg>">
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
     <style>
         * {
             margin: 0;
@@ -226,6 +229,68 @@
             border-color: var(--primary);
         }
 
+        /* New Hero Styling */
+        .hero-subtitle {
+            font-size: 0.9rem;
+            letter-spacing: 3px;
+            color: var(--primary);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            animation: slideInLeft 0.8s ease;
+        }
+
+        .hero-title-main {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            color: var(--text-dark);
+            margin-bottom: 0.5rem;
+            animation: slideInLeft 0.8s ease 0.1s both;
+        }
+
+        .hero-title-accent {
+            font-family: 'Cormorant Garamond', 'Georgia', serif;
+            font-size: 3.5rem;
+            font-weight: 400;
+            font-style: italic;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            animation: slideInLeft 0.8s ease 0.15s both;
+        }
+
+        .hero-description {
+            font-size: 1.05rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin-bottom: 2.5rem;
+            line-height: 1.8;
+            animation: slideInLeft 0.8s ease 0.2s both;
+        }
+
+        .cta-primary {
+            background: var(--primary);
+            color: white;
+            border: 2px solid var(--primary);
+        }
+
+        .cta-primary:hover {
+            background: var(--primary-dark);
+            border-color: var(--primary-dark);
+        }
+
+        .cta-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .cta-secondary:hover {
+            background: var(--accent);
+            color: var(--text-dark);
+        }
+
         .hero-image {
             background: linear-gradient(135deg, var(--accent) 0%, var(--bg-light) 100%);
             border-radius: 20px;
@@ -236,6 +301,13 @@
             font-size: 4rem;
             animation: slideInRight 0.8s ease;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image-placeholder {
+            font-size: 5rem;
+            opacity: 0.7;
         }
 
         @keyframes slideInLeft {
@@ -892,18 +964,23 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section (Redesigned) -->
     <section id="home" class="hero">
         <div class="hero-container">
             <div class="hero-content">
-                <h1>Lưu Giữ Khoảnh Khắc Yêu Thương</h1>
-                <p>NOW Studio - Nơi ghi lại những khoảnh khắc trọng đại nhất của ngày cưới bạn. Với đội ngũ nhiếp ảnh gia chuyên nghiệp và trang thiết bị hiện đại, chúng tôi cam kết mang lại cho bạn những bức ảnh cưới tuyệt vời, tràn đầy cảm xúc và tự nhiên.</p>
+                <div class="hero-subtitle">NHIẾP ẢNH CHÂN DUNG & CUỘN</div>
+                <h1 class="hero-title-main">Lưu Giữ</h1>
+                <h2 class="hero-title-accent">Khoảnh Khắc</h2>
+                <h2 class="hero-title-main">Yêu Thương</h2>
+                <p class="hero-description">Mỗi khoảnh khắc đầu vương được ghi lại theo cách đẹp nhất. Chúng tôi tao nên những bức ảnh khoản chỉ có thể cảm xúc và tự nhiên, ám ấp và đầy cảm xúc.</p>
                 <div class="hero-buttons">
-                    <a href="#contact" class="cta-button">Liên Hệ Ngay</a>
-                    <a href="#portfolio" class="btn-secondary">Xem Portfolio</a>
+                    <a href="#contact" class="cta-button cta-primary">Đặt Lịch Ngày</a>
+                    <a href="#portfolio" class="cta-button cta-secondary">Xem Bộ Sưu Tập</a>
                 </div>
             </div>
-            <div class="hero-image">📸</div>
+            <div class="hero-image">
+                <div class="hero-image-placeholder">📸</div>
+            </div>
         </div>
     </section>
 
