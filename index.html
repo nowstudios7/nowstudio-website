@@ -944,7 +944,139 @@
             display: none;
         }
     </style>
-</head>
+
+    <style>
+
+        /* Hero Section - Clean Carousel */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-container {
+            width: 100%;
+            height: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            padding: 60px 40px;
+            position: relative;
+        }
+
+        .hero-slides {
+            position: relative;
+            height: 100%;
+            display: flex;
+            align-items: center;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide.slide-active {
+            opacity: 1;
+            position: relative;
+        }
+
+        .slide-title {
+            font-size: 4rem;
+            font-weight: 300;
+            color: var(--text-dark, #2a2a2a);
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        .slide-subtitle {
+            font-size: 2.5rem;
+            font-weight: 400;
+            color: var(--primary, #c4a080);
+            margin-bottom: 20px;
+        }
+
+        .slide-text {
+            font-size: 1.1rem;
+            color: var(--text-light, #666);
+            line-height: 1.6;
+            max-width: 500px;
+        }
+
+        .hero-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            backdrop-filter: blur(10px);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .slide-indicators {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+            z-index: 10;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--primary, #c4a080);
+            background: transparent;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 0;
+        }
+
+        .indicator-active {
+            background: var(--primary, #c4a080);
+            transform: scale(1.3);
+        }
+
+        @media (max-width: 768px) {
+            .hero-container {
+                grid-template-columns: 1fr;
+                padding: 40px 20px;
+            }
+
+            .slide-title {
+                font-size: 2.5rem;
+            }
+
+            .slide-subtitle {
+                font-size: 1.8rem;
+            }
+
+            .hero-content {
+                padding: 30px;
+            }
+        }
+
+    </style></head>
 <body>
     <!-- Header Navigation -->
     <header>
@@ -967,35 +1099,40 @@
     <!-- Hero Section (Redesigned) -->
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="slides-container" id="slidesContainer">
-            <!-- Slides will be inserted here by JavaScript -->
-        </div>
+        <div class="hero-container">
+            <div class="hero-slides">
+                <div class="slide slide-active">
+                    <h1 class="slide-title">Lưu Giữ</h1>
+                    <h2 class="slide-subtitle">Món Quà Hiện Tại</h2>
+                    <p class="slide-text">Mỗi khoảnh khắc đầu vương được ghi lại theo cách đẹp nhất</p>
+                </div>
+                <div class="slide">
+                    <h1 class="slide-title">Khoảnh Khắc</h1>
+                    <h2 class="slide-subtitle">Tình Yêu</h2>
+                    <p class="slide-text">Chúng tôi tạo nên những bức ảnh chân thực và tự nhiên</p>
+                </div>
+                <div class="slide">
+                    <h1 class="slide-title">Câu Chuyện</h1>
+                    <h2 class="slide-subtitle">Bất Tận</h2>
+                    <p class="slide-text">Lưu lại những lát cắt của thời gian cho bạn xem lại</p>
+                </div>
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-buttons">
+                    <a href="#contact" class="cta-button cta-primary">Đặt Lịch Ngày</a>
+                    <a href="#portfolio" class="cta-button cta-secondary">Xem Bộ Sưu Tập</a>
+                </div>
+            </div>
 
-        <!-- Hero Content -->
-        <div class="hero-content">
-            <p class="hero-subtitle">NOWstudio - Chuyên Ảnh Cưới</p>
-            <h1 class="hero-title" id="heroTitle">Cinematic Stories</h1>
-            <p class="hero-description" id="heroDescription">
-                Mỗi khoảnh khắc là một câu chuyện tình yêu
-            </p>
-            <div class="cta-buttons">
-                <button class="btn btn-primary">Xem Gallery</button>
-                <button class="btn btn-secondary">Liên Hệ Ngay</button>
+            <div class="slide-indicators">
+                <button class="indicator indicator-active" onclick="goToSlide(0)"></button>
+                <button class="indicator" onclick="goToSlide(1)"></button>
+                <button class="indicator" onclick="goToSlide(2)"></button>
             </div>
         </div>
+    </section>
 
-        <!-- Indicators -->
-        <div class="indicators" id="indicators"></div>
-
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 5v14M5 12l7 7 7-7"/>
-            </svg>
-        </div>
-    </div>
-
-    <!-- Stats Section -->
 
     <!-- Services Section -->
     <section id="services" class="bg-light-section">
