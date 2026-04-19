@@ -1,8 +1,7 @@
 {
   "version": 2,
-  "public": true,
   "buildCommand": "echo 'Static HTML - no build needed'",
-  "outputDirectory": ".",
+  "outputDirectory": "public",
   "cleanUrls": true,
   "trailingSlash": false,
   "routes": [
