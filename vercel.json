@@ -1,12 +1,18 @@
 {
-  "buildCommand": "echo 'Skipping build'",
+  "version": 2,
+  "public": true,
+  "buildCommand": "echo 'Static HTML - no build needed'",
   "outputDirectory": ".",
   "cleanUrls": true,
   "trailingSlash": false,
-  "rewrites": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "destination": "/index.html"
+      "src": "^/(?!.*\\.).*$",
+      "dest": "/index.html"
+    },
+    {
+      "src": "/.*",
+      "dest": "/$0"
     }
   ]
 }
