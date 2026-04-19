@@ -27,34 +27,6 @@
             box-sizing: border-box;
         }
 
-        :root {
-            --primary: #C4A080;
-            --primary-dark: #8B7355;
-            --text-dark: #1A1A1A;
-            --text-light: #6B6B6B;
-            --bg-light: #FAFAFA;
-            --bg-white: #FFFFFF;
-            --accent: #E8D4C8;
-            --border: #E8E8E8;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-white);
-            line-height: 1.6;
-        }
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
         html, body {
             width: 100%;
             height: 100%;
@@ -480,22 +452,18 @@
             }
         }
     </style>
+
     <!-- Header Navigation -->
-    <header id="header">
-        <div class="header-container">
-            <a href="#" class="logo">NOW STUDIO</a>
-            <nav>
-                <ul>
-                    <li><a href="#home">Trang Chủ</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#services">Dịch Vụ</a></li>
-                    <li><a href="#about">Về Chúng Tôi</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Liên Hệ</a></li>
-                </ul>
-            </nav>
-            <a href="#contact" class="cta-button">Đặt Lịch Ngay</a>
-        </div>
+    <header id="header" class="header">
+        <a href="#" class="logo">NOW STUDIO</a>
+        <nav class="nav">
+            <a href="#home" class="nav-link">Trang Chủ</a>
+            <a href="#portfolio" class="nav-link">Portfolio</a>
+            <a href="#services" class="nav-link">Dịch Vụ</a>
+            <a href="#about" class="nav-link">Về Chúng Tôi</a>
+            <a href="#blog" class="nav-link">Blog</a>
+            <a href="#contact" class="nav-link">Liên Hệ</a>
+        </nav>
     </header>
 
     <!-- Hero Section (Redesigned) -->
