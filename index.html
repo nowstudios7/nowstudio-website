@@ -18,7 +18,7 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23C4A080'>◉</text></svg>">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -1076,7 +1076,321 @@
             }
         }
 
-    </style></head>
+    </style>
+    <style>
+        /* ====== HERO SECTION - REDESIGNED ====== */
+        /* Fonts */
+        
+        /* Hero background */
+        section#home.hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 140px 60px 60px;
+            gap: 80px;
+            position: relative;
+            overflow: hidden;
+            background: oklch(94% 0.016 80);
+            max-width: none;
+            margin: 0;
+        }
+
+        /* Grain overlay */
+        section#home.hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Ghost decoration */
+        section#home.hero .hero-decoration {
+            position: absolute;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 320px;
+            font-weight: 700;
+            color: rgba(184, 149, 106, 0.07);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            line-height: 1;
+            user-select: none;
+        }
+
+        /* Left Content */
+        section#home.hero .hero-left {
+            z-index: 10;
+            position: relative;
+            animation: heroFadeUp 0.9s ease-out both;
+        }
+
+        @keyframes heroFadeUp {
+            from { opacity: 0; transform: translateY(32px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes heroFadeRight {
+            from { opacity: 0; transform: translateX(40px); }
+            to   { opacity: 1; transform: translateX(0); }
+        }
+
+        section#home.hero .hero-tagline {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #b8956a;
+            margin-bottom: 28px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }
+
+        section#home.hero .hero-tagline::before {
+            content: '';
+            width: 36px;
+            height: 1px;
+            background: #b8956a;
+            flex-shrink: 0;
+        }
+
+        section#home.hero .hero-main-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 82px;
+            line-height: 1.12;
+            margin-bottom: 28px;
+            font-weight: 400;
+            color: #2a2a2a;
+            letter-spacing: -1px;
+        }
+
+        section#home.hero .hero-main-title .title-accent {
+            color: #b8956a;
+            font-style: italic;
+        }
+
+        section#home.hero .hero-desc {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 16px;
+            line-height: 1.9;
+            color: #6a6a6a;
+            margin-bottom: 40px;
+            max-width: 480px;
+            font-weight: 400;
+        }
+
+        section#home.hero .hero-cta-group {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+            margin-bottom: 56px;
+        }
+
+        section#home.hero .btn-hero-primary {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 700;
+            padding: 16px 36px;
+            background: linear-gradient(135deg, #b8956a 0%, #a07845 100%);
+            color: white;
+            border: none;
+            border-radius: 3px;
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(184, 149, 106, 0.28);
+            display: inline-block;
+        }
+
+        section#home.hero .btn-hero-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px rgba(184, 149, 106, 0.38);
+        }
+
+        section#home.hero .btn-hero-secondary {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            font-weight: 600;
+            color: #2a2a2a;
+            text-decoration: none;
+            padding-bottom: 4px;
+            border-bottom: 1.5px solid #2a2a2a;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        section#home.hero .btn-hero-secondary:hover {
+            color: #b8956a;
+            border-color: #b8956a;
+        }
+
+        /* Stats row */
+        section#home.hero .hero-stats {
+            display: flex;
+            gap: 48px;
+            padding-top: 48px;
+            border-top: 1px solid rgba(184, 149, 106, 0.2);
+        }
+
+        section#home.hero .hero-stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            font-weight: 400;
+            color: #2a2a2a;
+            line-height: 1;
+            margin-bottom: 6px;
+        }
+
+        section#home.hero .hero-stat-number sup {
+            font-size: 0.45em;
+            vertical-align: super;
+        }
+
+        section#home.hero .hero-stat-unit {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+        }
+
+        section#home.hero .hero-stat-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #9a8a7a;
+            font-weight: 500;
+        }
+
+        /* Right image */
+        section#home.hero .hero-right {
+            position: relative;
+            height: 620px;
+            z-index: 10;
+            animation: heroFadeRight 0.9s ease-out 0.2s both;
+        }
+
+        section#home.hero .hero-img-frame {
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(184, 149, 106, 0.35);
+            border-left: none;
+            border-bottom: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.25);
+            overflow: hidden;
+            position: relative;
+        }
+
+        section#home.hero .hero-img-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        section#home.hero .hero-img-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(184,149,106,0.06) 0%, rgba(184,149,106,0.02) 100%);
+        }
+
+        section#home.hero .hero-cam-icon {
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(184,149,106,0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+            margin-bottom: 20px;
+        }
+
+        section#home.hero .hero-img-label {
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #b8956a;
+            text-align: center;
+        }
+
+        section#home.hero .hero-badge {
+            position: absolute;
+            bottom: -16px;
+            right: -16px;
+            background: white;
+            padding: 12px 22px;
+            border-radius: 30px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #b8956a;
+            font-weight: 700;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            z-index: 20;
+        }
+
+        section#home.hero .hero-badge::before {
+            content: '';
+            width: 7px;
+            height: 7px;
+            background: #b8956a;
+            border-radius: 50%;
+            animation: heroPulse 2s infinite;
+        }
+
+        @keyframes heroPulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.4); }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            section#home.hero {
+                grid-template-columns: 1fr;
+                padding: 120px 40px 60px;
+                gap: 48px;
+            }
+            section#home.hero .hero-main-title { font-size: 60px; }
+            section#home.hero .hero-right { height: 480px; }
+            section#home.hero .hero-decoration { font-size: 200px; }
+        }
+
+        @media (max-width: 768px) {
+            section#home.hero {
+                padding: 100px 24px 40px;
+                gap: 32px;
+            }
+            section#home.hero .hero-main-title { font-size: 44px; }
+            section#home.hero .hero-cta-group { flex-direction: column; align-items: flex-start; gap: 20px; }
+            section#home.hero .hero-stats { gap: 32px; }
+            section#home.hero .hero-stat-number { font-size: 40px; }
+            section#home.hero .hero-right { height: 380px; }
+            section#home.hero .hero-decoration { font-size: 120px; }
+            section#home.hero .hero-desc { max-width: 100%; }
+        }
+        /* ====== END HERO REDESIGN ====== */
+    </style>
+</head>
 <body>
     <!-- Header Navigation -->
     <header>
@@ -1096,40 +1410,58 @@
         </div>
     </header>
 
-    <!-- Hero Section (Redesigned) -->
     <!-- Hero Section -->
     <section class="hero" id="home">
-        <div class="hero-container">
-            <div class="hero-slides">
-                <div class="slide slide-active">
-                    <h1 class="slide-title">Lưu Giữ</h1>
-                    <h2 class="slide-subtitle">Món Quà Hiện Tại</h2>
-                    <p class="slide-text">Mỗi khoảnh khắc đầu vương được ghi lại theo cách đẹp nhất</p>
-                </div>
-                <div class="slide">
-                    <h1 class="slide-title">Khoảnh Khắc</h1>
-                    <h2 class="slide-subtitle">Tình Yêu</h2>
-                    <p class="slide-text">Chúng tôi tạo nên những bức ảnh chân thực và tự nhiên</p>
-                </div>
-                <div class="slide">
-                    <h1 class="slide-title">Câu Chuyện</h1>
-                    <h2 class="slide-subtitle">Bất Tận</h2>
-                    <p class="slide-text">Lưu lại những lát cắt của thời gian cho bạn xem lại</p>
-                </div>
-            </div>
-            
-            <div class="hero-content">
-                <div class="hero-buttons">
-                    <a href="#contact" class="cta-button cta-primary">Đặt Lịch Ngày</a>
-                    <a href="#portfolio" class="cta-button cta-secondary">Xem Bộ Sưu Tập</a>
-                </div>
+        <!-- Ghost decoration -->
+        <div class="hero-decoration">01</div>
+
+        <!-- Left Content -->
+        <div class="hero-left">
+            <p class="hero-tagline">Nhiếp Ảnh Chân Dung &amp; Cưới</p>
+
+            <h1 class="hero-main-title">
+                Lưu Giữ<br>
+                <span class="title-accent">Khoảnh Khắc</span><br>
+                Yêu Thương
+            </h1>
+
+            <p class="hero-desc">
+                Mỗi khoảnh khắc đều xứng đáng được ghi lại theo cách đẹp nhất.
+                Chúng tôi tạo nên những bức ảnh không chỉ đẹp mà còn kể câu chuyện
+                của riêng bạn — chân thực, ấm áp và đầy cảm xúc.
+            </p>
+
+            <div class="hero-cta-group">
+                <a href="#contact" class="btn-hero-primary">Đặt Lịch Ngay</a>
+                <a href="#portfolio" class="btn-hero-secondary">Xem Bộ Sưu Tập</a>
             </div>
 
-            <div class="slide-indicators">
-                <button class="indicator indicator-active" onclick="goToSlide(0)"></button>
-                <button class="indicator" onclick="goToSlide(1)"></button>
-                <button class="indicator" onclick="goToSlide(2)"></button>
+            <!-- Stats -->
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-number">500<sup>+</sup></div>
+                    <div class="hero-stat-label">Cặp Đôi</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">8<span class="hero-stat-unit">năm</span></div>
+                    <div class="hero-stat-label">Kinh Nghiệm</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-number">12<span class="hero-stat-unit">k</span></div>
+                    <div class="hero-stat-label">Bức Ảnh</div>
+                </div>
             </div>
+        </div>
+
+        <!-- Right Image -->
+        <div class="hero-right">
+            <div class="hero-img-frame">
+                <div class="hero-img-placeholder">
+                    <div class="hero-cam-icon">📷</div>
+                    <div class="hero-img-label">Ảnh Studio<br>· Portrait ·</div>
+                </div>
+            </div>
+            <div class="hero-badge">Đang Nhận Lịch Tháng 5</div>
         </div>
     </section>
 
