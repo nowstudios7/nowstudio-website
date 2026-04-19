@@ -1,1418 +1,1572 @@
 <!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="NOW Studio - Studio chụp ảnh cưới chuyên nghiệp, dịch vụ makeup, váy cưới, và tư vấn styling tại Long An. Lưu giữ những khoảnh khắc đẹp nhất của bạn.">
-    <meta name="keywords" content="chụp ảnh cưới, phóng sự cưới, makeup cô dâu, váy cưới, studio cưới Long An, ảnh cưới chuyên nghiệp">
-    <meta name="author" content="NOW Studio">
-    <meta name="robots" content="index, follow">
-    <meta property="og:title" content="NOW Studio - Studio Chụp Ảnh Cưới Chuyên Nghiệp">
-    <meta property="og:description" content="Dịch vụ chụp ảnh cưới, makeup, váy cưới cao cấp tại Long An. Tư vấn styling miễn phí.">
-    <meta property="og:image" content="/images/hero-image.jpg">
-    <meta property="og:url" content="https://www.nowstudio.vn">
-    <meta property="og:type" content="website">
-    <title>NOW Studio - Studio Chụp Ảnh Cưới Chuyên Nghiệp | Long An</title>
-
-    <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23C4A080'>◉</text></svg>">
-
-    <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #C4A080;
-            --primary-dark: #8B7355;
-            --text-dark: #1A1A1A;
-            --text-light: #6B6B6B;
-            --bg-light: #FAFAFA;
-            --bg-white: #FFFFFF;
-            --accent: #E8D4C8;
-            --border: #E8E8E8;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            color: var(--text-dark);
-            background-color: var(--bg-white);
-            line-height: 1.6;
-        }
-
-        /* Typography */
-        h1 {
-            font-size: 3rem;
-            font-weight: 700;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        h2 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            margin-bottom: 1.5rem;
-            color: var(--text-dark);
-        }
-
-        h3 {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        p {
-            font-size: 1rem;
-            color: var(--text-light);
-            margin-bottom: 1rem;
-        }
-
-        /* Header & Navigation */
-        header {
-            position: sticky;
-            top: 0;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            padding: 1.2rem 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .header-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-decoration: none;
-            letter-spacing: 2px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-dark);
-            font-weight: 500;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--primary);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        .cta-button {
-            background: var(--primary);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
-        }
-
-        .cta-button:hover {
-            background: var(--primary-dark);
-            border-color: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(196, 160, 128, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--bg-light) 0%, white 100%);
-            padding: 6rem 2rem;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(196, 160, 128, 0.1) 0%, transparent 70%);
-            border-radius: 50%;
-            animation: float 6s ease-in-out infinite;
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-
-        .hero-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero-content h1 {
-            color: var(--text-dark);
-            margin-bottom: 1.5rem;
-            animation: slideInLeft 0.8s ease;
-        }
-
-        .hero-content p {
-            font-size: 1.1rem;
-            color: var(--text-light);
-            margin-bottom: 2rem;
-            animation: slideInLeft 0.8s ease 0.1s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            animation: slideInLeft 0.8s ease 0.2s both;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn-secondary:hover {
-            background: var(--accent);
-            border-color: var(--primary);
-        }
-
-        /* New Hero Styling */
-        .hero-subtitle {
-            font-size: 0.9rem;
-            letter-spacing: 3px;
-            color: var(--primary);
-            text-transform: uppercase;
-            margin-bottom: 2rem;
-            font-weight: 600;
-            animation: slideInLeft 0.8s ease;
-        }
-
-        .hero-title-main {
-            font-family: 'Cormorant Garamond', 'Georgia', serif;
-            font-size: 5rem;
-            font-weight: 700;
-            line-height: 1;
-            color: var(--text-dark);
-            margin-bottom: 0.5rem;
-            animation: slideInLeft 0.8s ease 0.1s both;
-        }
-
-        .hero-title-accent {
-            font-family: 'Cormorant Garamond', 'Georgia', serif;
-            font-size: 3.5rem;
-            font-weight: 400;
-            font-style: italic;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-            animation: slideInLeft 0.8s ease 0.15s both;
-        }
-
-        .hero-description {
-            font-size: 1.05rem;
-            color: var(--text-light);
-            max-width: 600px;
-            margin-bottom: 2.5rem;
-            line-height: 1.8;
-            animation: slideInLeft 0.8s ease 0.2s both;
-        }
-
-        .cta-primary {
-            background: var(--primary);
-            color: white;
-            border: 2px solid var(--primary);
-        }
-
-        .cta-primary:hover {
-            background: var(--primary-dark);
-            border-color: var(--primary-dark);
-        }
-
-        .cta-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .cta-secondary:hover {
-            background: var(--accent);
-            color: var(--text-dark);
-        }
-
-        .hero-image {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--bg-light) 100%);
-            border-radius: 20px;
-            height: 500px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            animation: slideInRight 0.8s ease;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .hero-image-placeholder {
-            font-size: 5rem;
-            opacity: 0.7;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Section Styles */
-        section {
-            padding: 5rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        section h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
-
-        .bg-light-section {
-            background: var(--bg-light);
-        }
-
-        /* Services Grid */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .service-card {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            border-color: var(--primary);
-        }
-
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .service-card h3 {
-            color: var(--text-dark);
-            margin-bottom: 1rem;
-        }
-
-        .service-card p {
-            font-size: 0.95rem;
-            color: var(--text-light);
-            margin-bottom: 1.5rem;
-        }
-
-        .price {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-top: 1rem;
-        }
-
-        /* Portfolio Gallery */
-        .gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-bottom: 3rem;
-        }
-
-        .gallery-item {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--bg-light) 100%);
-            aspect-ratio: 3/4;
-            border-radius: 15px;
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-        }
-
-        .gallery-item-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            color: white;
-            font-weight: 600;
-        }
-
-        .gallery-item:hover .gallery-item-overlay {
-            opacity: 1;
-        }
-
-        /* About Section */
-        .about-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .about-image {
-            background: linear-gradient(135deg, var(--accent) 0%, var(--bg-light) 100%);
-            height: 400px;
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 5rem;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
-
-        .about-content h3 {
-            color: var(--primary);
-            font-size: 1.2rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
-        }
-
-        .about-content p {
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
-        }
-
-        .about-stats {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .stat {
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--primary);
-        }
-
-        .stat-label {
-            color: var(--text-light);
-            font-size: 0.9rem;
-            margin-top: 0.5rem;
-        }
-
-        /* Team Section */
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-        }
-
-        .team-member {
-            text-align: center;
-        }
-
-        .member-image {
-            width: 100%;
-            height: 300px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--bg-light) 100%);
-            border-radius: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            margin-bottom: 1.5rem;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-
-        .team-member h3 {
-            margin-bottom: 0.5rem;
-        }
-
-        .team-member .role {
-            color: var(--primary);
-            font-weight: 600;
-            font-size: 0.95rem;
-            margin-bottom: 1rem;
-        }
-
-        /* Blog Section */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .blog-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            border: 1px solid var(--border);
-        }
-
-        .blog-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-        }
-
-        .blog-image {
-            height: 200px;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--bg-light) 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 3rem;
-        }
-
-        .blog-content {
-            padding: 2rem;
-        }
-
-        .blog-date {
-            color: var(--primary);
-            font-size: 0.85rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .blog-card h3 {
-            margin-bottom: 1rem;
-        }
-
-        .blog-card p {
-            margin-bottom: 1.5rem;
-            color: var(--text-light);
-        }
-
-        .read-more {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        .read-more:hover {
-            color: var(--primary-dark);
-            transform: translateX(5px);
-        }
-
-        /* Contact Form */
-        .contact-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: start;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
-
-        .contact-item {
-            display: flex;
-            gap: 1.5rem;
-            align-items: flex-start;
-        }
-
-        .contact-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--accent);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            flex-shrink: 0;
-        }
-
-        .contact-item h3 {
-            font-size: 1.1rem;
-            margin-bottom: 0.3rem;
-        }
-
-        .contact-item p {
-            margin: 0;
-        }
-
-        .contact-item a {
-            color: var(--primary);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .contact-item a:hover {
-            color: var(--primary-dark);
-        }
-
-        /* Form */
-        .contact-form {
-            background: var(--bg-light);
-            padding: 2.5rem;
-            border-radius: 15px;
-        }
-
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .form-group input,
-        .form-group textarea {
-            width: 100%;
-            padding: 0.8rem;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            font-family: inherit;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-        }
-
-        .form-group input:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--primary);
-            box-shadow: 0 0 0 3px rgba(196, 160, 128, 0.1);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 120px;
-        }
-
-        .form-group button {
-            width: 100%;
-            padding: 1rem;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 1rem;
-        }
-
-        .form-group button:hover {
-            background: var(--primary-dark);
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(196, 160, 128, 0.3);
-        }
-
-        /* FAQ Section */
-        .faq-container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .faq-item {
-            background: white;
-            margin-bottom: 1.5rem;
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-        }
-
-        .faq-question {
-            padding: 1.5rem;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: white;
-            transition: all 0.3s ease;
-            font-weight: 600;
-            color: var(--text-dark);
-        }
-
-        .faq-question:hover {
-            background: var(--bg-light);
-            padding-left: 2rem;
-        }
-
-        .faq-toggle {
-            font-size: 1.5rem;
-            transition: transform 0.3s ease;
-            color: var(--primary);
-        }
-
-        .faq-item.active .faq-toggle {
-            transform: rotate(180deg);
-        }
-
-        .faq-answer {
-            padding: 0 1.5rem;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            color: var(--text-light);
-            line-height: 1.8;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 0 1.5rem 1.5rem;
-            max-height: 500px;
-        }
-
-        /* Footer */
-        footer {
-            background: var(--text-dark);
-            color: white;
-            padding: 3rem 2rem 1.5rem;
-            margin-top: 5rem;
-        }
-
-        .footer-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2.5rem;
-            margin-bottom: 2rem;
-            padding-bottom: 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .footer-section h3 {
-            color: var(--primary);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .footer-section ul {
-            list-style: none;
-        }
-
-        .footer-section a {
-            color: rgba(255, 255, 255, 0.7);
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s ease;
-        }
-
-        .footer-section a:hover {
-            color: var(--primary);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-
-        .social-links a {
-            width: 40px;
-            height: 40px;
-            background: rgba(196, 160, 128, 0.2);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
-            margin-bottom: 0;
-        }
-
-        .social-links a:hover {
-            background: var(--primary);
-            color: white;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 0.9rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2rem;
-            }
-
-            h2 {
-                font-size: 1.8rem;
-            }
-
-            nav ul {
-                gap: 1.5rem;
-            }
-
-            .hero-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .hero-image {
-                height: 300px;
-            }
-
-            .about-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-image {
-                height: 300px;
-            }
-
-            .contact-container {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .about-stats {
-                grid-template-columns: 1fr;
-            }
-
-            @media (max-width: 600px) {
-                header {
-                    padding: 1rem 0;
-                }
-
-                nav ul {
-                    display: none;
-                }
-
-                h1 {
-                    font-size: 1.5rem;
-                }
-
-                h2 {
-                    font-size: 1.4rem;
-                }
-
-                section {
-                    padding: 3rem 1.5rem;
-                }
-
-                .cta-button {
-                    padding: 0.7rem 1.5rem;
-                    font-size: 0.9rem;
-                }
-            }
-        }
-
-        /* Scroll to Top Button */
-        .scroll-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            width: 50px;
-            height: 50px;
-            background: var(--primary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            cursor: pointer;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            transition: all 0.3s ease;
-            z-index: 999;
-            box-shadow: 0 5px 15px rgba(196, 160, 128, 0.3);
-        }
-
-        .scroll-top:hover {
-            background: var(--primary-dark);
-            transform: translateY(-5px);
-        }
-
-        .scroll-top.show {
-            display: flex;
-        }
-
-        /* Schema.org Structured Data */
-        script[type="application/ld+json"] {
-            display: none;
-        }
-    </style>
+<html lang="vi"><head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOW·STUDIO — Photography</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<style>/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("b1c1a1f6-25f6-4570-becb-6f4bab7e5ec6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("422c4f04-ea56-4533-8c83-05692c1aee98") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("7e34943a-d18a-477e-ab04-0b7c5a74de75") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("33376ec4-4a7e-401d-a79e-80e2511720c1") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url("ea08605a-aa8e-4250-9811-8f49978f79b9") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("b1c1a1f6-25f6-4570-becb-6f4bab7e5ec6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("422c4f04-ea56-4533-8c83-05692c1aee98") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7e34943a-d18a-477e-ab04-0b7c5a74de75") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("33376ec4-4a7e-401d-a79e-80e2511720c1") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("ea08605a-aa8e-4250-9811-8f49978f79b9") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("b1c1a1f6-25f6-4570-becb-6f4bab7e5ec6") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("422c4f04-ea56-4533-8c83-05692c1aee98") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("7e34943a-d18a-477e-ab04-0b7c5a74de75") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("33376ec4-4a7e-401d-a79e-80e2511720c1") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("ea08605a-aa8e-4250-9811-8f49978f79b9") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("52235c26-f1ab-4c80-8615-2f2c0e231334") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("990aa67f-a1d6-4b02-b1cf-5b553dfef749") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("099d9eae-83ad-443a-9bc9-806d2ffc5dc7") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("7ae72a11-ae41-43a3-aad6-b2e36347fff0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("7a7dacdd-ae49-4a05-be44-cb1a4c9fb646") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("52235c26-f1ab-4c80-8615-2f2c0e231334") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("990aa67f-a1d6-4b02-b1cf-5b553dfef749") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("099d9eae-83ad-443a-9bc9-806d2ffc5dc7") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7ae72a11-ae41-43a3-aad6-b2e36347fff0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7a7dacdd-ae49-4a05-be44-cb1a4c9fb646") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("52235c26-f1ab-4c80-8615-2f2c0e231334") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("990aa67f-a1d6-4b02-b1cf-5b553dfef749") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("099d9eae-83ad-443a-9bc9-806d2ffc5dc7") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("7ae72a11-ae41-43a3-aad6-b2e36347fff0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("7a7dacdd-ae49-4a05-be44-cb1a4c9fb646") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("52235c26-f1ab-4c80-8615-2f2c0e231334") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("990aa67f-a1d6-4b02-b1cf-5b553dfef749") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("099d9eae-83ad-443a-9bc9-806d2ffc5dc7") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("7ae72a11-ae41-43a3-aad6-b2e36347fff0") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Cormorant Garamond';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("7a7dacdd-ae49-4a05-be44-cb1a4c9fb646") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("b53883ba-8b82-4ba0-af2f-529cf4c883e6") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("7b818770-a2c4-47b3-b95b-95f34ae437e2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("b53883ba-8b82-4ba0-af2f-529cf4c883e6") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7b818770-a2c4-47b3-b95b-95f34ae437e2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("b53883ba-8b82-4ba0-af2f-529cf4c883e6") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'DM Sans';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("7b818770-a2c4-47b3-b95b-95f34ae437e2") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #c9a876;
+    --gold-light: #e2cfb0;
+    --gold-dark: #a8864f;
+    --bg: #faf8f5;
+    --white: #ffffff;
+    --dark: #1a1714;
+    --mid: #4a4440;
+    --muted: #8a7e76;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', Helvetica, sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: var(--sans);
+    background: var(--bg);
+    color: var(--dark);
+    font-size: 16px;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 60px;
+    height: 72px;
+    background: rgba(250,248,245,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,118,0.18);
+    transition: box-shadow .3s;
+  }
+  header.scrolled { box-shadow: 0 2px 32px rgba(26,23,20,0.07); }
+
+  .logo {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    color: var(--dark);
+    text-decoration: none;
+  }
+  .logo span { color: var(--gold); }
+
+  nav { display: flex; gap: 40px; align-items: center; }
+  nav a {
+    font-family: var(--sans);
+    font-size: 13px;
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    transition: color .2s;
+    position: relative;
+  }
+  nav a::after {
+    content: '';
+    position: absolute; bottom: -3px; left: 0; right: 0;
+    height: 1px; background: var(--gold);
+    transform: scaleX(0); transition: transform .25s;
+  }
+  nav a:hover { color: var(--dark); }
+  nav a:hover::after { transform: scaleX(1); }
+
+  .nav-cta {
+    background: var(--gold); color: var(--white) !important;
+    padding: 10px 24px; border-radius: 2px;
+    letter-spacing: 0.1em;
+    transition: background .2s !important;
+  }
+  .nav-cta::after { display: none !important; }
+  .nav-cta:hover { background: var(--gold-dark) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    padding-top: 72px;
+  }
+
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 80px 60px 80px 60px;
+    position: relative;
+  }
+
+  .hero-eyebrow {
+    font-family: var(--sans);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 28px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: block; width: 32px; height: 1px;
+    background: var(--gold);
+  }
+
+  .hero-headline {
+    font-family: var(--serif);
+    font-size: clamp(42px, 5vw, 68px);
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--dark);
+    margin-bottom: 12px;
+    text-wrap: pretty;
+  }
+
+  .hero-sub {
+    font-family: var(--serif);
+    font-size: clamp(18px, 2vw, 24px);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--gold-dark);
+    margin-bottom: 28px;
+  }
+
+  .hero-desc {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 400px;
+    line-height: 1.75;
+    margin-bottom: 48px;
+  }
+
+  .hero-stats {
+    display: flex; gap: 40px; margin-bottom: 52px;
+  }
+  .stat-item { display: flex; flex-direction: column; gap: 4px; }
+  .stat-num {
+    font-family: var(--serif);
+    font-size: 36px;
+    font-weight: 500;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .stat-divider {
+    width: 1px; background: rgba(201,168,118,0.3);
+    align-self: stretch;
+  }
+
+  .hero-actions { display: flex; gap: 16px; align-items: center; }
+  .btn-primary {
+    background: var(--dark);
+    color: var(--white);
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 16px 36px;
+    border: none; cursor: pointer;
+    text-decoration: none;
+    transition: background .2s, transform .15s;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+  .btn-ghost {
+    font-family: var(--sans);
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    display: flex; align-items: center; gap: 10px;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color .2s, border-color .2s;
+  }
+  .btn-ghost:hover { color: var(--gold-dark); border-color: var(--gold); }
+  .btn-ghost svg { transition: transform .2s; }
+  .btn-ghost:hover svg { transform: translateX(4px); }
+
+  .hero-right {
+    position: relative;
+    overflow: hidden;
+    background: #e8ddd0;
+  }
+  .hero-img-placeholder {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 16px;
+    background: linear-gradient(135deg, #e8ddd0 0%, #d4c4b0 50%, #c8b89a 100%);
+    position: relative;
+  }
+  .hero-img-placeholder::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent, transparent 40px,
+      rgba(201,168,118,0.07) 40px, rgba(201,168,118,0.07) 41px
+    );
+  }
+  .hero-img-placeholder .cam-icon {
+    width: 72px; height: 72px; opacity: 0.35;
+  }
+  .hero-img-label {
+    font-family: monospace;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: rgba(168,134,79,0.6);
+    text-transform: uppercase;
+  }
+  .hero-badge {
+    position: absolute;
+    bottom: 48px; left: -24px;
+    background: var(--white);
+    padding: 20px 28px;
+    box-shadow: 0 8px 40px rgba(26,23,20,0.12);
+    z-index: 2;
+  }
+  .hero-badge-label {
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 4px;
+  }
+  .hero-badge-val {
+    font-family: var(--serif); font-size: 22px; font-weight: 500;
+    color: var(--dark);
+  }
+
+  /* ── SECTION COMMON ── */
+  section { padding: 120px 60px; }
+  .section-label {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); display: flex; align-items: center; gap: 12px;
+    margin-bottom: 20px;
+  }
+  .section-label::before { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  .section-title {
+    font-family: var(--serif);
+    font-size: clamp(36px, 4vw, 56px);
+    font-weight: 400; line-height: 1.15;
+    color: var(--dark);
+  }
+  .section-sub {
+    font-family: var(--serif); font-style: italic; font-size: 20px;
+    color: var(--gold-dark); margin-top: 8px;
+  }
+
+  /* ── PORTFOLIO ── */
+  #portfolio { background: var(--white); }
+  .portfolio-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 60px;
+  }
+  .portfolio-link {
+    font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gold); text-decoration: none;
+    display: flex; align-items: center; gap: 8px;
+    border-bottom: 1px solid var(--gold-light);
+    padding-bottom: 2px;
+    transition: color .2s;
+  }
+  .portfolio-link:hover { color: var(--gold-dark); }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 280px);
+    gap: 16px;
+  }
+  .portfolio-grid .item:first-child { grid-row: span 2; height: 576px; }
+  .portfolio-grid .item:nth-child(4) { grid-column: span 1; }
+
+  .portfolio-item {
+    position: relative; overflow: hidden; cursor: pointer;
+    background: #ddd3c4;
+  }
+  .portfolio-item .img-fill {
+    width: 100%; height: 100%;
+    background: linear-gradient(135deg, #e0d4c2 0%, #cfc0a8 100%);
+    display: flex; align-items: center; justify-content: center;
+    position: relative; transition: transform .5s ease;
+  }
+  .portfolio-item .img-fill::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: repeating-linear-gradient(
+      -45deg,
+      transparent, transparent 30px,
+      rgba(201,168,118,0.06) 30px, rgba(201,168,118,0.06) 31px
+    );
+  }
+  .portfolio-item:hover .img-fill { transform: scale(1.04); }
+
+  .portfolio-item .overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,23,20,0.65) 0%, transparent 55%);
+    opacity: 0; transition: opacity .35s;
+    display: flex; align-items: flex-end;
+    padding: 28px;
+  }
+  .portfolio-item:hover .overlay { opacity: 1; }
+  .overlay-content { color: var(--white); }
+  .overlay-tag {
+    font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--gold-light); margin-bottom: 4px;
+  }
+  .overlay-title { font-family: var(--serif); font-size: 20px; font-weight: 400; }
+
+  .img-placeholder-label {
+    font-family: monospace; font-size: 10px;
+    color: rgba(168,134,79,0.45); letter-spacing: 0.1em;
+    text-transform: uppercase; text-align: center;
+  }
+
+  /* ── SERVICES ── */
+  #services {
+    background: var(--bg);
+  }
+  .services-header { max-width: 540px; margin-bottom: 72px; }
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+  }
+  .service-card {
+    background: var(--white);
+    padding: 52px 36px;
+    transition: box-shadow .3s, transform .25s;
+    cursor: default;
+    border-top: 2px solid transparent;
+    transition: border-color .3s, box-shadow .3s, transform .25s;
+  }
+  .service-card:hover {
+    border-top-color: var(--gold);
+    box-shadow: 0 12px 48px rgba(26,23,20,0.08);
+    transform: translateY(-4px);
+  }
+  .service-icon {
+    width: 48px; height: 48px;
+    margin-bottom: 28px;
+    color: var(--gold);
+  }
+  .service-num {
+    font-family: var(--serif); font-size: 48px; font-weight: 300;
+    color: rgba(201,168,118,0.18); line-height: 1;
+    margin-bottom: 16px;
+  }
+  .service-name {
+    font-family: var(--serif); font-size: 24px; font-weight: 500;
+    color: var(--dark); margin-bottom: 12px;
+  }
+  .service-desc {
+    font-size: 14px; color: var(--muted);
+    line-height: 1.7;
+  }
+
+  /* ── TESTIMONIAL ── */
+  #testimonial {
+    background: var(--dark);
+    padding: 100px 60px;
+    text-align: center;
+  }
+  .testimonial-quote {
+    font-family: var(--serif);
+    font-size: clamp(24px, 3vw, 40px);
+    font-weight: 400; font-style: italic;
+    color: var(--white);
+    max-width: 820px; margin: 0 auto 36px;
+    line-height: 1.5;
+  }
+  .testimonial-quote::before { content: '\201C'; color: var(--gold); }
+  .testimonial-quote::after  { content: '\201D'; color: var(--gold); }
+  .testimonial-author {
+    font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold-light);
+  }
+  .testimonial-dots {
+    display: flex; gap: 8px; justify-content: center; margin-top: 48px;
+  }
+  .t-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: rgba(255,255,255,0.2); cursor: pointer; transition: background .2s;
+  }
+  .t-dot.active { background: var(--gold); }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--white); }
+  .contact-inner {
+    max-width: 900px; margin: 0 auto; text-align: center;
+  }
+  .contact-title { margin-bottom: 16px; }
+  .contact-sub {
+    font-size: 15px; color: var(--muted);
+    max-width: 480px; margin: 0 auto 60px;
+  }
+  .contact-details {
+    display: flex; justify-content: center; gap: 60px;
+    margin-bottom: 64px;
+  }
+  .contact-item { display: flex; flex-direction: column; gap: 6px; }
+  .contact-item-label {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .contact-item-val {
+    font-family: var(--serif); font-size: 20px; color: var(--dark);
+  }
+
+  .contact-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    text-align: left;
+  }
+  .contact-form .full { grid-column: span 2; }
+
+  .form-field {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .form-field label {
+    font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted);
+  }
+  .form-field input,
+  .form-field textarea,
+  .form-field select {
+    font-family: var(--sans);
+    font-size: 15px;
+    background: var(--bg);
+    border: 1px solid rgba(201,168,118,0.25);
+    padding: 14px 18px;
+    color: var(--dark);
+    outline: none;
+    transition: border-color .2s;
+    border-radius: 1px;
+    width: 100%;
+    appearance: none;
+  }
+  .form-field input:focus,
+  .form-field textarea:focus,
+  .form-field select:focus {
+    border-color: var(--gold);
+  }
+  .form-field textarea { resize: vertical; min-height: 120px; }
+  .form-submit {
+    grid-column: span 2;
+    display: flex; justify-content: center;
+    margin-top: 8px;
+  }
+  .btn-submit {
+    background: var(--dark); color: var(--white);
+    font-family: var(--sans); font-size: 13px;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 18px 56px; border: none; cursor: pointer;
+    transition: background .2s, transform .15s;
+  }
+  .btn-submit:hover { background: var(--gold-dark); transform: translateY(-1px); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--dark);
+    padding: 80px 60px 40px;
+    color: rgba(255,255,255,0.55);
+  }
+  .footer-top {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    margin-bottom: 40px;
+  }
+  .footer-brand .logo { color: var(--white); margin-bottom: 16px; display: block; }
+  .footer-brand p {
+    font-size: 14px; line-height: 1.7; max-width: 260px;
+  }
+  .footer-social {
+    display: flex; gap: 14px; margin-top: 24px;
+  }
+  .social-btn {
+    width: 36px; height: 36px;
+    border: 1px solid rgba(255,255,255,0.15);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; transition: border-color .2s, background .2s;
+    border-radius: 50%;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+  }
+  .social-btn:hover { border-color: var(--gold); background: rgba(201,168,118,0.1); color: var(--gold); }
+
+  .footer-col h4 {
+    font-family: var(--sans);
+    font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase;
+    color: rgba(255,255,255,0.9); margin-bottom: 20px;
+  }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  .footer-col ul li a {
+    font-size: 14px; color: rgba(255,255,255,0.45);
+    text-decoration: none; transition: color .2s;
+  }
+  .footer-col ul li a:hover { color: var(--gold-light); }
+
+  .footer-bottom {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: rgba(255,255,255,0.28);
+  }
+  .footer-bottom a { color: var(--gold); text-decoration: none; }
+
+  /* ── BLOG ── */
+  #blog { background: var(--bg); }
+  .blog-header {
+    display: flex; align-items: flex-end; justify-content: space-between;
+    margin-bottom: 60px;
+  }
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 36px;
+  }
+  .blog-card {
+    display: flex; flex-direction: column;
+    cursor: pointer;
+    text-decoration: none;
+    color: inherit;
+    group: true;
+  }
+  .blog-thumb {
+    width: 100%; aspect-ratio: 4/3; overflow: hidden;
+    background: #e0d4c2; position: relative; margin-bottom: 24px;
+  }
+  .blog-thumb .thumb-fill {
+    width: 100%; height: 100%;
+    transition: transform .5s ease;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .blog-card:hover .thumb-fill { transform: scale(1.04); }
+  .blog-thumb-label {
+    font-family: monospace; font-size: 10px;
+    color: rgba(168,134,79,0.45); letter-spacing: 0.1em;
+    text-transform: uppercase; text-align: center;
+  }
+  .blog-cat {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .blog-cat::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+  .blog-title {
+    font-family: var(--serif); font-size: 24px; font-weight: 400;
+    color: var(--dark); line-height: 1.3; margin-bottom: 12px;
+    transition: color .2s;
+    text-wrap: pretty;
+  }
+  .blog-card:hover .blog-title { color: var(--gold-dark); }
+  .blog-excerpt {
+    font-size: 14px; color: var(--muted); line-height: 1.7;
+    flex: 1; margin-bottom: 20px;
+  }
+  .blog-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: var(--muted); letter-spacing: 0.05em;
+    border-top: 1px solid rgba(201,168,118,0.2);
+    padding-top: 16px;
+  }
+  .blog-read-more {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase;
+    color: var(--gold); transition: gap .2s;
+  }
+  .blog-card:hover .blog-read-more { gap: 10px; }
+
+  /* ── TWEAKS PANEL ── */
+  #tweaks-panel {
+    position: fixed; bottom: 24px; right: 24px; z-index: 999;
+    background: var(--white);
+    box-shadow: 0 8px 48px rgba(26,23,20,0.15);
+    padding: 28px 28px 24px;
+    width: 280px;
+    display: none;
+    border-top: 3px solid var(--gold);
+  }
+  #tweaks-panel.open { display: block; }
+  #tweaks-panel h3 {
+    font-family: var(--serif); font-size: 18px; font-weight: 500;
+    margin-bottom: 20px; color: var(--dark);
+  }
+  .tweak-row { display: flex; flex-direction: column; gap: 6px; margin-bottom: 18px; }
+  .tweak-row label { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .tweak-row input[type=color] {
+    height: 36px; width: 100%; border: 1px solid rgba(201,168,118,0.25);
+    cursor: pointer; background: none; padding: 2px 4px;
+  }
+  .tweak-row select {
+    font-family: var(--sans); font-size: 14px;
+    background: var(--bg); border: 1px solid rgba(201,168,118,0.25);
+    padding: 8px 12px; color: var(--dark); outline: none;
+  }
+  .tweak-row input[type=range] { width: 100%; accent-color: var(--gold); }
+
+  /* ── MOBILE BURGER (very basic) ── */
+  .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+  .burger span { display: block; width: 24px; height: 1.5px; background: var(--dark); }
+
+  @media (max-width: 960px) {
+    header { padding: 0 24px; }
+    nav .nav-links { display: none; }
+    nav .nav-links.open { display: flex; flex-direction: column; position: fixed; top: 72px; left: 0; right: 0; background: var(--bg); padding: 24px; gap: 24px; border-bottom: 1px solid rgba(201,168,118,0.2); }
+    .burger { display: flex; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-right { display: none; }
+    .hero-left { padding: 60px 24px; }
+    section { padding: 80px 24px; }
+    .portfolio-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; gap: 12px; }
+    .portfolio-grid .item:first-child { grid-row: span 1; height: 240px; }
+    .services-grid { grid-template-columns: 1fr 1fr; gap: 2px; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    .contact-details { flex-direction: column; gap: 24px; }
+    .contact-form { grid-template-columns: 1fr; }
+    .contact-form .full { grid-column: span 1; }
+    .form-submit { grid-column: span 1; }
+    .portfolio-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+</style>
+
 </head>
 <body>
-    <!-- Header Navigation -->
-    <header>
-        <div class="header-container">
-            <a href="#" class="logo">NOW STUDIO</a>
-            <nav>
-                <ul>
-                    <li><a href="#home">Trang Chủ</a></li>
-                    <li><a href="#portfolio">Portfolio</a></li>
-                    <li><a href="#services">Dịch Vụ</a></li>
-                    <li><a href="#about">Về Chúng Tôi</a></li>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#contact">Liên Hệ</a></li>
-                </ul>
-            </nav>
-            <a href="#contact" class="cta-button">Đặt Lịch Ngay</a>
+
+<!-- ── HEADER ── -->
+<header id="site-header">
+  <a href="#" class="logo">NOW<span>·</span>STUDIO</a>
+  <nav>
+    <div class="nav-links" id="nav-links">
+      <a href="#hero">Home</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#services">Services</a>
+      <a href="#blog">Blog</a>
+      <a href="#contact">Contact</a>
+      <a href="#contact" class="nav-cta">Đặt Lịch</a>
+    </div>
+    <div class="burger" id="burger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+</header>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-eyebrow">Wedding &amp; Portrait Photography</div>
+    <h1 class="hero-headline">Lưu Giữ<br>Món Quà<br>Hiện Tại</h1>
+    <p class="hero-sub">Mỗi khoảnh khắc là một câu chuyện</p>
+    <p class="hero-desc">Chúng tôi chụp ảnh cưới và chân dung với tâm huyết — nắm bắt cảm xúc chân thực, vẻ đẹp tự nhiên trong từng khoảnh khắc quý giá nhất của cuộc đời bạn.</p>
+
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">500+</span>
+        <span class="stat-label">Couples</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">8+</span>
+        <span class="stat-label">Years Exp.</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">12K</span>
+        <span class="stat-label">Followers</span>
+      </div>
+    </div>
+
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Đặt Lịch Ngay</a>
+      <a href="#portfolio" class="btn-ghost">
+        Xem Bộ Sưu Tập
+        <svg width="16" height="10" viewBox="0 0 16 10" fill="none">
+          <path d="M1 5h14M10 1l5 4-5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+        </svg>
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="hero-img-placeholder" style="padding:0;overflow:hidden;">
+      <img src="500f4488-2489-42b3-800b-0eb7b5d95555" alt="Wedding couple portrait" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+    </div>
+    <div class="hero-badge">
+      <div class="hero-badge-label">Award-winning studio</div>
+      <div class="hero-badge-val">Est. 2016</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── PORTFOLIO ── -->
+<section id="portfolio">
+  <div class="portfolio-header">
+    <div>
+      <div class="section-label">Our Work</div>
+      <h2 class="section-title">Bộ Sưu Tập</h2>
+      <p class="section-sub">Những khoảnh khắc đáng nhớ</p>
+    </div>
+    <a href="#" class="portfolio-link">
+      Xem tất cả
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+        <path d="M1 5h12M8 1l5 4-5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </div>
+
+  <div class="portfolio-grid">
+    <div class="portfolio-item item" style="height:100%">
+      <div class="img-fill" style="height:100%; background: linear-gradient(160deg,#ddd3c4,#c8b49a);">
+        <span class="img-placeholder-label">Wedding — Full<br>Portrait</span>
+      </div>
+      <div class="overlay">
+        <div class="overlay-content">
+          <div class="overlay-tag">Wedding</div>
+          <div class="overlay-title">Linh &amp; Minh</div>
         </div>
-    </header>
-
-    <!-- Hero Section (Redesigned) -->
-    <section id="home" class="hero">
-        <div class="hero-container">
-            <div class="hero-content">
-                <div class="hero-subtitle">NHIẾP ẢNH CHÂN DUNG & CUỘN</div>
-                <h1 class="hero-title-main">Lưu Giữ</h1>
-                <h2 class="hero-title-accent">Món Quà</h2>
-                <h2 class="hero-title-main">Hiện Tại</h2>
-                <p class="hero-description">Mỗi khoảnh khắc đầu vương được ghi lại theo cách đẹp nhất. Chúng tôi tao nên những bức ảnh khoản chỉ có thể cảm xúc và tự nhiên, ám ấp và đầy cảm xúc.</p>
-                <div class="hero-buttons">
-                    <a href="#contact" class="cta-button cta-primary">Đặt Lịch Ngày</a>
-                    <a href="#portfolio" class="cta-button cta-secondary">Xem Bộ Sưu Tập</a>
-                </div>
-            </div>
-            <div class="hero-image">
-                <div class="hero-image-placeholder">📸</div>
-            </div>
+      </div>
+    </div>
+    <div class="portfolio-item item">
+      <div class="img-fill" style="background: linear-gradient(135deg,#e6d9cc,#d0bda8);">
+        <span class="img-placeholder-label">Outdoor<br>Ceremony</span>
+      </div>
+      <div class="overlay">
+        <div class="overlay-content">
+          <div class="overlay-tag">Portrait</div>
+          <div class="overlay-title">An &amp; Hoa</div>
         </div>
-    </section>
-
-    <!-- Services Section -->
-    <section id="services" class="bg-light-section">
-        <h2>Dịch Vụ Của Chúng Tôi</h2>
-        <div class="services-grid">
-            <div class="service-card">
-                <div class="service-icon">📷</div>
-                <h3>Phóng Sự Cưới</h3>
-                <p>Ghi lại những khoảnh khắc tự nhiên, chân thực trong ngày cưới của bạn từ đầu đến cuối.</p>
-                <div class="price">Liên Hệ</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">👰</div>
-                <h3>Makeup Cô Dâu</h3>
-                <p>Dịch vụ trang điểm chuyên nghiệp, tôn vinh vẻ đẹp tự nhiên của cô dâu.</p>
-                <div class="price">2.5 - 3.5 triệu</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">👗</div>
-                <h3>Váy Cưới Cao Cấp</h3>
-                <p>Cho thuê và bán váy cưới tinh tế, duyên dáng từ các nhà thiết kế nổi tiếng.</p>
-                <div class="price">Giá linh hoạt</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🎭</div>
-                <h3>Chân Dung Nghệ Thuật</h3>
-                <p>Chụp ảnh chân dung chuyên nghiệp, thể hiện tính cách và sắc đẹp riêng của bạn.</p>
-                <div class="price">1 - 2 triệu</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📚</div>
-                <h3>Album & Photobook</h3>
-                <p>Sản xuất album cưới cao cấp, photobook chất lượng với công nghệ in hiện đại.</p>
-                <div class="price">3 - 8 triệu</div>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">✨</div>
-                <h3>Tư Vấn Styling</h3>
-                <p>Tư vấn phong cách chuẩn bị cho ngày cưới, hướng dẫn lựa chọn váy áo và trang sức.</p>
-                <div class="price">Miễn phí</div>
-            </div>
+      </div>
+    </div>
+    <div class="portfolio-item item">
+      <div class="img-fill" style="background: linear-gradient(135deg,#d8c9b8,#c4b09a);">
+        <span class="img-placeholder-label">Reception<br>Candid</span>
+      </div>
+      <div class="overlay">
+        <div class="overlay-content">
+          <div class="overlay-tag">Editorial</div>
+          <div class="overlay-title">Anh &amp; Nam</div>
         </div>
-    </section>
-
-    <!-- Portfolio Section -->
-    <section id="portfolio">
-        <h2>Ảnh Cưới Tiêu Biểu</h2>
-        <div class="gallery">
-            <div class="gallery-item">
-                <div class="gallery-item-overlay">Phóng Sự Cưới</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-overlay">Chân Dung</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-overlay">Makeup</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-overlay">Studio</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-overlay">Ngoài Trời</div>
-            </div>
-            <div class="gallery-item">
-                <div class="gallery-item-overlay">Chi Tiết</div>
-            </div>
+      </div>
+    </div>
+    <div class="portfolio-item item">
+      <div class="img-fill" style="background: linear-gradient(160deg,#e2d5c5,#ccb99e);">
+        <span class="img-placeholder-label">Bridal<br>Detail</span>
+      </div>
+      <div class="overlay">
+        <div class="overlay-content">
+          <div class="overlay-tag">Wedding</div>
+          <div class="overlay-title">Tú &amp; Phong</div>
         </div>
-        <div style="text-align: center;">
-            <a href="#contact" class="cta-button">Xem Thêm Ảnh</a>
+      </div>
+    </div>
+    <div class="portfolio-item item">
+      <div class="img-fill" style="background: linear-gradient(135deg,#dacdc0,#c6b59d);">
+        <span class="img-placeholder-label">Engagement<br>Session</span>
+      </div>
+      <div class="overlay">
+        <div class="overlay-content">
+          <div class="overlay-tag">Engagement</div>
+          <div class="overlay-title">Mai &amp; Dũng</div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about" class="bg-light-section">
-        <h2>Về NOW Studio</h2>
-        <div class="about-container">
-            <div class="about-image">👥</div>
-            <div class="about-content">
-                <h3>Đội Ngũ Chuyên Nghiệp</h3>
-                <p>NOW Studio là một đội ngũ gồm các nhiếp ảnh gia, trang điểm viên, và nhà thiết kế có hơn 8 năm kinh nghiệm trong ngành cưới. Chúng tôi yêu thích cái đẹp tối giản và luôn hướng tới việc tạo ra nhiều giá trị cho khách hàng.</p>
-                <p>Không chỉ dừa lại ở chất lượng hình ảnh nét và đẹp mắt, chúng tôi còn hướng tới là một người kể chuyện chân thành, lưu lại những lát cắt của thời gian cho bạn xem lại sau này.</p>
-                <p>Với trang thiết bị hiện đại từ các hãng nổi tiếng, chúng tôi cam kết mang lại cho bạn những sản phẩm chất lượng cao nhất, đáp ứng mọi yêu cầu của bạn.</p>
-
-                <div class="about-stats">
-                    <div class="stat">
-                        <div class="stat-number">150+</div>
-                        <div class="stat-label">Cặp Cưới</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">8+</div>
-                        <div class="stat-label">Năm Kinh Nghiệm</div>
-                    </div>
-                    <div class="stat">
-                        <div class="stat-number">99%</div>
-                        <div class="stat-label">Khách Hài Lòng</div>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+    <div class="portfolio-item item">
+      <div class="img-fill" style="background: linear-gradient(135deg,#d6c8b8,#bfab95);">
+        <span class="img-placeholder-label">Studio<br>Portrait</span>
+      </div>
+      <div class="overlay">
+        <div class="overlay-content">
+          <div class="overlay-tag">Portrait</div>
+          <div class="overlay-title">Lan &amp; Quân</div>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Team Section -->
-    <section>
-        <h2>Đội Ngũ Của Chúng Tôi</h2>
-        <div class="team-grid">
-            <div class="team-member">
-                <div class="member-image">📷</div>
-                <h3>Ngô Phòng Vũ</h3>
-                <p class="role">Nhiếp Ảnh Gia Chính</p>
-                <p>Chuyên gia chụp ảnh phóng sự cưới với phong cách tự nhiên, chân thực.</p>
-            </div>
-            <div class="team-member">
-                <div class="member-image">💄</div>
-                <h3>Phượng La</h3>
-                <p class="role">Trang Điểm Viên</p>
-                <p>Chuyên gia makeup có kinh nghiệm làm đẹp cho hàng trăm cô dâu.</p>
-            </div>
-            <div class="team-member">
-                <div class="member-image">👗</div>
-                <h3>Thiết Kế Trang Phục</h3>
-                <p class="role">Nhà Thiết Kế</p>
-                <p>Tư vấn lựa chọn váy áo và phong cách phù hợp với từng cô dâu.</p>
-            </div>
+<!-- ── SERVICES ── -->
+<section id="services">
+  <div class="services-header">
+    <div class="section-label">What We Do</div>
+    <h2 class="section-title">Dịch Vụ<br>Của Chúng Tôi</h2>
+  </div>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-num">01</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+        <rect x="6" y="14" width="36" height="26" rx="3" stroke="currentColor" stroke-width="1.8"></rect>
+        <circle cx="24" cy="27" r="7" stroke="currentColor" stroke-width="1.8"></circle>
+        <path d="M16 14v-3a2 2 0 0 1 2-2h5l3 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <circle cx="37" cy="20" r="2" fill="currentColor"></circle>
+      </svg>
+      <div class="service-name">Photography</div>
+      <p class="service-desc">Chụp ảnh cưới và chân dung chuyên nghiệp. Nắm bắt cảm xúc chân thực trong từng khoảnh khắc.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">02</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+        <path d="M12 36c2-4 6-6 12-6s10 2 12 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path>
+        <circle cx="24" cy="18" r="8" stroke="currentColor" stroke-width="1.8"></circle>
+        <path d="M30 14c1.5 1 2.5 2.8 2.5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path>
+      </svg>
+      <div class="service-name">Makeup</div>
+      <p class="service-desc">Trang điểm cô dâu chuyên nghiệp — tôn lên vẻ đẹp tự nhiên, bền màu suốt ngày cưới.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">03</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+        <path d="M16 12h16v6l-4 4 4 4v10H16V26l4-4-4-4V12z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"></path>
+        <path d="M20 12v24M28 12v24" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+      </svg>
+      <div class="service-name">Styling</div>
+      <p class="service-desc">Tư vấn trang phục và phong cách. Tạo nên hình ảnh hoàn hảo, phù hợp với từng cặp đôi.</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-num">04</div>
+      <svg class="service-icon" viewBox="0 0 48 48" fill="none">
+        <rect x="8" y="10" width="32" height="28" rx="2" stroke="currentColor" stroke-width="1.8"></rect>
+        <path d="M16 24l6 6 10-12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"></path>
+        <path d="M8 18h32" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path>
+      </svg>
+      <div class="service-name">Editing</div>
+      <p class="service-desc">Hậu kỳ chuyên nghiệp — chỉnh màu, làm đẹp và xuất file chất lượng cao cho bộ ảnh của bạn.</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ── TESTIMONIAL ── -->
+<section id="testimonial">
+  <p class="testimonial-quote" id="tq-text">NOW Studio đã biến ngày cưới của chúng tôi thành những bức ảnh đẹp nhất mà chúng tôi từng thấy. Mỗi khoảnh khắc đều được ghi lại hoàn hảo.</p>
+  <div class="testimonial-author" id="tq-author">Nguyễn Linh &amp; Trần Minh — Đám cưới tháng 3, 2024</div>
+  <div class="testimonial-dots">
+    <div class="t-dot active" onclick="setTestimonial(0)"></div>
+    <div class="t-dot" onclick="setTestimonial(1)"></div>
+    <div class="t-dot" onclick="setTestimonial(2)"></div>
+  </div>
+</section>
+
+<!-- ── BLOG ── -->
+<section id="blog">
+  <div class="blog-header">
+    <div>
+      <div class="section-label">Câu Chuyện</div>
+      <h2 class="section-title">Blog &amp; Tips</h2>
+      <p class="section-sub">Chia sẻ từ studio</p>
+    </div>
+    <a href="blog/index.html" class="portfolio-link">
+      Tất cả bài viết
+      <svg width="14" height="10" viewBox="0 0 14 10" fill="none">
+        <path d="M1 5h12M8 1l5 4-5 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </a>
+  </div>
+
+  <div class="blog-grid">
+    <!-- Post 1 -->
+    <a class="blog-card" href="blog/chon-dia-diem-chup-anh-cuoi.html">
+      <div class="blog-thumb">
+        <div class="thumb-fill" style="background: linear-gradient(135deg,#e6d9cc,#d0bda8);">
+          <span class="blog-thumb-label">outdoor<br>location</span>
         </div>
-    </section>
+      </div>
+      <div class="blog-cat">Tips &amp; Advice</div>
+      <div class="blog-title">Chọn Địa Điểm Chụp Ảnh Cưới Đẹp Tại Hà Nội</div>
+      <p class="blog-excerpt">Hà Nội có vô số địa điểm lý tưởng cho ảnh cưới — từ phố cổ thơ mộng đến hồ Tây lãng mạn. Chúng tôi tổng hợp những góc chụp đẹp nhất để giúp cặp đôi lựa chọn.</p>
+      <div class="blog-meta">
+        <span>15 tháng 3, 2024</span>
+        <span class="blog-read-more">
+          Đọc tiếp
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 4h10M7 1l4 3-4 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </span>
+      </div>
+    </a>
 
-    <!-- Blog Section -->
-    <section id="blog" class="bg-light-section">
-        <h2>Góc Chia Sẻ</h2>
-        <div class="blog-grid">
-            <div class="blog-card">
-                <div class="blog-image">🎨</div>
-                <div class="blog-content">
-                    <p class="blog-date">15 Tháng 3, 2025</p>
-                    <h3>Cách Chọn Tông Makeup Phù Hợp cho Ngày Cưới</h3>
-                    <p>Makeup là yếu tố quan trọng giúp nâng tầm vẻ đẹp của cô dâu. Hãy tìm hiểu cách chọn tông makeup phù hợp...</p>
-                    <a href="#" class="read-more">Đọc Thêm →</a>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="blog-image">💍</div>
-                <div class="blog-content">
-                    <p class="blog-date">10 Tháng 3, 2025</p>
-                    <h3>Hướng Dẫn Chọn Váy Cưới Phù Hợp với Từng Dáng Người</h3>
-                    <p>Chọn đúng váy cưới không phải chuyện nhỏ. Bài viết này sẽ hướng dẫn bạn cách chọn váy phù hợp...</p>
-                    <a href="#" class="read-more">Đọc Thêm →</a>
-                </div>
-            </div>
-            <div class="blog-card">
-                <div class="blog-image">📸</div>
-                <div class="blog-content">
-                    <p class="blog-date">5 Tháng 3, 2025</p>
-                    <h3>Tips Chụp Ảnh Cưới Đẹp - Từ Việc Chuẩn Bị Trước</h3>
-                    <p>Để có những bức ảnh cưới đẹp, cô dâu cần chuẩn bị kỹ lưỡng. Hãy cùng chúng tôi tìm hiểu...</p>
-                    <a href="#" class="read-more">Đọc Thêm →</a>
-                </div>
-            </div>
+    <!-- Post 2 -->
+    <a class="blog-card" href="blog/bi-quyet-trang-diem-co-dau.html">
+      <div class="blog-thumb">
+        <div class="thumb-fill" style="background: linear-gradient(135deg,#ddd3c4,#c8b49a);">
+          <span class="blog-thumb-label">bridal<br>makeup</span>
         </div>
-    </section>
+      </div>
+      <div class="blog-cat">Beauty</div>
+      <div class="blog-title">Bí Quyết Trang Điểm Cô Dâu Bền Màu Suốt Ngày Cưới</div>
+      <p class="blog-excerpt">Ngày cưới kéo dài từ sáng đến tối — lớp trang điểm cần bền bỉ qua mọi cảm xúc. Chuyên gia makeup của NOW Studio chia sẻ bí quyết giữ vẻ đẹp tươi tắn cả ngày.</p>
+      <div class="blog-meta">
+        <span>28 tháng 2, 2024</span>
+        <span class="blog-read-more">
+          Đọc tiếp
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 4h10M7 1l4 3-4 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </span>
+      </div>
+    </a>
 
-    <!-- FAQ Section -->
-    <section id="faq">
-        <h2>Câu Hỏi Thường Gặp</h2>
-        <div class="faq-container">
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>NOW Studio cung cấp những dịch vụ nào?</span>
-                    <span class="faq-toggle">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Chúng tôi cung cấp đầy đủ các dịch vụ cho ngày cưới của bạn: chụp ảnh phóng sự, chân dung, makeup cô dâu, cho thuê/bán váy cưới, sản xuất album và photobook, cũng như tư vấn styling miễn phí.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Giá dịch vụ chụp ảnh cưới bao nhiêu?</span>
-                    <span class="faq-toggle">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Giá cả dịch vụ phóng sự cưới tuỳ theo yêu cầu cụ thể của bạn (số giờ, địa điểm, số người phục vụ, etc.). Vui lòng liên hệ với chúng tôi để được tư vấn chi tiết và báo giá chính xác.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Làm cách nào để đặt lịch chụp ảnh?</span>
-                    <span class="faq-toggle">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Bạn có thể liên hệ với chúng tôi qua email (nowstudios7@gmail.com), gọi điện (0931 34 34 17 hoặc 096 992 7875), hoặc nhắn tin qua Facebook/Instagram. Chúng tôi sẽ trả lời sớm nhất có thể và hẹn lịch với bạn.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Album cưới mất bao lâu để hoàn thành?</span>
-                    <span class="faq-toggle">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Album cưới thường mất 2-3 tuần để chỉnh sửa và in. Tuy nhiên, điều này cũng phụ thuộc vào số lượng ảnh và thiết kế album. Chúng tôi sẽ thông báo rõ ràng thời hạn hoàn thành khi bạn đặt hàng.
-                </div>
-            </div>
-
-            <div class="faq-item">
-                <div class="faq-question">
-                    <span>Có bảo hành hoặc hỗ trợ sau khi mua dịch vụ không?</span>
-                    <span class="faq-toggle">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Chúng tôi cung cấp bảo hành 1 năm cho album và photobook. Nếu phát hiện bong tróc hoặc phai màu, chúng tôi sẽ hỗ trợ khắc phục hoặc thay thế miễn phí.
-                </div>
-            </div>
+    <!-- Post 3 -->
+    <a class="blog-card" href="blog/chup-anh-cuoi-vao-mua-nao.html">
+      <div class="blog-thumb">
+        <div class="thumb-fill" style="background: linear-gradient(135deg,#d8c9b8,#c4b09a);">
+          <span class="blog-thumb-label">golden hour<br>session</span>
         </div>
-    </section>
+      </div>
+      <div class="blog-cat">Photography</div>
+      <div class="blog-title">Nên Chụp Ảnh Cưới Vào Mùa Nào Là Đẹp Nhất?</div>
+      <p class="blog-excerpt">Ánh sáng, thời tiết và phong cảnh thay đổi theo mùa — mỗi mùa mang lại một vẻ đẹp riêng. Cùng NOW Studio khám phá ưu và nhược điểm của từng mùa để chọn thời điểm lý tưởng.</p>
+      <div class="blog-meta">
+        <span>10 tháng 1, 2024</span>
+        <span class="blog-read-more">
+          Đọc tiếp
+          <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 4h10M7 1l4 3-4 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
+        </span>
+      </div>
+    </a>
+  </div>
+</section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="bg-light-section">
-        <h2>Liên Hệ Với Chúng Tôi</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3 style="margin-top: 0;">Thông Tin Liên Hệ</h3>
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label" style="justify-content:center">Get In Touch</div>
+    <h2 class="section-title contact-title">Đặt Lịch Chụp</h2>
+    <p class="contact-sub">Hãy để chúng tôi lưu giữ những khoảnh khắc đẹp nhất trong cuộc đời bạn.</p>
 
-                <div class="contact-item">
-                    <div class="contact-icon">📞</div>
-                    <div>
-                        <h3>Điện Thoại</h3>
-                        <p><a href="tel:0931343417">0931 34 34 17</a> (Vũ)</p>
-                        <p><a href="tel:0969927875">096 992 7875</a> (Phượng La)</p>
-                    </div>
-                </div>
+    <div class="contact-details">
+      <div class="contact-item">
+        <span class="contact-item-label">Điện Thoại</span>
+        <span class="contact-item-val">096 992 7875</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Email</span>
+        <span class="contact-item-val">nowstudios7@gmail.com</span>
+      </div>
+      <div class="contact-item">
+        <span class="contact-item-label">Địa Chỉ</span>
+        <span class="contact-item-val">Ấp Thanh Hoà, Xã Đức Huệ, Tỉnh Tây Ninh</span>
+      </div>
+    </div>
 
-                <div class="contact-item">
-                    <div class="contact-icon">✉️</div>
-                    <div>
-                        <h3>Email</h3>
-                        <p><a href="mailto:nowstudios7@gmail.com">nowstudios7@gmail.com</a></p>
-                    </div>
-                </div>
+    <form class="contact-form" onsubmit="handleSubmit(event)">
+      <div class="form-field">
+        <label>Họ và tên</label>
+        <input type="text" placeholder="Nguyễn Văn A">
+      </div>
+      <div class="form-field">
+        <label>Số điện thoại</label>
+        <input type="tel" placeholder="+84 90 000 0000">
+      </div>
+      <div class="form-field">
+        <label>Email</label>
+        <input type="email" placeholder="email@example.com">
+      </div>
+      <div class="form-field">
+        <label>Dịch vụ</label>
+        <select>
+          <option value="">Chọn dịch vụ...</option>
+          <option>Photography</option>
+          <option>Makeup</option>
+          <option>Styling</option>
+          <option>Trọn gói</option>
+        </select>
+      </div>
+      <div class="form-field full">
+        <label>Tin nhắn</label>
+        <textarea placeholder="Ngày dự kiến, địa điểm, yêu cầu đặc biệt..."></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-submit">Gửi Yêu Cầu</button>
+      </div>
+    </form>
+  </div>
+</section>
 
-                <div class="contact-item">
-                    <div class="contact-icon">📍</div>
-                    <div>
-                        <h3>Địa Chỉ</h3>
-                        <p>Ấp 2 Xã Bình Hoà Nam, Đức Huệ, Long An, Việt Nam</p>
-                    </div>
-                </div>
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="#" class="logo">NOW<span style="color:var(--gold)">·</span>STUDIO</a>
+      <p>Studio nhiếp ảnh cưới và chân dung tại Hà Nội. Lưu giữ những khoảnh khắc yêu thương của bạn.</p>
+      <div class="footer-social">
+        <!-- Instagram -->
+        <a class="social-btn" href="#" aria-label="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5"></rect>
+            <circle cx="12" cy="12" r="5"></circle>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+        <!-- Facebook -->
+        <a class="social-btn" href="#" aria-label="Facebook">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+          </svg>
+        </a>
+        <!-- TikTok -->
+        <a class="social-btn" href="#" aria-label="TikTok">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5"></path>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>Studio</h4>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Dịch Vụ</h4>
+      <ul>
+        <li><a href="#">Chụp ảnh cưới</a></li>
+        <li><a href="#">Chân dung</a></li>
+        <li><a href="#">Makeup cô dâu</a></li>
+        <li><a href="#">Tư vấn styling</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Liên Hệ</h4>
+      <ul>
+        <li><a href="tel:0969927875">096 992 7875</a></li>
+        <li><a href="mailto:nowstudios7@gmail.com">nowstudios7@gmail.com</a></li>
+        <li><a href="#">Ấp Thanh Hoà, Xã Đức Huệ, Tỉnh Tây Ninh</a></li>
+        <li><a href="#">Mon – Sat, 9–18h</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 NOW·STUDIO. All rights reserved.</span>
+    <span>Made with care in Việt Nam</span>
+  </div>
+</footer>
 
-                <div class="contact-item">
-                    <div class="contact-icon">🌐</div>
-                    <div>
-                        <h3>Mạng Xã Hội</h3>
-                        <div class="social-links">
-                            <a href="#" title="Facebook">f</a>
-                            <a href="#" title="Instagram">📷</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<!-- ── TWEAKS PANEL ── -->
+<div id="tweaks-panel">
+  <h3>Tweaks</h3>
+  <div class="tweak-row">
+    <label>Accent Color</label>
+    <input type="color" id="tw-accent" value="#c9a876" oninput="applyTweaks()">
+  </div>
+  <div class="tweak-row">
+    <label>Font Style</label>
+    <select id="tw-font" onchange="applyTweaks()">
+      <option value="'Cormorant Garamond', Georgia, serif">Cormorant Garamond</option>
+      <option value="'Playfair Display', Georgia, serif">Playfair Display</option>
+      <option value="Georgia, serif">Georgia</option>
+    </select>
+  </div>
+  <div class="tweak-row">
+    <label>Hero Layout</label>
+    <select id="tw-hero" onchange="applyTweaks()">
+      <option value="split">Split (Image Right)</option>
+      <option value="centered">Centered Text</option>
+    </select>
+  </div>
+  <div class="tweak-row">
+    <label>Background Tone</label>
+    <select id="tw-bg" onchange="applyTweaks()">
+      <option value="#faf8f5">Warm White</option>
+      <option value="#f7f5f2">Linen</option>
+      <option value="#f5f5f5">Cool White</option>
+      <option value="#1a1714">Dark Mode</option>
+    </select>
+  </div>
+</div>
 
-            <form class="contact-form" onsubmit="handleSubmit(event)">
-                <div class="form-group">
-                    <label for="name">Họ Tên *</label>
-                    <input type="text" id="name" name="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="email">Email *</label>
-                    <input type="email" id="email" name="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Số Điện Thoại *</label>
-                    <input type="tel" id="phone" name="phone" required>
-                </div>
-                <div class="form-group">
-                    <label for="message">Tin Nhắn *</label>
-                    <textarea id="message" name="message" required></textarea>
-                </div>
-                <div class="form-group">
-                    <button type="submit">Gửi Thông Tin</button>
-                </div>
-            </form>
-        </div>
-    </section>
+<script>
+// Scroll header shadow
+window.addEventListener('scroll', () => {
+  document.getElementById('site-header').classList.toggle('scrolled', window.scrollY > 20);
+});
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>NOW STUDIO</h3>
-                <p>Studio chụp ảnh cưới chuyên nghiệp, dịch vụ makeup, váy cưới, và tư vấn styling tại Long An.</p>
-            </div>
-            <div class="footer-section">
-                <h3>Dịch Vụ</h3>
-                <ul>
-                    <li><a href="#services">Chụp Ảnh Cưới</a></li>
-                    <li><a href="#services">Makeup Cô Dâu</a></li>
-                    <li><a href="#services">Váy Cưới</a></li>
-                    <li><a href="#services">Album & Photobook</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Nội Dung</h3>
-                <ul>
-                    <li><a href="#blog">Blog</a></li>
-                    <li><a href="#about">Về Chúng Tôi</a></li>
-                    <li><a href="#faq">FAQ</a></li>
-                    <li><a href="#contact">Liên Hệ</a></li>
-                </ul>
-            </div>
-            <div class="footer-section">
-                <h3>Theo Dõi</h3>
-                <div class="social-links">
-                    <a href="#" title="Facebook">f</a>
-                    <a href="#" title="Instagram">📷</a>
-                </div>
-                <p style="margin-top: 1rem; font-size: 0.9rem;">©2025 NOW Studio. All rights reserved.</p>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <p>Thiết kế & Phát triển bởi Claude AI | Tối ưu hóa cho SEO & Performance</p>
-        </div>
-    </footer>
+// Mobile menu
+function toggleMenu() {
+  document.getElementById('nav-links').classList.toggle('open');
+}
 
-    <!-- Scroll to Top Button -->
-    <button class="scroll-top" id="scrollTop">↑</button>
+// Testimonials
+const testimonials = [
+  {
+    text: "NOW Studio đã biến ngày cưới của chúng tôi thành những bức ảnh đẹp nhất mà chúng tôi từng thấy. Mỗi khoảnh khắc đều được ghi lại hoàn hảo.",
+    author: "Nguyễn Linh & Trần Minh — Đám cưới tháng 3, 2024"
+  },
+  {
+    text: "Đội ngũ chuyên nghiệp, nhiệt tình và rất am hiểu nghệ thuật. Bộ ảnh cưới của chúng tôi vượt xa mọi mong đợi. Cảm ơn NOW Studio!",
+    author: "Phạm Thu & Lê Hùng — Đám cưới tháng 10, 2023"
+  },
+  {
+    text: "Từ makeup đến chụp ảnh, mọi thứ đều hoàn hảo. Chúng tôi sẽ giới thiệu NOW Studio cho tất cả bạn bè.",
+    author: "Vũ Mai & Đặng Quân — Đám cưới tháng 6, 2024"
+  }
+];
+let tIdx = 0;
 
-    <!-- Schema.org Structured Data -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "NOW Studio",
-        "description": "Studio chụp ảnh cưới chuyên nghiệp, dịch vụ makeup, váy cưới, và tư vấn styling tại Long An",
-        "image": "https://www.nowstudio.vn/images/logo.png",
-        "url": "https://www.nowstudio.vn",
-        "telephone": "+84931343417",
-        "email": "nowstudios7@gmail.com",
-        "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Ấp 2 Xã Bình Hoà Nam, Đức Huệ",
-            "addressLocality": "Long An",
-            "addressRegion": "Long An",
-            "postalCode": "",
-            "addressCountry": "VN"
-        },
-        "openingHoursSpecification": {
-            "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-            "opens": "08:00",
-            "closes": "18:00"
-        },
-        "priceRange": "$$",
-        "aggregateRating": {
-            "@type": "AggregateRating",
-            "ratingValue": "4.9",
-            "ratingCount": "150"
-        }
-    }
-    </script>
+function setTestimonial(i) {
+  tIdx = i;
+  document.getElementById('tq-text').textContent = testimonials[i].text;
+  document.getElementById('tq-author').textContent = testimonials[i].author;
+  document.querySelectorAll('.t-dot').forEach((d, j) => d.classList.toggle('active', j === i));
+}
 
-    <script>
-        // FAQ Toggle
-        const faqItems = document.querySelectorAll('.faq-item');
-        faqItems.forEach(item => {
-            item.querySelector('.faq-question').addEventListener('click', () => {
-                item.classList.toggle('active');
-            });
-        });
+setInterval(() => setTestimonial((tIdx + 1) % testimonials.length), 6000);
 
-        // Scroll to Top
-        const scrollTopBtn = document.getElementById('scrollTop');
-        window.addEventListener('scroll', () => {
-            if (window.pageYOffset > 300) {
-                scrollTopBtn.classList.add('show');
-            } else {
-                scrollTopBtn.classList.remove('show');
-            }
-        });
+// Form submit
+function handleSubmit(e) {
+  e.preventDefault();
+  const btn = e.target.querySelector('.btn-submit');
+  btn.textContent = 'Đã gửi! ✓';
+  btn.style.background = '#6a8f6a';
+  setTimeout(() => { btn.textContent = 'Gửi Yêu Cầu'; btn.style.background = ''; }, 3000);
+}
 
-        scrollTopBtn.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+// Tweaks
+window.addEventListener('message', e => {
+  if (e.data?.type === '__activate_edit_mode') document.getElementById('tweaks-panel').classList.add('open');
+  if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaks-panel').classList.remove('open');
+});
+window.parent.postMessage({ type: '__edit_mode_available' }, '*');
 
-        // Form Submission (Formspree integration)
-        function handleSubmit(event) {
-            event.preventDefault();
-            const form = event.target;
-            const formData = new FormData(form);
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accent": "#c9a876",
+  "font": "'Cormorant Garamond', Georgia, serif",
+  "hero": "split",
+  "bg": "#faf8f5"
+}/*EDITMODE-END*/;
 
-            // Using Formspree service
-            fetch('https://formspree.io/f/xpqkrypa', {
-                method: 'POST',
-                body: formData,
-                headers: {
-                    'Accept': 'application/json'
-                }
-            })
-            .then(response => {
-                if (response.ok) {
-                    alert('Cảm ơn bạn! Chúng tôi sẽ liên hệ với bạn sớm nhất.');
-                    form.reset();
-                } else {
-                    alert('Có lỗi xảy ra. Vui lòng thử lại hoặc liên hệ trực tiếp.');
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Có lỗi xảy ra. Vui lòng liên hệ trực tiếp với chúng tôi.');
-            });
-        }
+function applyTweaks() {
+  const accent = document.getElementById('tw-accent').value;
+  const font   = document.getElementById('tw-font').value;
+  const hero   = document.getElementById('tw-hero').value;
+  const bg     = document.getElementById('tw-bg').value;
 
-        // Smooth scroll for internal links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+  // Compute darker/lighter from accent hex
+  document.documentElement.style.setProperty('--gold', accent);
+  document.documentElement.style.setProperty('--serif', font);
+  document.documentElement.style.setProperty('--bg', bg);
 
-        // Simple mobile menu toggle (for future enhancement)
-        // Add this if you want to implement mobile navigation
-    </script>
-</body>
-</html>
+  // Hero layout
+  const heroEl = document.getElementById('hero');
+  if (hero === 'centered') {
+    heroEl.style.gridTemplateColumns = '1fr';
+    heroEl.querySelector('.hero-right').style.display = 'none';
+    heroEl.querySelector('.hero-left').style.maxWidth = '720px';
+    heroEl.querySelector('.hero-left').style.margin = '0 auto';
+  } else {
+    heroEl.style.gridTemplateColumns = '1fr 1fr';
+    heroEl.querySelector('.hero-right').style.display = '';
+    heroEl.querySelector('.hero-left').style.maxWidth = '';
+    heroEl.querySelector('.hero-left').style.margin = '';
+  }
+
+  // Dark mode text adjustment
+  if (bg === '#1a1714') {
+    document.body.style.color = '#f0ece6';
+    document.querySelectorAll('.service-card, #portfolio').forEach(el => el.style.background = '#2a2520');
+  } else {
+    document.body.style.color = '';
+    document.querySelectorAll('.service-card, #portfolio').forEach(el => el.style.background = '');
+  }
+
+  window.parent.postMessage({
+    type: '__edit_mode_set_keys',
+    edits: { accent, font, hero, bg }
+  }, '*');
+}
+
+// Apply saved values on load
+(function() {
+  const d = TWEAK_DEFAULTS;
+  if (document.getElementById('tw-accent')) document.getElementById('tw-accent').value = d.accent;
+  if (document.getElementById('tw-font'))   document.getElementById('tw-font').value   = d.font;
+  if (document.getElementById('tw-hero'))   document.getElementById('tw-hero').value   = d.hero;
+  if (document.getElementById('tw-bg'))     document.getElementById('tw-bg').value     = d.bg;
+})();
+</script>
+
+
+</body></html>
