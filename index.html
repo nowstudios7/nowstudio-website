@@ -18,7 +18,7 @@
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%23C4A080'>◉</text></svg>">
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
         * {
@@ -308,6 +308,288 @@
         .hero-image-placeholder {
             font-size: 5rem;
             opacity: 0.7;
+        }
+
+        /* Updated Hero Section Styles */
+        .hero {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            padding: 140px 60px 60px;
+            gap: 80px;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, #f5ede0 0%, #ede3d5 100%) !important;
+        }
+
+        .decoration {
+            position: absolute;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 300px;
+            font-weight: 700;
+            color: rgba(184, 149, 106, 0.08);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .hero-content {
+            z-index: 10;
+            position: relative;
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content.delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .tagline {
+            font-size: 12px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #b8956a;
+            margin-bottom: 30px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .tagline::before {
+            content: '';
+            width: 32px;
+            height: 1px;
+            background: #b8956a;
+        }
+
+        .hero-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 84px;
+            line-height: 1.15;
+            margin-bottom: 32px;
+            font-weight: 400;
+            color: #2a2a2a;
+        }
+
+        .hero-title .accent {
+            color: #b8956a;
+            font-style: italic;
+            font-weight: 400;
+        }
+
+        .description {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #5a5a5a;
+            margin-bottom: 40px;
+            max-width: 500px;
+            font-weight: 400;
+        }
+
+        .cta-group {
+            display: flex;
+            align-items: center;
+            gap: 48px;
+            margin-bottom: 80px;
+        }
+
+        .btn {
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            font-family: 'DM Sans', sans-serif;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            padding: 14px 28px;
+            border-radius: 3px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #b8956a 0%, #a67c52 100%);
+            color: white;
+            box-shadow: 0 8px 20px rgba(184, 149, 106, 0.25);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(184, 149, 106, 0.35);
+        }
+
+        .btn-secondary {
+            background: none;
+            color: #2a2a2a;
+            border-bottom: 1.5px solid #2a2a2a;
+            padding: 14px 0;
+            transition: color 0.3s ease, border-color 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            color: #b8956a;
+            border-color: #b8956a;
+        }
+
+        .stats {
+            display: flex;
+            gap: 60px;
+            padding-top: 60px;
+            border-top: 1px solid rgba(184, 149, 106, 0.2);
+            margin-top: 60px;
+        }
+
+        .stat {
+            text-align: left;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 56px;
+            font-weight: 400;
+            color: #2a2a2a;
+            margin-bottom: 4px;
+        }
+
+        .stat-label {
+            font-size: 11px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #8a7a6a;
+            font-weight: 500;
+        }
+
+        .hero-image {
+            position: relative;
+            height: 600px;
+            animation: fadeInRight 0.8s ease-out;
+            animation-delay: 0.2s;
+            animation-fill-mode: both;
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .image-frame {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            border: 2px solid rgba(184, 149, 106, 0.3);
+            border-left: none;
+            border-bottom: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255, 255, 255, 0.3);
+            overflow: hidden;
+        }
+
+        .image-placeholder {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(184, 149, 106, 0.05) 0%, rgba(184, 149, 106, 0.02) 100%);
+            position: relative;
+        }
+
+        .camera-icon {
+            width: 80px;
+            height: 80px;
+            border: 2px solid rgba(184, 149, 106, 0.3);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            font-size: 40px;
+        }
+
+        .image-label {
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #b8956a;
+            text-align: center;
+        }
+
+        .image-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .cta-badge {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: white;
+            padding: 12px 20px;
+            border-radius: 20px;
+            font-size: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #b8956a;
+            font-weight: 600;
+            z-index: 20;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-badge::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            background: #b8956a;
+            border-radius: 50%;
+        }
+
+        .scroll-indicator {
+            position: fixed;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 12px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            color: #b8956a;
+            animation: bounce 2s infinite;
+            z-index: 100;
+            cursor: pointer;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(-8px); }
         }
 
         @keyframes slideInLeft {
@@ -841,7 +1123,69 @@
         }
 
         /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 120px 40px 40px;
+                gap: 40px;
+            }
+
+            .hero-title {
+                font-size: 64px;
+            }
+
+            .hero-image {
+                height: 500px;
+            }
+
+            .stats {
+                gap: 40px;
+            }
+
+            .decoration {
+                font-size: 200px;
+            }
+        }
+
         @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 100px 24px 30px;
+                gap: 30px;
+            }
+
+            .hero-title {
+                font-size: 44px;
+            }
+
+            .description {
+                font-size: 15px;
+            }
+
+            .hero-image {
+                height: 400px;
+            }
+
+            .cta-group {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+
+            .stats {
+                flex-direction: column;
+                gap: 32px;
+                margin-top: 40px;
+            }
+
+            .decoration {
+                font-size: 120px;
+            }
+
             h1 {
                 font-size: 2rem;
             }
@@ -857,10 +1201,6 @@
             .hero-container {
                 grid-template-columns: 1fr;
                 gap: 2rem;
-            }
-
-            .hero-image {
-                height: 300px;
             }
 
             .about-container {
@@ -944,456 +1284,10 @@
             display: none;
         }
     </style>
-
-    <style>
-
-        /* Hero Section - Clean Carousel */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            background: linear-gradient(135deg, #fef3c7 0%, #ffffff 100%);
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hero-container {
-            width: 100%;
-            height: 100%;
-            max-width: 1200px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            padding: 60px 40px;
-            position: relative;
-        }
-
-        .hero-slides {
-            position: relative;
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-
-        .slide {
-            position: absolute;
-            inset: 0;
-            opacity: 0;
-            transition: opacity 1s ease-in-out;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .slide.slide-active {
-            opacity: 1;
-            position: relative;
-        }
-
-        .slide-title {
-            font-size: 4rem;
-            font-weight: 300;
-            color: var(--text-dark, #2a2a2a);
-            margin-bottom: 10px;
-            line-height: 1.1;
-        }
-
-        .slide-subtitle {
-            font-size: 2.5rem;
-            font-weight: 400;
-            color: var(--primary, #c4a080);
-            margin-bottom: 20px;
-        }
-
-        .slide-text {
-            font-size: 1.1rem;
-            color: var(--text-light, #666);
-            line-height: 1.6;
-            max-width: 500px;
-        }
-
-        .hero-content {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 40px;
-            background: rgba(255, 255, 255, 0.7);
-            border-radius: 10px;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .slide-indicators {
-            position: absolute;
-            bottom: 40px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 12px;
-            z-index: 10;
-        }
-
-        .indicator {
-            width: 12px;
-            height: 12px;
-            border: 2px solid var(--primary, #c4a080);
-            background: transparent;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            padding: 0;
-        }
-
-        .indicator-active {
-            background: var(--primary, #c4a080);
-            transform: scale(1.3);
-        }
-
-        @media (max-width: 768px) {
-            .hero-container {
-                grid-template-columns: 1fr;
-                padding: 40px 20px;
-            }
-
-            .slide-title {
-                font-size: 2.5rem;
-            }
-
-            .slide-subtitle {
-                font-size: 1.8rem;
-            }
-
-            .hero-content {
-                padding: 30px;
-            }
-        }
-
-    </style>
-    <style>
-        /* ====== HERO SECTION - REDESIGNED ====== */
-        /* Fonts */
-        
-        /* Hero background */
-        section#home.hero {
-            min-height: 100vh;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            padding: 140px 60px 60px;
-            gap: 80px;
-            position: relative;
-            overflow: hidden;
-            background: oklch(94% 0.016 80);
-            max-width: none;
-            margin: 0;
-        }
-
-        /* Grain overlay */
-        section#home.hero::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.05'/%3E%3C/svg%3E");
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* Ghost decoration */
-        section#home.hero .hero-decoration {
-            position: absolute;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 320px;
-            font-weight: 700;
-            color: rgba(184, 149, 106, 0.07);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 1;
-            pointer-events: none;
-            line-height: 1;
-            user-select: none;
-        }
-
-        /* Left Content */
-        section#home.hero .hero-left {
-            z-index: 10;
-            position: relative;
-            animation: heroFadeUp 0.9s ease-out both;
-        }
-
-        @keyframes heroFadeUp {
-            from { opacity: 0; transform: translateY(32px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes heroFadeRight {
-            from { opacity: 0; transform: translateX(40px); }
-            to   { opacity: 1; transform: translateX(0); }
-        }
-
-        section#home.hero .hero-tagline {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 11px;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: #b8956a;
-            margin-bottom: 28px;
-            font-weight: 500;
-            display: flex;
-            align-items: center;
-            gap: 14px;
-        }
-
-        section#home.hero .hero-tagline::before {
-            content: '';
-            width: 36px;
-            height: 1px;
-            background: #b8956a;
-            flex-shrink: 0;
-        }
-
-        section#home.hero .hero-main-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 82px;
-            line-height: 1.12;
-            margin-bottom: 28px;
-            font-weight: 400;
-            color: #2a2a2a;
-            letter-spacing: -1px;
-        }
-
-        section#home.hero .hero-main-title .title-accent {
-            color: #b8956a;
-            font-style: italic;
-        }
-
-        section#home.hero .hero-desc {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 16px;
-            line-height: 1.9;
-            color: #6a6a6a;
-            margin-bottom: 40px;
-            max-width: 480px;
-            font-weight: 400;
-        }
-
-        section#home.hero .hero-cta-group {
-            display: flex;
-            align-items: center;
-            gap: 32px;
-            margin-bottom: 56px;
-        }
-
-        section#home.hero .btn-hero-primary {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 700;
-            padding: 16px 36px;
-            background: linear-gradient(135deg, #b8956a 0%, #a07845 100%);
-            color: white;
-            border: none;
-            border-radius: 3px;
-            text-decoration: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 24px rgba(184, 149, 106, 0.28);
-            display: inline-block;
-        }
-
-        section#home.hero .btn-hero-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 14px 32px rgba(184, 149, 106, 0.38);
-        }
-
-        section#home.hero .btn-hero-secondary {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            color: #2a2a2a;
-            text-decoration: none;
-            padding-bottom: 4px;
-            border-bottom: 1.5px solid #2a2a2a;
-            transition: all 0.3s ease;
-            display: inline-block;
-        }
-
-        section#home.hero .btn-hero-secondary:hover {
-            color: #b8956a;
-            border-color: #b8956a;
-        }
-
-        /* Stats row */
-        section#home.hero .hero-stats {
-            display: flex;
-            gap: 48px;
-            padding-top: 48px;
-            border-top: 1px solid rgba(184, 149, 106, 0.2);
-        }
-
-        section#home.hero .hero-stat-number {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 52px;
-            font-weight: 400;
-            color: #2a2a2a;
-            line-height: 1;
-            margin-bottom: 6px;
-        }
-
-        section#home.hero .hero-stat-number sup {
-            font-size: 0.45em;
-            vertical-align: super;
-        }
-
-        section#home.hero .hero-stat-unit {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 24px;
-        }
-
-        section#home.hero .hero-stat-label {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #9a8a7a;
-            font-weight: 500;
-        }
-
-        /* Right image */
-        section#home.hero .hero-right {
-            position: relative;
-            height: 620px;
-            z-index: 10;
-            animation: heroFadeRight 0.9s ease-out 0.2s both;
-        }
-
-        section#home.hero .hero-img-frame {
-            width: 100%;
-            height: 100%;
-            border: 2px solid rgba(184, 149, 106, 0.35);
-            border-left: none;
-            border-bottom: none;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: rgba(255,255,255,0.25);
-            overflow: hidden;
-            position: relative;
-        }
-
-        section#home.hero .hero-img-frame img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        section#home.hero .hero-img-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(184,149,106,0.06) 0%, rgba(184,149,106,0.02) 100%);
-        }
-
-        section#home.hero .hero-cam-icon {
-            width: 80px;
-            height: 80px;
-            border: 2px solid rgba(184,149,106,0.3);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 36px;
-            margin-bottom: 20px;
-        }
-
-        section#home.hero .hero-img-label {
-            font-family: 'DM Sans', sans-serif;
-            font-size: 11px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            color: #b8956a;
-            text-align: center;
-        }
-
-        section#home.hero .hero-badge {
-            position: absolute;
-            bottom: -16px;
-            right: -16px;
-            background: white;
-            padding: 12px 22px;
-            border-radius: 30px;
-            font-family: 'DM Sans', sans-serif;
-            font-size: 11px;
-            letter-spacing: 1.5px;
-            text-transform: uppercase;
-            color: #b8956a;
-            font-weight: 700;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            z-index: 20;
-        }
-
-        section#home.hero .hero-badge::before {
-            content: '';
-            width: 7px;
-            height: 7px;
-            background: #b8956a;
-            border-radius: 50%;
-            animation: heroPulse 2s infinite;
-        }
-
-        @keyframes heroPulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.5; transform: scale(1.4); }
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            section#home.hero {
-                grid-template-columns: 1fr;
-                padding: 120px 40px 60px;
-                gap: 48px;
-            }
-            section#home.hero .hero-main-title { font-size: 60px; }
-            section#home.hero .hero-right { height: 480px; }
-            section#home.hero .hero-decoration { font-size: 200px; }
-        }
-
-        @media (max-width: 768px) {
-            section#home.hero {
-                padding: 100px 24px 40px;
-                gap: 32px;
-            }
-            section#home.hero .hero-main-title { font-size: 44px; }
-            section#home.hero .hero-cta-group { flex-direction: column; align-items: flex-start; gap: 20px; }
-            section#home.hero .hero-stats { gap: 32px; }
-            section#home.hero .hero-stat-number { font-size: 40px; }
-            section#home.hero .hero-right { height: 380px; }
-            section#home.hero .hero-decoration { font-size: 120px; }
-            section#home.hero .hero-desc { max-width: 100%; }
-        }
-        /* ====== END HERO REDESIGN ====== */
-    </style>
 </head>
 <body>
     <!-- Header Navigation -->
-    <header>
+    <header id="header">
         <div class="header-container">
             <a href="#" class="logo">NOW STUDIO</a>
             <nav>
@@ -1410,61 +1304,64 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <!-- Ghost decoration -->
-        <div class="hero-decoration">01</div>
+    <!-- Hero Section (Redesigned) -->
+    <section id="home" class="hero">
+        <!-- Decorative Background -->
+        <div class="decoration">01</div>
 
         <!-- Left Content -->
-        <div class="hero-left">
-            <p class="hero-tagline">Nhiếp Ảnh Chân Dung &amp; Cưới</p>
+        <div class="hero-content">
+            <p class="tagline">Những ảnh chân dung & cưới</p>
 
-            <h1 class="hero-main-title">
+            <h1 class="hero-title">
                 Lưu Giữ<br>
-                <span class="title-accent">Khoảnh Khắc</span><br>
+                <span class="accent">Khoảnh Khắc</span><br>
                 Yêu Thương
             </h1>
 
-            <p class="hero-desc">
-                Mỗi khoảnh khắc đều xứng đáng được ghi lại theo cách đẹp nhất.
-                Chúng tôi tạo nên những bức ảnh không chỉ đẹp mà còn kể câu chuyện
-                của riêng bạn — chân thực, ấm áp và đầy cảm xúc.
+            <p class="description">
+                Mỗi khoảnh khắc độc đáo được ghi lại theo cách đặc nhất. Chúng tôi tạo nên những bức ảnh không chỉ đẹp mà còn kể câu chuyện của riêng bạn — chân thực, ấm ấp và đầy cảm xúc.
             </p>
 
-            <div class="hero-cta-group">
-                <a href="#contact" class="btn-hero-primary">Đặt Lịch Ngay</a>
-                <a href="#portfolio" class="btn-hero-secondary">Xem Bộ Sưu Tập</a>
+            <div class="cta-group">
+                <a href="#contact" class="btn btn-primary">Đặt Lịch Ngay</a>
+                <a href="#portfolio" class="btn btn-secondary">Xem Bộ Sưu Tập</a>
             </div>
 
             <!-- Stats -->
-            <div class="hero-stats">
-                <div class="hero-stat">
-                    <div class="hero-stat-number">500<sup>+</sup></div>
-                    <div class="hero-stat-label">Cặp Đôi</div>
+            <div class="stats">
+                <div class="stat">
+                    <div class="stat-number">500.</div>
+                    <div class="stat-label">Cặp Đôi</div>
                 </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">8<span class="hero-stat-unit">năm</span></div>
-                    <div class="hero-stat-label">Kinh Nghiệm</div>
+                <div class="stat">
+                    <div class="stat-number">8<span style="font-size: 28px;">năm</span></div>
+                    <div class="stat-label">Kinh Nghiệm</div>
                 </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-number">12<span class="hero-stat-unit">k</span></div>
-                    <div class="hero-stat-label">Bức Ảnh</div>
+                <div class="stat">
+                    <div class="stat-number">12<span style="font-size: 28px;">k</span></div>
+                    <div class="stat-label">Bức Ảnh</div>
                 </div>
             </div>
         </div>
 
         <!-- Right Image -->
-        <div class="hero-right">
-            <div class="hero-img-frame">
-                <div class="hero-img-placeholder">
-                    <div class="hero-cam-icon">📷</div>
-                    <div class="hero-img-label">Ảnh Studio<br>· Portrait ·</div>
+        <div class="hero-image">
+            <div class="image-frame">
+                <div class="image-placeholder">
+                    <div class="camera-icon">📷</div>
+                    <div class="image-label">
+                        Ảnh Studio<br>
+                        Portrait
+                    </div>
                 </div>
             </div>
-            <div class="hero-badge">Đang Nhận Lịch Tháng 5</div>
+            <div class="cta-badge">Đăng Nhân Lịch Tháng 5</div>
         </div>
     </section>
 
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">Cuộn Xuống</div>
 
     <!-- Services Section -->
     <section id="services" class="bg-light-section">
@@ -1826,96 +1723,15 @@
     </script>
 
     <script>
-        
-        // Carousel Hero
-        const slides = [
-            {
-                id: 1,
-                image: 'https://images.unsplash.com/photo-1519741497674-611481863552?w=1200&h=800&fit=crop',
-                title: 'Cinematic Stories',
-                subtitle: 'Mỗi khoảnh khắc là một câu chuyện tình yêu'
-            },
-            {
-                id: 2,
-                image: 'https://images.unsplash.com/photo-1600519474396-0eb89266d915?w=1200&h=800&fit=crop',
-                title: 'Candid Moments',
-                subtitle: 'Những cảm xúc chân thật được bắt lại'
-            },
-            {
-                id: 3,
-                image: 'https://images.unsplash.com/photo-1542281286-9e0a16bb7a87?w=1200&h=800&fit=crop',
-                title: 'Timeless Elegance',
-                subtitle: 'Vẻ đẹp tự nhiên, bất chết qua thời gian'
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
             }
-        ];
-
-        let activeSlide = 0;
-        let isAutoPlay = true;
-
-        const slidesContainer = document.getElementById('slidesContainer');
-        const indicatorsContainer = document.getElementById('indicators');
-        const heroTitle = document.getElementById('heroTitle');
-        const heroDescription = document.getElementById('heroDescription');
-        const heroSection = document.getElementById('home');
-
-        // Render slides
-        slides.forEach((slide, index) => {
-            const slideDiv = document.createElement('div');
-            slideDiv.className = `slide ${index === 0 ? 'active' : ''}`;
-            slideDiv.innerHTML = `<img src="${slide.image}" alt="${slide.title}">`;
-            slidesContainer.appendChild(slideDiv);
-
-            // Render indicators
-            const indicator = document.createElement('button');
-            indicator.className = `indicator ${index === 0 ? 'active' : ''}`;
-            indicator.onclick = () => goToSlide(index);
-            indicatorsContainer.appendChild(indicator);
         });
-
-        function goToSlide(index) {
-            activeSlide = index;
-            isAutoPlay = false;
-            updateSlides();
-            setTimeout(() => isAutoPlay = true, 5000);
-        }
-
-        function updateSlides() {
-            // Update slides
-            const allSlides = document.querySelectorAll('.slide');
-            const allIndicators = document.querySelectorAll('.indicator');
-
-            allSlides.forEach((slide, index) => {
-                slide.classList.toggle('active', index === activeSlide);
-            });
-
-            allIndicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === activeSlide);
-            });
-
-            // Update text
-            heroTitle.textContent = slides[activeSlide].title;
-            heroDescription.textContent = slides[activeSlide].subtitle;
-        }
-
-        function nextSlide() {
-            if (isAutoPlay) {
-                activeSlide = (activeSlide + 1) % slides.length;
-                updateSlides();
-            }
-        }
-
-        // Auto-play
-        setInterval(nextSlide, 5000);
-
-        // Pause on hover
-        heroSection.addEventListener('mouseenter', () => {
-            isAutoPlay = false;
-        });
-
-        heroSection.addEventListener('mouseleave', () => {
-            isAutoPlay = true;
-        });
-
 
         // FAQ Toggle
         const faqItems = document.querySelectorAll('.faq-item');
