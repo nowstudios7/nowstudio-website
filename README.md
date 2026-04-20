@@ -13,6 +13,5 @@ Professional Wedding Photography Studio Website - NOW Studio
             - - Fast loading performance
              
               - ## Deployment
-              - This website is deployed on Vercel.
-             
+- This website is deployed on Cloudflare Pages.             
               - Visit: https://nowstudio.vn
