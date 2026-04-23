@@ -1,282 +1,579 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sao Vẫn Phải Chụp Ngoài Trời Mà Không Chụp Trong Phòng Thì Mới Xinh? — NOW·STUDIO Blog</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<meta name="description" content="Năm 2026, AI ghép cảnh rất giỏi - nhưng tại sao chụp ngoài cảnh thực vẫn quan trọng hơn? Khám phá 5 lý do + tips chọn địa điểm tốt cho ảnh cưới đẹp.">
-<meta name="keywords" content="chụp ảnh cưới, ngoại cảnh, địa điểm, studio vs ngoài trời, AI cảnh, ảnh cưới đẹp">
-<meta property="og:title" content="Tại Sao Vẫn Nên Chụp Ngoài Studio Dù AI Ghép Cảnh Giỏi?">
-<meta property="og:description" content="Năm 2026, AI ghép cảnh rất giỏi - nhưng tại sao chụp ngoài cảnh thực vẫn quan trọng hơn?">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sao Vẫn Phải Chụp Ngoài Trời Mà Không Chụp Trong Phòng Thì Mới Xinh? | NOW Studio</title>
+    <meta name="description" content="Tại sao chụp ảnh cưới ngoài trời vẫn tốt hơn chụp trong studio, dù A.I ghép cảnh có thể thay thế? Khám phá 5 lý do và cách dùng A.I thông minh.">
+    <meta name="keywords" content="chụp ảnh cưới ngoài trời, ảnh cưới studio, ghép cảnh A.I, ảnh cưới đẹp, ánh sáng tự nhiên, hoàng hôn">
+    <meta property="og:title" content="Sao Vẫn Phải Chụp Ngoài Trời Mà Không Chụp Trong Phòng Thì Mới Xinh?">
+    <meta property="og:description" content="Tại sao chụp ảnh cưới ngoài trời vẫn tốt hơn, dù A.I ghép cảnh có thể thay thế? Khám phá 5 lý do + mẹo chọn chỗ chụp.">
+    <meta property="og:image" content="https://picsum.photos/1200/630?random=golden">
+    <meta property="og:type" content="article">
+    <meta name="author" content="NOW Studio">
+    <meta name="publish_date" content="2026-04-23">
 
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  :root {
-    --gold: #c9a876; --gold-light: #e2cfb0; --gold-dark: #a8864f;
-    --bg: #faf8f5; --white: #ffffff; --dark: #1a1714;
-    --mid: #4a4440; --muted: #8a7e76;
-    --serif: 'Cormorant Garamond', Georgia, serif;
-    --sans: 'DM Sans', Helvetica, sans-serif;
-  }
-  html { scroll-behavior: smooth; }
-  body { font-family: var(--sans); background: var(--bg); color: var(--dark); }
-  header {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 60px; height: 72px;
-    background: rgba(250,248,245,0.94); backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201,168,118,0.18);
-  }
-  .logo { font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: 0.12em; color: var(--dark); text-decoration: none; }
-  .logo span { color: var(--gold); }
-  nav { display: flex; gap: 36px; align-items: center; }
-  nav a { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color .2s; }
-  nav a:hover { color: var(--gold-dark); }
-  .nav-cta { background: var(--gold); color: var(--white) !important; padding: 10px 24px; }
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
-  .post-hero { padding: 140px 60px 72px; max-width: 860px; margin: 0 auto; text-align: center; }
-  .breadcrumb { display: flex; align-items: center; justify-content: center; gap: 10px; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 32px; }
-  .breadcrumb a { color: var(--gold); text-decoration: none; }
-  .breadcrumb span { color: rgba(201,168,118,0.4); }
-  .post-cat { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 20px; display: flex; align-items: center; justify-content: center; gap: 10px; }
-  .post-cat::before, .post-cat::after { content: ''; display: block; width: 24px; height: 1px; background: var(--gold); }
-  .post-title { font-family: var(--serif); font-size: clamp(36px, 5vw, 60px); font-weight: 400; line-height: 1.2; color: var(--dark); margin-bottom: 24px; text-wrap: pretty; }
-  .post-meta { font-size: 13px; color: var(--muted); display: flex; align-items: center; justify-content: center; gap: 20px; }
-  .post-meta-divider { width: 4px; height: 4px; border-radius: 50%; background: var(--gold-light); }
+    <style>
+        :root {
+            --gold: #c9a876;
+            --cream: #faf8f5;
+            --dark: #1a1714;
+            --light-gray: #f5f5f5;
+            --border-gray: #e8e8e8;
+        }
 
-  .post-cover { max-width: 1100px; margin: 0 auto 80px; padding: 0 60px; }
-  .cover-img { width: 100%; aspect-ratio: 16/7; overflow: hidden; background: linear-gradient(135deg, #ddd3c4, #c8b49a); display: flex; align-items: center; justify-content: center; position: relative; flex-direction: column; gap: 12px; }
-  .cover-img img { width: 100%; height: 100%; object-fit: cover; display: none; }
-  .img-placeholder { font-size: 14px; color: rgba(168,134,79,0.6); text-align: center; }
-  .cover-img::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 40px, rgba(201,168,118,0.06) 40px, rgba(201,168,118,0.06) 41px); pointer-events: none; }
-  .cover-label { font-family: monospace; font-size: 11px; color: rgba(168,134,79,0.45); letter-spacing: 0.12em; text-transform: uppercase; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-  .post-body { max-width: 720px; margin: 0 auto; padding: 0 60px 120px; }
-  .post-body p { font-size: 17px; line-height: 1.85; color: var(--mid); margin-bottom: 28px; text-wrap: pretty; }
-  .post-body h2 { font-family: var(--serif); font-size: 34px; font-weight: 400; color: var(--dark); margin: 56px 0 20px; line-height: 1.25; }
-  .post-body h3 { font-family: var(--serif); font-size: 24px; font-weight: 400; color: var(--dark); margin: 36px 0 14px; }
-  .post-body .lead { font-family: var(--serif); font-size: 22px; font-style: italic; color: var(--dark); line-height: 1.6; margin-bottom: 40px; border-left: 2px solid var(--gold); padding-left: 28px; }
-  .post-body ul { margin: 0 0 28px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 12px; }
-  .post-body ul li { font-size: 16px; color: var(--mid); line-height: 1.7; padding-left: 20px; position: relative; }
-  .post-body ul li::before { content: ''; position: absolute; left: 0; top: 11px; width: 6px; height: 1px; background: var(--gold); }
-  .post-body ol { margin: 0 0 28px; padding-left: 20px; }
-  .post-body ol li { font-size: 16px; color: var(--mid); line-height: 1.7; margin-bottom: 8px; }
-  .inline-img { width: 100%; aspect-ratio: 16/9; margin: 40px 0; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; background: linear-gradient(135deg, #e4d8c8, #d0bca4); flex-direction: column; gap: 12px; }
-  .inline-img img { width: 100%; height: 100%; object-fit: cover; display: none; }
-  .inline-img::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(201,168,118,0.06) 30px, rgba(201,168,118,0.06) 31px); pointer-events: none; }
-  .inline-img span { font-family: monospace; font-size: 10px; color: rgba(168,134,79,0.45); letter-spacing: 0.1em; text-transform: uppercase; position: relative; }
-  .tip-box { background: var(--white); border-left: 3px solid var(--gold); padding: 24px 28px; margin: 32px 0; }
-  .tip-box strong { font-family: var(--serif); font-size: 18px; color: var(--dark); display: block; margin-bottom: 8px; }
-  .tip-box p { font-size: 15px; margin: 0; }
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--dark);
+            background-color: var(--cream);
+            line-height: 1.8;
+        }
 
-  .post-author { max-width: 720px; margin: 0 auto; padding: 48px 60px 80px; display: flex; align-items: center; gap: 24px; border-top: 1px solid rgba(201,168,118,0.2); }
-  .author-avatar { width: 64px; height: 64px; border-radius: 50%; background: linear-gradient(135deg, #e0d4c2, #c8b49a); flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: var(--serif); font-size: 22px; color: var(--gold-dark); }
-  .author-info { display: flex; flex-direction: column; gap: 4px; }
-  .author-name { font-family: var(--serif); font-size: 20px; color: var(--dark); }
-  .author-role { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+        /* Header Fixed */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: white;
+            border-bottom: 1px solid var(--border-gray);
+            z-index: 1000;
+            padding: 1rem 0;
+        }
 
-  .related { background: var(--white); padding: 80px 60px; border-top: 1px solid rgba(201,168,118,0.15); }
-  .related-title { font-family: var(--serif); font-size: 36px; font-weight: 400; text-align: center; margin-bottom: 52px; color: var(--dark); }
-  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 36px; max-width: 1100px; margin: 0 auto; }
-  .related-card { text-decoration: none; color: inherit; }
-  .related-thumb { aspect-ratio: 4/3; overflow: hidden; margin-bottom: 16px; display: flex; align-items: center; justify-content: center; position: relative; }
-  .related-thumb::before { content: ''; position: absolute; inset: 0; background: repeating-linear-gradient(-45deg, transparent, transparent 25px, rgba(201,168,118,0.07) 25px, rgba(201,168,118,0.07) 26px); z-index: 1; }
-  .related-thumb-fill { width: 100%; height: 100%; transition: transform .4s; display: flex; align-items: center; justify-content: center; }
-  .related-card:hover .related-thumb-fill { transform: scale(1.04); }
-  .related-thumb-label { font-family: monospace; font-size: 9px; color: rgba(168,134,79,0.4); text-transform: uppercase; position: relative; z-index: 2; }
-  .related-cat { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 8px; }
-  .related-name { font-family: var(--serif); font-size: 20px; color: var(--dark); line-height: 1.3; transition: color .2s; }
-  .related-card:hover .related-name { color: var(--gold-dark); }
+        .header-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-  footer { background: var(--dark); padding: 40px 60px; color: rgba(255,255,255,0.4); }
-  .footer-inner { display: flex; align-items: center; justify-content: space-between; }
-  .footer-inner .logo { color: var(--white); }
-  .footer-inner a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; transition: color .2s; }
-  .footer-inner a:hover { color: var(--gold); }
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: var(--dark);
+        }
 
-  @media (max-width: 960px) {
-    header { padding: 0 24px; }
-    .post-hero, .post-cover, .post-body, .post-author, .related { padding-left: 24px; padding-right: 24px; }
-    .related-grid { grid-template-columns: 1fr; }
-  }
-</style>
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 0.9rem;
+            margin-left: 2rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--gold);
+        }
+
+        /* Main Container */
+        main {
+            max-width: 900px;
+            margin: 100px auto 0;
+            padding: 0 2rem;
+        }
+
+        /* Breadcrumb */
+        .breadcrumb {
+            font-size: 0.85rem;
+            color: #999;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Article Header */
+        .article-header {
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .article-category {
+            display: inline-block;
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 3rem;
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 2rem;
+        }
+
+        .article-meta span {
+            display: flex;
+            align-items: center;
+        }
+
+        /* Hero Image */
+        .hero-image {
+            position: relative;
+            width: 100%;
+            height: 500px;
+            margin-bottom: 3rem;
+            overflow: hidden;
+            border-radius: 0;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(201, 168, 118, 0.1) 0%, rgba(26, 23, 20, 0.15) 100%);
+        }
+
+        /* Article Content */
+        .article-content {
+            font-size: 1.1rem;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+        }
+
+        .article-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            margin: 2.5rem 0 1.5rem;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+        }
+
+        .article-content h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin: 1.5rem 0 1rem;
+        }
+
+        /* Tip Box */
+        .tip-box {
+            border-left: 4px solid var(--gold);
+            background: rgba(201, 168, 118, 0.05);
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 0;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+
+        .tip-box strong {
+            color: var(--gold);
+        }
+
+        /* Images in Content */
+        .article-content img {
+            width: 100%;
+            height: auto;
+            margin: 2rem 0;
+            border-radius: 0;
+        }
+
+        /* Lists */
+        .article-content ul, .article-content ol {
+            margin-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .article-content li {
+            margin-bottom: 0.8rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 3rem -2rem 0;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .cta-section h3 {
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: -0.5px;
+        }
+
+        .cta-section p {
+            font-size: 1rem;
+            margin-bottom: 1.5rem;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-radius: 0;
+            transition: background 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            background: #b39968;
+        }
+
+        /* Related Articles */
+        .related-section {
+            margin: 3rem 0;
+            padding-top: 3rem;
+            border-top: 1px solid var(--border-gray);
+        }
+
+        .related-section h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        .related-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .related-card {
+            background: white;
+            overflow: hidden;
+            transition: transform 0.3s;
+        }
+
+        .related-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .related-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .related-card-content {
+            padding: 1.5rem;
+        }
+
+        .related-card-category {
+            color: var(--gold);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .related-card h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.2rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        .related-card p {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 1rem;
+        }
+
+        .related-card a {
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 3rem;
+            font-size: 0.9rem;
+            text-align: center;
+        }
+
+        footer a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            .hero-image {
+                height: 300px;
+            }
+
+            .article-content {
+                font-size: 1rem;
+            }
+
+            .article-meta {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .related-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                margin: 2rem -2rem 0;
+                padding: 2rem 1.5rem;
+            }
+
+            .tip-box {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
 </head>
 <body>
-
-<header>
-  <a href="index.html" class="logo">NOW<span>·</span>STUDIO</a>
-  <nav>
-    <a href="index.html">Blog</a>
-    <a href="index.html#services">Services</a>
-    <a href="index.html#portfolio">Portfolio</a>
-    <a href="index.html#contact" class="nav-cta">Đặt Lịch</a>
-  </nav>
-</header>
-
-<div class="post-hero">
-  <div class="breadcrumb">
-    <a href="index.html">Blog</a>
-    <span>/</span>
-    <span>Photography</span>
-  </div>
-  <div class="post-cat">Photography</div>
-  <h1 class="post-title">Sao Vẫn Phải Chụp Ngoài Trời Mà Không Chụp Trong Phòng Thì Mới Xinh?</h1>
-  <div class="post-meta">
-    <span>23 tháng 4, 2026</span>
-    <div class="post-meta-divider"></div>
-    <span>7–8 phút đọc</span>
-    <div class="post-meta-divider"></div>
-    <span>NOW Studio</span>
-  </div>
-</div>
-
-<div class="post-cover">
-  <div class="cover-img">
-    <img src="https://picsum.photos/1100/550?random=1" alt="Cặp đôi ôm nhau lúc hoàng hôn" style="display: block !important;">
-    <span class="cover-label">hero image — wedding sunset</span>
-  </div>
-</div>
-
-<div class="post-body">
-  <p class="lead">Cái máy máy AI bây giờ nó nhảy nhót ghép cảnh quá giỏi rồi — bạn lấy ảnh toàn thân, nó ghép vào nền Paris, Tokyo hay Bali đều xong. Nhưng mà... liệu nó có thay thế được cảnh chụp ngoài thật được không?</p>
-
-  <p>Ngồi trong phòng studio xanh, makeup xinh xinh, ánh đèn chiếu sáng chói lòa... mà sao ảnh cưới bạn vẫn cảm thấy thiếu cái gì đó?</p>
-
-  <p>Mình chụp ảnh cưới được 8 năm nay, muốn chia sẻ với các cháu: <strong>chụp ngoài cảnh thật vẫn quan trọng lắm.</strong> Và bây giờ tôi sẽ nói rõ tại sao.</p>
-
-  <h2>Chuyên Đề 1: Ánh Nắng Trời Nó Không Giả Được</h2>
-  <div class="inline-img">
-    <img src="https://picsum.photos/1000/600?random=2" alt="Ánh sáng chiều dịu dàng qua lá cây" style="display: block !important;">
-    <span>giờ chiều vàng — ánh sáng thiên nhiên</span>
-  </div>
-
-  <p>Ánh nắng chiều lúc 4 rưỡi, 5 giờ, ánh sáng len lỏi qua lá cây, bóng đổ mềm mại... cái gì cũng không ghép được từng đó sự thật. Mắt người bình thường nhìn vào cũng có thể nhận ra sự khác biệt giữa cảnh thật và cảnh máy ghép.</p>
-
-  <div class="tip-box">
-    <strong>💡 Mẹo chuyên nghiệp</strong>
-    <p>Muốn ảnh sáng đẹp lịm tim, cứ chọn lúc trước khi mặt trời lặn 1 đến 2 tiếng là vàng hoe luôn.</p>
-  </div>
-
-  <h2>Chuyên Đề 2: Cảm Giác và Chi Tiết Có Thật Mới Hay</h2>
-  <p>Đứng giữa cánh đồng lúa, gió thổi len lỏi, áo cưới bay phục phục... cái cảm giác ấy khác hẳn với chỉ ngồi trong phòng chụp. Ảnh sẽ khác biệt ngay. Những chi tiết có thật (mưa rơi, lá cây tung tăng, bụi đất, gió thổi) tạo nên sự sống động mà máy ghép cảnh nó khó lắm.</p>
-
-  <h2>Chuyên Đề 3: Khoảnh Khắc Tự Nhiên Hay Khoảnh Khắc Máy Cảnh</h2>
-  <div class="inline-img">
-    <img src="https://picsum.photos/1000/600?random=3" alt="Cặp đôi cười tươi tự nhiên" style="display: block !important;">
-    <span>cặp vợ chồng cười được lòng — khoảnh khắc thực tế</span>
-  </div>
-
-  <p>Chụp ngoài trời: cặp đôi cười tươi tự nhiên, ôm nhau, hôn nhau trên cánh tay. Bạn quên mất là đang quay máy.</p>
-
-  <p>Chụp trong phòng: "Mười đếm 1, 2, 3, cười!" — kiểu ấy thì cứ toát ra cái vẻ máy móc. Máy ghép cảnh nó cũng che giấu không nổi cái "máy cảnh" này đâu.</p>
-
-  <h2>Chuyên Đề 4: Giá Trị Tình Cảm (Cái Mà Máy Không Thể Ghép)</h2>
-  <p>Mình chụp ảnh cưới để nhớ lại khoảnh khắc đó mãi mãi. Ảnh chụp ngoài trời nó có một cái gì đó: "Hôm ấy, hai tụi mình đứng đó, dưới nắng vàng, gió thổi..." — thấy thực tế, thấy cảm xúc.</p>
-
-  <p>Ảnh máy ghép cảnh: nó đẹp lắm, nhưng mà cảm giác "chúng mình chưa bao giờ được ở Paris" vẫn cứ ở lại trong lòng.</p>
-
-  <h2>Chuyên Đề 5: Cái Gì Đang Hot Cái Gì Sẽ Hot</h2>
-  <p>Đến năm 2026, ảnh cưới chụp ngoài trời vẫn là số một trên Instagram, Pinterest. Các cặp vợ chồng muốn ảnh thật, địa điểm thật, khoảnh khắc thật. Máy ghép cảnh nó chỉ là công cụ hỗ trợ, chứ không phải thay thế cái chính.</p>
-
-  <h2>Khi Nào Thì Dùng Máy Ghép Cảnh?</h2>
-  <p>Máy ghép cảnh nó hay lắm, nhưng dùng vào lúc nào?</p>
-  <ul>
-    <li><strong>Trời mưa, thời tiết tệ:</strong> Chụp toàn thân thật, rồi ghép nền đẹp vào</li>
-    <li><strong>Vợ chồng bận rộn:</strong> Không có thời gian chạy địa điểm, chụp trong phòng rồi ghép nền Paris vào</li>
-    <li><strong>Ý tưởng sáng tạo:</strong> Muốn ảnh trên Mặt Trăng, dưới nước — ghép thêm cho vui</li>
-    <li><strong>Kết hợp cả hai:</strong> Chụp ngoài 70%, rồi dùng máy "chỉnh sửa" cảnh thêm xinh 30% thôi</li>
-  </ul>
-
-  <div class="tip-box">
-    <strong>⚡ Chốt lại</strong>
-    <p>Máy ghép nó chỉ là công cụ hỗ trợ, không phải nó thay thế cái chính đâu.</p>
-  </div>
-
-  <h2>Mẹo Chọn Chỗ Chụp Ngoài Trời Cho Đẹp</h2>
-  <div class="inline-img">
-    <img src="https://picsum.photos/1000/600?random=4" alt="Địa điểm ngoài trời đẹp" style="display: block !important;">
-    <span>chỗ chụp đẹp lịm tim — địa điểm tuyệt vời</span>
-  </div>
-
-  <ol>
-    <li><strong>Tìm chỗ có ánh sáng xinh</strong> — Đừng chọn chỗ quá chói hay quá tối mất</li>
-    <li><strong>Background đơn giản nhưng có tính cách</strong> — Cánh đồng lúa, cây đã già, tường gạch cũ kỹ</li>
-    <li><strong>Vào giờ vừa tốt</strong> — Lúc chiều vàng, trời mây xinh (chứ không nắng chói lòa)</li>
-    <li><strong>Xem mùa</strong> — Mùa hoa nở, lúa chín, lá cây xanh tươi</li>
-    <li><strong>Chụp thử trước</strong> — Nếu có dịp, chụp thử trước hôm cưới xem sao (để biết đã có sáng chưa)</li>
-  </ol>
-
-  <div class="inline-img">
-    <img src="https://picsum.photos/1000/600?random=5" alt="Chi tiết thiên nhiên" style="display: block !important;">
-    <span>chi tiết đất trời — khoảnh khắc thực tế</span>
-  </div>
-
-  <h2>Kết Lại</h2>
-  <p>Công nghệ máy tính nó tuyệt vời lắm, nhưng nó chỉ là <strong>công cụ phụ giúp</strong>, nó không thay thế được cảm giác chụp ngoài cảnh thật.</p>
-
-  <p>Ảnh cưới xinh nhất là sự kết hợp:</p>
-  <ul>
-    <li>✅ Địa điểm có thật (ngoài trời)</li>
-    <li>✅ Ánh sáng thiên nhiên</li>
-    <li>✅ Khoảnh khắc tự nhiên</li>
-    <li>➕ Chút máy chỉnh sửa nếu cần thêm đẹp</li>
-  </ul>
-
-  <div class="tip-box">
-    <strong>📸 Các bạn đang chuẩn bị chụp ảnh cưới?</strong>
-    <p>Hãy liên hệ với NOW Studio — mình có kinh nghiệm tìm chỗ xinh, chụp góc độc, sáng tạo, và dùng máy thông minh để ảnh lên hơn nữa. <a href="index.html#contact" style="color: var(--gold); font-weight: 600; text-decoration: none;">Đặt lịch chụp →</a></p>
-  </div>
-</div>
-
-<div class="post-author">
-  <div class="author-avatar">N</div>
-  <div class="author-info">
-    <div class="author-name">NOW Studio</div>
-    <div class="author-role">Photography — Cinematography — Design</div>
-  </div>
-</div>
-
-<div class="related">
-  <div class="related-title">Bài Viết Liên Quan</div>
-  <div class="related-grid">
-    <a class="related-card" href="chon-dia-diem-chup-anh-cuoi.html">
-      <div class="related-thumb">
-        <div class="related-thumb-fill" style="background: linear-gradient(135deg,#e6d9cc,#d0bda8);">
-          <span class="related-thumb-label">location</span>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo">NOW·STUDIO</div>
+            <nav>
+                <a href="#blog">BLOG</a>
+                <a href="#services">SERVICES</a>
+                <a href="#portfolio">PORTFOLIO</a>
+                <a href="#booking">ĐẶT LỊCH</a>
+            </nav>
         </div>
-      </div>
-      <div class="related-cat">Tips & Advice</div>
-      <div class="related-name">Chọn Địa Điểm Chụp Ảnh Cưới Đẹp</div>
-    </a>
-    <a class="related-card" href="chup-anh-cuoi-vao-mua-nao.html">
-      <div class="related-thumb">
-        <div class="related-thumb-fill" style="background: linear-gradient(135deg,#d8c9b8,#c4b09a);">
-          <span class="related-thumb-label">seasonal</span>
-        </div>
-      </div>
-      <div class="related-cat">Photography</div>
-      <div class="related-name">Nên Chụp Ảnh Cưới Vào Mùa Nào?</div>
-    </a>
-    <a class="related-card" href="bi-quyet-trang-diem-co-dau.html">
-      <div class="related-thumb">
-        <div class="related-thumb-fill" style="background: linear-gradient(135deg,#e2d5c5,#ccb99e);">
-          <span class="related-thumb-label">makeup</span>
-        </div>
-      </div>
-      <div class="related-cat">Beauty</div>
-      <div class="related-name">Bí Quyết Trang Điểm Cô Dâu Bền Màu</div>
-    </a>
-  </div>
-</div>
+    </header>
 
-<footer>
-  <div class="footer-inner">
-    <a href="index.html" class="logo">NOW<span style="color:var(--gold)">·</span>STUDIO</a>
-    <span style="font-size:13px">© 2026 NOW·STUDIO</span>
-    <a href="index.html#contact">Đặt lịch chụp →</a>
-  </div>
-</footer>
+    <!-- Main Content -->
+    <main>
+        <!-- Breadcrumb -->
+        <div class="breadcrumb">
+            <a href="#blog">BLOG</a> / <a href="#photography">PHOTOGRAPHY</a>
+        </div>
 
+        <!-- Article Header -->
+        <div class="article-header">
+            <div class="article-category">PHOTOGRAPHY</div>
+            <h1>Sao Vẫn Phải Chụp Ngoài Trời Mà Không Chụp Trong Phòng Thì Mới Xinh?</h1>
+            <div class="article-meta">
+                <span>23 tháng 4, 2026</span>
+                <span>7–8 phút đọc</span>
+                <span>NOW Studio</span>
+            </div>
+        </div>
+
+        <!-- Hero Image -->
+        <div class="hero-image">
+            <img src="https://picsum.photos/1200/630?seed=weddingoutdoor1" alt="Cặp đôi cưới ngoài trời hoàng hôn">
+            <div class="hero-overlay"></div>
+        </div>
+
+        <!-- Article Content -->
+        <article class="article-content">
+            <p><strong>Công nghệ A.I bây giờ quá quá quá giỏi rồi</strong> — bạn lấy ảnh toàn thân, nó ghép vào nền Paris, Tokyo hay Bali đều xong ngay. Nhưng mà... liệu nó có thay thế được cảnh chụp ngoài thật được không?</p>
+
+            <p>Ngồi trong phòng studio xinh, makeup ổn, ánh đèn chiếu sáng chói lòa... mà sao ảnh cưới bạn vẫn cảm thấy thiếu cái gì đó?</p>
+
+            <p><strong>Tôi đã chụp ảnh cưới hơn 14 năm rồi,</strong> và mình muốn chia sẻ thật lòng: chụp ngoài cảnh thật vẫn quan trọng vô cùng. Giờ mình sẽ nói rõ tại sao.</p>
+
+            <!-- LÝ DO 1 -->
+            <h2>Lý Do 1: Ánh Nắng Trời Không Thể Giả Được</h2>
+
+            <img src="https://picsum.photos/1000/600?seed=goldenhour" alt="Hoàng hôn vàng">
+
+            <p>Ánh nắng chiều lúc 4 rưỡi, 5 giờ — ánh sáng len lỏi qua lá cây, bóng đổ mềm mại... cái gì mà A.I không ghép thì đó là <strong>"sự thật"</strong>.</p>
+
+            <p>Mắt người bình thường nhìn vào cũng có thể nhận ra ngay sự khác biệt giữa cảnh thật và cảnh A.I ghép. <strong>Hoàng hôn</strong> — đó là thứ không bao giờ sai.</p>
+
+            <div class="tip-box">
+                <strong>💡 Mẹo chuyên nghiệp:</strong> Muốn ảnh sáng đẹp lịm tim? Chọn lúc trước khi mặt trời lặn 1 đến 2 tiếng là vàng hoe luôn.
+            </div>
+
+            <!-- LÝ DO 2 -->
+            <h2>Lý Do 2: Chi Tiết Có Thật Mới Hay</h2>
+
+            <img src="https://picsum.photos/1000/600?seed=bridaldress" alt="Váy bay giữa thiên nhiên">
+
+            <p>Đứng giữa cánh đồng lúa, gió thổi len lỏi, váy bay phục phục... cái cảm giác ấy <strong>khác hẳn</strong> với chỉ ngồi trong phòng chụp.</p>
+
+            <p>Những chi tiết có thật (mưa rơi, lá cây tung tăng, bụi đất, gió thổi) tạo nên sự sống động mà A.I nó khó lắm để làm giống. Cơ thể bạn, váy bạn phản ứng với thiên nhiên — điều đó không thể fake.</p>
+
+            <!-- LÝ DO 3 -->
+            <h2>Lý Do 3: Khoảnh Khắc Tự Nhiên vs Khoảnh Khắc A.I</h2>
+
+            <p><strong>Chụp ngoài trời:</strong> Cặp đôi cười tươi tự nhiên, ôm nhau, hôn nhau. Bạn quên mất là đang quay máy. Khoảnh khắc ấy có thật.</p>
+
+            <p><strong>Chụp trong phòng:</strong> "Mười đếm 1, 2, 3, cười!" — kiểu ấy thì cứ toát ra cái vẻ máy móc, cứng cỏi. A.I nó che giấu không nổi cái "máy cảnh" này đâu.</p>
+
+            <!-- LÝ DO 4 -->
+            <h2>Lý Do 4: Giá Trị Tình Cảm (Cái Mà A.I Không Thể Thay)</h2>
+
+            <p>Mình chụp ảnh cưới để nhớ lại khoảnh khắc đó mãi mãi. Ảnh chụp ngoài trời nó có cái gì đó đặc biệt:</p>
+
+            <p><em>"Hôm ấy, hai tụi mình đứng đó, dưới nắng vàng, gió thổi..." — thấy thực tế, thấy cảm xúc.</em></p>
+
+            <p>Còn ảnh A.I ghép cảnh? Nó đẹp lắm, nhưng cảm giác "chúng mình chưa bao giờ được ở Paris" vẫn cứ ở lại trong lòng.</p>
+
+            <!-- LÝ DO 5 -->
+            <h2>Lý Do 5: Cái Gì Đang Hot, Cái Gì Sẽ Hot</h2>
+
+            <p>Đến năm 2026, ảnh cưới chụp ngoài trời vẫn là số một trên Instagram, Pinterest. Các cặp vợ chồng muốn <strong>ảnh thật, địa điểm thật, khoảnh khắc thật.</strong></p>
+
+            <p>A.I nó chỉ là công cụ hỗ trợ, chứ không phải thay thế cái chính.</p>
+
+            <!-- KHI NÀO DÙNG A.I -->
+            <h2>Khi Nào Thì Dùng A.I?</h2>
+
+            <p>A.I rất hay, nhưng dùng vào lúc nào là đúng?</p>
+
+            <ul>
+                <li><strong>🌧️ Trời mưa, thời tiết tệ:</strong> Chụp toàn thân thật, rồi ghép nền đẹp vào</li>
+                <li><strong>⏰ Vợ chồng bận rộn:</strong> Không có thời gian chạy địa điểm, chụp trong phòng rồi ghép nền Paris vào</li>
+                <li><strong>🎨 Ý tưởng sáng tạo:</strong> Muốn ảnh trên Mặt Trăng, dưới nước — ghép thêm cho vui</li>
+                <li><strong>✨ Kết hợp cả hai:</strong> Chụp ngoài 70%, dùng A.I chỉnh sửa cảnh thêm xinh 30% thôi</li>
+            </ul>
+
+            <!-- GIẢI PHÁP -->
+            <h2>Giải Pháp Nhanh Gọn: Chụp Ảnh Cổng Ngoài Studio</h2>
+
+            <p>Nhưng chờ chút... <strong>nếu bạn vừa muốn chụp trong studio vừa muốn có cảnh ngoài trời?</strong></p>
+
+            <p>NOW Studio có dịch vụ <strong>chụp ảnh cổng ngoài studio</strong> — nhanh chóng, tiện lợi, mát mẻ. Không cần chạy xa, không cần lo thời tiết, mà vẫn được ánh sáng tự nhiên và chi tiết có thật. Win-win ngay! 📸</p>
+
+            <!-- MẸO CHỌN CHỖ -->
+            <h2>Mẹo Chọn Chỗ Chụp Ngoài Trời Cho Đẹp</h2>
+
+            <ul>
+                <li><strong>📍 Tìm ánh sáng xinh</strong> — Đừng chọn chỗ quá chói hay quá tối</li>
+                <li><strong>🎨 Background đơn giản nhưng có tính cách</strong> — Cánh đồng lúa, cây đã già, tường gạch cũ kỹ</li>
+                <li><strong>⏰ Vào giờ vừa tốt</strong> — Lúc hoàng hôn, trời mây xinh (chứ không nắng chói lòa)</li>
+                <li><strong>🌸 Xem mùa</strong> — Mùa hoa nở, lúa chín, lá cây xanh tươi</li>
+                <li><strong>📸 Chụp thử trước</strong> — Nếu có dịp, chụp thử trước hôm cưới để biết sáng hay không</li>
+            </ul>
+
+            <!-- KẾT -->
+            <h2>Chốt Lại</h2>
+
+            <p>Công nghệ A.I nó tuyệt vời lắm, nhưng nó chỉ là công cụ phụ giúp. Nó <strong>không thay thế được</strong> cảm giác chụp ngoài cảnh thật.</p>
+
+            <div class="tip-box">
+                <strong>Ảnh cưới xinh nhất = sự kết hợp:</strong><br>
+                ✅ Địa điểm có thật (ngoài trời)<br>
+                ✅ Ánh sáng thiên nhiên<br>
+                ✅ Khoảnh khắc tự nhiên<br>
+                ➕ Chút A.I chỉnh sửa nếu cần thêm đẹp
+            </div>
+        </article>
+    </main>
+
+    <!-- CTA Section -->
+    <div class="cta-section">
+        <h3>Bạn Đang Chuẩn Bị Chụp Ảnh Cưới?</h3>
+        <p>Hãy liên hệ với <strong>NOW Studio</strong> — mình có kinh nghiệm tìm chỗ xinh, chụp góc độc, sáng tạo, và dùng A.I thông minh để ảnh lên hơn nữa.</p>
+        <button class="cta-button">Đặt Lịch Chụp →</button>
+    </div>
+
+    <!-- Related Articles -->
+    <main style="margin-bottom: 3rem;">
+        <section class="related-section">
+            <h3>Bài Viết Liên Quan</h3>
+            <div class="related-grid">
+                <div class="related-card">
+                    <img src="https://picsum.photos/300/200?seed=location1" alt="Chọn địa điểm chụp ảnh cưới">
+                    <div class="related-card-content">
+                        <div class="related-card-category">Location</div>
+                        <h4>Chọn Địa Điểm Chụp Ảnh Cưới Đẹp</h4>
+                        <p>Hướng dẫn tìm chỗ chụp ảnh cưới tuyệt vời với ánh sáng và background hoàn hảo.</p>
+                        <a href="#">Xem Bài →</a>
+                    </div>
+                </div>
+
+                <div class="related-card">
+                    <img src="https://picsum.photos/300/200?seed=seasonal1" alt="Nên chụp ảnh cưới vào mùa nào">
+                    <div class="related-card-content">
+                        <div class="related-card-category">Seasonal</div>
+                        <h4>Nên Chụp Ảnh Cưới Vào Mùa Nào?</h4>
+                        <p>Khám phá mùa tốt nhất để chụp ảnh cưới với thời tiết và cảnh đẹp nhất.</p>
+                        <a href="#">Xem Bài →</a>
+                    </div>
+                </div>
+
+                <div class="related-card">
+                    <img src="https://picsum.photos/300/200?seed=makeup1" alt="Bí quyết trang điểm cô dâu">
+                    <div class="related-card-content">
+                        <div class="related-card-category">Makeup</div>
+                        <h4>Bí Quyết Trang Điểm Cô Dâu Bền Màu</h4>
+                        <p>Tips trang điểm chuyên nghiệp để makeup xinh suốt buổi chụp ảnh.</p>
+                        <a href="#">Xem Bài →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p><strong>NOW·STUDIO</strong> | Photography — Cinematography — Design</p>
+        <p style="margin-top: 1rem;">© 2026 NOW·STUDIO | <a href="#">Đặt Lịch Chụp →</a></p>
+    </footer>
 </body>
 </html>
