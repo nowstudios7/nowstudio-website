@@ -1,9 +1,9 @@
 {
   "_type": "section.hero",
   "_id": "hero",
-  "_rev": "2026-09-10T13:04:59.954Z",
+  "_rev": "2026-09-10T13:37:56.395Z",
   "status": "published",
-  "updatedAt": "2026-09-10T13:04:59.954Z",
+  "updatedAt": "2026-09-10T13:37:56.395Z",
   "fields": {
     "rail": "Cần Thơ · Miền Tây",
     "eyebrow": "Wedding & Portrait Photography",
@@ -30,17 +30,80 @@
       }
     },
     "caption": {
-      "name": "Hải & Ngân",
-      "meta": "Cần Thơ, 2025"
+      "name": "WEDDING WALK #1",
+      "meta": "SINCE 2014"
     },
     "slides": [
       {
-        "_id": "img-151rehk",
-        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/f_auto,q_auto/J84A9983_20221212054153pm_1",
+        "_id": "img-g88en89",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046757/_MG_0230.jpg",
         "alt": "Ảnh cưới NOW Studio",
         "focus": "center",
-        "width": 2184,
-        "height": 3096,
+        "width": 5250,
+        "height": 3704,
+        "srcset": null
+      },
+      {
+        "_id": "img-z6qaec1",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/494196593_4092484617651282_1969764344332102598_n.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center",
+        "width": 1115,
+        "height": 1580,
+        "srcset": null
+      },
+      {
+        "_id": "img-ajtepda",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046758/_MG_2313_20220902104855am.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center",
+        "width": 5300,
+        "height": 3739,
+        "srcset": null
+      },
+      {
+        "_id": "img-9oiptoj",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046758/IMG_9799_20220902023146pm.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center",
+        "width": 4422,
+        "height": 3120,
+        "srcset": null
+      },
+      {
+        "_id": "img-w4uhfzb",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046756/IMG_0335.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center 26%",
+        "width": 4410,
+        "height": 3112,
+        "srcset": null
+      },
+      {
+        "_id": "img-6o012fe",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046755/DSCF6716.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center",
+        "width": 2366,
+        "height": 3353,
+        "srcset": null
+      },
+      {
+        "_id": "img-f8cmmmx",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/BX1A2504.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center 26%",
+        "width": 5425,
+        "height": 3828,
+        "srcset": null
+      },
+      {
+        "_id": "img-4g8bq3m",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/IMG_4291.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center 26%",
+        "width": 5296,
+        "height": 3736,
         "srcset": null
       }
     ],
