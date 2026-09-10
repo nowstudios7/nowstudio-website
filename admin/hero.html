@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOW·STUDIO — Quản lý nội dung</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#c9a876;--gold-dark:#a8864f;--bg:#faf8f5;--dark:#1a1714;--mid:#4a4440;--muted:#8a7e76;--line:rgba(201,168,118,.3);--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',Helvetica,sans-serif}
+body{font-family:var(--sans);background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6}
+a{color:var(--gold-dark);text-decoration:none}a:hover{color:var(--dark)}
+.top{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px;padding:0 24px;background:rgba(250,248,245,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--serif);font-size:19px;letter-spacing:.12em;white-space:nowrap}
+.brand em{font-style:normal;color:var(--gold)}
+.brand small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.acts{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+button{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--mid);padding:0 16px;min-height:40px;border-radius:2px;transition:background .18s,color .18s,border-color .18s}
+button:hover{border-color:var(--gold);color:var(--dark)}
+button:disabled{opacity:.4;cursor:default}
+button.solid{background:var(--dark);color:#fff;border-color:var(--dark)}
+button.solid:hover{background:var(--gold-dark);border-color:var(--gold-dark);color:#fff}
+button.mini{min-height:30px;padding:0 10px;font-size:10px;letter-spacing:.08em}
+.state{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:6px 11px;white-space:nowrap}
+.state.dirty{color:#b4552f;border-color:#e2c0ae}
+.state.saved{color:var(--gold-dark);border-color:var(--gold)}
+.wrap{display:grid;grid-template-columns:184px minmax(0,420px) minmax(0,1fr);align-items:start}
+/* rail */
+.rail{border-right:1px solid var(--line);padding:24px 16px 60px;min-height:calc(100vh - 68px)}
+.rail-t{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 8px 12px}
+.rail a,.rail span.off{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--mid);padding:9px 10px;border-radius:2px;margin-bottom:2px}
+.rail a.on{background:var(--dark);color:#fff}
+.rail span.off{color:#b8afa8}
+.rail i{font-style:normal;font-size:11px;opacity:.7}
+.rail .soon{margin-left:auto;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+/* panel */
+.panel{padding:26px 24px 90px;border-right:1px solid var(--line);min-height:calc(100vh - 68px)}
+.grp{border-top:1px solid var(--line);padding-top:18px;margin-top:26px}
+.grp:first-child{border-top:0;margin-top:0;padding-top:0}
+.grp-t{font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:14px}
+label{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+input,textarea,select{width:100%;font-family:var(--sans);font-size:13.5px;color:var(--dark);background:#fff;border:1px solid var(--line);border-radius:2px;padding:11px 12px;line-height:1.55}
+input:focus,textarea:focus,select:focus{outline:0;border-color:var(--gold)}
+textarea{resize:vertical}
+.hint{font-size:11.5px;color:var(--muted);line-height:1.6;margin-top:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rows{display:flex;flex-direction:column;gap:10px}
+.row{display:grid;grid-template-columns:74px minmax(0,1fr) auto;gap:12px;padding:10px;background:#fff;border:1px solid var(--line);border-radius:2px}
+.row.stat{grid-template-columns:1fr 1fr auto;align-items:end}
+.thumb{width:74px;height:92px;object-fit:cover;background:#e8ddd0;display:block}
+.rf{display:flex;flex-direction:column;gap:7px;min-width:0}
+.rf input,.rf select{padding:8px 10px;font-size:12.5px}
+.side{display:flex;flex-direction:column;gap:6px;justify-content:center}
+.side button{min-height:26px;padding:0 9px;font-size:11px;letter-spacing:0}
+.meta{font-size:9.5px;letter-spacing:.1em;color:var(--muted)}
+.meta.local{color:#b4552f;text-transform:uppercase;letter-spacing:.12em}
+.drop{margin-top:12px;border:1px dashed var(--line);border-radius:2px;padding:20px;text-align:center;color:var(--muted);font-size:12px;background:#fff}
+.drop.over{border-color:var(--gold);background:#fffdf9;color:var(--gold-dark)}
+.drop b{display:block;font-family:var(--serif);font-size:17px;color:var(--dark);font-weight:400;margin-bottom:4px}
+.addrow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:10px;margin-top:10px}
+/* preview */
+.preview{position:sticky;top:68px;height:calc(100vh - 68px);display:flex;flex-direction:column;background:#e9e6e1}
+.pv-bar{display:flex;align-items:center;gap:10px;padding:11px 18px;border-bottom:1px solid var(--line);background:rgba(250,248,245,.9)}
+.pv-bar .sp{flex:1}
+.seg{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;background:#fff}
+.seg button{border:0;border-radius:0;min-height:32px}
+.seg button.on{background:var(--dark);color:#fff}
+.pv-stage{flex:1;overflow:auto;display:flex;justify-content:center;padding:20px}
+#pv{border:0;background:#faf8f5;box-shadow:0 18px 50px rgba(26,23,20,.14)}
+.pv-stage.mob #pv{width:393px;height:100%;border-radius:20px}
+.pv-stage.desk #pv{width:100%;height:100%}
+/* modal */
+.mask{position:fixed;inset:0;background:rgba(26,23,20,.55);display:none;align-items:center;justify-content:center;z-index:60;padding:24px}
+.mask.on{display:flex}
+.modal{background:#fff;max-width:560px;width:100%;padding:34px 34px 30px;box-shadow:0 30px 80px rgba(26,23,20,.3)}
+.modal h3{font-family:var(--serif);font-weight:400;font-size:28px;margin-bottom:8px}
+.modal p,.modal li{font-size:13.5px;color:var(--mid);line-height:1.7}
+.modal ol{margin:12px 0 0 18px;display:flex;flex-direction:column;gap:8px}
+.modal .m-acts{display:flex;gap:10px;justify-content:flex-end;margin-top:24px}
+code{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold-dark);background:var(--bg);border:1px solid var(--line);padding:1px 5px}
+.foot{grid-column:1/-1;border-top:1px solid var(--line);background:#fff;padding:34px 24px 70px}
+.foot-in{max-width:1000px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));gap:32px}
+.foot h4{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:9px}
+.foot p,.foot li{font-size:12.5px;line-height:1.7;color:var(--mid)}
+.foot ul{list-style:none;display:flex;flex-direction:column;gap:6px}
+.foot ul li{padding-left:13px;position:relative}
+.foot ul li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:1px;background:var(--gold)}
+@media (max-width:1180px){.wrap{grid-template-columns:minmax(0,1fr)}.rail{border-right:0;min-height:0;display:flex;flex-wrap:wrap;gap:6px;padding:14px 18px;border-bottom:1px solid var(--line)}.rail-t{width:100%;margin:0 0 4px}.panel{border-right:0;min-height:0}.preview{position:relative;top:0;height:78vh;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="brand">NOW<em>·</em>STUDIO <small>Quản lý nội dung</small></div>
+  <div class="acts">
+    <span class="state" id="state">Đang tải…</span>
+    <button id="discard">Bỏ nháp</button>
+    <button id="save">Lưu nháp</button>
+    <button class="solid" id="publish">Xuất bản</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <nav class="rail" id="rail"></nav>
+  <form class="panel" id="form" autocomplete="off"></form>
+
+  <div class="preview">
+    <div class="pv-bar">
+      <div class="seg"><button type="button" id="bd" class="on">Desktop</button><button type="button" id="bm">Mobile</button></div>
+      <div class="sp"></div>
+      <button type="button" id="reload">Tải lại</button>
+      <a href="../index.html" target="_blank" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase">Trang thật ↗</a>
+    </div>
+    <div class="pv-stage desk" id="stage">
+      <iframe id="pv" src="../index.html?cms=preview" title="Xem trước"></iframe>
+    </div>
+  </div>
+
+  <div class="foot">
+    <div class="foot-in">
+      <div>
+        <h4>Dữ liệu lưu ở đâu</h4>
+        <p><b>Nháp</b> nằm trong trình duyệt của bạn, chỉ hiện ở khung xem trước. <b>Bản chính thức</b> là <code>content/hero.json</code> trong website.</p>
+      </div>
+      <div>
+        <h4>Ảnh</h4>
+        <p>Đang dùng link imgbb (giữ tới Bước 2). Kéo ảnh từ máy chỉ để xem thử — sẽ có dòng nhắc đỏ.</p>
+      </div>
+      <div>
+        <h4>Xuất bản</h4>
+        <p>Bước 1: bấm Xuất bản → tải file → đưa lên hosting. Bước 2 (Sanity): cùng nút đó thành một cú bấm, không còn file.</p>
+      </div>
+      <div>
+        <h4>Thêm section mới</h4>
+        <p>Chỉ sửa <code>js/nowcms.schema.js</code> + đánh <code>data-cms</code> vào markup. Trang này <b>tự sinh form</b> theo khai báo — không phải viết lại.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mask" id="mask">
+  <div class="modal">
+    <h3>Xuất bản Hero</h3>
+    <p>File <code>hero.json</code> vừa được tải về máy bạn. Để website đổi:</p>
+    <ol>
+      <li>Mở thư mục website → <code>content/</code></li>
+      <li>Ghi đè file <code>hero.json</code> bằng file vừa tải</li>
+      <li>Upload lên hosting (hoặc kéo vào Netlify) — xong</li>
+    </ol>
+    <p style="margin-top:14px"><b>Ở Bước 2</b>, khi đã nối Sanity, nút này gửi thẳng lên CMS online: không tải file, không upload tay.</p>
+    <div class="m-acts"><button type="button" id="mok" class="solid">Đã hiểu</button></div>
+  </div>
+</div>
+
+<script src="../js/nowcms.schema.js"></script>
+<script>window.NOWCMS_BASE='../';</script>
+<script src="../js/nowcms.js"></script>
+<script>
+const SEC='hero';
+const S=window.NOWCMS_SCHEMA, DEF=S.sections[SEC];
+const KEY=NOWCMS.draftKey(SEC);
+const $=id=>document.getElementById(id);
+const pv=$('pv');
+let doc=null, published=null, dirty=false;
+
+const clone=o=>JSON.parse(JSON.stringify(o));
+const attr=v=>String(v==null?'':v).replace(/"/g,'&quot;');
+const get=(o,p)=>String(p).split('.').reduce((x,k)=>x==null?undefined:x[k],o);
+function set(o,p,v){const ks=String(p).split('.'),l=ks.pop();ks.reduce((x,k)=>x[k]=x[k]||{},o)[l]=v}
+const isLocal=u=>/^data:/.test(u||'');
+
+/* ── xem trước ── */
+let t;function push(){clearTimeout(t);t=setTimeout(()=>{
+  try{pv.contentWindow.postMessage({type:'nowcms:draft',section:SEC,data:doc},'*')}catch(e){}
+},170)}
+function mark(d){dirty=d;paintState()}
+function paintState(){
+  const el=$('state');
+  if(dirty){el.className='state dirty';el.textContent='Nháp chưa lưu';}
+  else if(localStorage.getItem(KEY)){el.className='state saved';el.textContent='Đã lưu nháp';}
+  else{el.className='state';el.textContent='Trùng bản đang chạy';}
+  $('discard').disabled=!dirty&&!localStorage.getItem(KEY);
+}
+function change(){mark(true);push()}
+
+/* ── rail: danh sách section (thể hiện khả năng mở rộng) ── */
+function buildRail(){
+  const soon=['Bộ sưu tập','Feedback khách','Dịch vụ','About','Contact'];
+  $('rail').innerHTML='<div class="rail-t">Section</div>'+
+    Object.keys(S.sections).map(k=>`<a href="#" class="on"><i>${S.sections[k].icon||'▣'}</i>${S.sections[k].title}</a>`).join('')+
+    soon.map(n=>`<span class="off"><i>▢</i>${n}<span class="soon">sắp có</span></span>`).join('');
+}
+
+/* ── form tự sinh từ khai báo ── */
+function buildForm(){
+  const f=$('form');f.innerHTML='';
+  (DEF.groups||[{id:'_',title:''}]).forEach(g=>{
+    const fields=DEF.fields.filter(x=>(x.group||'_')===g.id);
+    if(!fields.length)return;
+    const box=document.createElement('fieldset');box.className='grp';box.style.border='0';
+    box.innerHTML=g.title?`<div class="grp-t">${g.title}</div>`:'';
+    fields.forEach(fd=>box.appendChild(control(fd)));
+    f.appendChild(box);
+  });
+}
+
+function control(fd){
+  const wrap=document.createElement('div');
+  const v=get(doc.fields,fd.key);
+  const lab=fd.label||fd.key;
+
+  if(fd.type==='text'){
+    wrap.innerHTML=`<label>${lab}</label>`+
+      (fd.multiline?`<textarea rows="${fd.rows||3}"></textarea>`:`<input>`)+
+      (fd.hint?`<p class="hint">${fd.hint}</p>`:'');
+    const i=wrap.querySelector('input,textarea');i.value=v||'';
+    i.addEventListener('input',()=>{set(doc.fields,fd.key,i.value);change()});
+  }
+  else if(fd.type==='lines'||fd.type==='paragraphs'){
+    const sep=fd.type==='lines'?'\n':'\n\n';
+    wrap.innerHTML=`<label>${lab}</label><textarea rows="${fd.rows||4}"></textarea>`+(fd.hint?`<p class="hint">${fd.hint}</p>`:'');
+    const ta=wrap.querySelector('textarea');ta.value=[].concat(v||[]).join(sep);
+    ta.addEventListener('input',()=>{
+      const parts=fd.type==='lines'?ta.value.split('\n'):ta.value.split(/\n\s*\n/).map(s=>s.trim()).filter(Boolean);
+      set(doc.fields,fd.key,parts);change();
+    });
+  }
+  else if(fd.type==='link'){
+    wrap.innerHTML=`<div class="two"><div><label>${lab} — chữ</label><input data-k="label"></div><div><label>Liên kết</label><input data-k="href"></div></div>`;
+    wrap.querySelectorAll('input').forEach(i=>{
+      i.value=(v||{})[i.dataset.k]||'';
+      i.addEventListener('input',()=>{const o=get(doc.fields,fd.key)||{};o[i.dataset.k]=i.value;set(doc.fields,fd.key,o);change()});
+    });
+  }
+  else if(fd.type==='imageList'){
+    wrap.innerHTML=`<label>${lab}</label><div class="rows" data-list></div>
+      <div class="drop"><b>Kéo ảnh vào đây</b>hoặc <a href="#" data-pick>chọn từ máy</a> · hoặc dán link bên dưới<input type="file" accept="image/*" multiple hidden></div>
+      <div class="addrow"><input data-url placeholder="https://i.ibb.co/…"><button type="button" data-add>Thêm</button></div>`
+      +(fd.hint?`<p class="hint">${fd.hint}</p>`:'');
+    const list=wrap.querySelector('[data-list]');
+    const draw=()=>{
+      const arr=get(doc.fields,fd.key)||[];
+      list.innerHTML='';
+      arr.forEach((im,i)=>{
+        const r=document.createElement('div');r.className='row';
+        r.innerHTML=`<img class="thumb" src="${attr(im.url)}" alt="">
+          <div class="rf">
+            <input data-k="url" value="${attr(im.url)}" placeholder="Link ảnh">
+            <input data-k="alt" value="${attr(im.alt)}" placeholder="Mô tả ảnh (alt)">
+            <select data-k="focus">${S.focusOptions.map(o=>`<option value="${o.value}">Điểm nhìn: ${o.label}</option>`).join('')}</select>
+            <span class="meta ${isLocal(im.url)?'local':''}">${isLocal(im.url)?'Ảnh từ máy · chỉ xem thử':(im.width?im.width+'×'+im.height+' px':'')}</span>
+          </div>
+          <div class="side">
+            <button type="button" data-a="up" ${i===0?'disabled':''}>↑</button>
+            <button type="button" data-a="down" ${i===arr.length-1?'disabled':''}>↓</button>
+            <button type="button" data-a="del" ${arr.length<=(fd.min||1)?'disabled':''}>✕</button>
+          </div>`;
+        r.querySelector('[data-k="focus"]').value=im.focus||'center 26%';
+        r.querySelectorAll('[data-k]').forEach(x=>x.addEventListener('input',()=>{
+          im[x.dataset.k]=x.value;
+          if(x.dataset.k==='url'){r.querySelector('.thumb').src=x.value;measure(im,draw)}
+          change();
+        }));
+        r.querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>{
+          const a=b.dataset.a;
+          if(a==='del')arr.splice(i,1);
+          else{const j=a==='up'?i-1:i+1;[arr[i],arr[j]]=[arr[j],arr[i]]}
+          draw();change();
+        }));
+        list.appendChild(r);
+      });
+    };
+    const add=url=>{
+      if(!url)return;
+      const arr=get(doc.fields,fd.key)||[];
+      const im=NOWCMS.normalizeImage({url,alt:'Ảnh cưới NOW Studio'});
+      arr.push(im);set(doc.fields,fd.key,arr);draw();change();measure(im,draw);
+    };
+    wrap.querySelector('[data-add]').addEventListener('click',()=>{const i=wrap.querySelector('[data-url]');add(i.value.trim());i.value=''});
+    wrap.querySelector('[data-url]').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();wrap.querySelector('[data-add]').click()}});
+    const file=wrap.querySelector('input[type=file]'),drop=wrap.querySelector('.drop');
+    wrap.querySelector('[data-pick]').addEventListener('click',e=>{e.preventDefault();file.click()});
+    const read=l=>[...l].filter(x=>x.type.startsWith('image/')).forEach(x=>{const r=new FileReader();r.onload=()=>add(r.result);r.readAsDataURL(x)});
+    file.addEventListener('change',e=>read(e.target.files));
+    ['dragenter','dragover'].forEach(k=>drop.addEventListener(k,e=>{e.preventDefault();drop.classList.add('over')}));
+    ['dragleave','drop'].forEach(k=>drop.addEventListener(k,e=>{e.preventDefault();drop.classList.remove('over')}));
+    drop.addEventListener('drop',e=>read(e.dataTransfer.files));
+    draw();
+  }
+  else if(fd.type==='statList'){
+    wrap.innerHTML=`<label>${lab}</label><div class="rows" data-list></div><button type="button" class="mini" data-add style="margin-top:10px">+ Thêm số liệu</button>`+(fd.hint?`<p class="hint">${fd.hint}</p>`:'');
+    const list=wrap.querySelector('[data-list]');
+    const draw=()=>{
+      const arr=get(doc.fields,fd.key)||[];
+      list.innerHTML='';
+      arr.forEach((s,i)=>{
+        const r=document.createElement('div');r.className='row stat';
+        r.innerHTML=`<div><label style="margin-top:0">Số</label><input data-k="value" value="${attr(s.value)}"></div>
+          <div><label style="margin-top:0">Nhãn</label><input data-k="label" value="${attr(s.label)}"></div>
+          <button type="button" class="mini" style="min-height:41px">✕</button>`;
+        r.querySelectorAll('[data-k]').forEach(x=>x.addEventListener('input',()=>{s[x.dataset.k]=x.value;change()}));
+        r.querySelector('button').addEventListener('click',()=>{arr.splice(i,1);draw();change()});
+        list.appendChild(r);
+      });
+    };
+    wrap.querySelector('[data-add]').addEventListener('click',()=>{
+      const arr=get(doc.fields,fd.key)||[];arr.push({_id:NOWCMS.uid('stat'),value:'',label:''});set(doc.fields,fd.key,arr);draw();change();
+    });
+    draw();
+  }
+  return wrap;
+}
+
+/* đo kích thước thật của ảnh → lưu width/height (tránh giật layout khi tải) */
+function measure(im,after){
+  if(!im.url||isLocal(im.url))return;
+  const p=new Image();
+  p.onload=()=>{im.width=p.naturalWidth;im.height=p.naturalHeight;if(after)after();push()};
+  p.src=im.url;
+}
+
+/* ── nút ── */
+$('save').addEventListener('click',()=>{localStorage.setItem(KEY,JSON.stringify(doc));mark(false)});
+$('discard').addEventListener('click',()=>{
+  if(!confirm('Bỏ nháp và trở về nội dung đang chạy trên web?'))return;
+  localStorage.removeItem(KEY);doc=clone(published);buildForm();mark(false);push();
+});
+$('publish').addEventListener('click',async()=>{
+  const imgs=(doc.fields.slides||[]).filter(s=>isLocal(s.url));
+  if(imgs.length&&!confirm(imgs.length+' ảnh kéo từ máy sẽ bị nhúng thẳng vào file (rất nặng). Vẫn xuất bản?'))return;
+  const res=await NOWCMS.publish(SEC,doc);
+  if(res.mode==='download'){
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([res.json],{type:'application/json'}));
+    a.download=res.filename;a.click();URL.revokeObjectURL(a.href);
+    $('mask').classList.add('on');
+    localStorage.setItem(KEY,JSON.stringify(doc));mark(false);
+  }
+});
+$('mok').addEventListener('click',()=>$('mask').classList.remove('on'));
+$('mask').addEventListener('click',e=>{if(e.target===$('mask'))$('mask').classList.remove('on')});
+$('reload').addEventListener('click',()=>{pv.src=pv.src});
+$('bd').addEventListener('click',()=>{$('stage').className='pv-stage desk';$('bd').classList.add('on');$('bm').classList.remove('on')});
+$('bm').addEventListener('click',()=>{$('stage').className='pv-stage mob';$('bm').classList.add('on');$('bd').classList.remove('on')});
+pv.addEventListener('load',()=>push());
+
+(async function boot(){
+  published=await NOWCMS.load(SEC);
+  if(!published)published={_type:DEF.sanityType,_id:SEC,status:'published',fields:{}};
+  let draft=null;try{draft=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+  doc=NOWCMS.normalizeDoc(SEC,clone(draft||published));
+  buildRail();buildForm();paintState();push();
+})();
+</script>
+</body>
+</html>

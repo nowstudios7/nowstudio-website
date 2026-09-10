@@ -1,0 +1,38 @@
+{
+  "_type": "section.hero",
+  "_id": "hero",
+  "_rev": "2026-09-10T00:00:00.000Z",
+  "status": "published",
+  "updatedAt": "2026-09-10T00:00:00.000Z",
+  "_note": "Nội dung Hero. Vỏ dữ liệu này dùng chung cho mọi section sau này. Dùng *chữ* để in nghiêng màu gold.",
+  "fields": {
+    "rail": "Cần Thơ · Miền Tây",
+    "eyebrow": "Wedding & Portrait Photography",
+    "headline": ["Lưu Giữ", "Món Quà", "*Hiện Tại*"],
+    "subheadline": "Mỗi khoảnh khắc là một câu chuyện",
+    "body": [
+      "Không phải tất cả ảnh cưới đều bằng nhau.",
+      "Có những bộ ảnh khiến bạn cười mỗi lần nhìn lại. Có những bộ ảnh khiến bạn muốn chia sẻ với mọi người. Và có những bộ ảnh mà bạn sẽ trân trọng cả đời.",
+      "Chúng mình chuyên làm ra những bộ ảnh loại thứ ba."
+    ],
+    "note": "Dịch vụ cưới trọn gói — chụp ảnh, quay phim, makeup, váy, vest.\nHãy để chúng mình kể câu chuyện tình yêu của bạn. 💕",
+    "cta": {
+      "primary": { "label": "Đặt Lịch Ngay", "href": "#contact" },
+      "secondary": { "label": "Xem Bộ Sưu Tập", "href": "#portfolio" }
+    },
+    "caption": { "name": "Hải & Ngân", "meta": "Cần Thơ, 2025" },
+    "slides": [
+      { "_id": "img-hero-1", "url": "https://i.ibb.co/LBjCRRp/DSC00995.jpg", "alt": "Ảnh cưới NOW Studio 1", "focus": "center 26%", "width": null, "height": null, "srcset": null },
+      { "_id": "img-hero-2", "url": "https://i.ibb.co/tP3ktmvh/DSC01065.jpg", "alt": "Ảnh cưới NOW Studio 2", "focus": "center 26%", "width": null, "height": null, "srcset": null },
+      { "_id": "img-hero-3", "url": "https://i.ibb.co/r2t2ZkDZ/IMG-5376.jpg", "alt": "Ảnh cưới NOW Studio 3", "focus": "center 26%", "width": null, "height": null, "srcset": null },
+      { "_id": "img-hero-4", "url": "https://i.ibb.co/Fb1TrKSY/IMG-9201.jpg", "alt": "Ảnh cưới NOW Studio 4", "focus": "center 26%", "width": null, "height": null, "srcset": null },
+      { "_id": "img-hero-5", "url": "https://i.ibb.co/Q3RRyVLX/IMG-9221.jpg", "alt": "Ảnh cưới NOW Studio 5", "focus": "center 26%", "width": null, "height": null, "srcset": null }
+    ],
+    "stats": [
+      { "_id": "stat-couples", "value": "500+", "label": "Cặp Đôi" },
+      { "_id": "stat-years", "value": "14+", "label": "Năm Kinh Nghiệm" },
+      { "_id": "stat-followers", "value": "25K", "label": "Người Theo Dõi" }
+    ],
+    "badge": "Award-winning studio · Est. 2016"
+  }
+}
