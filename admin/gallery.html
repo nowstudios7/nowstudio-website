@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOW·STUDIO — Quản lý Gallery</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#c9a876;--gold-dark:#a8864f;--bg:#faf8f5;--dark:#1a1714;--mid:#4a4440;--muted:#8a7e76;--line:rgba(201,168,118,.3);--warn:#b4552f;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',Helvetica,sans-serif}
+body{font-family:var(--sans);background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6}
+a{color:var(--gold-dark);text-decoration:none}a:hover{color:var(--dark)}
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px;padding:0 24px;background:rgba(250,248,245,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--serif);font-size:19px;letter-spacing:.12em;white-space:nowrap}
+.brand em{font-style:normal;color:var(--gold)}
+.brand small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.acts{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+button{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--mid);padding:0 16px;min-height:40px;border-radius:2px;transition:background .18s,color .18s,border-color .18s}
+button:hover{border-color:var(--gold);color:var(--dark)}
+button:disabled{opacity:.4;cursor:default}
+button.solid{background:var(--dark);color:#fff;border-color:var(--dark)}
+button.solid:hover{background:var(--gold-dark);border-color:var(--gold-dark);color:#fff}
+button.mini{min-height:28px;padding:0 10px;font-size:10px;letter-spacing:.06em}
+.state{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:6px 11px;white-space:nowrap}
+.state.dirty{color:var(--warn);border-color:#e2c0ae}
+.state.saved{color:var(--gold-dark);border-color:var(--gold)}
+.wrap{display:grid;grid-template-columns:184px minmax(0,520px) minmax(0,1fr);align-items:start}
+.rail{border-right:1px solid var(--line);padding:24px 16px 60px;min-height:calc(100vh - 68px)}
+.rail-t{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 8px 12px}
+.rail a,.rail span.off{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--mid);padding:9px 10px;border-radius:2px;margin-bottom:2px}
+.rail a.on{background:var(--dark);color:#fff}
+.rail span.off{color:#b8afa8}
+.rail i{font-style:normal;font-size:11px;opacity:.7}
+.rail .soon{margin-left:auto;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.panel{padding:24px 22px 90px;border-right:1px solid var(--line);min-height:calc(100vh - 68px)}
+.tabs{display:flex;gap:6px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.tabs button{border:0;border-bottom:1px solid transparent;background:none;min-height:38px;padding:0 4px;margin-right:16px;color:var(--muted)}
+.tabs button.on{color:var(--dark);border-bottom-color:var(--gold)}
+.pane{display:none}.pane.on{display:block}
+.grp{border-top:1px solid var(--line);padding-top:18px;margin-top:24px}
+.grp:first-child{border-top:0;margin-top:0;padding-top:0}
+.grp-t{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:14px}
+.count{font-size:10px;letter-spacing:.12em;color:var(--muted)}
+.count.bad{color:var(--warn)}
+label{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:13px 0 6px}
+input,textarea,select{width:100%;font-family:var(--sans);font-size:13.5px;color:var(--dark);background:#fff;border:1px solid var(--line);border-radius:2px;padding:10px 11px;line-height:1.5}
+input:focus,textarea:focus,select:focus{outline:0;border-color:var(--gold)}
+input.bad,select.bad{border-color:var(--warn);background:#fff8f5}
+textarea{resize:vertical}
+.hint{font-size:11.5px;color:var(--muted);line-height:1.6;margin-top:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rows{display:flex;flex-direction:column;gap:9px}
+.card{display:grid;grid-template-columns:70px minmax(0,1fr) auto;gap:11px;padding:9px;background:#fff;border:1px solid var(--line);border-radius:2px}
+.card.dragging{opacity:.35}
+.card.over{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset}
+.thumb{width:70px;height:88px;object-fit:cover;background:#e8ddd0;display:block;cursor:grab}
+.cf{display:flex;flex-direction:column;gap:6px;min-width:0}
+.cf input,.cf select{padding:7px 9px;font-size:12.5px}
+.cf .three{display:grid;grid-template-columns:1fr 1fr 64px;gap:6px}
+.side{display:flex;flex-direction:column;gap:5px;justify-content:center}
+.side button{min-height:24px;padding:0 8px;font-size:11px;letter-spacing:0}
+.idx{font-size:9.5px;letter-spacing:.14em;color:var(--muted);text-align:center}
+.warnbox{border:1px solid #e2c0ae;background:#fff8f5;border-radius:2px;padding:12px 14px;margin-top:14px}
+.warnbox ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.warnbox li{font-size:12px;color:var(--warn);padding-left:13px;position:relative}
+.warnbox li::before{content:'!';position:absolute;left:0;top:0;font-size:11px}
+.words{display:flex;flex-direction:column;gap:8px}
+.word{display:grid;grid-template-columns:minmax(0,1fr) 92px 34px auto;gap:8px;align-items:center;background:#fff;border:1px solid var(--line);padding:8px 9px;border-radius:2px}
+.word input[type=text]{padding:7px 9px;font-size:12.5px}
+.word select{padding:7px 6px;font-size:11.5px}
+.word .tg{display:flex;align-items:center;justify-content:center}
+.word input[type=checkbox]{width:16px;height:16px;accent-color:var(--gold-dark)}
+.preview{position:sticky;top:68px;height:calc(100vh - 68px);display:flex;flex-direction:column;background:#e9e6e1}
+.pv-bar{display:flex;align-items:center;gap:10px;padding:11px 18px;border-bottom:1px solid var(--line);background:rgba(250,248,245,.9)}
+.pv-bar .sp{flex:1}
+.seg{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;background:#fff}
+.seg button{border:0;border-radius:0;min-height:32px}
+.seg button.on{background:var(--dark);color:#fff}
+.pv-stage{flex:1;overflow:auto;display:flex;justify-content:center;padding:18px}
+#pv{border:0;background:var(--bg);box-shadow:0 18px 50px rgba(26,23,20,.14)}
+.pv-stage.mob #pv{width:393px;height:100%;border-radius:20px}
+.pv-stage.desk #pv{width:100%;height:100%}
+.mask{position:fixed;inset:0;background:rgba(26,23,20,.55);display:none;align-items:center;justify-content:center;z-index:60;padding:24px}
+.mask.on{display:flex}
+.modal{background:#fff;max-width:560px;width:100%;padding:32px 34px 28px;box-shadow:0 30px 80px rgba(26,23,20,.3);max-height:86vh;overflow:auto}
+.modal h3{font-family:var(--serif);font-weight:400;font-size:27px;margin-bottom:8px}
+.modal p,.modal li{font-size:13.5px;color:var(--mid);line-height:1.7}
+.modal ol{margin:12px 0 0 18px;display:flex;flex-direction:column;gap:8px}
+.modal .m-acts{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+code{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold-dark);background:var(--bg);border:1px solid var(--line);padding:1px 5px}
+@media (max-width:1180px){.wrap{grid-template-columns:minmax(0,1fr)}.rail{border-right:0;min-height:0;display:flex;flex-wrap:wrap;gap:6px;padding:14px 18px;border-bottom:1px solid var(--line)}.rail-t{width:100%;margin:0 0 4px}.panel{border-right:0;min-height:0}.preview{position:relative;top:0;height:78vh;border-top:1px solid var(--line)}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="brand">NOW<em>·</em>STUDIO <small>Gallery — quản lý nội dung</small></div>
+  <div class="acts">
+    <span class="state" id="state">Đang tải…</span>
+    <button id="discard">Bỏ nháp</button>
+    <button id="save">Lưu nháp</button>
+    <button class="solid" id="publish">Xuất bản</button>
+  </div>
+</div>
+
+<div class="wrap">
+  <nav class="rail" id="rail"></nav>
+
+  <div class="panel">
+    <div class="tabs">
+      <button type="button" class="on" data-tab="f">Featured Work</button>
+      <button type="button" data-tab="e">Editorial Stories</button>
+      <button type="button" data-tab="t">Typography</button>
+    </div>
+
+    <!-- FEATURED -->
+    <div class="pane on" id="pane-f">
+      <div class="grp">
+        <div class="grp-t">Chữ</div>
+        <label for="f-label">Label nhỏ</label><input id="f-label">
+        <label for="f-heading">Heading</label><input id="f-heading">
+        <label for="f-desc">Description</label><textarea id="f-desc" rows="2"></textarea>
+        <div class="two" style="margin-top:12px">
+          <div><label for="f-cta">Nút — chữ</label><input id="f-cta"></div>
+          <div><label for="f-href">Liên kết</label><input id="f-href"></div>
+        </div>
+      </div>
+      <div class="grp">
+        <div class="grp-t">Ảnh <span class="count" id="f-count"></span></div>
+        <div class="rows" id="f-list"></div>
+        <div style="display:flex;gap:8px;margin-top:11px"><button type="button" class="mini" id="f-add">+ Thêm ảnh</button></div>
+        <p class="hint">Kéo thumbnail để đổi thứ tự. Grid 3×3 nên <b>đúng 9 ảnh</b> là đẹp nhất — khác 9 vẫn chạy, chỉ hàng cuối bị lẻ.</p>
+        <div class="warnbox" id="f-warn" style="display:none"><ul></ul></div>
+      </div>
+    </div>
+
+    <!-- EDITORIAL -->
+    <div class="pane" id="pane-e">
+      <div class="grp">
+        <div class="grp-t">Chữ</div>
+        <label for="e-label">Label nhỏ</label><input id="e-label">
+        <label for="e-heading">Heading — mỗi dòng một hàng</label><textarea id="e-heading" rows="3"></textarea>
+        <label for="e-heading2">Heading dòng 2 (có thể bỏ trống)</label><textarea id="e-heading2" rows="2"></textarea>
+        <p class="hint">Đặt <code>*dấu sao*</code> quanh chữ muốn in nghiêng màu gold.</p>
+        <label for="e-desc">Description</label><textarea id="e-desc" rows="5"></textarea>
+      </div>
+      <div class="grp">
+        <div class="grp-t">Ảnh <span class="count" id="e-count"></span></div>
+        <div class="rows" id="e-list"></div>
+        <div style="display:flex;gap:8px;margin-top:11px"><button type="button" class="mini" id="e-add">+ Thêm ảnh</button><button type="button" class="mini" id="e-renumber">Đánh lại số thứ tự</button></div>
+        <p class="hint"><b>Column</b> quyết định ảnh nằm cột nào, <b>Order</b> quyết định vị trí trong cột. <b>Type</b> + <b>Size</b> quyết định tỷ lệ ảnh (ảnh cũ giữ tỷ lệ đã chốt; đổi Type/Size sẽ tính lại). Kéo thumbnail để đổi thứ tự trong cùng cột.</p>
+        <div class="warnbox" id="e-warn" style="display:none"><ul></ul></div>
+      </div>
+    </div>
+
+    <!-- TYPOGRAPHY -->
+    <div class="pane" id="pane-t">
+      <div class="grp">
+        <div class="grp-t">Cụm chữ cuối gallery</div>
+        <label for="t-label">Label nhỏ phía trên</label><input id="t-label">
+        <div class="words" id="t-words" style="margin-top:14px"></div>
+        <div style="display:flex;gap:8px;margin-top:11px"><button type="button" class="mini" id="t-add">+ Thêm cụm</button><button type="button" class="mini" id="t-reset">Về mặc định</button></div>
+        <p class="hint">Level = cấp bậc chữ (1 lớn nhất → 4 nhỏ nhất). Bỏ tick để tắt một cụm. Cỡ chữ, khoảng cách và bố cục do thiết kế quyết định — CMS chỉ đổi nội dung.</p>
+        <div class="warnbox" id="t-warn" style="display:none"><ul></ul></div>
+      </div>
+      <div class="grp">
+        <div class="grp-t">CTA</div>
+        <div class="two">
+          <div><label for="t-cta">Chữ</label><input id="t-cta"></div>
+          <div><label for="t-href">Liên kết</label><input id="t-href"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="preview">
+    <div class="pv-bar">
+      <div class="seg"><button type="button" id="bd" class="on">Desktop</button><button type="button" id="bm">Mobile</button></div>
+      <div class="sp"></div>
+      <button type="button" id="jump-f">→ Featured</button>
+      <button type="button" id="jump-e">→ Editorial</button>
+      <button type="button" id="reload">Tải lại</button>
+    </div>
+    <div class="pv-stage desk" id="stage">
+      <iframe id="pv" src="../NOW Studio.html?cms=preview" title="Xem trước"></iframe>
+    </div>
+  </div>
+</div>
+
+<div class="mask" id="mask">
+  <div class="modal" id="modal-body"></div>
+</div>
+
+<script src="../js/nowcms.schema.js"></script>
+<script>window.NOWCMS_BASE='../';</script>
+<script src="../js/nowcms.js"></script>
+<script>
+const KEY='nowcms.gallery.draft', SRC='../content/gallery.json';
+const S=window.NOWCMS_SCHEMA;
+const $=id=>document.getElementById(id);
+const pv=$('pv');
+const COLS=['left','center','right'];
+const TYPES=['portrait','landscape','detail','wide'];
+const SIZES=['large','medium','small'];
+const RATIOS={portrait:{large:'2/3',medium:'3/4',small:'4/5'},landscape:{large:'4/3',medium:'3/2',small:'16/9'},detail:{large:'4/5',medium:'1/1',small:'5/4'},wide:{large:'16/9',medium:'2/1',small:'21/9'}};
+const REQUIRED_WORDS=['NOW STUDIO','PHOTOGRAPHY','WEDDING DRESS','MAKE UP','PORTRAITS','DOCUMENTARY','CANDID'];
+let D=null, published=null, dirty=false;
+
+const clone=o=>JSON.parse(JSON.stringify(o));
+const attr=v=>String(v==null?'':v).replace(/"/g,'&quot;');
+const uid=p=>p+'-'+Math.random().toString(36).slice(2,8);
+const validUrl=u=>/^(https?:\/\/|\/|data:image\/)/.test(String(u||'').trim());
+const thumbOf=u=>{
+  u=String(u||'');
+  if(u.includes('res.cloudinary.com')&&u.includes('/upload/'))return u.replace('/upload/','/upload/w_200,q_auto,f_auto/');
+  if(u.includes('images.unsplash.com'))return u+'?w=200&q=70&auto=format&fit=crop';
+  return u;
+};
+
+/* ── xem trước ── */
+let t;function push(){clearTimeout(t);t=setTimeout(()=>{
+  try{pv.contentWindow.postMessage({type:'nowcms:draft',section:'gallery',data:{fields:D}},'*')}catch(e){}
+},170)}
+function paintState(){
+  const el=$('state');
+  if(dirty){el.className='state dirty';el.textContent='Nháp chưa lưu'}
+  else if(localStorage.getItem(KEY)){el.className='state saved';el.textContent='Đã lưu nháp'}
+  else{el.className='state';el.textContent='Trùng bản đang chạy'}
+  $('discard').disabled=!dirty&&!localStorage.getItem(KEY);
+}
+function change(){dirty=true;paintState();push();validate()}
+
+/* ── rail ── */
+function buildRail(){
+  const soon=['Dịch vụ','Feedback khách','About','Contact'];
+  $('rail').innerHTML='<div class="rail-t">Section</div>'+
+    Object.keys(S.sections).map(k=>{
+      const s=S.sections[k], on=k==='gallery';
+      const href=s.admin||((k==='hero')?'hero.html':'#');
+      return `<a href="${href}" class="${on?'on':''}"><i>${s.icon||'▣'}</i>${s.title}</a>`;
+    }).join('')+
+    soon.map(n=>`<span class="off"><i>▢</i>${n}<span class="soon">sắp có</span></span>`).join('');
+}
+
+/* ── tabs ── */
+document.querySelectorAll('.tabs button').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.pane').forEach(p=>p.classList.toggle('on',p.id==='pane-'+b.dataset.tab));
+  if(b.dataset.tab==='f')jump('featured'); else jump('editorial');
+}));
+
+/* ── FEATURED ── */
+const bind=(id,fn)=>$(id).addEventListener('input',()=>{fn($(id).value);change()});
+function fillFeatured(){
+  const f=D.featured;
+  $('f-label').value=f.label||'';$('f-heading').value=f.heading||'';$('f-desc').value=f.description||'';
+  $('f-cta').value=(f.cta||{}).label||'';$('f-href').value=(f.cta||{}).href||'';
+  drawFeatured();
+}
+function drawFeatured(){
+  const arr=D.featured.images, box=$('f-list');box.innerHTML='';
+  arr.forEach((im,i)=>{
+    const c=document.createElement('div');c.className='card';c.draggable=false;
+    c.innerHTML=`<img class="thumb" draggable="true" src="${attr(thumbOf(im.src))}" alt="">
+      <div class="cf">
+        <input data-k="src" value="${attr(im.src)}" placeholder="Link ảnh Cloudinary">
+        <input data-k="alt" value="${attr(im.alt)}" placeholder="Alt text (bắt buộc)">
+        <div class="three">
+          <input data-k="couple" value="${attr(im.couple)}" placeholder="Tên cặp đôi">
+          <input data-k="category" value="${attr(im.category)}" placeholder="Category">
+          <input data-k="year" value="${attr(im.year)}" placeholder="Năm">
+        </div>
+      </div>
+      <div class="side"><div class="idx">${i+1}</div>
+        <button type="button" data-a="up" ${i===0?'disabled':''}>↑</button>
+        <button type="button" data-a="down" ${i===arr.length-1?'disabled':''}>↓</button>
+        <button type="button" data-a="del">✕</button></div>`;
+    c.querySelectorAll('[data-k]').forEach(x=>x.addEventListener('input',()=>{
+      im[x.dataset.k]=x.value;
+      if(x.dataset.k==='src')c.querySelector('.thumb').src=thumbOf(x.value);
+      change();
+    }));
+    c.querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>{
+      const a=b.dataset.a;
+      if(a==='del'){arr.splice(i,1)}else{const j=a==='up'?i-1:i+1;[arr[i],arr[j]]=[arr[j],arr[i]]}
+      drawFeatured();change();
+    }));
+    dragify(c,i,arr,drawFeatured);
+    box.appendChild(c);
+  });
+  const n=arr.length, rec=D.featured.recommendedCount||9;
+  const el=$('f-count');el.textContent=n+' / '+rec+' ảnh';el.className='count'+(n===rec?'':' bad');
+}
+$('f-add').addEventListener('click',()=>{
+  D.featured.images.push({_id:uid('fw'),src:'',alt:'',category:'',couple:'',year:''});
+  drawFeatured();change();
+});
+bind('f-label',v=>D.featured.label=v);bind('f-heading',v=>D.featured.heading=v);
+bind('f-desc',v=>D.featured.description=v);
+bind('f-cta',v=>{D.featured.cta=D.featured.cta||{};D.featured.cta.label=v});
+bind('f-href',v=>{D.featured.cta=D.featured.cta||{};D.featured.cta.href=v});
+
+/* ── kéo thả ── */
+let dragFrom=null,dragArr=null,dragRedraw=null;
+function dragify(card,i,arr,redraw){
+  const th=card.querySelector('.thumb');
+  th.addEventListener('dragstart',e=>{dragFrom=i;dragArr=arr;dragRedraw=redraw;card.classList.add('dragging');e.dataTransfer.effectAllowed='move';try{e.dataTransfer.setData('text/plain',String(i))}catch(err){}});
+  th.addEventListener('dragend',()=>{card.classList.remove('dragging');document.querySelectorAll('.card.over').forEach(x=>x.classList.remove('over'))});
+  card.addEventListener('dragover',e=>{if(dragArr!==arr)return;e.preventDefault();card.classList.add('over')});
+  card.addEventListener('dragleave',()=>card.classList.remove('over'));
+  card.addEventListener('drop',e=>{
+    if(dragArr!==arr||dragFrom===null)return;
+    e.preventDefault();card.classList.remove('over');
+    const item=arr.splice(dragFrom,1)[0];arr.splice(i,0,item);
+    if(arr===D.editorial.images)renumber();
+    dragFrom=null;redraw();change();
+  });
+}
+
+/* ── EDITORIAL ── */
+function fillEditorial(){
+  const e=D.editorial;
+  $('e-label').value=e.label||'';
+  $('e-heading').value=e.heading||'';$('e-heading2').value=e.heading2||'';
+  $('e-desc').value=e.description||'';
+  drawEditorial();
+}
+function drawEditorial(){
+  const arr=D.editorial.images, box=$('e-list');box.innerHTML='';
+  arr.forEach((im,i)=>{
+    const c=document.createElement('div');c.className='card';
+    c.innerHTML=`<img class="thumb" draggable="true" src="${attr(thumbOf(im.src))}" alt="">
+      <div class="cf">
+        <input data-k="src" value="${attr(im.src)}" placeholder="Link ảnh Cloudinary">
+        <input data-k="alt" value="${attr(im.alt)}" placeholder="Alt text (bắt buộc)">
+        <input data-k="caption" value="${attr(im.caption)}" placeholder="Caption (không bắt buộc)">
+        <div class="three" style="grid-template-columns:1fr 1fr 56px">
+          <select data-k="column">${COLS.map(x=>`<option value="${x}">Cột: ${x}</option>`).join('')}</select>
+          <select data-k="type">${TYPES.map(x=>`<option value="${x}">${x}</option>`).join('')}</select>
+          <input data-k="order" type="number" min="1" value="${attr(im.order)}" title="Order">
+        </div>
+        <div class="three" style="grid-template-columns:1fr 1fr">
+          <select data-k="size">${SIZES.map(x=>`<option value="${x}">${x}</option>`).join('')}</select>
+          <input data-k="ratio" value="${attr(im.ratio)}" placeholder="Tỷ lệ (auto)">
+        </div>
+      </div>
+      <div class="side"><div class="idx">${(im.column||'left').slice(0,1).toUpperCase()}${im.order||''}</div>
+        <button type="button" data-a="up" ${i===0?'disabled':''}>↑</button>
+        <button type="button" data-a="down" ${i===arr.length-1?'disabled':''}>↓</button>
+        <button type="button" data-a="del">✕</button></div>`;
+    c.querySelector('[data-k="column"]').value=im.column||'left';
+    c.querySelector('[data-k="type"]').value=im.type||'portrait';
+    c.querySelector('[data-k="size"]').value=im.size||'medium';
+    c.querySelectorAll('[data-k]').forEach(x=>x.addEventListener('input',()=>{
+      const k=x.dataset.k;
+      im[k]=k==='order'?(parseInt(x.value,10)||1):x.value;
+      if(k==='src')c.querySelector('.thumb').src=thumbOf(x.value);
+      if(k==='type'||k==='size'){
+        im.ratio=(RATIOS[im.type||'portrait']||RATIOS.portrait)[im.size||'medium'];
+        c.querySelector('[data-k="ratio"]').value=im.ratio;
+      }
+      if(k==='column'){ // đưa vào cuối cột mới
+        const inCol=arr.filter(y=>y!==im&&(y.column||'left')===im.column);
+        im.order=inCol.length+1;
+      }
+      drawEditorial();change();
+    }));
+    c.querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>{
+      const a=b.dataset.a;
+      if(a==='del'){arr.splice(i,1)}else{const j=a==='up'?i-1:i+1;[arr[i],arr[j]]=[arr[j],arr[i]]}
+      renumber();drawEditorial();change();
+    }));
+    dragify(c,i,arr,drawEditorial);
+    box.appendChild(c);
+  });
+  const n=arr.length, rec=D.editorial.recommendedCount||14;
+  const el=$('e-count');
+  const per=COLS.map(k=>arr.filter(x=>(x.column||'left')===k).length).join(' / ');
+  el.textContent=n+' ảnh · '+per+' theo cột';
+  el.className='count'+(n>=10&&n<=15?'':' bad');
+}
+function renumber(){
+  COLS.forEach(k=>{
+    D.editorial.images.filter(x=>(x.column||'left')===k).forEach((x,i)=>x.order=i+1);
+  });
+}
+$('e-add').addEventListener('click',()=>{
+  const col='left', n=D.editorial.images.filter(x=>(x.column||'left')===col).length;
+  D.editorial.images.push({_id:uid('ed'),src:'',alt:'',caption:'',column:col,order:n+1,size:'medium',type:'portrait',ratio:'3/4',role:''});
+  drawEditorial();change();
+});
+$('e-renumber').addEventListener('click',()=>{renumber();drawEditorial();change()});
+bind('e-label',v=>D.editorial.label=v);
+bind('e-heading',v=>D.editorial.heading=v);bind('e-heading2',v=>D.editorial.heading2=v);
+bind('e-desc',v=>D.editorial.description=v);
+
+/* ── TYPOGRAPHY ── */
+function fillType(){
+  const sg=D.editorial.signature=D.editorial.signature||{words:[],cta:{}};
+  $('t-label').value=sg.label||'';
+  $('t-cta').value=(sg.cta||{}).label||'';$('t-href').value=(sg.cta||{}).href||'';
+  drawWords();
+}
+function drawWords(){
+  const arr=D.editorial.signature.words, box=$('t-words');box.innerHTML='';
+  arr.forEach((w,i)=>{
+    const r=document.createElement('div');r.className='word';
+    r.innerHTML=`<input type="text" data-k="text" value="${attr(w.text)}">
+      <select data-k="level">${[1,2,3,4].map(l=>`<option value="${l}">Level ${l}</option>`).join('')}</select>
+      <span class="tg"><input type="checkbox" data-k="enabled" ${w.enabled!==false?'checked':''} title="Hiện/ẩn"></span>
+      <span class="side" style="flex-direction:row;gap:4px">
+        <button type="button" class="mini" data-a="up" ${i===0?'disabled':''}>↑</button>
+        <button type="button" class="mini" data-a="down" ${i===arr.length-1?'disabled':''}>↓</button>
+        <button type="button" class="mini" data-a="del">✕</button></span>`;
+    r.querySelector('[data-k="level"]').value=w.level||4;
+    r.querySelectorAll('[data-k]').forEach(x=>{
+      const ev=x.type==='checkbox'?'change':'input';
+      x.addEventListener(ev,()=>{
+        w[x.dataset.k]=x.type==='checkbox'?x.checked:(x.dataset.k==='level'?+x.value:x.value);
+        change();
+      });
+    });
+    r.querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>{
+      const a=b.dataset.a;
+      if(a==='del'){arr.splice(i,1)}else{const j=a==='up'?i-1:i+1;[arr[i],arr[j]]=[arr[j],arr[i]]}
+      drawWords();change();
+    }));
+    box.appendChild(r);
+  });
+}
+$('t-add').addEventListener('click',()=>{D.editorial.signature.words.push({_id:uid('w'),text:'',level:4,enabled:true});drawWords();change()});
+$('t-reset').addEventListener('click',()=>{
+  if(!confirm('Đưa 7 cụm chữ về mặc định?'))return;
+  D.editorial.signature.words=REQUIRED_WORDS.map((tx,i)=>({_id:uid('w'),text:tx,level:i===0?1:i===1?2:i<4?3:4,enabled:true}));
+  drawWords();change();
+});
+bind('t-label',v=>D.editorial.signature.label=v);
+bind('t-cta',v=>{D.editorial.signature.cta=D.editorial.signature.cta||{};D.editorial.signature.cta.label=v});
+bind('t-href',v=>{D.editorial.signature.cta=D.editorial.signature.cta||{};D.editorial.signature.cta.href=v});
+
+/* ── validate ── */
+function validate(){
+  const F=[],E=[],T=[];
+  const f=D.featured, e=D.editorial;
+  const rec=f.recommendedCount||9;
+  if(f.images.length!==rec)F.push(`Featured đang có ${f.images.length} ảnh — grid 3×3 cần ${rec}.`);
+  f.images.forEach((im,i)=>{
+    if(!String(im.src||'').trim())F.push(`Ảnh #${i+1}: chưa có link.`);
+    else if(!validUrl(im.src))F.push(`Ảnh #${i+1}: link không hợp lệ.`);
+    if(!String(im.alt||'').trim())F.push(`Ảnh #${i+1}: thiếu alt text.`);
+  });
+  if(!String(f.heading||'').trim())F.push('Featured: thiếu heading.');
+
+  if(e.images.length<10||e.images.length>15)E.push(`Editorial đang có ${e.images.length} ảnh — nên trong khoảng 10–15.`);
+  e.images.forEach((im,i)=>{
+    const tag=`Ảnh ${(im.column||'?').toUpperCase()}${im.order||''}`;
+    if(!String(im.src||'').trim())E.push(`${tag}: chưa có link.`);
+    else if(!validUrl(im.src))E.push(`${tag}: link không hợp lệ.`);
+    if(!String(im.alt||'').trim())E.push(`${tag}: thiếu alt text.`);
+    if(!COLS.includes(im.column))E.push(`${tag}: column không hợp lệ.`);
+    if(!TYPES.includes(im.type))E.push(`${tag}: type không hợp lệ.`);
+    if(!SIZES.includes(im.size))E.push(`${tag}: size không hợp lệ.`);
+  });
+  COLS.forEach(k=>{
+    const list=e.images.filter(x=>(x.column||'left')===k);
+    const seen={};
+    list.forEach(x=>{const o=+x.order||0;if(seen[o])E.push(`Cột ${k}: trùng order ${o}.`);seen[o]=1});
+    if(!list.length)E.push(`Cột ${k}: chưa có ảnh nào.`);
+  });
+  if(!String(e.heading||'').trim())E.push('Editorial: thiếu heading.');
+
+  const words=(e.signature.words||[]).filter(w=>w.enabled!==false).map(w=>String(w.text||'').trim().toUpperCase());
+  REQUIRED_WORDS.forEach(w=>{if(!words.includes(w))T.push(`Thiếu cụm bắt buộc: ${w}.`)});
+  if(!String((e.signature.cta||{}).label||'').trim())T.push('Thiếu chữ cho CTA.');
+
+  paintWarn('f-warn',F);paintWarn('e-warn',E);paintWarn('t-warn',T);
+  return {F,E,T};
+}
+function paintWarn(id,list){
+  const box=$(id);
+  if(!list.length){box.style.display='none';return}
+  box.style.display='block';
+  box.querySelector('ul').innerHTML=list.slice(0,12).map(x=>`<li>${x}</li>`).join('')+
+    (list.length>12?`<li>… và ${list.length-12} cảnh báo khác</li>`:'');
+}
+
+/* ── lưu / xuất bản ── */
+$('save').addEventListener('click',()=>{localStorage.setItem(KEY,JSON.stringify({fields:D}));dirty=false;paintState()});
+$('discard').addEventListener('click',()=>{
+  if(!confirm('Bỏ nháp và trở về nội dung đang chạy trên web?'))return;
+  localStorage.removeItem(KEY);D=clone(published);fillAll();dirty=false;paintState();push();
+});
+function modal(html){$('modal-body').innerHTML=html;$('mask').classList.add('on')}
+$('mask').addEventListener('click',e=>{if(e.target===$('mask'))$('mask').classList.remove('on')});
+$('publish').addEventListener('click',()=>{
+  const v=validate();
+  const blocking=[...v.F.filter(x=>/chưa có link|không hợp lệ|thiếu alt|thiếu heading/.test(x)),
+                  ...v.E.filter(x=>/chưa có link|không hợp lệ|thiếu alt|thiếu heading|trùng order|chưa có ảnh nào/.test(x)),
+                  ...v.T];
+  const soft=[...v.F,...v.E].filter(x=>!blocking.includes(x));
+  if(blocking.length){
+    modal(`<h3>Chưa xuất bản được</h3><p>Có ${blocking.length} lỗi cần sửa trước:</p>
+      <ol>${blocking.slice(0,10).map(x=>`<li>${x}</li>`).join('')}</ol>
+      <div class="m-acts"><button type="button" onclick="document.getElementById('mask').classList.remove('on')">Để mình sửa</button></div>`);
+    return;
+  }
+  if(soft.length&&!confirm('Có '+soft.length+' cảnh báo (số lượng ảnh khác đề xuất). Vẫn xuất bản?'))return;
+  doPublish();
+});
+function doPublish(){
+  renumber();
+  const out={_type:'section.gallery',_id:'gallery',_rev:new Date().toISOString(),status:'published',
+    updatedAt:new Date().toISOString(),
+    _note:'Nội dung 2 gallery homepage. Xuất từ admin/gallery.html.',fields:D};
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));
+  a.download='gallery.json';a.click();URL.revokeObjectURL(a.href);
+  localStorage.setItem(KEY,JSON.stringify({fields:D}));dirty=false;paintState();
+  modal(`<h3>Đã xuất file gallery.json</h3>
+    <p>File vừa tải về máy bạn. Để website đổi:</p>
+    <ol><li>Mở thư mục website → <code>content/</code></li>
+    <li>Ghi đè <code>gallery.json</code> bằng file vừa tải</li>
+    <li>Commit / upload lên hosting — xong</li></ol>
+    <p style="margin-top:12px">Khi nối CMS online (Sanity) ở bước sau, nút này gửi thẳng lên CMS: không tải file, không upload tay.</p>
+    <div class="m-acts"><button type="button" class="solid" onclick="document.getElementById('mask').classList.remove('on')">Đã hiểu</button></div>`);
+}
+
+/* ── preview controls ── */
+function jump(id){try{const d=pv.contentDocument;const el=d.getElementById(id);if(el)pv.contentWindow.scrollTo(0,el.offsetTop-40)}catch(e){}}
+$('jump-f').addEventListener('click',()=>jump('featured'));
+$('jump-e').addEventListener('click',()=>jump('editorial'));
+$('reload').addEventListener('click',()=>{pv.src=pv.src});
+$('bd').addEventListener('click',()=>{$('stage').className='pv-stage desk';$('bd').classList.add('on');$('bm').classList.remove('on')});
+$('bm').addEventListener('click',()=>{$('stage').className='pv-stage mob';$('bm').classList.add('on');$('bd').classList.remove('on')});
+pv.addEventListener('load',()=>{push();setTimeout(()=>jump('featured'),500)});
+
+function fillAll(){fillFeatured();fillEditorial();fillType();validate()}
+
+(async function boot(){
+  try{
+    const r=await fetch(SRC,{cache:'no-store'});
+    if(r.ok){const j=await r.json();published=j.fields||j}
+  }catch(e){}
+  if(!published&&window.GALLERY_FALLBACK)published=clone(window.GALLERY_FALLBACK);
+  if(!published)published={featured:{label:'',heading:'',description:'',cta:{},images:[],recommendedCount:9},
+    editorial:{label:'',heading:'',description:'',images:[],recommendedCount:14,signature:{words:[],cta:{}}}};
+  let draft=null;try{draft=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+  D=clone(draft&&draft.fields?draft.fields:published);
+  D.featured=D.featured||{images:[]};D.featured.images=D.featured.images||[];
+  D.editorial=D.editorial||{images:[]};D.editorial.images=D.editorial.images||[];
+  D.editorial.signature=D.editorial.signature||{words:[],cta:{}};
+  buildRail();fillAll();paintState();push();
+})();
+</script>
+</body>
+</html>

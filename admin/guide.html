@@ -1,0 +1,879 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOW·STUDIO — Wedding Guide CMS</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#c9a876;--gold-dark:#a8864f;--bg:#faf8f5;--dark:#1a1714;--mid:#4a4440;--muted:#8a7e76;--line:rgba(201,168,118,.3);--soft:rgba(26,23,20,.08);--warn:#b4552f;--ok:#5c7a52;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',Helvetica,sans-serif}
+body{font-family:var(--sans);background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6}
+a{color:var(--gold-dark);text-decoration:none}a:hover{color:var(--dark)}
+button{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--mid);padding:0 15px;min-height:38px;border-radius:2px;transition:background .18s,color .18s,border-color .18s}
+button:hover{border-color:var(--gold);color:var(--dark)}
+button:disabled{opacity:.4;cursor:default}
+button.solid{background:var(--dark);color:#fff;border-color:var(--dark)}
+button.solid:hover{background:var(--gold-dark);border-color:var(--gold-dark);color:#fff}
+button.mini{min-height:28px;padding:0 10px;font-size:10px;letter-spacing:.06em}
+button.danger:hover{border-color:var(--warn);color:var(--warn)}
+input,textarea,select{width:100%;font-family:var(--sans);font-size:13.5px;color:var(--dark);background:#fff;border:1px solid var(--line);border-radius:2px;padding:10px 11px;line-height:1.5}
+input:focus,textarea:focus,select:focus{outline:0;border-color:var(--gold)}
+input.bad{border-color:var(--warn);background:#fff8f5}
+textarea{resize:vertical}
+label{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:14px 0 6px}
+.hint{font-size:11.5px;color:var(--muted);line-height:1.6;margin-top:6px}
+code{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold-dark);background:var(--bg);border:1px solid var(--line);padding:1px 5px}
+/* top */
+.top{position:sticky;top:0;z-index:40;display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:66px;padding:0 22px;background:rgba(250,248,245,.95);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--serif);font-size:18px;letter-spacing:.12em;white-space:nowrap}
+.brand em{font-style:normal;color:var(--gold)}
+.brand small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+.state{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:6px 10px;white-space:nowrap}
+.state.dirty{color:var(--warn);border-color:#e2c0ae}
+.state.saved{color:var(--ok);border-color:#bdcdb5}
+/* shell */
+.shell{display:grid;grid-template-columns:180px minmax(0,1fr);align-items:start}
+.rail{border-right:1px solid var(--line);padding:22px 14px 60px;min-height:calc(100vh - 66px)}
+.rail-t{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 8px 10px}
+.rail-t+.rail-t{margin-top:22px}
+.rail a,.rail button.nav{display:flex;align-items:center;gap:9px;width:100%;font-size:13px;color:var(--mid);padding:9px 10px;border:0;background:none;border-radius:2px;margin-bottom:2px;text-transform:none;letter-spacing:0;min-height:0;justify-content:flex-start;cursor:pointer}
+.rail button.nav.on{background:var(--dark);color:#fff}
+.rail i{font-style:normal;font-size:11px;opacity:.7}
+.rail .n{margin-left:auto;font-size:10px;color:var(--muted)}
+.rail button.nav.on .n{color:rgba(255,255,255,.6)}
+.main{padding:26px 26px 100px;min-width:0}
+.view{display:none}.view.on{display:block}
+h1.page{font-family:var(--serif);font-weight:400;font-size:30px;margin-bottom:4px}
+.sub{font-size:12.5px;color:var(--muted);margin-bottom:24px}
+/* dashboard */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(150px,100%),1fr));gap:12px;margin-bottom:32px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:2px;padding:18px 20px}
+.stat b{display:block;font-family:var(--serif);font-weight:400;font-size:34px;line-height:1}
+.stat span{display:block;font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:8px}
+/* table */
+.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:16px}
+.toolbar input{max-width:260px}
+.toolbar select{max-width:170px}
+.toolbar .sp{flex:1}
+table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line)}
+th,td{text-align:left;padding:11px 13px;border-bottom:1px solid var(--soft);vertical-align:middle;font-size:13px}
+th{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:400;cursor:pointer;white-space:nowrap;background:var(--bg)}
+tr:last-child td{border-bottom:0}
+tbody tr:hover{background:#fffdfa}
+td.t{font-weight:500;color:var(--dark)}
+td.t small{display:block;font-weight:400;font-size:11px;color:var(--muted);margin-top:3px}
+.pill{display:inline-block;font-size:9px;letter-spacing:.14em;text-transform:uppercase;padding:4px 8px;border-radius:2px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.published{color:var(--ok);border-color:#bdcdb5;background:#f5f8f3}
+.pill.draft{color:var(--muted)}
+.pill.scheduled{color:var(--gold-dark);border-color:var(--gold);background:#fffaf2}
+.pill.archived{color:var(--warn);border-color:#e2c0ae;background:#fff8f5}
+.star{color:var(--gold-dark);font-size:14px}
+.rowacts{display:flex;gap:5px;justify-content:flex-end;flex-wrap:wrap}
+.thumb-sm{width:52px;height:38px;object-fit:cover;background:#e8ddd0;display:block;border-radius:1px}
+/* editor */
+.ed{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:26px;align-items:start}
+.box{background:#fff;border:1px solid var(--line);border-radius:2px;padding:20px 22px;margin-bottom:16px}
+.box>h3{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:6px}
+.box>h3+*{margin-top:0}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.side .box{position:relative}
+.sticky{position:sticky;top:82px}
+.picked{display:flex;gap:11px;align-items:flex-start;margin-top:10px}
+.picked img{width:92px;height:66px;object-fit:cover;background:#e8ddd0}
+.picked .px{flex:1;min-width:0;font-size:11.5px;color:var(--muted);line-height:1.5;word-break:break-all}
+.gal{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.gal figure{position:relative;margin:0}
+.gal img{width:74px;height:56px;object-fit:cover;background:#e8ddd0;display:block}
+.gal button{position:absolute;top:2px;right:2px;min-height:0;padding:1px 5px;font-size:10px;background:rgba(255,255,255,.92);border-color:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+.chip{display:inline-flex;align-items:center;gap:6px;font-size:11px;border:1px solid var(--line);border-radius:2px;padding:5px 8px;background:#fff;color:var(--mid)}
+.chip button{border:0;background:none;min-height:0;padding:0;font-size:12px;color:var(--muted)}
+.chip.pickable{cursor:pointer}
+.chip.pickable:hover{border-color:var(--gold);color:var(--dark)}
+/* block editor */
+.blocks{display:flex;flex-direction:column;gap:10px;margin-top:12px}
+.blk{border:1px solid var(--line);border-radius:2px;background:#fff}
+.blk-bar{display:flex;align-items:center;gap:8px;padding:7px 9px;border-bottom:1px solid var(--soft);background:var(--bg)}
+.blk-bar .ty{font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dark)}
+.blk-bar .sp{flex:1}
+.blk-bar button{min-height:24px;padding:0 7px;font-size:10px;letter-spacing:0}
+.blk-body{padding:10px}
+.blk-body textarea{border:0;padding:4px;font-size:14px;line-height:1.65}
+.blk-body textarea:focus{outline:0}
+.blk-body .lines{display:flex;flex-direction:column;gap:6px}
+.addblk{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;padding-top:12px;border-top:1px solid var(--soft)}
+/* media grid */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(158px,1fr));gap:12px}
+.mcard{background:#fff;border:1px solid var(--line);border-radius:2px;overflow:hidden;cursor:pointer;transition:border-color .18s}
+.mcard:hover{border-color:var(--gold)}
+.mcard.sel{border-color:var(--gold-dark);box-shadow:0 0 0 1px var(--gold-dark) inset}
+.mcard img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#e8ddd0;display:block}
+.mcard .mi{padding:9px 10px}
+.mcard .mi b{display:block;font-size:11.5px;font-weight:500;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.mcard .mi span{display:block;font-size:10px;color:var(--muted);margin-top:3px}
+/* modal */
+.mask{position:fixed;inset:0;background:rgba(26,23,20,.6);display:none;align-items:center;justify-content:center;z-index:70;padding:24px}
+.mask.on{display:flex}
+.modal{background:#fff;max-width:900px;width:100%;max-height:88vh;overflow:auto;padding:28px 30px 24px;box-shadow:0 30px 80px rgba(26,23,20,.3)}
+.modal.sm{max-width:520px}
+.modal h3{font-family:var(--serif);font-weight:400;font-size:26px;margin-bottom:8px}
+.modal p,.modal li{font-size:13.5px;color:var(--mid);line-height:1.7}
+.modal ol{margin:12px 0 0 18px;display:flex;flex-direction:column;gap:8px}
+.m-acts{display:flex;gap:9px;justify-content:flex-end;margin-top:22px;flex-wrap:wrap}
+.warnbox{border:1px solid #e2c0ae;background:#fff8f5;border-radius:2px;padding:12px 14px;margin-top:14px}
+.warnbox li{font-size:12px;color:var(--warn);list-style:none;padding-left:13px;position:relative}
+.warnbox li::before{content:'!';position:absolute;left:0}
+.okbox{border:1px solid #bdcdb5;background:#f5f8f3;border-radius:2px;padding:12px 14px;margin-top:14px}
+.okbox li{font-size:12px;color:var(--ok);list-style:none}
+@media (max-width:1080px){.shell{grid-template-columns:1fr}.rail{border-right:0;border-bottom:1px solid var(--line);min-height:0;display:flex;flex-wrap:wrap;gap:5px;padding:12px 18px}.rail-t{width:100%;margin:0 0 3px}.rail-t+.rail-t{margin-top:8px}.rail a,.rail button.nav{width:auto}.ed{grid-template-columns:1fr}.sticky{position:static}}
+</style>
+</head>
+<body>
+
+<div class="top">
+  <div class="brand">NOW<em>·</em>STUDIO <small>Wedding Guide CMS</small></div>
+  <div class="acts">
+    <span class="state" id="state">Đang tải…</span>
+    <button id="btn-preview">Xem trước site</button>
+    <button id="btn-discard">Bỏ nháp</button>
+    <button id="btn-save">Lưu nháp</button>
+    <button class="solid" id="btn-publish">Xuất bản</button>
+  </div>
+</div>
+
+<div class="shell">
+  <nav class="rail">
+    <div class="rail-t">Wedding Guide</div>
+    <button type="button" class="nav on" data-view="dash"><i>▦</i>Dashboard</button>
+    <button type="button" class="nav" data-view="articles"><i>▤</i>Bài viết<span class="n" id="n-art"></span></button>
+    <button type="button" class="nav" data-view="cats"><i>▥</i>Chuyên mục<span class="n" id="n-cat"></span></button>
+    <button type="button" class="nav" data-view="tags"><i>◇</i>Tags<span class="n" id="n-tag"></span></button>
+    <button type="button" class="nav" data-view="media"><i>▣</i>Thư viện ảnh<span class="n" id="n-med"></span></button>
+    <button type="button" class="nav" data-view="settings"><i>⚙</i>Cài đặt trang</button>
+    <div class="rail-t">Section khác</div>
+    <a href="hero.html"><i>▣</i>Hero</a>
+    <a href="gallery.html"><i>▤</i>Gallery</a>
+    <span style="display:flex;align-items:center;gap:9px;font-size:13px;color:#b8afa8;padding:9px 10px"><i style="font-style:normal;font-size:11px;opacity:.7">▢</i>Dịch vụ<span class="n" style="font-size:8.5px;letter-spacing:.14em;text-transform:uppercase">sắp có</span></span>
+    <span style="display:flex;align-items:center;gap:9px;font-size:13px;color:#b8afa8;padding:9px 10px"><i style="font-style:normal;font-size:11px;opacity:.7">▢</i>Feedback<span class="n" style="font-size:8.5px;letter-spacing:.14em;text-transform:uppercase">sắp có</span></span>
+    <span style="display:flex;align-items:center;gap:9px;font-size:13px;color:#b8afa8;padding:9px 10px"><i style="font-style:normal;font-size:11px;opacity:.7">▢</i>About<span class="n" style="font-size:8.5px;letter-spacing:.14em;text-transform:uppercase">sắp có</span></span>
+    <span style="display:flex;align-items:center;gap:9px;font-size:13px;color:#b8afa8;padding:9px 10px"><i style="font-style:normal;font-size:11px;opacity:.7">▢</i>Contact<span class="n" style="font-size:8.5px;letter-spacing:.14em;text-transform:uppercase">sắp có</span></span>
+    <div class="rail-t">Xem site</div>
+    <a href="../guide/index.html" target="_blank"><i>↗</i>Wedding Guide</a>
+    <a href="../NOW Studio.html" target="_blank"><i>↗</i>Trang chủ</a>
+  </nav>
+
+  <div class="main">
+    <!-- DASHBOARD -->
+    <section class="view on" id="v-dash">
+      <h1 class="page">Dashboard</h1>
+      <p class="sub">Tổng quan nội dung Wedding Guide.</p>
+      <div class="stats" id="dash-stats"></div>
+      <div class="toolbar"><button class="solid" id="dash-new">+ Viết bài mới</button></div>
+      <table><thead><tr><th>Bài gần đây</th><th>Chuyên mục</th><th>Trạng thái</th><th>Cập nhật</th></tr></thead><tbody id="dash-recent"></tbody></table>
+    </section>
+
+    <!-- ARTICLES -->
+    <section class="view" id="v-articles">
+      <h1 class="page">Bài viết</h1>
+      <p class="sub">Tìm, lọc, sửa, nhân bản và lưu trữ bài.</p>
+      <div class="toolbar">
+        <input id="q" placeholder="Tìm theo tiêu đề, mô tả, tag…">
+        <select id="f-cat"></select>
+        <select id="f-status">
+          <option value="">Mọi trạng thái</option>
+          <option value="published">Đã xuất bản</option>
+          <option value="draft">Nháp</option>
+          <option value="scheduled">Hẹn giờ</option>
+          <option value="archived">Lưu trữ</option>
+        </select>
+        <div class="sp"></div>
+        <button class="solid" id="new-article">+ Bài mới</button>
+      </div>
+      <table>
+        <thead><tr>
+          <th data-sort="title">Tiêu đề</th><th data-sort="category">Chuyên mục</th>
+          <th data-sort="status">Trạng thái</th><th data-sort="featured">Nổi bật</th>
+          <th data-sort="publishedAt">Đăng</th><th data-sort="updatedAt">Sửa</th><th></th>
+        </tr></thead>
+        <tbody id="art-rows"></tbody>
+      </table>
+    </section>
+
+    <!-- CATEGORIES -->
+    <section class="view" id="v-cats">
+      <h1 class="page">Chuyên mục</h1>
+      <p class="sub">Thứ tự ở đây là thứ tự trên thanh lọc của trang Wedding Guide.</p>
+      <div class="toolbar"><button id="new-cat">+ Chuyên mục mới</button></div>
+      <div id="cat-rows"></div>
+    </section>
+
+    <!-- TAGS -->
+    <section class="view" id="v-tags">
+      <h1 class="page">Tags</h1>
+      <p class="sub">Dùng để gợi ý bài liên quan. Xoá tag không xoá bài.</p>
+      <div class="toolbar"><input id="new-tag-name" placeholder="Tên tag mới" style="max-width:220px"><button id="new-tag">+ Thêm</button></div>
+      <div class="chips" id="tag-list"></div>
+    </section>
+
+    <!-- MEDIA -->
+    <section class="view" id="v-media">
+      <h1 class="page">Thư viện ảnh</h1>
+      <p class="sub">Dán link Cloudinary vào đây một lần, sau đó chọn lại ở mọi bài.</p>
+      <div class="toolbar">
+        <input id="m-q" placeholder="Tìm theo tên file hoặc alt…" style="max-width:260px">
+        <input id="m-url" placeholder="Dán link ảnh (Cloudinary)…">
+        <button id="m-add">+ Thêm vào thư viện</button>
+      </div>
+      <div class="mgrid" id="media-grid"></div>
+    </section>
+
+    <!-- SETTINGS -->
+    <section class="view" id="v-settings">
+      <h1 class="page">Cài đặt trang Guide</h1>
+      <p class="sub">Phần chữ ở đầu trang Wedding Guide và section trên trang chủ.</p>
+      <div class="box" style="max-width:720px">
+        <h3>Giới thiệu</h3>
+        <label for="s-kicker">Kicker</label><input id="s-kicker">
+        <label for="s-heading">Heading — mỗi dòng một hàng</label><textarea id="s-heading" rows="2"></textarea>
+        <p class="hint">Đặt <code>*dấu sao*</code> quanh chữ muốn in nghiêng màu gold.</p>
+        <label for="s-lede">Mô tả</label><textarea id="s-lede" rows="3"></textarea>
+        <label for="s-note">Dòng phụ</label><input id="s-note">
+      </div>
+      <div class="box" style="max-width:720px">
+        <h3>CTA cuối trang</h3>
+        <label for="s-ctah">Tiêu đề</label><input id="s-ctah">
+        <label for="s-ctat">Mô tả</label><textarea id="s-ctat" rows="2"></textarea>
+        <div class="two"><div><label for="s-ctal">Chữ nút</label><input id="s-ctal"></div><div><label for="s-ctahref">Liên kết</label><input id="s-ctahref"></div></div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- EDITOR MODAL -->
+<div class="mask" id="ed-mask">
+  <div class="modal" id="ed-modal">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:18px">
+      <h3 id="ed-title">Bài viết</h3>
+      <button class="mini" id="ed-close">Đóng</button>
+    </div>
+    <div class="ed">
+      <div>
+        <div class="box">
+          <h3>Thông tin cơ bản</h3>
+          <label for="e-title">Tiêu đề *</label><input id="e-title">
+          <label for="e-slug">Slug * <span style="text-transform:none;letter-spacing:0">— đường dẫn bài</span></label>
+          <div style="display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px"><input id="e-slug"><button class="mini" id="e-reslug" style="min-height:41px">Tạo từ tiêu đề</button></div>
+          <p class="hint" id="slug-hint"></p>
+          <label for="e-excerpt">Mô tả ngắn</label><textarea id="e-excerpt" rows="2"></textarea>
+          <div class="two">
+            <div><label for="e-cat">Chuyên mục *</label><select id="e-cat"></select></div>
+            <div><label for="e-author">Tác giả</label><select id="e-author"></select></div>
+          </div>
+          <label>Tags</label>
+          <div class="chips" id="e-tags"></div>
+          <div class="chips" id="e-tagpick" style="margin-top:8px"></div>
+        </div>
+
+        <div class="box">
+          <h3>Nội dung</h3>
+          <div class="blocks" id="e-blocks"></div>
+          <div class="addblk">
+            <button class="mini" data-add="h2">+ Tiêu đề</button>
+            <button class="mini" data-add="h3">+ Tiêu đề nhỏ</button>
+            <button class="mini" data-add="p">+ Đoạn văn</button>
+            <button class="mini" data-add="ul">+ Gạch đầu dòng</button>
+            <button class="mini" data-add="ol">+ Danh sách số</button>
+            <button class="mini" data-add="note">+ Trích dẫn</button>
+            <button class="mini" data-add="figure">+ Ảnh</button>
+            <button class="mini" data-add="takeaway">+ Tóm lại</button>
+            <button class="mini" data-add="divider">+ Đường kẻ</button>
+          </div>
+          <p class="hint">Trong đoạn văn dùng được <code>&lt;strong&gt;</code>, <code>&lt;em&gt;</code>, <code>&lt;a href=""&gt;</code> để liên kết nội bộ. Không dùng thẻ style/script — CMS sẽ loại bỏ.</p>
+        </div>
+
+        <div class="box">
+          <h3>SEO</h3>
+          <label for="e-seot">SEO title</label><input id="e-seot"><p class="hint" id="seot-c"></p>
+          <label for="e-seod">SEO description</label><textarea id="e-seod" rows="2"></textarea><p class="hint" id="seod-c"></p>
+          <label for="e-canon">Canonical URL</label><input id="e-canon">
+          <label style="display:flex;align-items:center;gap:8px;margin-top:14px;text-transform:none;letter-spacing:0;font-size:13px;color:var(--mid)"><input type="checkbox" id="e-noindex" style="width:16px;height:16px;accent-color:var(--gold-dark)"> Không cho Google lập chỉ mục (noindex)</label>
+        </div>
+
+        <div class="box">
+          <h3>Chia sẻ mạng xã hội</h3>
+          <label for="e-ogt">OG title</label><input id="e-ogt">
+          <label for="e-ogd">OG description</label><textarea id="e-ogd" rows="2"></textarea>
+          <label>OG image</label>
+          <div class="picked" id="e-ogimg"></div>
+          <button class="mini" data-pick="ogImage" style="margin-top:9px">Chọn từ thư viện</button>
+        </div>
+      </div>
+
+      <div class="side">
+        <div class="box sticky">
+          <h3>Xuất bản</h3>
+          <label for="e-status">Trạng thái</label>
+          <select id="e-status">
+            <option value="draft">Nháp</option>
+            <option value="scheduled">Hẹn giờ</option>
+            <option value="published">Đã xuất bản</option>
+            <option value="archived">Lưu trữ</option>
+          </select>
+          <label for="e-date">Ngày giờ đăng</label><input id="e-date" type="datetime-local">
+          <p class="hint" id="sched-hint"></p>
+          <div class="two" style="margin-top:12px">
+            <div><label for="e-read">Phút đọc</label><input id="e-read" type="number" min="1"></div>
+            <div><label for="e-sort">Thứ tự</label><input id="e-sort" type="number"></div>
+          </div>
+          <label style="display:flex;align-items:center;gap:8px;margin-top:14px;text-transform:none;letter-spacing:0;font-size:13px;color:var(--mid)"><input type="checkbox" id="e-featured" style="width:16px;height:16px;accent-color:var(--gold-dark)"> Bài nổi bật</label>
+          <div class="m-acts" style="justify-content:flex-start;margin-top:18px">
+            <button class="mini" id="e-previewbtn">Xem trước</button>
+            <button class="solid mini" id="e-apply">Xong</button>
+          </div>
+          <div id="e-warn"></div>
+        </div>
+
+        <div class="box">
+          <h3>Ảnh đại diện *</h3>
+          <div class="picked" id="e-feat"></div>
+          <button class="mini" data-pick="featuredImage" style="margin-top:9px">Chọn từ thư viện</button>
+        </div>
+
+        <div class="box">
+          <h3>Gallery</h3>
+          <div class="gal" id="e-gal"></div>
+          <button class="mini" data-pick="gallery" style="margin-top:9px">+ Thêm ảnh</button>
+        </div>
+
+        <div class="box">
+          <h3>Bài liên quan</h3>
+          <div class="chips" id="e-rel"></div>
+          <select id="e-reladd" style="margin-top:9px"></select>
+          <p class="hint">Bỏ trống thì trang tự lấy bài cùng chuyên mục.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MEDIA PICKER -->
+<div class="mask" id="pick-mask">
+  <div class="modal">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:16px;margin-bottom:14px">
+      <h3>Chọn ảnh</h3><button class="mini" id="pick-close">Đóng</button>
+    </div>
+    <div class="toolbar"><input id="pick-q" placeholder="Tìm ảnh…" style="max-width:260px"><input id="pick-url" placeholder="Hoặc dán link mới…"><button id="pick-add">+ Thêm</button></div>
+    <div class="mgrid" id="pick-grid"></div>
+  </div>
+</div>
+
+<!-- GENERIC MODAL -->
+<div class="mask" id="msg-mask"><div class="modal sm" id="msg-body"></div></div>
+
+<script>
+const KEY='nowcms.guide.draft', SRC='../content/guide.json';
+const $=id=>document.getElementById(id);
+let D=null, published=null, dirty=false, E=null, editingId=null, pickTarget=null, sortKey='updatedAt', sortDir=-1;
+
+const clone=o=>JSON.parse(JSON.stringify(o));
+const esc=v=>String(v==null?'':v).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const uid=p=>p+'-'+Math.random().toString(36).slice(2,8);
+const validUrl=u=>/^(https?:\/\/|\/|data:image\/)/.test(String(u||'').trim());
+function slugify(s){return String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9\s-]/g,'').trim().replace(/\s+/g,'-').replace(/-+/g,'-')}
+function thumb(u){u=String(u||'');
+  if(u.includes('res.cloudinary.com')&&u.includes('/upload/'))return u.replace('/upload/','/upload/w_320,q_auto,f_auto/');
+  if(u.includes('images.unsplash.com'))return u+'?w=320&q=70&auto=format&fit=crop';
+  return u}
+function fmt(iso){if(!iso)return '—';const d=new Date(iso);if(isNaN(d))return iso;
+  return d.getDate()+'.'+String(d.getMonth()+1).padStart(2,'0')+'.'+d.getFullYear()}
+function nowLocal(){const d=new Date();d.setMinutes(d.getMinutes()-d.getTimezoneOffset());return d.toISOString().slice(0,16)}
+/* loại bỏ thẻ nguy hiểm — editor chỉ cho phép inline formatting */
+function clean(html){return String(html||'').replace(/<\s*(script|style|iframe|object|embed)[^>]*>[\s\S]*?<\s*\/\s*\1\s*>/gi,'').replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi,'')}
+
+/* ── nháp & trạng thái ── */
+/* nháp trùng hệt bản đang chạy thì coi như không có nháp */
+function hasDraft(){
+  const raw=localStorage.getItem(KEY);
+  if(!raw||!published)return !!raw;
+  try{return JSON.stringify(JSON.parse(raw))!==JSON.stringify(published)}catch(e){return true}}
+function paintState(){const el=$('state');
+  if(dirty){el.className='state dirty';el.textContent='Nháp chưa lưu'}
+  else if(hasDraft()){el.className='state saved';el.textContent='Đã lưu nháp'}
+  else{el.className='state';el.textContent='Trùng bản đang chạy'}
+  $('btn-discard').disabled=!dirty&&!hasDraft()}
+let autosaveT;
+function change(){dirty=true;paintState();renderAll();
+  clearTimeout(autosaveT);autosaveT=setTimeout(()=>{localStorage.setItem(KEY,JSON.stringify(D));dirty=false;paintState()},4000)}
+
+/* ── truy vấn ── */
+const cats=()=>D.categories.filter(c=>c.slug!=='all');
+const catName=s=>{const c=D.categories.find(x=>x.slug===s);return c?c.name:s};
+const mediaById=id=>D.media.find(m=>m.id===id);
+function isLive(a){if(a.status==='published')return true;
+  if(a.status==='scheduled'&&a.publishedAt)return new Date(a.publishedAt).getTime()<=Date.now();return false}
+
+/* ══ DASHBOARD ══ */
+function renderDash(){
+  const A=D.articles;
+  const s=[['Tổng bài',A.length],['Đã xuất bản',A.filter(a=>a.status==='published').length],
+    ['Nháp',A.filter(a=>a.status==='draft').length],['Hẹn giờ',A.filter(a=>a.status==='scheduled').length],
+    ['Lưu trữ',A.filter(a=>a.status==='archived').length],['Chuyên mục',cats().length]];
+  $('dash-stats').innerHTML=s.map(x=>`<div class="stat"><b>${x[1]}</b><span>${x[0]}</span></div>`).join('');
+  const recent=A.slice().sort((a,b)=>new Date(b.updatedAt||b.createdAt)-new Date(a.updatedAt||a.createdAt)).slice(0,6);
+  $('dash-recent').innerHTML=recent.map(a=>`<tr data-open="${a.id}" style="cursor:pointer">
+    <td class="t">${esc(a.title)}</td><td>${esc(catName(a.category))}</td>
+    <td><span class="pill ${a.status}">${statusLabel(a.status)}</span></td><td>${fmt(a.updatedAt)}</td></tr>`).join('');
+  $('dash-recent').querySelectorAll('[data-open]').forEach(tr=>tr.addEventListener('click',()=>openEditor(tr.dataset.open)));
+  $('n-art').textContent=A.length;$('n-cat').textContent=cats().length;
+  $('n-tag').textContent=D.tags.length;$('n-med').textContent=D.media.length;
+}
+const statusLabel=s=>({published:'Đã đăng',draft:'Nháp',scheduled:'Hẹn giờ',archived:'Lưu trữ'})[s]||s;
+
+/* ══ ARTICLES ══ */
+function renderArticles(){
+  const q=$('q').value.toLowerCase(), fc=$('f-cat').value, fs=$('f-status').value;
+  let list=D.articles.filter(a=>{
+    if(fc&&a.category!==fc)return false;
+    if(fs&&a.status!==fs)return false;
+    if(q&&!((a.title+' '+a.excerpt+' '+(a.tags||[]).join(' ')).toLowerCase().includes(q)))return false;
+    return true});
+  list.sort((a,b)=>{
+    let x=a[sortKey],y=b[sortKey];
+    if(sortKey==='publishedAt'||sortKey==='updatedAt'){x=new Date(x||0);y=new Date(y||0)}
+    if(sortKey==='category'){x=catName(x);y=catName(y)}
+    return x>y?sortDir:x<y?-sortDir:0});
+  $('art-rows').innerHTML=list.length?list.map(a=>`<tr>
+    <td class="t" style="display:flex;gap:11px;align-items:center">
+      <img class="thumb-sm" src="${esc(thumb((a.featuredImage||{}).url))}" alt="">
+      <span>${esc(a.title)}<small>/${esc(a.slug)}</small></span></td>
+    <td>${esc(catName(a.category))}</td>
+    <td><span class="pill ${a.status}">${statusLabel(a.status)}</span></td>
+    <td>${a.featured?'<span class="star">★</span>':''}</td>
+    <td>${fmt(a.publishedAt)}</td><td>${fmt(a.updatedAt)}</td>
+    <td><div class="rowacts">
+      <button class="mini" data-a="edit" data-id="${a.id}">Sửa</button>
+      <button class="mini" data-a="prev" data-id="${a.id}">Xem</button>
+      <button class="mini" data-a="dup" data-id="${a.id}">Nhân bản</button>
+      <button class="mini" data-a="arch" data-id="${a.id}">${a.status==='archived'?'Khôi phục':'Lưu trữ'}</button>
+      <button class="mini danger" data-a="del" data-id="${a.id}">Xoá</button>
+    </div></td></tr>`).join(''):'<tr><td colspan="7" style="padding:34px;text-align:center;color:var(--muted)">Không có bài nào khớp.</td></tr>';
+  $('art-rows').querySelectorAll('[data-a]').forEach(b=>b.addEventListener('click',()=>rowAction(b.dataset.a,b.dataset.id)));
+}
+function rowAction(act,id){
+  const a=D.articles.find(x=>x.id===id);if(!a)return;
+  if(act==='edit')return openEditor(id);
+  if(act==='prev')return window.open('../guide/article.html?cms=preview&slug='+encodeURIComponent(a.slug),'_blank');
+  if(act==='dup'){
+    const c=clone(a);c.id=uid('p');c.title=a.title+' (bản sao)';
+    c.slug=uniqueSlug(slugify(c.title));c.status='draft';c.featured=false;
+    c.publishedAt='';c.createdAt=c.updatedAt=new Date().toISOString().slice(0,16);
+    D.articles.unshift(c);change();return}
+  if(act==='arch'){a.status=a.status==='archived'?'draft':'archived';a.updatedAt=new Date().toISOString().slice(0,16);change();return}
+  if(act==='del'){
+    const used=D.articles.filter(x=>(x.relatedArticles||[]).includes(id)).map(x=>x.title);
+    let m='Xoá vĩnh viễn “'+a.title+'”?';
+    if(used.length)m+='\n\nCẢNH BÁO: '+used.length+' bài đang liên kết tới bài này ('+used.slice(0,3).join(', ')+').';
+    m+='\n\nNên dùng “Lưu trữ” thay vì xoá.';
+    if(!confirm(m))return;
+    D.articles.forEach(x=>{x.relatedArticles=(x.relatedArticles||[]).filter(r=>r!==id)});
+    D.articles=D.articles.filter(x=>x.id!==id);change()}
+}
+function uniqueSlug(base,ignoreId){
+  let s=base||'bai-viet',i=2;
+  while(D.articles.some(a=>a.slug===s&&a.id!==ignoreId))s=base+'-'+(i++);
+  return s}
+
+/* ══ EDITOR ══ */
+function blankArticle(){
+  const now=nowLocal();
+  return {id:uid('p'),title:'',slug:'',excerpt:'',category:cats()[0]?cats()[0].slug:'',tags:[],authorId:(D.authors[0]||{}).id,
+    featuredImage:null,galleryImages:[],status:'draft',publishedAt:'',updatedAt:now,createdAt:now,
+    readingTime:5,featured:false,sortOrder:D.articles.length+1,seoTitle:'',seoDescription:'',seoImage:null,
+    canonicalUrl:'',noIndex:false,ogTitle:'',ogDescription:'',ogImage:null,relatedArticles:[],content:[]}}
+
+function openEditor(id){
+  editingId=id||null;
+  E=id?clone(D.articles.find(a=>a.id===id)):blankArticle();
+  $('ed-title').textContent=id?'Sửa bài viết':'Bài viết mới';
+  fillEditor();$('ed-mask').classList.add('on');
+}
+function closeEditor(){$('ed-mask').classList.remove('on')}
+
+function fillEditor(){
+  $('e-title').value=E.title;$('e-slug').value=E.slug;$('e-excerpt').value=E.excerpt;
+  $('e-cat').innerHTML=cats().map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('');
+  $('e-cat').value=E.category;
+  $('e-author').innerHTML=D.authors.map(a=>`<option value="${esc(a.id)}">${esc(a.name)}</option>`).join('');
+  $('e-author').value=E.authorId||'';
+  $('e-status').value=E.status;$('e-date').value=(E.publishedAt||'').slice(0,16);
+  $('e-read').value=E.readingTime||'';$('e-sort').value=E.sortOrder||0;$('e-featured').checked=!!E.featured;
+  $('e-seot').value=E.seoTitle||'';$('e-seod').value=E.seoDescription||'';
+  $('e-canon').value=E.canonicalUrl||'';$('e-noindex').checked=!!E.noIndex;
+  $('e-ogt').value=E.ogTitle||'';$('e-ogd').value=E.ogDescription||'';
+  drawTags();drawBlocks();drawPicked();drawRelated();edValidate();
+}
+function edField(id,key,num){
+  $(id).addEventListener('input',()=>{E[key]=num?(parseInt($(id).value,10)||0):$(id).value;edValidate()})}
+edField('e-title','title');edField('e-excerpt','excerpt');edField('e-seot','seoTitle');
+edField('e-seod','seoDescription');edField('e-canon','canonicalUrl');edField('e-ogt','ogTitle');
+edField('e-ogd','ogDescription');edField('e-read','readingTime',1);edField('e-sort','sortOrder',1);
+$('e-slug').addEventListener('input',()=>{E.slug=slugify($('e-slug').value);edValidate()});
+$('e-reslug').addEventListener('click',()=>{E.slug=uniqueSlug(slugify(E.title),E.id);$('e-slug').value=E.slug;edValidate()});
+$('e-title').addEventListener('blur',()=>{if(!E.slug&&E.title){E.slug=uniqueSlug(slugify(E.title),E.id);$('e-slug').value=E.slug;edValidate()}});
+$('e-cat').addEventListener('change',()=>{E.category=$('e-cat').value;edValidate()});
+$('e-author').addEventListener('change',()=>{E.authorId=$('e-author').value});
+$('e-status').addEventListener('change',()=>{E.status=$('e-status').value;
+  if((E.status==='published'||E.status==='scheduled')&&!E.publishedAt){E.publishedAt=nowLocal();$('e-date').value=E.publishedAt}
+  edValidate()});
+$('e-date').addEventListener('input',()=>{E.publishedAt=$('e-date').value;edValidate()});
+$('e-featured').addEventListener('change',()=>{E.featured=$('e-featured').checked;edValidate()});
+$('e-noindex').addEventListener('change',()=>{E.noIndex=$('e-noindex').checked});
+
+/* tags */
+function drawTags(){
+  $('e-tags').innerHTML=(E.tags||[]).map((t,i)=>`<span class="chip">${esc(t)}<button type="button" data-i="${i}">×</button></span>`).join('')||'<span class="hint">Chưa có tag</span>';
+  $('e-tags').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{E.tags.splice(+b.dataset.i,1);drawTags()}));
+  const avail=D.tags.filter(t=>!(E.tags||[]).includes(t.name));
+  $('e-tagpick').innerHTML=avail.map(t=>`<span class="chip pickable" data-t="${esc(t.name)}">+ ${esc(t.name)}</span>`).join('');
+  $('e-tagpick').querySelectorAll('[data-t]').forEach(c=>c.addEventListener('click',()=>{E.tags=E.tags||[];E.tags.push(c.dataset.t);drawTags()}));
+}
+/* related */
+function drawRelated(){
+  $('e-rel').innerHTML=(E.relatedArticles||[]).map((id,i)=>{
+    const a=D.articles.find(x=>x.id===id);
+    return `<span class="chip">${esc(a?a.title:id)}<button type="button" data-i="${i}">×</button></span>`}).join('')||'<span class="hint">Tự động theo chuyên mục</span>';
+  $('e-rel').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{E.relatedArticles.splice(+b.dataset.i,1);drawRelated()}));
+  const pool=D.articles.filter(a=>a.id!==E.id&&!(E.relatedArticles||[]).includes(a.id));
+  $('e-reladd').innerHTML='<option value="">+ Thêm bài liên quan…</option>'+pool.map(a=>`<option value="${a.id}">${esc(a.title)}</option>`).join('');
+}
+$('e-reladd').addEventListener('change',()=>{
+  if(!$('e-reladd').value)return;
+  E.relatedArticles=E.relatedArticles||[];E.relatedArticles.push($('e-reladd').value);drawRelated()});
+
+/* ảnh đã chọn */
+function pickedHtml(img,empty){
+  if(!img||!img.url)return `<span class="hint">${empty}</span>`;
+  return `<img src="${esc(thumb(img.url))}" alt=""><span class="px">${esc(img.alt||'(chưa có alt)')}<br>${esc(img.url.slice(0,54))}…</span>`}
+function drawPicked(){
+  $('e-feat').innerHTML=pickedHtml(E.featuredImage,'Chưa chọn ảnh đại diện');
+  $('e-ogimg').innerHTML=pickedHtml(E.ogImage,'Mặc định dùng ảnh đại diện');
+  $('e-gal').innerHTML=(E.galleryImages||[]).map((g,i)=>`<figure><img src="${esc(thumb(g.url))}" alt=""><button type="button" data-i="${i}">×</button></figure>`).join('')||'<span class="hint">Chưa có ảnh</span>';
+  $('e-gal').querySelectorAll('button').forEach(b=>b.addEventListener('click',()=>{E.galleryImages.splice(+b.dataset.i,1);drawPicked()}));
+}
+document.querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>openPicker(b.dataset.pick)));
+
+/* block editor */
+const BLK_LABEL={h2:'Tiêu đề',h3:'Tiêu đề nhỏ',p:'Đoạn văn',ul:'Gạch đầu dòng',ol:'Danh sách số',note:'Trích dẫn',figure:'Ảnh',takeaway:'Tóm lại',divider:'Đường kẻ'};
+function drawBlocks(){
+  const box=$('e-blocks');box.innerHTML='';
+  (E.content||[]).forEach((b,i)=>{
+    const el=document.createElement('div');el.className='blk';
+    let body='';
+    if(b.type==='divider')body='<p class="hint" style="margin:0">Đường kẻ ngang</p>';
+    else if(b.type==='ul'||b.type==='ol'||b.type==='takeaway'){
+      body=(b.type==='takeaway'?`<input data-k="title" value="${esc(b.title||'Tóm lại')}" placeholder="Tiêu đề" style="margin-bottom:8px">`:'')+
+        `<textarea data-k="items" rows="${Math.max(3,(b.items||[]).length)}" placeholder="Mỗi dòng một mục">${esc((b.items||[]).join('\n'))}</textarea>`;
+    } else if(b.type==='figure'){
+      body=`<div class="gal" data-figimgs>${(b.images||[]).map((im,j)=>`<figure><img src="${esc(thumb(im.url))}" alt=""><button type="button" data-rm="${j}">×</button></figure>`).join('')||'<span class="hint">Chưa có ảnh</span>'}</div>
+        <div style="display:flex;gap:6px;margin-top:9px;align-items:center"><button type="button" class="mini" data-figadd>+ Chọn ảnh</button>
+        <label style="margin:0;display:flex;align-items:center;gap:6px;text-transform:none;letter-spacing:0;font-size:12px"><input type="checkbox" data-k="duo" ${b.duo?'checked':''} style="width:15px;height:15px;accent-color:var(--gold-dark)"> 2 ảnh cạnh nhau</label></div>
+        <input data-k="caption" value="${esc(b.caption||'')}" placeholder="Chú thích ảnh" style="margin-top:9px">`;
+    } else if(b.type==='note'){
+      body=`<textarea data-k="text" rows="2" placeholder="Câu trích">${esc(b.text||'')}</textarea><input data-k="cite" value="${esc(b.cite||'')}" placeholder="Người nói" style="margin-top:8px">`;
+    } else {
+      body=`<textarea data-k="text" rows="${b.type==='p'?4:1}">${esc(b.text||'')}</textarea>`;
+    }
+    el.innerHTML=`<div class="blk-bar"><span class="ty">${BLK_LABEL[b.type]||b.type}</span><div class="sp"></div>
+      <button type="button" data-m="up" ${i===0?'disabled':''}>↑</button>
+      <button type="button" data-m="down" ${i===E.content.length-1?'disabled':''}>↓</button>
+      <button type="button" data-m="del">✕</button></div><div class="blk-body">${body}</div>`;
+    el.querySelectorAll('[data-k]').forEach(f=>{
+      const ev=f.type==='checkbox'?'change':'input';
+      f.addEventListener(ev,()=>{
+        const k=f.dataset.k;
+        if(k==='items')b.items=f.value.split('\n').filter(x=>x.trim());
+        else if(f.type==='checkbox')b[k]=f.checked;
+        else b[k]=k==='text'?clean(f.value):f.value;
+      });
+    });
+    const fa=el.querySelector('[data-figadd]');
+    if(fa)fa.addEventListener('click',()=>openPicker({block:b}));
+    el.querySelectorAll('[data-rm]').forEach(x=>x.addEventListener('click',()=>{b.images.splice(+x.dataset.rm,1);drawBlocks()}));
+    el.querySelectorAll('[data-m]').forEach(x=>x.addEventListener('click',()=>{
+      const m=x.dataset.m;
+      if(m==='del'){if(confirm('Xoá khối này?'))E.content.splice(i,1)}
+      else{const j=m==='up'?i-1:i+1;[E.content[i],E.content[j]]=[E.content[j],E.content[i]]}
+      drawBlocks()}));
+    box.appendChild(el);
+  });
+  if(!E.content.length)box.innerHTML='<p class="hint">Chưa có nội dung. Bấm một nút bên dưới để thêm khối đầu tiên.</p>';
+}
+document.querySelectorAll('[data-add]').forEach(b=>b.addEventListener('click',()=>{
+  const t=b.dataset.add;
+  const blk={type:t};
+  if(t==='ul'||t==='ol')blk.items=[''];
+  if(t==='takeaway'){blk.title='Tóm lại';blk.items=['']}
+  if(t==='figure'){blk.images=[];blk.caption=''}
+  if(t==='note'){blk.text='';blk.cite=''}
+  if(t==='h2'||t==='h3'||t==='p')blk.text='';
+  E.content=E.content||[];E.content.push(blk);drawBlocks();
+}));
+
+/* validate editor */
+function edValidate(){
+  const errs=[],warns=[];
+  if(!E.title.trim())errs.push('Thiếu tiêu đề.');
+  if(!E.slug.trim())errs.push('Thiếu slug.');
+  else if(D.articles.some(a=>a.slug===E.slug&&a.id!==E.id))errs.push('Slug đã tồn tại ở bài khác.');
+  if(!E.category||!cats().some(c=>c.slug===E.category))errs.push('Chuyên mục không hợp lệ.');
+  if(!E.featuredImage||!E.featuredImage.url)errs.push('Thiếu ảnh đại diện (frontend cần ảnh này).');
+  else if(!E.featuredImage.alt)warns.push('Ảnh đại diện chưa có alt text.');
+  if((E.status==='published'||E.status==='scheduled')&&!E.publishedAt)errs.push('Chưa đặt ngày giờ đăng.');
+  if(!E.excerpt.trim())warns.push('Chưa có mô tả ngắn — card trên trang sẽ trống.');
+  if(!E.seoTitle)warns.push('Chưa có SEO title (sẽ dùng tiêu đề bài).');
+  if(!E.seoDescription)warns.push('Chưa có SEO description (sẽ dùng mô tả ngắn).');
+  if(E.status==='published'&&!(E.content||[]).length)warns.push('Bài chưa có nội dung.');
+  $('e-warn').innerHTML=(errs.length?`<div class="warnbox"><ul>${errs.map(e=>`<li>${esc(e)}</li>`).join('')}</ul></div>`:'')+
+    (warns.length?`<div class="warnbox" style="border-color:var(--line);background:var(--bg)"><ul>${warns.map(w=>`<li style="color:var(--muted)">${esc(w)}</li>`).join('')}</ul></div>`:'')+
+    (!errs.length&&!warns.length?'<div class="okbox"><ul><li>Sẵn sàng xuất bản.</li></ul></div>':'');
+  $('e-apply').disabled=errs.length>0;
+  $('slug-hint').innerHTML='URL: <code>/guide/'+esc(E.category||'…')+'/'+esc(E.slug||'…')+'</code>';
+  const sc=$('sched-hint');
+  if(E.status==='scheduled'&&E.publishedAt){
+    const t=new Date(E.publishedAt);
+    sc.textContent=t.getTime()>Date.now()?'Bài sẽ tự hiện khi tới '+t.toLocaleString('vi-VN')+'.':'Thời điểm đã qua — bài sẽ hiện ngay.'}
+  else sc.textContent='';
+  const st=$('seot-c'),sd=$('seod-c');
+  st.textContent=(E.seoTitle||'').length+'/60 ký tự'+((E.seoTitle||'').length>60?' — hơi dài':'');
+  sd.textContent=(E.seoDescription||'').length+'/160 ký tự'+((E.seoDescription||'').length>160?' — hơi dài':'');
+  return errs}
+
+$('e-apply').addEventListener('click',()=>{
+  if(edValidate().length)return;
+  E.slug=uniqueSlug(E.slug,E.id);
+  E.updatedAt=new Date().toISOString().slice(0,16);
+  if(!E.canonicalUrl)E.canonicalUrl='/guide/'+E.category+'/'+E.slug;
+  const old=editingId?D.articles.find(a=>a.id===editingId):null;
+  if(old&&old.slug!==E.slug&&old.status==='published'){
+    D.redirects=D.redirects||[];
+    D.redirects.push({from:'/guide/'+old.category+'/'+old.slug,to:'/guide/'+E.category+'/'+E.slug,createdAt:E.updatedAt})}
+  if(editingId){const i=D.articles.findIndex(a=>a.id===editingId);D.articles[i]=E}
+  else D.articles.unshift(E);
+  closeEditor();change();
+});
+$('e-previewbtn').addEventListener('click',()=>{
+  localStorage.setItem(KEY,JSON.stringify(withEditing()));
+  window.open('../guide/article.html?cms=preview&slug='+encodeURIComponent(E.slug||''),'_blank')});
+function withEditing(){
+  const d=clone(D);
+  const i=d.articles.findIndex(a=>a.id===E.id);
+  if(i>=0)d.articles[i]=clone(E);else d.articles.unshift(clone(E));
+  return d}
+$('ed-close').addEventListener('click',closeEditor);
+$('ed-mask').addEventListener('click',e=>{if(e.target===$('ed-mask'))closeEditor()});
+
+/* ══ MEDIA PICKER ══ */
+function openPicker(target){pickTarget=target;$('pick-q').value='';drawPicker();$('pick-mask').classList.add('on')}
+function drawPicker(){
+  const q=$('pick-q').value.toLowerCase();
+  const list=D.media.filter(m=>m.status!=='archived'&&(!q||(m.filename+' '+m.altText).toLowerCase().includes(q)));
+  $('pick-grid').innerHTML=list.map(m=>`<div class="mcard" data-id="${m.id}">
+    <img src="${esc(thumb(m.url))}" alt=""><div class="mi"><b>${esc(m.filename)}</b><span>${esc(m.altText||'chưa có alt')}</span></div></div>`).join('')
+    ||'<p class="hint">Không có ảnh nào. Dán link ở trên rồi bấm Thêm.</p>';
+  $('pick-grid').querySelectorAll('[data-id]').forEach(c=>c.addEventListener('click',()=>choose(c.dataset.id)));
+}
+function choose(id){
+  const m=mediaById(id);if(!m)return;
+  const ref={mediaId:m.id,url:m.url,alt:m.altText||''};
+  if(pickTarget==='featuredImage')E.featuredImage=ref;
+  else if(pickTarget==='ogImage')E.ogImage=ref;
+  else if(pickTarget==='gallery'){E.galleryImages=E.galleryImages||[];E.galleryImages.push(ref)}
+  else if(pickTarget&&pickTarget.block){pickTarget.block.images=pickTarget.block.images||[];pickTarget.block.images.push(ref);drawBlocks()}
+  drawPicked();edValidate();
+  if(pickTarget!=='gallery'&&!(pickTarget&&pickTarget.block))$('pick-mask').classList.remove('on');
+  else drawPicker();
+}
+$('pick-close').addEventListener('click',()=>$('pick-mask').classList.remove('on'));
+$('pick-mask').addEventListener('click',e=>{if(e.target===$('pick-mask'))$('pick-mask').classList.remove('on')});
+$('pick-q').addEventListener('input',drawPicker);
+$('pick-add').addEventListener('click',()=>{const u=$('pick-url').value.trim();if(!addMedia(u))return;$('pick-url').value='';drawPicker()});
+
+function addMedia(url){
+  if(!url)return false;
+  if(!validUrl(url)){alert('Link ảnh không hợp lệ. Cần bắt đầu bằng https://');return false}
+  if(D.media.some(m=>m.url===url)){alert('Ảnh này đã có trong thư viện.');return false}
+  const name=(url.split('/').pop()||'anh').split('?')[0].replace(/\.[a-z]+$/i,'');
+  const m={id:uid('m'),url:url,filename:name,altText:'',caption:'',width:null,height:null,fileSize:null,
+    mimeType:'image/jpeg',createdAt:new Date().toISOString().slice(0,10),status:'active'};
+  D.media.unshift(m);
+  const probe=new Image();probe.onload=()=>{m.width=probe.naturalWidth;m.height=probe.naturalHeight;renderMedia()};probe.src=url;
+  change();return true}
+
+/* ══ MEDIA VIEW ══ */
+function renderMedia(){
+  const q=$('m-q').value.toLowerCase();
+  const list=D.media.filter(m=>!q||(m.filename+' '+m.altText).toLowerCase().includes(q));
+  $('media-grid').innerHTML=list.map(m=>{
+    const used=D.articles.filter(a=>((a.featuredImage||{}).mediaId===m.id)||(a.galleryImages||[]).some(g=>g.mediaId===m.id)).length;
+    return `<div class="mcard" style="cursor:default">
+      <img src="${esc(thumb(m.url))}" alt="">
+      <div class="mi">
+        <input value="${esc(m.filename)}" data-m="${m.id}" data-k="filename" style="padding:6px 7px;font-size:11.5px">
+        <input value="${esc(m.altText)}" data-m="${m.id}" data-k="altText" placeholder="Alt text" style="padding:6px 7px;font-size:11.5px;margin-top:5px">
+        <span>${m.width?m.width+'×'+m.height:'—'} · dùng ở ${used} bài</span>
+        <div style="display:flex;gap:5px;margin-top:7px"><button class="mini danger" data-del="${m.id}" ${used?'disabled title="Đang được dùng"':''}>Xoá</button></div>
+      </div></div>`}).join('')||'<p class="hint">Thư viện trống.</p>';
+  $('media-grid').querySelectorAll('[data-m]').forEach(f=>f.addEventListener('input',()=>{
+    const m=mediaById(f.dataset.m);if(m){m[f.dataset.k]=f.value;dirty=true;paintState()}}));
+  $('media-grid').querySelectorAll('[data-del]').forEach(b=>b.addEventListener('click',()=>{
+    if(!confirm('Xoá ảnh khỏi thư viện?'))return;
+    D.media=D.media.filter(m=>m.id!==b.dataset.del);change()}));
+}
+$('m-add').addEventListener('click',()=>{if(addMedia($('m-url').value.trim()))$('m-url').value=''});
+$('m-q').addEventListener('input',renderMedia);
+
+/* ══ CATEGORIES ══ */
+function renderCats(){
+  $('cat-rows').innerHTML=cats().map((c,i,arr)=>`<div class="box" style="padding:14px 16px;margin-bottom:9px">
+    <div style="display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr) minmax(0,1.4fr) auto;gap:10px;align-items:end">
+      <div><label style="margin-top:0">Tên</label><input data-c="${c.id}" data-k="name" value="${esc(c.name)}"></div>
+      <div><label style="margin-top:0">Slug</label><input data-c="${c.id}" data-k="slug" value="${esc(c.slug)}"></div>
+      <div><label style="margin-top:0">Mô tả</label><input data-c="${c.id}" data-k="description" value="${esc(c.description||'')}"></div>
+      <div style="display:flex;gap:5px">
+        <button class="mini" data-cm="up" data-id="${c.id}" ${i===0?'disabled':''}>↑</button>
+        <button class="mini" data-cm="down" data-id="${c.id}" ${i===arr.length-1?'disabled':''}>↓</button>
+        <button class="mini danger" data-cm="del" data-id="${c.id}">Xoá</button>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:8px">
+      <div><label>SEO title</label><input data-c="${c.id}" data-k="seoTitle" value="${esc(c.seoTitle||'')}"></div>
+      <div><label>SEO description</label><input data-c="${c.id}" data-k="seoDescription" value="${esc(c.seoDescription||'')}"></div>
+    </div>
+    <p class="hint">${D.articles.filter(a=>a.category===c.slug).length} bài · URL <code>/guide/${esc(c.slug)}</code></p>
+  </div>`).join('');
+  $('cat-rows').querySelectorAll('[data-c]').forEach(f=>f.addEventListener('input',()=>{
+    const c=D.categories.find(x=>x.id===f.dataset.c);if(!c)return;
+    if(f.dataset.k==='slug'){const old=c.slug;c.slug=slugify(f.value);
+      D.articles.forEach(a=>{if(a.category===old)a.category=c.slug})}
+    else c[f.dataset.k]=f.value;
+    dirty=true;paintState()}));
+  $('cat-rows').querySelectorAll('[data-cm]').forEach(b=>b.addEventListener('click',()=>{
+    const list=cats(),i=list.findIndex(c=>c.id===b.dataset.id),c=list[i];
+    if(b.dataset.cm==='del'){
+      const n=D.articles.filter(a=>a.category===c.slug).length;
+      if(n){alert('Không xoá được: còn '+n+' bài trong chuyên mục này. Chuyển bài sang mục khác trước.');return}
+      if(!confirm('Xoá chuyên mục “'+c.name+'”?'))return;
+      D.categories=D.categories.filter(x=>x.id!==c.id)}
+    else{const j=b.dataset.cm==='up'?i-1:i+1;const o=list[i].order;list[i].order=list[j].order;list[j].order=o}
+    change()}));
+}
+$('new-cat').addEventListener('click',()=>{
+  D.categories.push({id:uid('c'),name:'Chuyên mục mới',slug:uid('muc'),description:'',image:null,
+    order:cats().length+1,status:'published',seoTitle:'',seoDescription:''});change()});
+
+/* ══ TAGS ══ */
+function renderTags(){
+  $('tag-list').innerHTML=D.tags.map(t=>{
+    const n=D.articles.filter(a=>(a.tags||[]).includes(t.name)).length;
+    return `<span class="chip">${esc(t.name)} <em style="font-style:normal;color:var(--muted)">${n}</em><button type="button" data-tg="${t.id}">×</button></span>`}).join('')||'<span class="hint">Chưa có tag.</span>';
+  $('tag-list').querySelectorAll('[data-tg]').forEach(b=>b.addEventListener('click',()=>{
+    D.tags=D.tags.filter(t=>t.id!==b.dataset.tg);change()}));
+}
+$('new-tag').addEventListener('click',()=>{
+  const n=$('new-tag-name').value.trim();if(!n)return;
+  if(D.tags.some(t=>t.name===n)){alert('Tag đã tồn tại.');return}
+  D.tags.push({id:uid('t'),name:n,slug:slugify(n)});$('new-tag-name').value='';change()});
+
+/* ══ SETTINGS ══ */
+function fillSettings(){
+  const s=D.site;
+  $('s-kicker').value=s.kicker||'';$('s-heading').value=s.heading||'';
+  $('s-lede').value=s.lede||'';$('s-note').value=s.note||'';
+  $('s-ctah').value=(s.cta||{}).heading||'';$('s-ctat').value=(s.cta||{}).text||'';
+  $('s-ctal').value=(s.cta||{}).label||'';$('s-ctahref').value=(s.cta||{}).href||'';
+}
+[['s-kicker','kicker'],['s-heading','heading'],['s-lede','lede'],['s-note','note']].forEach(([id,k])=>
+  $(id).addEventListener('input',()=>{D.site[k]=$(id).value;dirty=true;paintState()}));
+[['s-ctah','heading'],['s-ctat','text'],['s-ctal','label'],['s-ctahref','href']].forEach(([id,k])=>
+  $(id).addEventListener('input',()=>{D.site.cta=D.site.cta||{};D.site.cta[k]=$(id).value;dirty=true;paintState()}));
+
+/* ══ điều hướng ══ */
+document.querySelectorAll('.rail button.nav').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('.rail button.nav').forEach(x=>x.classList.toggle('on',x===b));
+  document.querySelectorAll('.view').forEach(v=>v.classList.toggle('on',v.id==='v-'+b.dataset.view));
+}));
+$('new-article').addEventListener('click',()=>openEditor(null));
+$('dash-new').addEventListener('click',()=>openEditor(null));
+['q','f-cat','f-status'].forEach(id=>$(id).addEventListener('input',renderArticles));
+document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('click',()=>{
+  const k=th.dataset.sort;sortDir=(sortKey===k)?-sortDir:-1;sortKey=k;renderArticles()}));
+
+/* ══ lưu / xuất bản ══ */
+$('btn-save').addEventListener('click',()=>{localStorage.setItem(KEY,JSON.stringify(D));dirty=false;paintState()});
+$('btn-discard').addEventListener('click',()=>{
+  if(!confirm('Bỏ mọi thay đổi và trở về nội dung đang chạy trên web?'))return;
+  localStorage.removeItem(KEY);D=clone(published);renderAll();dirty=false;paintState()});
+$('btn-preview').addEventListener('click',()=>{
+  localStorage.setItem(KEY,JSON.stringify(D));dirty=false;paintState();
+  window.open('../guide/index.html?cms=preview','_blank')});
+function modal(html){$('msg-body').innerHTML=html;$('msg-mask').classList.add('on')}
+$('msg-mask').addEventListener('click',e=>{if(e.target===$('msg-mask'))$('msg-mask').classList.remove('on')});
+
+$('btn-publish').addEventListener('click',()=>{
+  const errs=[],warns=[];
+  const live=D.articles.filter(a=>a.status==='published'||a.status==='scheduled');
+  live.forEach(a=>{
+    const tag='“'+(a.title||'(chưa có tên)')+'”';
+    if(!a.title.trim())errs.push('Có bài chưa có tiêu đề.');
+    if(!a.slug)errs.push(tag+': thiếu slug.');
+    if(!a.featuredImage||!a.featuredImage.url)errs.push(tag+': thiếu ảnh đại diện.');
+    if(!cats().some(c=>c.slug===a.category))errs.push(tag+': chuyên mục không tồn tại.');
+    if(!a.publishedAt)errs.push(tag+': chưa có ngày đăng.');
+    if(!a.excerpt)warns.push(tag+': chưa có mô tả ngắn.');
+    if(!a.seoDescription)warns.push(tag+': chưa có SEO description.');
+  });
+  const slugs={};D.articles.forEach(a=>{if(slugs[a.slug])errs.push('Slug trùng: '+a.slug);slugs[a.slug]=1});
+  if(!live.filter(a=>a.featured).length)warns.push('Chưa có bài nào được đánh dấu Nổi bật — trang sẽ dùng bài mới nhất.');
+  if(errs.length){
+    modal(`<h3>Chưa xuất bản được</h3><p>${errs.length} lỗi cần sửa:</p><ol>${errs.slice(0,10).map(e=>`<li>${esc(e)}</li>`).join('')}</ol>
+      <div class="m-acts"><button onclick="document.getElementById('msg-mask').classList.remove('on')">Để mình sửa</button></div>`);
+    return}
+  if(warns.length&&!confirm(warns.length+' cảnh báo (không chặn). Vẫn xuất bản?\n\n'+warns.slice(0,5).join('\n')))return;
+  doPublish();
+});
+function doPublish(){
+  const out=Object.assign({},D,{_type:'collection.guide',_id:'guide',
+    _rev:new Date().toISOString(),status:'published',
+    _note:'Nguồn dữ liệu Wedding Guide. Xuất từ admin/guide.html.'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));
+  a.download='guide.json';a.click();URL.revokeObjectURL(a.href);
+  localStorage.setItem(KEY,JSON.stringify(D));dirty=false;paintState();
+  modal(`<h3>Đã xuất file guide.json</h3><p>File vừa tải về máy bạn. Để website cập nhật:</p>
+    <ol><li>Mở thư mục website → <code>content/</code></li>
+    <li>Ghi đè <code>guide.json</code> bằng file vừa tải</li>
+    <li>Commit / upload lên hosting — bài mới hiện ngay trên <code>/guide</code> và trang chủ</li></ol>
+    <p style="margin-top:12px">Bài <b>Hẹn giờ</b> không cần làm gì thêm: website tự cho hiện khi tới giờ.</p>
+    <div class="m-acts"><button class="solid" onclick="document.getElementById('msg-mask').classList.remove('on')">Đã hiểu</button></div>`);
+}
+
+/* ══ render ══ */
+function renderAll(){
+  $('f-cat').innerHTML='<option value="">Mọi chuyên mục</option>'+cats().map(c=>`<option value="${esc(c.slug)}">${esc(c.name)}</option>`).join('');
+  renderDash();renderArticles();renderCats();renderTags();renderMedia();
+}
+
+(async function boot(){
+  try{const r=await fetch(SRC,{cache:'no-store'});if(r.ok)published=await r.json()}catch(e){}
+  if(!published)published={site:{},authors:[],categories:[],tags:[],media:[],articles:[],redirects:[]};
+  let draft=null;try{draft=JSON.parse(localStorage.getItem(KEY))}catch(e){}
+  D=clone(draft&&draft.articles?draft:published);
+  ['authors','categories','tags','media','articles','redirects'].forEach(k=>{D[k]=D[k]||[]});
+  D.site=D.site||{};
+  fillSettings();renderAll();paintState();
+})();
+</script>
+</body>
+</html>

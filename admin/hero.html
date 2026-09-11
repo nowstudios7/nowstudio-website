@@ -185,9 +185,13 @@ function change(){mark(true);push()}
 
 /* ── rail: danh sách section (thể hiện khả năng mở rộng) ── */
 function buildRail(){
-  const soon=['Bộ sưu tập','Feedback khách','Dịch vụ','About','Contact'];
+  const soon=['Dịch vụ','Feedback khách','About','Contact'];
   $('rail').innerHTML='<div class="rail-t">Section</div>'+
-    Object.keys(S.sections).map(k=>`<a href="#" class="on"><i>${S.sections[k].icon||'▣'}</i>${S.sections[k].title}</a>`).join('')+
+    Object.keys(S.sections).map(k=>{
+      const s=S.sections[k];
+      const href=s.admin||(k==='hero'?'hero.html':'#');
+      return `<a href="${href}" class="${k===SEC?'on':''}"><i>${s.icon||'▣'}</i>${s.title}</a>`;
+    }).join('')+
     soon.map(n=>`<span class="off"><i>▢</i>${n}<span class="soon">sắp có</span></span>`).join('');
 }
 

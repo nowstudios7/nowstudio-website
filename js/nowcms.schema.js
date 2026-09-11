@@ -82,6 +82,22 @@ window.NOWCMS_SCHEMA = {
         },
         { key: 'badge', target: 'hero.badge', type: 'text', group: 'facts', label: 'Dòng bên phải dải số liệu' }
       ]
+    },
+
+    gallery: {
+      title: 'Bộ sưu tập',
+      icon: '▤',
+      admin: 'gallery.html',
+      source: 'content/gallery.json',
+      sanityType: 'section.gallery'
+    },
+
+    guide: {
+      title: 'Wedding Guide',
+      icon: '▥',
+      admin: 'guide.html',
+      source: 'content/guide.json',
+      sanityType: 'collection.guide'
     }
 
     /* Section tiếp theo làm y hệt — ví dụ:
