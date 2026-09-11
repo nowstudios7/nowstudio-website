@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bài viết — NOW Wedding Guide | NOW·STUDIO</title>
+<meta name="description" content="">
+<link rel="canonical" href="/guide">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../sections/site-base.css">
+<link rel="stylesheet" href="guide.css">
+<script type="application/ld+json" id="ld-article">{}</script>
+</head>
+<body>
+
+<header>
+  <a href="../NOW Studio.html" class="logo" aria-label="Về trang chủ NOW Studio">NOW<span>·</span>STUDIO</a>
+  <nav>
+    <a href="../NOW Studio.html#featured">Bộ sưu tập</a>
+    <a href="../NOW Studio.html#services">Dịch vụ</a>
+    <a href="index.html" aria-current="page">Wedding Guide</a>
+    <a href="../NOW Studio.html#contact" class="nav-cta">Đặt Lịch</a>
+  </nav>
+</header>
+
+<main>
+  <article>
+    <header class="ar-head">
+      <div class="gd-wrap">
+        <nav class="ar-crumb" aria-label="Breadcrumb" data-guide="crumb"></nav>
+        <h1 data-guide="title"></h1>
+        <p class="ar-standfirst" data-guide="standfirst"></p>
+        <div data-guide="meta"></div>
+      </div>
+    </header>
+
+    <figure class="ar-hero">
+      <div class="gd-wrap" data-guide="hero"></div>
+    </figure>
+
+    <div class="ar-body" data-guide="body"></div>
+
+    <div class="ar-body">
+      <div class="ar-end"><span data-guide="author"></span><span class="gd-rule"></span><a href="index.html">Về Wedding Guide</a></div>
+    </div>
+  </article>
+
+  <section class="ar-related gd-sec" data-guide="rel-wrap" style="padding-top:0">
+    <div class="gd-wrap">
+      <div class="gd-sec-head"><h3>Đọc thêm</h3></div>
+      <div class="gd-grid" data-guide="related"></div>
+    </div>
+  </section>
+
+  <section class="gd-cta">
+    <div class="gd-wrap">
+      <span class="gd-kicker">NOW·STUDIO</span>
+      <h3 data-guide="cta-h"></h3>
+      <p data-guide="cta-p"></p>
+      <a class="gd-link" data-guide="cta-a"></a>
+    </div>
+  </section>
+</main>
+
+<footer class="gd-foot">
+  <div class="gd-wrap">
+    <a href="../NOW Studio.html" class="logo" aria-label="Về trang chủ NOW Studio">NOW<span>·</span>STUDIO</a>
+    <small>© 2026 NOW·STUDIO — Cần Thơ</small>
+    <a href="../NOW Studio.html#contact">Đặt lịch chụp →</a>
+  </div>
+</footer>
+
+<script src="guide.data.js"></script>
+<script src="guide.js"></script>
+<script>
+window.Guide.ready(function(G){
+  var D=G.data, S=D.site;
+  var $=function(k){return document.querySelector('[data-guide="'+k+'"]')};
+  var slug=new URLSearchParams(location.search).get('slug');
+  var a=(slug&&G.getArticleBySlug(slug))||G.getFeatured();
+  if(a&&!G.isLive(a)&&!/[?&]cms=preview/.test(location.search))a=G.getFeatured();
+  if(!a){document.querySelector('main').innerHTML='<div class="gd-wrap" style="padding:200px 56px"><p class="gd-empty">Không tìm thấy bài viết.</p></div>';return}
+  var c=G.catOf(a.category);
+
+  /* SEO */
+  document.title=a.seoTitle||(a.title+' | NOW·STUDIO');
+  document.querySelector('meta[name="description"]').setAttribute('content',a.seoDescription||a.excerpt||'');
+  if(a.canonicalUrl)document.querySelector('link[rel="canonical"]').setAttribute('href',a.canonicalUrl);
+  if(a.noIndex){var mr=document.createElement('meta');mr.name='robots';mr.content='noindex';document.head.appendChild(mr)}
+  function meta(p,v){if(!v)return;var m=document.createElement('meta');m.setAttribute('property',p);m.content=v;document.head.appendChild(m)}
+  meta('og:type','article');
+  meta('og:title',a.ogTitle||a.seoTitle||a.title);
+  meta('og:description',a.ogDescription||a.seoDescription||a.excerpt);
+  meta('og:image',((a.ogImage||a.seoImage||a.featuredImage)||{}).url||'');
+  document.getElementById('ld-article').textContent=JSON.stringify({
+    '@context':'https://schema.org','@type':'Article',headline:a.title,description:a.seoDescription||a.excerpt,
+    datePublished:a.publishedAt,dateModified:a.updatedAt||a.publishedAt,
+    author:{'@type':'Person',name:(a.author||{}).name||'NOW Studio'},
+    publisher:{'@type':'Organization',name:'NOW Studio'},
+    image:(a.seoImage||a.featuredImage||{}).url||'',
+    articleSection:c.name,keywords:(a.tags||[]).join(', ')
+  });
+
+  /* head */
+  $('crumb').innerHTML='<a href="index.html">Wedding Guide</a><span>/</span><a href="index.html?cat='+G.esc(c.slug)+'">'+G.esc(c.name)+'</a>';
+  $('title').textContent=a.title;
+  $('standfirst').textContent=a.excerpt;
+  $('meta').innerHTML=G.ArticleMeta(a,true);
+  $('hero').innerHTML=G.Media(a.featuredImage,{slot:'Hero — '+a.title,sizes:'(max-width:1024px) 100vw, 1128px',base:2000,eager:true});
+
+  /* body */
+  var blocks=a.content&&a.content.length?a.content:[
+    {type:'p',text:'Bài này đang được ekip hoàn thiện. Trong lúc chờ, bạn có thể đọc các bài khác trong Wedding Guide — hoặc nhắn thẳng cho tụi mình câu hỏi của bạn.'},
+    {type:'note',text:'Nội dung được viết từ kinh nghiệm đi chụp thật, nên tụi mình thà chậm còn hơn viết cho có.',cite:'NOW Studio'}
+  ];
+  $('body').innerHTML=G.ArticleContent(blocks);
+  $('author').textContent=(a.author?a.author.name+' — '+a.author.role:'NOW Studio');
+
+  /* related — ưu tiên relatedArticles, thiếu thì lấy cùng category */
+  var rel=G.getRelated(a,3);
+  $('related').innerHTML=G.ArticleGrid(rel);
+  $('rel-wrap').style.display=rel.length?'':'none';
+
+  /* cta */
+  $('cta-h').textContent=S.cta.heading;
+  $('cta-p').textContent=S.cta.text;
+  var ca=$('cta-a');ca.href=S.cta.href;ca.innerHTML=G.esc(S.cta.label)+' '+G.ARROW;
+
+  G.guardImages();G.reveal();
+  addEventListener('scroll',function(){
+    var h=document.querySelector('header');if(h)h.classList.toggle('scrolled',scrollY>10);
+  },{passive:true});
+});
+</script>
+</body>
+</html>

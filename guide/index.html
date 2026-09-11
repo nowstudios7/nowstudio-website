@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOW Wedding Guide — Những điều đáng biết trước ngày cưới | NOW·STUDIO</title>
+<meta name="description" content="Kinh nghiệm chuẩn bị cưới từ NOW Studio: pre-wedding, timeline ngày cưới, makeup, váy cưới, ngân sách và checklist — viết bởi ekip đang đi chụp mỗi cuối tuần.">
+<link rel="canonical" href="/guide">
+<meta property="og:type" content="website">
+<meta property="og:title" content="NOW Wedding Guide">
+<meta property="og:description" content="Những điều đáng biết trước ngày cưới — kinh nghiệm thực tế từ NOW Studio.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../sections/site-base.css">
+<link rel="stylesheet" href="guide.css">
+<script type="application/ld+json" id="ld-blog">{"@context":"https://schema.org","@type":"Blog","name":"NOW Wedding Guide","publisher":{"@type":"Organization","name":"NOW Studio"}}</script>
+</head>
+<body>
+
+<header>
+  <a href="../NOW Studio.html" class="logo" aria-label="Về trang chủ NOW Studio">NOW<span>·</span>STUDIO</a>
+  <nav>
+    <a href="../NOW Studio.html#featured">Bộ sưu tập</a>
+    <a href="../NOW Studio.html#services">Dịch vụ</a>
+    <a href="index.html" aria-current="page">Wedding Guide</a>
+    <a href="../NOW Studio.html#contact" class="nav-cta">Đặt Lịch</a>
+  </nav>
+</header>
+
+<main>
+  <!-- INTRO -->
+  <section class="gd-intro">
+    <div class="gd-wrap">
+      <div>
+        <span class="gd-kicker" data-guide="kicker"></span>
+        <h1 data-guide="heading"></h1>
+      </div>
+      <div>
+        <p class="gd-lede" data-guide="lede"></p>
+        <p class="gd-lede" data-guide="note"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATEGORY NAV -->
+  <nav class="gd-cats" aria-label="Chủ đề">
+    <div class="gd-wrap" data-guide="categories"></div>
+  </nav>
+
+  <!-- FEATURED -->
+  <section class="gd-featured reveal" aria-labelledby="feat-h">
+    <div class="gd-wrap" data-guide="featured"></div>
+  </section>
+
+  <!-- LATEST -->
+  <section class="gd-sec" aria-labelledby="latest-h">
+    <div class="gd-wrap">
+      <div class="gd-sec-head">
+        <h3 id="latest-h">Bài mới nhất</h3>
+        <span class="cnt" data-guide="count"></span>
+      </div>
+      <div class="gd-grid" data-guide="grid-a"></div>
+    </div>
+  </section>
+
+  <!-- FEATURE BREAK -->
+  <section class="gd-break reveal" data-guide="break-wrap">
+    <div data-guide="break"></div>
+  </section>
+
+  <!-- MORE -->
+  <section class="gd-sec" data-guide="more-wrap">
+    <div class="gd-wrap">
+      <div class="gd-sec-head"><h3>Đọc tiếp</h3></div>
+      <div class="gd-duo" data-guide="duo"></div>
+      <div class="gd-grid" data-guide="grid-b" style="margin-top:64px"></div>
+      <div class="gd-more" data-guide="loadmore"></div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="gd-cta">
+    <div class="gd-wrap">
+      <span class="gd-kicker">NOW·STUDIO</span>
+      <h3 data-guide="cta-h"></h3>
+      <p data-guide="cta-p"></p>
+      <a class="gd-link" data-guide="cta-a"></a>
+    </div>
+  </section>
+</main>
+
+<footer class="gd-foot">
+  <div class="gd-wrap">
+    <a href="../NOW Studio.html" class="logo" aria-label="Về trang chủ NOW Studio">NOW<span>·</span>STUDIO</a>
+    <small>© 2026 NOW·STUDIO — Cần Thơ</small>
+    <a href="../NOW Studio.html#contact">Đặt lịch chụp →</a>
+  </div>
+</footer>
+
+<script src="guide.data.js"></script>
+<script src="guide.js"></script>
+<script>
+window.Guide.ready(function(G){
+  var D=G.data, S=D.site;
+  var $=function(k){return document.querySelector('[data-guide="'+k+'"]')};
+  var PAGE=6, shown=PAGE, active='all';
+
+  /* intro */
+  $('kicker').textContent=S.kicker;
+  $('heading').innerHTML=G.rich(S.heading);
+  $('lede').textContent=S.lede;
+  $('note').textContent=S.note;
+  $('cta-h').textContent=S.cta.heading;
+  $('cta-p').textContent=S.cta.text;
+  var ca=$('cta-a');ca.href=S.cta.href;ca.innerHTML=G.esc(S.cta.label)+' '+G.ARROW;
+
+  /* đọc category từ URL — /guide?cat=pre-wedding, sẵn sàng cho /guide/pre-wedding */
+  var q=new URLSearchParams(location.search);
+  if(q.get('cat'))active=q.get('cat');
+
+  var all=G.getArticles({});
+  var cats=G.getCategories(true);
+
+  function listFor(slug){return G.getArticles(slug==='all'?{}:{category:slug})}
+
+  function render(){
+    var list=listFor(active);
+    var feat=list.filter(function(a){return a.featured})[0]||list[0];
+    var rest=list.filter(function(a){return a!==feat});
+
+    /* nav */
+    $('categories').innerHTML=G.CategoryNavigation(cats,active);
+    $('categories').querySelectorAll('.gd-cat').forEach(function(b){
+      b.addEventListener('click',function(){
+        active=b.dataset.slug;shown=PAGE;
+        history.replaceState(null,'',active==='all'?location.pathname:'?cat='+active);
+        render();
+        var y=document.querySelector('.gd-cats').offsetTop;window.scrollTo({top:y,behavior:'smooth'});
+      });
+    });
+
+    /* featured */
+    $('featured').innerHTML=feat?G.FeaturedArticle(feat):'';
+    document.querySelector('.gd-featured').style.display=feat?'':'none';
+
+    /* nhịp: grid A (3) → feature break (1) → duo (2) → grid B (còn lại) */
+    var a=rest.slice(0,3), br=rest[3], duo=rest.slice(4,6), b=rest.slice(6,shown+3);
+    $('count').textContent=list.length+' bài';
+    $('grid-a').innerHTML=G.ArticleGrid(a);
+    $('break-wrap').style.display=br?'':'none';
+    if(br)$('break').innerHTML=G.FeatureBreak(br);
+    $('duo').innerHTML=duo.map(function(x){return G.ArticleCard(x,{sizes:'(max-width:768px) 100vw, 560px'})}).join('');
+    $('grid-b').innerHTML=b.length?G.ArticleGrid(b):'';
+    $('grid-b').style.display=b.length?'':'none';
+    $('more-wrap').style.display=(duo.length||b.length)?'':'none';
+
+    var remain=rest.length-(6+b.length);
+    $('loadmore').innerHTML=remain>0?'<button type="button">Xem thêm '+remain+' bài</button>':'';
+    var btn=$('loadmore').querySelector('button');
+    if(btn)btn.addEventListener('click',function(){shown+=PAGE;render()});
+
+    G.guardImages();G.reveal();
+  }
+  render();
+
+  window.guideRender=function(){render()};
+  addEventListener('scroll',function(){
+    var h=document.querySelector('header');
+    if(h)h.classList.toggle('scrolled',scrollY>10);
+  },{passive:true});
+});
+</script>
+</body>
+</html>

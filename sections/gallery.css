@@ -1,0 +1,163 @@
+/* ─────────────────────────────────────────────────────────────
+   NOW·STUDIO — GALLERY (2 tầng)
+   1) #featured  — Featured Work, nền tối, 3×3
+   2) #editorial — Editorial Story Gallery, nền kem, masonry bất đối xứng
+   Chỉ dùng biến màu & font sẵn có của site. Không đụng section khác.
+   ───────────────────────────────────────────────────────────── */
+
+/* ══════════ chung ══════════ */
+.g-eyebrow{font-size:10px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold-dark)}
+.g-head{font-family:var(--serif);font-weight:300;letter-spacing:-.02em;text-wrap:balance}
+.g-desc{font-family:var(--serif);font-size:19px;font-weight:300;line-height:1.6;text-wrap:pretty}
+.g-more{display:inline-flex;align-items:center;gap:11px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;text-decoration:none;padding-bottom:8px;border-bottom:1px solid transparent;transition:color .25s,border-color .25s}
+.g-more svg{transition:transform .25s}
+.g-more:hover svg{transform:translateX(5px)}
+.g-fig{position:relative;overflow:hidden;margin:0;cursor:zoom-in;background:#e8ddd0}
+.g-fig img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.22,.61,.36,1),opacity .4s}
+.g-fig:hover img{transform:scale(1.035)}
+.g-fig .g-meta{position:absolute;left:0;right:0;bottom:0;display:flex;align-items:baseline;gap:10px;padding:16px 18px;opacity:0;transform:translateY(6px);transition:opacity .3s,transform .3s;color:#fff;background:linear-gradient(to top,rgba(20,17,14,.62),transparent)}
+.g-fig:hover .g-meta,.g-fig:focus-visible .g-meta{opacity:1;transform:none}
+.g-fig .g-meta b{font-family:var(--serif);font-weight:400;font-size:15px;letter-spacing:.02em}
+.g-fig .g-meta span{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.85)}
+.g-fig:focus-visible{outline:1px solid var(--gold);outline-offset:3px}
+.g-fig.is-missing{background:repeating-linear-gradient(135deg,#efe8de,#efe8de 12px,#e9e0d3 12px,#e9e0d3 24px)}
+.g-fig.is-missing img{opacity:0}
+.g-fig.is-missing::after{content:attr(data-label);position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;text-align:center;font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+
+/* ══════════ 1 · FEATURED WORK (dark) ══════════ */
+#featured{background:#14110e;padding:132px 60px 140px;color:#fff}
+#featured .f-inner{max-width:1240px;margin:0 auto}
+#featured .f-head{max-width:640px;margin:0 auto 64px;text-align:center}
+#featured .g-eyebrow{color:var(--gold)}
+#featured .g-head{font-size:clamp(38px,4.4vw,60px);line-height:1.06;color:#fff;margin-top:22px}
+#featured .g-desc{color:rgba(255,255,255,.6);font-size:18px;margin-top:20px;max-width:46ch;margin-left:auto;margin-right:auto}
+#featured .f-rule{width:52px;height:1px;background:var(--gold);margin:34px auto 0}
+.f-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.f-grid .g-fig{aspect-ratio:4/5;background:#211c17}
+.f-grid .g-fig:nth-child(5){aspect-ratio:4/5}
+.f-grid .g-fig.is-missing{background:repeating-linear-gradient(135deg,#2a231c,#2a231c 12px,#241e18 12px,#241e18 24px)}
+.f-grid .g-fig.is-missing::after{color:#cdc3b8}
+.f-grid:hover .g-fig img{opacity:.55}
+.f-grid .g-fig:hover img{opacity:1}
+#featured .f-foot{display:flex;justify-content:center;margin-top:62px}
+#featured .g-more{color:rgba(255,255,255,.82);border-color:rgba(201,168,118,.45)}
+#featured .g-more:hover{color:#fff;border-color:var(--gold)}
+
+/* ══════════ 2 · EDITORIAL STORIES — 3 cột art-directed ══════════ */
+#editorial{background:var(--bg);padding:140px 60px 150px}
+#editorial .e-inner{max-width:1180px;margin:0 auto}
+/* intro: headline trái · philosophy phải, canh phải như reference */
+#editorial .e-head{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:60px;align-items:start;margin-bottom:92px}
+#editorial .g-eyebrow{margin-bottom:22px;display:block}
+#editorial .g-head{font-size:clamp(28px,2.5vw,36px);line-height:1.32;letter-spacing:.01em;color:var(--dark);text-transform:uppercase;font-weight:300}
+#editorial .g-head em{font-style:italic;text-transform:none;color:var(--gold-dark)}
+#editorial .g-head+.g-head{margin-top:30px}
+#editorial .e-philosophy{align-self:end;text-align:right;font-family:var(--serif);font-size:16.5px;font-weight:300;line-height:1.85;color:var(--mid);max-width:44ch;margin-left:auto;text-wrap:pretty}
+/* 3 cột, gap trong cột nhỏ → dòng kể liên tục */
+.e-cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr) minmax(0,1fr);gap:20px;align-items:start}
+.e-col{display:flex;flex-direction:column;gap:15px;min-width:0}
+.e-col.offset-1{margin-top:52px}
+.e-col.offset-2{margin-top:26px}
+.e-col .g-fig{width:100%}
+.e-cap{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--muted);margin-top:9px}
+/* đóng section: whitespace lớn → label nhỏ → cụm typography → CTA nhỏ */
+#editorial .e-foot{margin-top:158px;text-align:center}
+#editorial .e-label{font-size:9px;letter-spacing:.38em;text-transform:uppercase;color:var(--muted);font-weight:300}
+.e-sig{display:flex;flex-direction:column;align-items:center;gap:20px;margin:52px auto 0;max-width:720px}
+.e-sig-row{display:flex;align-items:baseline;justify-content:center;flex-wrap:nowrap;max-width:100%}
+.e-sig span{font-family:var(--serif);font-weight:300;color:var(--dark);text-transform:uppercase;line-height:1;white-space:nowrap}
+.e-sig .lv1{font-size:40px;letter-spacing:.09em}
+.e-sig .lv2{font-size:31px;letter-spacing:.13em}
+.e-sig .lv3{font-size:21px;letter-spacing:.15em}
+.e-sig .lv4{font-size:16px;letter-spacing:.18em;color:var(--mid)}
+/* lệch nhẹ để không đối xứng cứng, đúng tinh thần editorial */
+.e-sig-row.r2{transform:translateX(14px)}
+.e-sig-row.r3{gap:74px;margin-top:8px}
+.e-sig-row.r4{gap:56px;margin-top:6px;transform:translateX(-10px)}
+.e-sig-row.r4 .lv4:nth-child(2){font-size:19px;color:var(--dark);transform:translateY(-3px)}
+#editorial .e-foot .e-cta{display:inline-flex;align-items:center;gap:10px;white-space:nowrap;margin-top:86px;font-size:9.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--mid);text-decoration:none;background:#f2ece2;border:1px solid rgba(201,168,118,.28);border-radius:1px;padding:15px 30px;transition:background .25s,color .25s,border-color .25s}
+#editorial .e-foot .e-cta:hover{background:#ebe2d3;color:var(--dark);border-color:var(--gold)}
+#editorial .e-foot .e-cta svg{transition:transform .25s}
+#editorial .e-foot .e-cta:hover svg{transform:translateX(4px)}
+
+/* ══════════ lightbox ══════════ */
+#glb{position:fixed;inset:0;z-index:800;display:none;background:rgba(14,12,10,.97);align-items:center;justify-content:center}
+#glb.open{display:flex}
+#glb .glb-stage{position:relative;display:flex;align-items:center;justify-content:center;width:100%;height:100%;padding:70px 84px}
+#glb img{max-width:100%;max-height:100%;object-fit:contain;opacity:0;transition:opacity .32s}
+#glb img.in{opacity:1}
+#glb .glb-info{position:absolute;left:50%;transform:translateX(-50%);bottom:26px;display:flex;align-items:baseline;gap:12px;color:rgba(255,255,255,.72);white-space:nowrap}
+#glb .glb-info b{font-family:var(--serif);font-weight:400;font-size:16px;color:#fff}
+#glb .glb-info span{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase}
+#glb button{position:absolute;background:none;border:0;color:rgba(255,255,255,.72);cursor:pointer;transition:color .2s}
+#glb button:hover{color:#fff}
+#glb .glb-x{top:24px;right:28px;font-size:26px;line-height:1;width:44px;height:44px}
+#glb .glb-p,#glb .glb-n{top:50%;transform:translateY(-50%);width:56px;height:56px;font-size:20px}
+#glb .glb-p{left:20px}#glb .glb-n{right:20px}
+#glb .glb-count{position:absolute;top:32px;left:32px;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* ══════════ tablet ══════════ */
+@media (max-width:1024px){
+  #featured{padding:104px 40px 110px}
+  .f-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  #editorial{padding:112px 40px 120px}
+  #editorial .e-head{grid-template-columns:1fr;gap:24px;margin-bottom:60px}
+  #editorial .e-philosophy{text-align:left;margin-left:0}
+  .e-cols{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px}
+  .e-col.offset-1{margin-top:38px}
+  .e-col.offset-2{margin-top:0}
+  #editorial .e-foot{margin-top:118px}
+  .e-sig .lv1{font-size:32px}.e-sig .lv2{font-size:25px}
+  .e-sig .lv3{font-size:18px}.e-sig .lv4{font-size:14px}
+  .e-sig-row.r3{gap:38px}.e-sig-row.r4{gap:28px}
+  .e-sig-row.r4 .lv4:nth-child(2){font-size:16px}
+  #glb .glb-stage{padding:60px 20px}
+}
+
+/* ══════════ mobile ══════════ */
+@media (max-width:768px){
+  #featured{padding:76px 20px 84px}
+  #featured .f-head{margin-bottom:38px}
+  #featured .g-desc{font-size:16.5px;margin-top:16px}
+  #featured .f-rule{margin-top:26px}
+  .f-grid{grid-template-columns:1fr;gap:10px}
+  .f-grid .g-fig{aspect-ratio:4/5}
+  .f-grid:hover .g-fig img{opacity:1}
+  #featured .f-foot{margin-top:42px}
+  #featured .g-more,#editorial .g-more{min-height:48px;align-items:center;font-size:11.5px}
+
+  #editorial{padding:82px 20px 90px}
+  #editorial .e-head{margin-bottom:44px}
+  #editorial .g-head{font-size:22px;line-height:1.36}
+  #editorial .e-philosophy{font-size:16px;max-width:none}
+  /* mobile: 1 cột, giữ nhịp bằng tỷ lệ ảnh khác nhau */
+  .e-cols{grid-template-columns:minmax(0,1fr);gap:16px}
+  .e-col{gap:16px}
+  .e-col.offset-1,.e-col.offset-2{margin-top:0}
+  #editorial .e-foot{margin-top:96px}
+  .e-sig{gap:16px;margin-top:42px;max-width:none}
+  .e-sig .lv1{font-size:27px;letter-spacing:.07em}
+  .e-sig .lv2{font-size:22px;letter-spacing:.1em}
+  .e-sig .lv3{font-size:16px}
+  .e-sig .lv4{font-size:13.5px}
+  .e-sig-row.r2{transform:none}
+  .e-sig-row{flex-wrap:wrap;row-gap:12px}
+  .e-sig-row.r3{gap:22px}
+  .e-sig-row.r4{gap:18px;transform:none}
+  .e-sig-row.r4 .lv4:nth-child(2){font-size:15px}
+  #editorial .e-foot .e-cta{margin-top:60px;min-height:48px;padding:0 26px}
+  .g-fig .g-meta{opacity:1;transform:none;padding:13px 15px}
+  .g-fig:hover img{transform:none}
+  #editorial .e-foot{margin-top:60px;padding-top:44px}
+  #glb .glb-stage{padding:64px 12px}
+  #glb .glb-p,#glb .glb-n{width:48px;height:48px;bottom:auto}
+  #glb .glb-p{left:2px}#glb .glb-n{right:2px}
+}
+@media (max-width:380px){
+  #featured{padding:66px 16px 72px}
+  #editorial{padding:72px 16px 80px}
+}
+@media (prefers-reduced-motion:reduce){
+  .g-fig img,#glb img,.g-fig .g-meta{transition:none}
+  .g-fig:hover img{transform:none}
+}
