@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — NOW·STUDIO</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --gold: #c9a876; --gold-light: #e2cfb0; --gold-dark: #a8864f;
+    --bg: #faf8f5; --white: #ffffff; --dark: #1a1714;
+    --mid: #4a4440; --muted: #8a7e76;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', Helvetica, sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--sans); background: var(--bg); color: var(--dark); }
+
+  /* HEADER */
+  header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 60px; height: 72px;
+    background: rgba(250,248,245,0.94);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(201,168,118,0.18);
+  }
+  .logo { font-family: var(--serif); font-size: 22px; font-weight: 500; letter-spacing: 0.12em; color: var(--dark); text-decoration: none; }
+  .logo span { color: var(--gold); }
+  nav { display: flex; gap: 36px; align-items: center; }
+  nav a { font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); text-decoration: none; transition: color .2s; }
+  nav a:hover, nav a.active { color: var(--gold-dark); }
+  .nav-cta { background: var(--gold); color: var(--white) !important; padding: 10px 24px; }
+  .nav-cta:hover { background: var(--gold-dark) !important; }
+
+  /* HERO */
+  .blog-hero {
+    padding: 160px 60px 80px;
+    background: var(--white);
+    border-bottom: 1px solid rgba(201,168,118,0.15);
+    text-align: center;
+  }
+  .eyebrow {
+    font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 20px;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+  }
+  .eyebrow::before, .eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--gold); }
+  h1 { font-family: var(--serif); font-size: clamp(40px, 5vw, 72px); font-weight: 400; color: var(--dark); margin-bottom: 12px; }
+  .hero-sub { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--gold-dark); margin-bottom: 20px; }
+  .hero-desc { font-size: 15px; color: var(--muted); max-width: 440px; margin: 0 auto; line-height: 1.75; }
+
+  /* FILTER */
+  .filter-bar {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 36px 60px 0;
+  }
+  .filter-btn {
+    font-family: var(--sans); font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 9px 20px; border: 1px solid rgba(201,168,118,0.3); background: none;
+    color: var(--muted); cursor: pointer; transition: all .2s;
+  }
+  .filter-btn.active, .filter-btn:hover { background: var(--gold); color: var(--white); border-color: var(--gold); }
+
+  /* GRID */
+  .blog-container { max-width: 1300px; margin: 0 auto; padding: 60px 60px 120px; }
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px 36px; }
+
+  .blog-card {
+    display: flex; flex-direction: column; text-decoration: none; color: inherit;
+  }
+  .blog-thumb {
+    width: 100%; aspect-ratio: 4/3; overflow: hidden;
+    background: #e0d4c2; margin-bottom: 24px; position: relative;
+  }
+  .thumb-fill {
+    width: 100%; height: 100%; transition: transform .5s ease;
+    display: flex; align-items: center; justify-content: center;
+    position: relative;
+  }
+  .thumb-fill::before {
+    content: ''; position: absolute; inset: 0;
+    background: repeating-linear-gradient(-45deg, transparent, transparent 30px, rgba(201,168,118,0.06) 30px, rgba(201,168,118,0.06) 31px);
+  }
+  .blog-card:hover .thumb-fill { transform: scale(1.04); }
+  .thumb-label { font-family: monospace; font-size: 10px; color: rgba(168,134,79,0.45); letter-spacing: 0.1em; text-transform: uppercase; text-align: center; position: relative; }
+
+  .blog-cat {
+    font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+  }
+  .blog-cat::before { content: ''; display: block; width: 20px; height: 1px; background: var(--gold); }
+  .blog-title {
+    font-family: var(--serif); font-size: 24px; font-weight: 400;
+    color: var(--dark); line-height: 1.3; margin-bottom: 12px;
+    text-wrap: pretty; transition: color .2s;
+  }
+  .blog-card:hover .blog-title { color: var(--gold-dark); }
+  .blog-excerpt { font-size: 14px; color: var(--muted); line-height: 1.7; flex: 1; margin-bottom: 20px; }
+  .blog-meta {
+    display: flex; align-items: center; justify-content: space-between;
+    font-size: 12px; color: var(--muted);
+    border-top: 1px solid rgba(201,168,118,0.2); padding-top: 16px;
+  }
+  .blog-read-more {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold);
+    transition: gap .2s;
+  }
+  .blog-card:hover .blog-read-more { gap: 10px; }
+
+  /* FEATURED (first card large) */
+  .blog-card.featured {
+    grid-column: span 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 52px;
+    align-items: center;
+    padding-bottom: 48px;
+    border-bottom: 1px solid rgba(201,168,118,0.15);
+    margin-bottom: 12px;
+  }
+  .blog-card.featured .blog-thumb { aspect-ratio: 16/10; margin-bottom: 0; }
+  .blog-card.featured .blog-title { font-size: 36px; }
+  .blog-card.featured .blog-excerpt { font-size: 15px; }
+
+  /* FOOTER */
+  footer { background: var(--dark); padding: 40px 60px; color: rgba(255,255,255,0.4); }
+  .footer-inner { display: flex; align-items: center; justify-content: space-between; }
+  .footer-inner .logo { color: var(--white); }
+  .footer-inner a { color: rgba(255,255,255,0.4); text-decoration: none; font-size: 13px; transition: color .2s; }
+  .footer-inner a:hover { color: var(--gold); }
+
+  @media (max-width: 960px) {
+    header { padding: 0 24px; }
+    .blog-hero, .filter-bar, .blog-container { padding-left: 24px; padding-right: 24px; }
+    .blog-grid { grid-template-columns: 1fr; }
+    .blog-card.featured { grid-column: span 1; grid-template-columns: 1fr; }
+    .blog-card.featured .blog-thumb { margin-bottom: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="../NOW Studio.html" class="logo">NOW<span>·</span>STUDIO</a>
+  <nav>
+    <a href="../NOW Studio.html#portfolio">Portfolio</a>
+    <a href="../NOW Studio.html#services">Services</a>
+    <a href="index.html" class="active">Blog</a>
+    <a href="../NOW Studio.html#contact" class="nav-cta">Đặt Lịch</a>
+  </nav>
+</header>
+
+<div class="blog-hero">
+  <div class="eyebrow">Câu Chuyện & Chia Sẻ</div>
+  <h1>Blog</h1>
+  <p class="hero-sub">Từ studio đến bạn</p>
+  <p class="hero-desc">Những tips hữu ích, câu chuyện phía sau ống kính và cảm hứng cho ngày cưới của bạn.</p>
+</div>
+
+<div class="filter-bar">
+  <button class="filter-btn active" onclick="filterPosts('all', this)">Tất Cả</button>
+  <button class="filter-btn" onclick="filterPosts('tips', this)">Tips & Advice</button>
+  <button class="filter-btn" onclick="filterPosts('beauty', this)">Beauty</button>
+  <button class="filter-btn" onclick="filterPosts('photography', this)">Photography</button>
+  <button class="filter-btn" onclick="filterPosts('stories', this)">Stories</button>
+</div>
+
+<div class="blog-container">
+  <div class="blog-grid" id="blog-grid">
+
+    <!-- Featured -->
+    <a class="blog-card featured" href="chon-dia-diem-chup-anh-cuoi.html" data-cat="tips">
+      <div class="blog-thumb">
+        <div class="thumb-fill" style="background: linear-gradient(135deg,#e6d9cc,#d0bda8);">
+          <span class="thumb-label">outdoor location<br>hà nội</span>
+        </div>
+      </div>
+      <div>
+        <div class="blog-cat">Tips & Advice</div>
+        <div class="blog-title">Chọn Địa Điểm Chụp Ảnh Cưới Đẹp Tại Hà Nội</div>
+        <p class="blog-excerpt">Hà Nội có vô số địa điểm lý tưởng cho ảnh cưới — từ phố cổ thơ mộng đến hồ Tây lãng mạn. Chúng tôi tổng hợp những góc chụp đẹp nhất cùng lời khuyên về thời điểm và ánh sáng lý tưởng để giúp cặp đôi lựa chọn được bối cảnh ưng ý nhất.</p>
+        <div class="blog-meta">
+          <span>15 tháng 3, 2024 · 6 phút đọc</span>
+          <span class="blog-read-more">Đọc tiếp <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 4h10M7 1l4 3-4 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        </div>
+      </div>
+    </a>
+
+    <!-- Post 2 -->
+    <a class="blog-card" href="bi-quyet-trang-diem-co-dau.html" data-cat="beauty">
+      <div class="blog-thumb">
+        <div class="thumb-fill" style="background: linear-gradient(135deg,#ddd3c4,#c8b49a);">
+          <span class="thumb-label">bridal makeup</span>
+        </div>
+      </div>
+      <div class="blog-cat">Beauty</div>
+      <div class="blog-title">Bí Quyết Trang Điểm Cô Dâu Bền Màu Suốt Ngày Cưới</div>
+      <p class="blog-excerpt">Ngày cưới kéo dài từ sáng đến tối — lớp trang điểm cần bền bỉ qua mọi cảm xúc. Chuyên gia của NOW Studio chia sẻ bí quyết giữ nét đẹp tươi tắn cả ngày.</p>
+      <div class="blog-meta">
+        <span>28 tháng 2, 2024 · 5 phút đọc</span>
+        <span class="blog-read-more">Đọc tiếp <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 4h10M7 1l4 3-4 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </a>
+
+    <!-- Post 3 -->
+    <a class="blog-card" href="chup-anh-cuoi-vao-mua-nao.html" data-cat="photography">
+      <div class="blog-thumb">
+        <div class="thumb-fill" style="background: linear-gradient(135deg,#d8c9b8,#c4b09a);">
+          <span class="thumb-label">golden hour<br>session</span>
+        </div>
+      </div>
+      <div class="blog-cat">Photography</div>
+      <div class="blog-title">Nên Chụp Ảnh Cưới Vào Mùa Nào Là Đẹp Nhất?</div>
+      <p class="blog-excerpt">Ánh sáng, thời tiết và phong cảnh thay đổi theo mùa — mỗi mùa mang lại vẻ đẹp riêng. Cùng NOW Studio khám phá ưu và nhược điểm từng mùa.</p>
+      <div class="blog-meta">
+        <span>10 tháng 1, 2024 · 7 phút đọc</span>
+        <span class="blog-read-more">Đọc tiếp <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 4h10M7 1l4 3-4 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </a>
+
+    <!-- Post 4 -->
+    <a class="blog-card" href="chon-dia-diem-chup-anh-cuoi.html" data-cat="stories">
+      <div class="blog-thumb">
+        <div class="thumb-fill" style="background: linear-gradient(135deg,#e2d5c5,#ccb99e);">
+          <span class="thumb-label">behind<br>the lens</span>
+        </div>
+      </div>
+      <div class="blog-cat">Stories</div>
+      <div class="blog-title">Câu Chuyện Phía Sau Bộ Ảnh Cưới Của Linh & Minh</div>
+      <p class="blog-excerpt">Mưa bất ngờ, ánh nắng cuối ngày và một chiếc dù vàng — câu chuyện của Linh & Minh là minh chứng rằng những khoảnh khắc ngoài kế hoạch đôi khi lại đẹp nhất.</p>
+      <div class="blog-meta">
+        <span>5 tháng 4, 2024 · 4 phút đọc</span>
+        <span class="blog-read-more">Đọc tiếp <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 4h10M7 1l4 3-4 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </a>
+
+    <!-- Post 5 -->
+    <a class="blog-card" href="bi-quyet-trang-diem-co-dau.html" data-cat="tips">
+      <div class="blog-thumb">
+        <div class="thumb-fill" style="background: linear-gradient(135deg,#dacdc0,#c6b59d);">
+          <span class="thumb-label">wedding<br>planning</span>
+        </div>
+      </div>
+      <div class="blog-cat">Tips & Advice</div>
+      <div class="blog-title">10 Điều Cần Chuẩn Bị Trước Ngày Chụp Ảnh Cưới</div>
+      <p class="blog-excerpt">Từ việc chọn trang phục đến lên danh sách ảnh — sự chuẩn bị kỹ càng sẽ giúp buổi chụp diễn ra suôn sẻ và cho ra những bức ảnh đẹp nhất.</p>
+      <div class="blog-meta">
+        <span>20 tháng 11, 2023 · 8 phút đọc</span>
+        <span class="blog-read-more">Đọc tiếp <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 4h10M7 1l4 3-4 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </a>
+
+    <!-- Post 6 -->
+    <a class="blog-card" href="chup-anh-cuoi-vao-mua-nao.html" data-cat="photography">
+      <div class="blog-thumb">
+        <div class="thumb-fill" style="background: linear-gradient(135deg,#d6c8b8,#bfab95);">
+          <span class="thumb-label">studio<br>portrait</span>
+        </div>
+      </div>
+      <div class="blog-cat">Photography</div>
+      <div class="blog-title">Chụp Ảnh Studio vs. Ngoại Cảnh: Nên Chọn Gì?</div>
+      <p class="blog-excerpt">Mỗi phong cách đều có những điểm mạnh riêng. Bài viết này sẽ giúp bạn hiểu rõ sự khác biệt để chọn được phong cách phù hợp với cá tính của mình.</p>
+      <div class="blog-meta">
+        <span>8 tháng 10, 2023 · 5 phút đọc</span>
+        <span class="blog-read-more">Đọc tiếp <svg width="12" height="8" viewBox="0 0 12 8" fill="none"><path d="M1 4h10M7 1l4 3-4 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <a href="../NOW Studio.html" class="logo">NOW<span style="color:var(--gold)">·</span>STUDIO</a>
+    <span style="font-size:13px">© 2026 NOW·STUDIO. All rights reserved.</span>
+    <a href="../NOW Studio.html#contact">Đặt lịch chụp →</a>
+  </div>
+</footer>
+
+<script>
+function filterPosts(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.blog-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

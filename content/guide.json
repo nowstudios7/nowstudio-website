@@ -1,0 +1,1032 @@
+{
+  "_type": "collection.guide",
+  "_id": "guide",
+  "_rev": "2026-09-11T12:26:05.258Z",
+  "status": "published",
+  "_note": "Nguồn dữ liệu Wedding Guide. Xuất từ admin/guide.html.",
+  "site": {
+    "title": "NOW Wedding Guide",
+    "kicker": "Now Wedding Guide",
+    "heading": "Những điều đáng biết\ntrước *ngày cưới*.",
+    "lede": "Kinh nghiệm tụi mình đúc kết sau nhiều mùa cưới ở miền Tây — từ lúc còn đang lên danh sách khách mời cho tới khi xe hoa lăn bánh.",
+    "note": "Viết bởi ekip đang đi chụp mỗi cuối tuần. Không phải bài tổng hợp trên mạng.",
+    "cta": {
+      "heading": "Còn câu hỏi nào chưa có bài trả lời?",
+      "text": "Nhắn tụi mình một câu. Trả lời được thì trả lời ngay, không thì hẹn cà phê.",
+      "label": "Liên hệ NOW Studio",
+      "href": "../NOW Studio.html#contact"
+    },
+    "featuredLimit": 1,
+    "perPage": 6
+  },
+  "authors": [
+    {
+      "id": "a1",
+      "name": "Tuấn",
+      "role": "Photographer · NOW Studio",
+      "bio": "",
+      "avatar": null
+    },
+    {
+      "id": "a2",
+      "name": "NOW Team",
+      "role": "NOW Studio",
+      "bio": "",
+      "avatar": null
+    }
+  ],
+  "categories": [
+    {
+      "id": "c0",
+      "name": "Tất cả",
+      "slug": "all",
+      "description": "",
+      "image": null,
+      "order": 0,
+      "status": "published",
+      "seoTitle": "",
+      "seoDescription": ""
+    },
+    {
+      "id": "c1",
+      "name": "Pre-Wedding",
+      "slug": "pre-wedding",
+      "description": "Chuẩn bị và chụp bộ ảnh trước ngày cưới.",
+      "image": null,
+      "order": 1,
+      "status": "published",
+      "seoTitle": "Kinh nghiệm chụp ảnh Pre-Wedding",
+      "seoDescription": "Hướng dẫn chuẩn bị buổi chụp pre-wedding từ NOW Studio."
+    },
+    {
+      "id": "c2",
+      "name": "Ngày cưới",
+      "slug": "wedding-day",
+      "description": "Timeline và những việc cần lo trong ngày chính.",
+      "image": null,
+      "order": 2,
+      "status": "published",
+      "seoTitle": "",
+      "seoDescription": ""
+    },
+    {
+      "id": "c3",
+      "name": "Nhiếp ảnh",
+      "slug": "photography",
+      "description": "Phóng sự cưới, cách chọn ekip, cách đọc một bộ ảnh.",
+      "image": null,
+      "order": 3,
+      "status": "published",
+      "seoTitle": "",
+      "seoDescription": ""
+    },
+    {
+      "id": "c4",
+      "name": "Makeup",
+      "slug": "makeup",
+      "description": "Trang điểm cô dâu, trial, giữ lớp nền cả ngày.",
+      "image": null,
+      "order": 4,
+      "status": "published",
+      "seoTitle": "",
+      "seoDescription": ""
+    },
+    {
+      "id": "c5",
+      "name": "Váy cưới",
+      "slug": "dress",
+      "description": "Chọn váy, thuê hay may, thử váy thế nào cho đỡ mệt.",
+      "image": null,
+      "order": 5,
+      "status": "published",
+      "seoTitle": "",
+      "seoDescription": ""
+    },
+    {
+      "id": "c6",
+      "name": "Ngân sách",
+      "slug": "budget",
+      "description": "Phân bổ chi phí và những khoản dễ phát sinh.",
+      "image": null,
+      "order": 6,
+      "status": "published",
+      "seoTitle": "",
+      "seoDescription": ""
+    },
+    {
+      "id": "c7",
+      "name": "Lên kế hoạch",
+      "slug": "planning",
+      "description": "Checklist theo mốc thời gian trước ngày cưới.",
+      "image": null,
+      "order": 7,
+      "status": "published",
+      "seoTitle": "",
+      "seoDescription": ""
+    }
+  ],
+  "tags": [
+    {
+      "id": "t1",
+      "name": "pre-wedding",
+      "slug": "pre-wedding"
+    },
+    {
+      "id": "t2",
+      "name": "chuẩn bị",
+      "slug": "chuan-bi"
+    },
+    {
+      "id": "t3",
+      "name": "concept",
+      "slug": "concept"
+    },
+    {
+      "id": "t4",
+      "name": "timeline",
+      "slug": "timeline"
+    },
+    {
+      "id": "t5",
+      "name": "ngày cưới",
+      "slug": "ngay-cuoi"
+    },
+    {
+      "id": "t6",
+      "name": "planning",
+      "slug": "planning"
+    },
+    {
+      "id": "t7",
+      "name": "phóng sự",
+      "slug": "phong-su"
+    },
+    {
+      "id": "t8",
+      "name": "documentary",
+      "slug": "documentary"
+    },
+    {
+      "id": "t9",
+      "name": "chọn ekip",
+      "slug": "chon-ekip"
+    },
+    {
+      "id": "t10",
+      "name": "makeup",
+      "slug": "makeup"
+    },
+    {
+      "id": "t11",
+      "name": "váy cưới",
+      "slug": "vay-cuoi"
+    },
+    {
+      "id": "t12",
+      "name": "ngân sách",
+      "slug": "ngan-sach"
+    },
+    {
+      "id": "t13",
+      "name": "checklist",
+      "slug": "checklist"
+    },
+    {
+      "id": "t14",
+      "name": "lịch trình",
+      "slug": "lich-trinh"
+    },
+    {
+      "id": "t15",
+      "name": "chi phí",
+      "slug": "chi-phi"
+    },
+    {
+      "id": "t16",
+      "name": "trial",
+      "slug": "trial"
+    }
+  ],
+  "media": [
+    {
+      "id": "m1",
+      "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed",
+      "filename": "pre-wedding-nang-chieu",
+      "altText": "Cặp đôi trong buổi chụp pre-wedding ngoài trời",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-08-18",
+      "status": "active"
+    },
+    {
+      "id": "m2",
+      "url": "https://images.unsplash.com/photo-1583939003579-730e3918a45a",
+      "filename": "duong-que-buoi-sang",
+      "altText": "Cặp đôi đi trên đường quê buổi sáng sớm",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-08-18",
+      "status": "active"
+    },
+    {
+      "id": "m3",
+      "url": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc",
+      "filename": "canh-dong-chieu",
+      "altText": "Cặp đôi giữa cánh đồng lúc chiều",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-07-09",
+      "status": "active"
+    },
+    {
+      "id": "m4",
+      "url": "https://images.unsplash.com/photo-1520854221256-17451cc331bf",
+      "filename": "trao-nhan",
+      "altText": "Nghi thức trao nhẫn trong lễ cưới",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-08-04",
+      "status": "active"
+    },
+    {
+      "id": "m5",
+      "url": "https://images.unsplash.com/photo-1469371670807-013ccf25f16a",
+      "filename": "candid-tiec",
+      "altText": "Khoảnh khắc candid trong tiệc cưới",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-07-22",
+      "status": "active"
+    },
+    {
+      "id": "m6",
+      "url": "https://images.unsplash.com/photo-1522673607200-164d1b6ce486",
+      "filename": "chu-re-chuan-bi",
+      "altText": "Chú rể chuẩn bị trước lễ",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-06-28",
+      "status": "active"
+    },
+    {
+      "id": "m7",
+      "url": "https://images.unsplash.com/photo-1591604466107-ec97de577aff",
+      "filename": "co-dau-buoi-sang",
+      "altText": "Cô dâu chuẩn bị trong buổi sáng",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-06-15",
+      "status": "active"
+    },
+    {
+      "id": "m8",
+      "url": "https://images.unsplash.com/photo-1511578314322-379afb476865",
+      "filename": "chi-tiet-vay",
+      "altText": "Chi tiết váy cưới",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-06-02",
+      "status": "active"
+    },
+    {
+      "id": "m9",
+      "url": "https://images.unsplash.com/photo-1519689680058-324335c77eba",
+      "filename": "khong-gian-tiec",
+      "altText": "Không gian tiệc cưới buổi sớm",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-05-20",
+      "status": "active"
+    },
+    {
+      "id": "m10",
+      "url": "https://images.unsplash.com/photo-1507504031003-b417219a0fde",
+      "filename": "toan-canh-venue",
+      "altText": "Toàn cảnh nơi tổ chức tiệc cưới",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-05-06",
+      "status": "active"
+    },
+    {
+      "id": "m11",
+      "url": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d",
+      "filename": "trang-diem-chi-tiet",
+      "altText": "Chi tiết trang điểm cô dâu",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-04-24",
+      "status": "active"
+    },
+    {
+      "id": "m12",
+      "url": "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6",
+      "filename": "nghi-thuc-cong-le",
+      "altText": "Nghi thức trước cổng lễ",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-04-10",
+      "status": "active"
+    },
+    {
+      "id": "m13",
+      "url": "https://images.unsplash.com/photo-1525328437458-0c4d4db7cab4",
+      "filename": "thu-vay",
+      "altText": "Cô dâu thử váy",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-03-28",
+      "status": "active"
+    },
+    {
+      "id": "m14",
+      "url": "https://images.unsplash.com/photo-1481253127861-534498168948",
+      "filename": "khoanh-khac-rieng",
+      "altText": "Khoảnh khắc riêng của cặp đôi",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-08-18",
+      "status": "active"
+    },
+    {
+      "id": "m15",
+      "url": "https://images.unsplash.com/photo-1478146896981-b80fe463b330",
+      "filename": "cap-doi-ngoi-canh-nhau",
+      "altText": "Cặp đôi ngồi cạnh nhau",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-08-18",
+      "status": "active"
+    },
+    {
+      "id": "m16",
+      "url": "https://images.unsplash.com/photo-1544078751-58fee2d8a03b",
+      "filename": "nghi-thuc-nha-tho",
+      "altText": "Nghi thức trong nhà thờ",
+      "caption": "",
+      "width": 2000,
+      "height": 1333,
+      "fileSize": null,
+      "mimeType": "image/jpeg",
+      "createdAt": "2026-09-01",
+      "status": "active"
+    }
+  ],
+  "articles": [
+    {
+      "id": "p1",
+      "title": "5 điều nên biết trước buổi chụp Pre-Wedding",
+      "slug": "5-dieu-can-biet-truoc-khi-chup-pre-wedding",
+      "excerpt": "Một vài thứ chuẩn bị trước có thể làm buổi chụp nhẹ đi rất nhiều — và ảnh cũng tự nhiên hơn hẳn.",
+      "category": "pre-wedding",
+      "tags": [
+        "pre-wedding",
+        "chuẩn bị",
+        "concept"
+      ],
+      "authorId": "a1",
+      "featuredImage": {
+        "mediaId": "m1",
+        "url": "https://images.unsplash.com/photo-1519225421980-715cb0215aed",
+        "alt": "Cặp đôi trong buổi chụp pre-wedding ngoài trời"
+      },
+      "galleryImages": [
+        {
+          "mediaId": "m2",
+          "url": "https://images.unsplash.com/photo-1583939003579-730e3918a45a",
+          "alt": "Cặp đôi đi trên đường quê"
+        },
+        {
+          "mediaId": "m3",
+          "url": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc",
+          "alt": "Cặp đôi giữa cánh đồng"
+        }
+      ],
+      "status": "published",
+      "publishedAt": "2026-08-18T09:00",
+      "updatedAt": "2026-08-20T10:00",
+      "createdAt": "2026-08-15T08:00",
+      "readingTime": 7,
+      "featured": true,
+      "sortOrder": 1,
+      "seoTitle": "5 điều nên biết trước khi chụp Pre-Wedding | NOW Studio",
+      "seoDescription": "Kinh nghiệm thực tế từ NOW Studio: chuẩn bị gì, chụp mấy điểm, chọn concept thế nào để buổi pre-wedding nhẹ nhàng hơn.",
+      "seoImage": null,
+      "canonicalUrl": "/guide/pre-wedding/5-dieu-can-biet-truoc-khi-chup-pre-wedding",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p4",
+        "p7",
+        "p2"
+      ],
+      "content": [
+        {
+          "type": "p",
+          "text": "Gần như cặp đôi nào cũng hỏi tụi mình một câu giống nhau trước buổi chụp: “Tụi em cần chuẩn bị gì?” Câu trả lời ngắn là: ít hơn bạn nghĩ. Nhưng có vài thứ nếu lo trước thì cả ngày hôm đó sẽ dễ thở hơn nhiều."
+        },
+        {
+          "type": "h2",
+          "text": "1 · Đặt lịch sớm hơn bạn tính"
+        },
+        {
+          "type": "p",
+          "text": "Khoảng <strong>2–3 tháng trước ngày cưới</strong> là vừa. Không phải vì ekip bận — mà vì bạn cần thời gian dự phòng cho thời tiết. Miền Tây mùa mưa có thể đổ nước liên tục ba ngày, và một buổi chụp bị dời không nên kéo theo cả lịch in album."
+        },
+        {
+          "type": "p",
+          "text": "Nếu chụp ngoại cảnh xa, cộng thêm một tuần cho việc đi lại và nghỉ ngơi. Chụp mệt vào ngày hôm trước lễ ăn hỏi là lý do phổ biến nhất khiến ảnh trông đờ đẫn."
+        },
+        {
+          "type": "figure",
+          "images": [
+            {
+              "mediaId": "m2",
+              "url": "https://images.unsplash.com/photo-1583939003579-730e3918a45a",
+              "alt": "Cặp đôi đi bộ trên đường quê buổi sáng sớm"
+            }
+          ],
+          "caption": "Ánh sáng sớm ở miền Tây — khoảng 6h30, trước khi nắng gắt."
+        },
+        {
+          "type": "h2",
+          "text": "2 · Hai địa điểm là đủ"
+        },
+        {
+          "type": "p",
+          "text": "Ai cũng muốn chụp nhiều nơi. Nhưng mỗi lần di chuyển là mất 45–60 phút cho việc đi, thay đồ, dặm lại makeup. Chụp bốn điểm trong một ngày nghĩa là bạn chỉ thật sự chụp khoảng 40 phút ở mỗi nơi — không đủ để thả lỏng."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Một nơi rộng, thoáng — cho ảnh toàn cảnh và không khí.",
+            "Một nơi gần, thân thuộc — nhà, quán quen, con đường hai bạn hay đi.",
+            "Nếu còn sức, thêm một điểm vào cuối ngày lúc hoàng hôn."
+          ]
+        },
+        {
+          "type": "note",
+          "text": "Bộ ảnh mà cặp đôi thích nhất thường không phải ở nơi đẹp nhất, mà ở nơi họ thoải mái nhất.",
+          "cite": "Tuấn — Photographer"
+        },
+        {
+          "type": "h2",
+          "text": "3 · Concept nên đơn giản"
+        },
+        {
+          "type": "p",
+          "text": "Concept không phải là đạo cụ và bối cảnh. Concept là câu trả lời cho: “Nhìn bộ ảnh này, người ta thấy hai bạn là người thế nào?” Nếu hai bạn hay đùa nhau, đừng chọn concept nghiêm trang. Nếu hai bạn ít nói, đừng ép cười suốt buổi."
+        },
+        {
+          "type": "p",
+          "text": "Tụi mình thường hỏi vài câu rất đời trước buổi chụp — hai bạn quen nhau ở đâu, cuối tuần hay làm gì. Câu trả lời quyết định địa điểm và cách chụp nhiều hơn bất kỳ moodboard nào."
+        },
+        {
+          "type": "figure",
+          "duo": true,
+          "images": [
+            {
+              "mediaId": "m14",
+              "url": "https://images.unsplash.com/photo-1481253127861-534498168948",
+              "alt": "Khoảnh khắc riêng của cặp đôi"
+            },
+            {
+              "mediaId": "m15",
+              "url": "https://images.unsplash.com/photo-1478146896981-b80fe463b330",
+              "alt": "Cặp đôi ngồi cạnh nhau"
+            }
+          ],
+          "caption": "Hai khung hình cách nhau bốn phút — không có tấm nào được sắp đặt."
+        },
+        {
+          "type": "h2",
+          "text": "4 · Quần áo: ít màu, ít hoa văn"
+        },
+        {
+          "type": "p",
+          "text": "Tông trung tính hoặc màu đất lên ảnh dễ nhất và không bị lỗi mốt sau vài năm. Tránh áo có chữ, sọc nhỏ li ti hoặc màu quá chói — chúng kéo mắt người xem ra khỏi gương mặt bạn."
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Hai bộ là đủ cho một buổi chụp nửa ngày.",
+            "Thử mặc trước ở nhà, ngồi xuống đứng lên vài lần — nếu vướng thì bỏ.",
+            "Giày: mang thêm một đôi đi được xa."
+          ]
+        },
+        {
+          "type": "h2",
+          "text": "5 · Ngủ đủ, ăn sáng"
+        },
+        {
+          "type": "p",
+          "text": "Nghe hiển nhiên nhưng đây là thứ ảnh hưởng đến ảnh nhiều nhất. Máy ảnh ghi lại mức năng lượng của bạn khá trung thực. Một cặp đôi ngủ đủ và ăn sáng tử tế sẽ cho ra bộ ảnh khác hẳn một cặp đôi thức tới 2 giờ sáng lo chuyện cỗ bàn."
+        },
+        {
+          "type": "takeaway",
+          "title": "Tóm lại",
+          "items": [
+            "Đặt lịch trước 2–3 tháng, chừa chỗ cho thời tiết.",
+            "Hai địa điểm, đừng tham.",
+            "Concept bắt đầu từ tính cách hai bạn, không phải từ Pinterest.",
+            "Quần áo tông trung tính, hai bộ.",
+            "Ngủ đủ — điều rẻ nhất và hiệu quả nhất."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "p2",
+      "title": "Timeline một ngày cưới, tính ngược từ giờ đón dâu",
+      "slug": "timeline-ngay-cuoi-tu-makeup-den-ket-thuc",
+      "excerpt": "Bảng giờ tụi mình vẫn đưa cho cô dâu chú rể — làm ngược từ giờ quan trọng nhất trở lại.",
+      "category": "wedding-day",
+      "tags": [
+        "timeline",
+        "ngày cưới",
+        "planning"
+      ],
+      "authorId": "a2",
+      "featuredImage": {
+        "mediaId": "m4",
+        "url": "https://images.unsplash.com/photo-1520854221256-17451cc331bf",
+        "alt": "Nghi thức trao nhẫn trong lễ cưới"
+      },
+      "galleryImages": [],
+      "status": "published",
+      "publishedAt": "2026-08-04T09:00",
+      "updatedAt": "2026-08-04T09:00",
+      "createdAt": "2026-08-01T09:00",
+      "readingTime": 9,
+      "featured": false,
+      "sortOrder": 2,
+      "seoTitle": "Timeline ngày cưới chi tiết | NOW Studio",
+      "seoDescription": "Bảng giờ ngày cưới tính ngược từ giờ đón dâu — kinh nghiệm thực tế sau nhiều mùa cưới.",
+      "seoImage": null,
+      "canonicalUrl": "/guide/wedding-day/timeline-ngay-cuoi-tu-makeup-den-ket-thuc",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p6",
+        "p9",
+        "p1"
+      ],
+      "content": []
+    },
+    {
+      "id": "p3",
+      "title": "Phóng sự cưới là gì, và khác chụp truyền thống ở chỗ nào",
+      "slug": "phong-su-cuoi-la-gi",
+      "excerpt": "Hai cách chụp không hơn kém nhau — chúng trả lời hai câu hỏi khác nhau về ngày cưới của bạn.",
+      "category": "photography",
+      "tags": [
+        "phóng sự",
+        "documentary"
+      ],
+      "authorId": "a1",
+      "featuredImage": {
+        "mediaId": "m5",
+        "url": "https://images.unsplash.com/photo-1469371670807-013ccf25f16a",
+        "alt": "Khoảnh khắc candid trong tiệc cưới"
+      },
+      "galleryImages": [],
+      "status": "published",
+      "publishedAt": "2026-07-22T09:00",
+      "updatedAt": "2026-07-22T09:00",
+      "createdAt": "2026-07-20T09:00",
+      "readingTime": 6,
+      "featured": false,
+      "sortOrder": 3,
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": null,
+      "canonicalUrl": "/guide/photography/phong-su-cuoi-la-gi",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p5",
+        "p1"
+      ],
+      "content": []
+    },
+    {
+      "id": "p4",
+      "title": "Nên chụp Pre-Wedding trước ngày cưới bao lâu?",
+      "slug": "chup-pre-wedding-nen-chuan-bi-truoc-bao-lau",
+      "excerpt": "Câu trả lời phụ thuộc vào một thứ ít ai tính tới: thời gian in album và thời tiết.",
+      "category": "pre-wedding",
+      "tags": [
+        "pre-wedding",
+        "lịch trình"
+      ],
+      "authorId": "a2",
+      "featuredImage": {
+        "mediaId": "m3",
+        "url": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc",
+        "alt": "Cặp đôi giữa cánh đồng lúc chiều"
+      },
+      "galleryImages": [],
+      "status": "published",
+      "publishedAt": "2026-07-09T09:00",
+      "updatedAt": "2026-07-09T09:00",
+      "createdAt": "2026-07-06T09:00",
+      "readingTime": 5,
+      "featured": false,
+      "sortOrder": 4,
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": null,
+      "canonicalUrl": "/guide/pre-wedding/chup-pre-wedding-nen-chuan-bi-truoc-bao-lau",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p1"
+      ],
+      "content": []
+    },
+    {
+      "id": "p5",
+      "title": "Làm sao biết một photographer hợp với mình",
+      "slug": "lam-sao-chon-photographer-phu-hop",
+      "excerpt": "Đừng chỉ xem ảnh đẹp. Có ba thứ khác nói nhiều hơn về việc bạn sẽ thấy thế nào trong ngày cưới.",
+      "category": "photography",
+      "tags": [
+        "chọn ekip"
+      ],
+      "authorId": "a1",
+      "featuredImage": {
+        "mediaId": "m6",
+        "url": "https://images.unsplash.com/photo-1522673607200-164d1b6ce486",
+        "alt": "Chú rể chuẩn bị trước lễ"
+      },
+      "galleryImages": [],
+      "status": "published",
+      "publishedAt": "2026-06-28T09:00",
+      "updatedAt": "2026-06-28T09:00",
+      "createdAt": "2026-06-25T09:00",
+      "readingTime": 8,
+      "featured": false,
+      "sortOrder": 5,
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": null,
+      "canonicalUrl": "/guide/photography/lam-sao-chon-photographer-phu-hop",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p3"
+      ],
+      "content": []
+    },
+    {
+      "id": "p6",
+      "title": "Cô dâu nên bắt đầu makeup lúc mấy giờ",
+      "slug": "co-dau-nen-bat-dau-makeup-luc-may-gio",
+      "excerpt": "Một phép tính đơn giản, nhưng sai một tiếng là cả buổi sáng bị dồn.",
+      "category": "makeup",
+      "tags": [
+        "makeup",
+        "timeline"
+      ],
+      "authorId": "a2",
+      "featuredImage": {
+        "mediaId": "m7",
+        "url": "https://images.unsplash.com/photo-1591604466107-ec97de577aff",
+        "alt": "Cô dâu chuẩn bị trong buổi sáng"
+      },
+      "galleryImages": [],
+      "status": "published",
+      "publishedAt": "2026-06-15T09:00",
+      "updatedAt": "2026-06-15T09:00",
+      "createdAt": "2026-06-12T09:00",
+      "readingTime": 4,
+      "featured": false,
+      "sortOrder": 6,
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": null,
+      "canonicalUrl": "/guide/makeup/co-dau-nen-bat-dau-makeup-luc-may-gio",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p2",
+        "p10"
+      ],
+      "content": []
+    },
+    {
+      "id": "p7",
+      "title": "Chọn váy cưới: bắt đầu từ dáng người, không phải từ ảnh mẫu",
+      "slug": "chon-vay-cuoi-theo-dang-nguoi",
+      "excerpt": "Chiếc váy đẹp nhất trên mẫu chưa chắc là chiếc bạn ngồi xuống được trong bữa tiệc bốn tiếng.",
+      "category": "dress",
+      "tags": [
+        "váy cưới"
+      ],
+      "authorId": "a2",
+      "featuredImage": {
+        "mediaId": "m8",
+        "url": "https://images.unsplash.com/photo-1511578314322-379afb476865",
+        "alt": "Chi tiết váy cưới"
+      },
+      "galleryImages": [],
+      "status": "published",
+      "publishedAt": "2026-06-02T09:00",
+      "updatedAt": "2026-06-02T09:00",
+      "createdAt": "2026-05-30T09:00",
+      "readingTime": 7,
+      "featured": false,
+      "sortOrder": 7,
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": null,
+      "canonicalUrl": "/guide/dress/chon-vay-cuoi-theo-dang-nguoi",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p12"
+      ],
+      "content": []
+    },
+    {
+      "id": "p8",
+      "title": "Phân bổ ngân sách đám cưới, và những khoản luôn phát sinh",
+      "slug": "phan-bo-ngan-sach-dam-cuoi",
+      "excerpt": "Bảng phần trăm tụi mình thấy đúng nhất với các đám cưới miền Tây — kèm ba khoản hầu như ai cũng quên.",
+      "category": "budget",
+      "tags": [
+        "ngân sách",
+        "chi phí"
+      ],
+      "authorId": "a2",
+      "featuredImage": {
+        "mediaId": "m9",
+        "url": "https://images.unsplash.com/photo-1519689680058-324335c77eba",
+        "alt": "Không gian tiệc cưới"
+      },
+      "galleryImages": [],
+      "status": "published",
+      "publishedAt": "2026-05-20T09:00",
+      "updatedAt": "2026-05-20T09:00",
+      "createdAt": "2026-05-17T09:00",
+      "readingTime": 10,
+      "featured": false,
+      "sortOrder": 8,
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": null,
+      "canonicalUrl": "/guide/budget/phan-bo-ngan-sach-dam-cuoi",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p9"
+      ],
+      "content": []
+    },
+    {
+      "id": "p9",
+      "title": "Checklist chuẩn bị cưới, chia theo mốc 6 tháng — 1 tháng — 1 tuần",
+      "slug": "checklist-chuan-bi-cuoi-theo-moc-thoi-gian",
+      "excerpt": "In ra, dán lên tủ lạnh, gạch dần. Không có gì thông minh ở đây cả — chỉ là đủ.",
+      "category": "planning",
+      "tags": [
+        "checklist",
+        "planning"
+      ],
+      "authorId": "a2",
+      "featuredImage": {
+        "mediaId": "m10",
+        "url": "https://images.unsplash.com/photo-1507504031003-b417219a0fde",
+        "alt": "Toàn cảnh nơi tổ chức tiệc cưới"
+      },
+      "galleryImages": [],
+      "status": "published",
+      "publishedAt": "2026-05-06T09:00",
+      "updatedAt": "2026-05-06T09:00",
+      "createdAt": "2026-05-02T09:00",
+      "readingTime": 12,
+      "featured": false,
+      "sortOrder": 9,
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": null,
+      "canonicalUrl": "/guide/planning/checklist-chuan-bi-cuoi-theo-moc-thoi-gian",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p8",
+        "p2"
+      ],
+      "content": []
+    },
+    {
+      "id": "p10",
+      "title": "Trial makeup có thật sự cần không?",
+      "slug": "trial-makeup-co-can-thiet-khong",
+      "excerpt": "Có — nhưng không phải vì lý do mà phần lớn mọi người nghĩ.",
+      "category": "makeup",
+      "tags": [
+        "makeup",
+        "trial"
+      ],
+      "authorId": "a2",
+      "featuredImage": {
+        "mediaId": "m11",
+        "url": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d",
+        "alt": "Chi tiết trang điểm cô dâu"
+      },
+      "galleryImages": [],
+      "status": "published",
+      "publishedAt": "2026-04-24T09:00",
+      "updatedAt": "2026-04-24T09:00",
+      "createdAt": "2026-04-20T09:00",
+      "readingTime": 5,
+      "featured": false,
+      "sortOrder": 10,
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": null,
+      "canonicalUrl": "/guide/makeup/trial-makeup-co-can-thiet-khong",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p6"
+      ],
+      "content": []
+    },
+    {
+      "id": "p11",
+      "title": "Những thứ cô dâu chú rể hay quên trong ngày cưới",
+      "slug": "nhung-thu-co-dau-chu-re-thuong-quen",
+      "excerpt": "Danh sách này được góp nhặt từ những lần tụi mình phải chạy đi mua giúp.",
+      "category": "wedding-day",
+      "tags": [
+        "ngày cưới",
+        "checklist"
+      ],
+      "authorId": "a1",
+      "featuredImage": {
+        "mediaId": "m12",
+        "url": "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6",
+        "alt": "Nghi thức trước cổng lễ"
+      },
+      "galleryImages": [],
+      "status": "published",
+      "publishedAt": "2026-04-10T09:00",
+      "updatedAt": "2026-04-10T09:00",
+      "createdAt": "2026-04-06T09:00",
+      "readingTime": 6,
+      "featured": false,
+      "sortOrder": 11,
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": null,
+      "canonicalUrl": "/guide/wedding-day/nhung-thu-co-dau-chu-re-thuong-quen",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p2",
+        "p9"
+      ],
+      "content": []
+    },
+    {
+      "id": "p12",
+      "title": "Nên thuê hay may váy cưới?",
+      "slug": "nen-thue-hay-may-vay-cuoi",
+      "excerpt": "So sánh thật về chi phí, thời gian và thứ bạn giữ lại được sau ngày cưới.",
+      "category": "dress",
+      "tags": [
+        "váy cưới",
+        "ngân sách"
+      ],
+      "authorId": "a2",
+      "featuredImage": {
+        "mediaId": "m13",
+        "url": "https://images.unsplash.com/photo-1525328437458-0c4d4db7cab4",
+        "alt": "Cô dâu thử váy"
+      },
+      "galleryImages": [],
+      "status": "published",
+      "publishedAt": "2026-03-28T09:00",
+      "updatedAt": "2026-03-28T09:00",
+      "createdAt": "2026-03-24T09:00",
+      "readingTime": 6,
+      "featured": false,
+      "sortOrder": 12,
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": null,
+      "canonicalUrl": "/guide/dress/nen-thue-hay-may-vay-cuoi",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [
+        "p7",
+        "p8"
+      ],
+      "content": []
+    },
+    {
+      "id": "p13",
+      "title": "Chụp trong nhà thờ cần lưu ý gì",
+      "slug": "chup-trong-nha-tho-can-luu-y-gi",
+      "excerpt": "Bài đang viết — chưa xuất bản.",
+      "category": "photography",
+      "tags": [],
+      "authorId": "a1",
+      "featuredImage": {
+        "mediaId": "m16",
+        "url": "https://images.unsplash.com/photo-1544078751-58fee2d8a03b",
+        "alt": "Nghi thức trong nhà thờ"
+      },
+      "galleryImages": [],
+      "status": "draft",
+      "publishedAt": "",
+      "updatedAt": "2026-09-05T09:00",
+      "createdAt": "2026-09-05T09:00",
+      "readingTime": 5,
+      "featured": false,
+      "sortOrder": 13,
+      "seoTitle": "",
+      "seoDescription": "",
+      "seoImage": null,
+      "canonicalUrl": "",
+      "noIndex": false,
+      "ogTitle": "",
+      "ogDescription": "",
+      "ogImage": null,
+      "relatedArticles": [],
+      "content": []
+    }
+  ],
+  "redirects": []
+}

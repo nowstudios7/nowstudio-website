@@ -1,0 +1,129 @@
+{
+  "_type": "section.hero",
+  "_id": "hero",
+  "_rev": "2026-09-10T13:37:56.395Z",
+  "status": "published",
+  "updatedAt": "2026-09-10T13:37:56.395Z",
+  "fields": {
+    "rail": "Cần Thơ · Miền Tây",
+    "eyebrow": "Wedding & Portrait Photography",
+    "headline": [
+      "Lưu Giữ",
+      "Món Quà",
+      "*Hiện Tại*"
+    ],
+    "subheadline": "Mỗi khoảnh khắc là một câu chuyện",
+    "body": [
+      "Không phải tất cả ảnh cưới đều bằng nhau.",
+      "Có những bộ ảnh khiến bạn cười mỗi lần nhìn lại. Có những bộ ảnh khiến bạn muốn chia sẻ với mọi người. Và có những bộ ảnh mà bạn sẽ trân trọng cả đời.",
+      "Chúng mình chuyên làm ra những bộ ảnh loại thứ ba."
+    ],
+    "note": "Dịch vụ cưới trọn gói — chụp ảnh, quay phim, makeup, váy, vest.\nHãy để chúng mình kể câu chuyện tình yêu của bạn. 💕",
+    "cta": {
+      "primary": {
+        "label": "Đặt Lịch Ngay",
+        "href": "#contact"
+      },
+      "secondary": {
+        "label": "Xem Bộ Sưu Tập",
+        "href": "#portfolio"
+      }
+    },
+    "caption": {
+      "name": "WEDDING WALK #1",
+      "meta": "SINCE 2014"
+    },
+    "slides": [
+      {
+        "_id": "img-g88en89",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046757/_MG_0230.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center",
+        "width": 5250,
+        "height": 3704,
+        "srcset": null
+      },
+      {
+        "_id": "img-z6qaec1",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/494196593_4092484617651282_1969764344332102598_n.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center",
+        "width": 1115,
+        "height": 1580,
+        "srcset": null
+      },
+      {
+        "_id": "img-ajtepda",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046758/_MG_2313_20220902104855am.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center",
+        "width": 5300,
+        "height": 3739,
+        "srcset": null
+      },
+      {
+        "_id": "img-9oiptoj",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046758/IMG_9799_20220902023146pm.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center",
+        "width": 4422,
+        "height": 3120,
+        "srcset": null
+      },
+      {
+        "_id": "img-w4uhfzb",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046756/IMG_0335.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center 26%",
+        "width": 4410,
+        "height": 3112,
+        "srcset": null
+      },
+      {
+        "_id": "img-6o012fe",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046755/DSCF6716.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center",
+        "width": 2366,
+        "height": 3353,
+        "srcset": null
+      },
+      {
+        "_id": "img-f8cmmmx",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/BX1A2504.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center 26%",
+        "width": 5425,
+        "height": 3828,
+        "srcset": null
+      },
+      {
+        "_id": "img-4g8bq3m",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/IMG_4291.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center 26%",
+        "width": 5296,
+        "height": 3736,
+        "srcset": null
+      }
+    ],
+    "stats": [
+      {
+        "_id": "stat-couples",
+        "value": "500+",
+        "label": "Cặp Đôi"
+      },
+      {
+        "_id": "stat-years",
+        "value": "14+",
+        "label": "Năm Kinh Nghiệm"
+      },
+      {
+        "_id": "stat-followers",
+        "value": "25K",
+        "label": "Người Theo Dõi"
+      }
+    ],
+    "badge": "Award-winning studio · Est. 2016"
+  }
+}

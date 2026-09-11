@@ -1,0 +1,322 @@
+{
+  "_type": "section.gallery",
+  "_id": "gallery",
+  "_rev": "2026-09-11T01:53:59.305Z",
+  "status": "published",
+  "updatedAt": "2026-09-11T01:53:59.305Z",
+  "_note": "Nội dung 2 gallery homepage. Xuất từ admin/gallery.html.",
+  "fields": {
+    "featured": {
+      "label": "Our Work",
+      "heading": "Những khoảnh khắc đáng giữ lại.",
+      "description": "Những khoảnh khắc thật, được ghi lại theo cách tự nhiên nhất.",
+      "cta": {
+        "label": "Xem tiếp phần kể chuyện",
+        "href": "#editorial"
+      },
+      "recommendedCount": 9,
+      "images": [
+        {
+          "_id": "fw-1",
+          "src": "https://images.unsplash.com/photo-1519225421980-715cb0215aed",
+          "alt": "Cô dâu chú rể trong nắng chiều",
+          "category": "Couple",
+          "couple": "Hải & Ngân",
+          "year": "2025"
+        },
+        {
+          "_id": "fw-2",
+          "src": "https://images.unsplash.com/photo-1606216794074-735e91aa2c92",
+          "alt": "Chân dung cô dâu ngoài trời",
+          "category": "Bride",
+          "couple": "Minh & Thư",
+          "year": "2025"
+        },
+        {
+          "_id": "fw-3",
+          "src": "https://images.unsplash.com/photo-1583939003579-730e3918a45a",
+          "alt": "Cặp đôi nắm tay trên đường quê",
+          "category": "Couple",
+          "couple": "Duy & Linh",
+          "year": "2024"
+        },
+        {
+          "_id": "fw-4",
+          "src": "https://images.unsplash.com/photo-1520854221256-17451cc331bf",
+          "alt": "Nghi thức trao nhẫn",
+          "category": "Ceremony",
+          "couple": "Phúc & Trâm",
+          "year": "2024"
+        },
+        {
+          "_id": "fw-5",
+          "src": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc",
+          "alt": "Cặp đôi giữa cánh đồng",
+          "category": "Couple",
+          "couple": "Khoa & Nhi",
+          "year": "2025"
+        },
+        {
+          "_id": "fw-6",
+          "src": "https://images.unsplash.com/photo-1457449940276-e8deed18bfff",
+          "alt": "Bó hoa cưới và chi tiết váy",
+          "category": "Detail",
+          "couple": "Minh & Thư",
+          "year": "2025"
+        },
+        {
+          "_id": "fw-7",
+          "src": "https://images.unsplash.com/photo-1522673607200-164d1b6ce486",
+          "alt": "Chú rể chuẩn bị trước lễ",
+          "category": "Groom",
+          "couple": "Duy & Linh",
+          "year": "2024"
+        },
+        {
+          "_id": "fw-8",
+          "src": "https://images.unsplash.com/photo-1519741497674-611481863552",
+          "alt": "Khoảnh khắc cười của cặp đôi",
+          "category": "Candid",
+          "couple": "Hải & Ngân",
+          "year": "2025"
+        },
+        {
+          "_id": "fw-9",
+          "src": "https://images.unsplash.com/photo-1537633552985-df8429e8048b",
+          "alt": "Cặp đôi trong không gian tiệc cưới",
+          "category": "Reception",
+          "couple": "Phúc & Trâm",
+          "year": "2024"
+        }
+      ]
+    },
+    "editorial": {
+      "label": "Selected stories",
+      "heading": "ẢNH CƯỚI *tự nhiên*,\nKHÔNG DÀN DỰNG,\nKHÔNG DIỄN.",
+      "heading2": "GHI LẠI ĐÚNG NHỮNG GÌ\n*đã xảy ra* HÔM ĐÓ.",
+      "description": "Chúng mình đi cùng cả ngày cưới và chụp phần lớn thời gian không ai để ý tới máy ảnh — lúc mẹ sửa lại tóc cho con, lúc hai người đứng riêng vài phút trước khi ra ngoài. Ảnh dựng chỉ chiếm một phần nhỏ. Phần còn lại là ngày cưới thật của bạn, đúng như nó diễn ra.",
+      "recommendedCount": 14,
+      "images": [
+        {
+          "_id": "ed-1",
+          "src": "https://images.unsplash.com/photo-1583939003579-730e3918a45a",
+          "alt": "Cặp đôi đi trên đường quê",
+          "caption": "",
+          "column": "left",
+          "order": 1,
+          "size": "medium",
+          "type": "portrait",
+          "ratio": "3/4",
+          "role": "Couple walking"
+        },
+        {
+          "_id": "ed-2",
+          "src": "https://images.unsplash.com/photo-1519689680058-324335c77eba",
+          "alt": "Không gian tiệc cưới buổi sớm",
+          "caption": "Buổi sáng, trước khi mọi thứ bắt đầu",
+          "column": "left",
+          "order": 2,
+          "size": "medium",
+          "type": "landscape",
+          "ratio": "3/2",
+          "role": "Establishing"
+        },
+        {
+          "_id": "ed-3",
+          "src": "https://images.unsplash.com/photo-1591604466107-ec97de577aff",
+          "alt": "Cô dâu trong nắng cuối ngày",
+          "caption": "",
+          "column": "left",
+          "order": 3,
+          "size": "small",
+          "type": "portrait",
+          "ratio": "4/5",
+          "role": "Bride"
+        },
+        {
+          "_id": "ed-4",
+          "src": "https://images.unsplash.com/photo-1469371670807-013ccf25f16a",
+          "alt": "Khoảnh khắc candid trong tiệc",
+          "caption": "",
+          "column": "left",
+          "order": 4,
+          "size": "medium",
+          "type": "landscape",
+          "ratio": "3/2",
+          "role": "Candid"
+        },
+        {
+          "_id": "ed-5",
+          "src": "https://images.unsplash.com/photo-1460978812857-470ed1c77af0",
+          "alt": "Chi tiết nhẫn và hoa",
+          "caption": "",
+          "column": "left",
+          "order": 5,
+          "size": "small",
+          "type": "landscape",
+          "ratio": "16/10",
+          "role": "Detail"
+        },
+        {
+          "_id": "ed-6",
+          "src": "https://images.unsplash.com/photo-1511578314322-379afb476865",
+          "alt": "Chi tiết váy cô dâu",
+          "caption": "",
+          "column": "center",
+          "order": 1,
+          "size": "large",
+          "type": "portrait",
+          "ratio": "2/3",
+          "role": "Bride portrait"
+        },
+        {
+          "_id": "ed-7",
+          "src": "https://images.unsplash.com/photo-1481253127861-534498168948",
+          "alt": "Cặp đôi trong khoảnh khắc riêng",
+          "caption": "",
+          "column": "center",
+          "order": 2,
+          "size": "small",
+          "type": "portrait",
+          "ratio": "4/5",
+          "role": "Intimate"
+        },
+        {
+          "_id": "ed-8",
+          "src": "https://images.unsplash.com/photo-1478146896981-b80fe463b330",
+          "alt": "Cặp đôi ngồi cạnh nhau",
+          "caption": "",
+          "column": "center",
+          "order": 3,
+          "size": "medium",
+          "type": "portrait",
+          "ratio": "3/4",
+          "role": "Couple"
+        },
+        {
+          "_id": "ed-9",
+          "src": "https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6",
+          "alt": "Nghi thức trước cổng lễ",
+          "caption": "Nghi thức, chụp từ phía sau khách",
+          "column": "center",
+          "order": 4,
+          "size": "medium",
+          "type": "portrait",
+          "ratio": "3/4",
+          "role": "Ceremony"
+        },
+        {
+          "_id": "ed-10",
+          "src": "https://images.unsplash.com/photo-1507504031003-b417219a0fde",
+          "alt": "Toàn cảnh nơi tổ chức",
+          "caption": "",
+          "column": "right",
+          "order": 1,
+          "size": "medium",
+          "type": "landscape",
+          "ratio": "3/2",
+          "role": "Venue"
+        },
+        {
+          "_id": "ed-11",
+          "src": "https://images.unsplash.com/photo-1490481651871-ab68de25d43d",
+          "alt": "Hoa và trang trí bàn tiệc",
+          "caption": "",
+          "column": "right",
+          "order": 2,
+          "size": "small",
+          "type": "portrait",
+          "ratio": "4/5",
+          "role": "Decoration"
+        },
+        {
+          "_id": "ed-12",
+          "src": "https://images.unsplash.com/photo-1544078751-58fee2d8a03b",
+          "alt": "Gia đình hai bên",
+          "caption": "",
+          "column": "right",
+          "order": 3,
+          "size": "medium",
+          "type": "portrait",
+          "ratio": "3/4",
+          "role": "Family"
+        },
+        {
+          "_id": "ed-13",
+          "src": "https://images.unsplash.com/photo-1525328437458-0c4d4db7cab4",
+          "alt": "Cặp đôi cuối ngày",
+          "caption": "",
+          "column": "right",
+          "order": 4,
+          "size": "medium",
+          "type": "landscape",
+          "ratio": "3/2",
+          "role": "Documentary"
+        },
+        {
+          "_id": "ed-14",
+          "src": "https://images.unsplash.com/photo-1509927083803-4bd519298ac4",
+          "alt": "Chi tiết cuối buổi",
+          "caption": "",
+          "column": "right",
+          "order": 5,
+          "size": "medium",
+          "type": "detail",
+          "ratio": "1/1",
+          "role": "Detail"
+        }
+      ],
+      "signature": {
+        "label": "Selected stories",
+        "words": [
+          {
+            "_id": "w-1",
+            "text": "NOW STUDIO",
+            "level": 1,
+            "enabled": true
+          },
+          {
+            "_id": "w-2",
+            "text": "PHOTOGRAPHY",
+            "level": 2,
+            "enabled": true
+          },
+          {
+            "_id": "w-3",
+            "text": "WEDDING DRESS",
+            "level": 3,
+            "enabled": true
+          },
+          {
+            "_id": "w-4",
+            "text": "MAKE UP",
+            "level": 3,
+            "enabled": true
+          },
+          {
+            "_id": "w-5",
+            "text": "PORTRAITS",
+            "level": 4,
+            "enabled": true
+          },
+          {
+            "_id": "w-6",
+            "text": "DOCUMENTARY",
+            "level": 4,
+            "enabled": true
+          },
+          {
+            "_id": "w-7",
+            "text": "CANDID",
+            "level": 4,
+            "enabled": true
+          }
+        ],
+        "cta": {
+          "label": "View portfolio",
+          "href": "#featured"
+        }
+      }
+    }
+  }
+}
