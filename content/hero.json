@@ -1,9 +1,6 @@
 {
   "_type": "section.hero",
   "_id": "hero",
-  "_rev": "2026-09-12T04:19:39.960Z",
-  "status": "published",
-  "updatedAt": "2026-09-12T04:19:39.960Z",
   "fields": {
     "rail": "Cần Thơ · Miền Tây",
     "eyebrow": "Wedding & Portrait Photography",
@@ -89,15 +86,6 @@
         "srcset": null
       },
       {
-        "_id": "img-f8cmmmx",
-        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/BX1A2504.jpg",
-        "alt": "Ảnh cưới NOW Studio",
-        "focus": "center 26%",
-        "width": 5425,
-        "height": 3828,
-        "srcset": null
-      },
-      {
         "_id": "img-4g8bq3m",
         "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/IMG_4291.jpg",
         "alt": "Ảnh cưới NOW Studio",
@@ -125,5 +113,8 @@
       }
     ],
     "badge": "Award-winning studio · Est. 2016"
-  }
+  },
+  "status": "published",
+  "_rev": "2026-09-12T11:04:05.501Z",
+  "updatedAt": "2026-09-12T11:04:05.501Z"
 }
