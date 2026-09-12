@@ -139,7 +139,7 @@ td.t small{display:block;font-weight:400;font-size:11px;color:var(--muted);margi
     <button id="btn-preview">Xem trước site</button>
     <button id="btn-discard">Bỏ nháp</button>
     <button id="btn-save">Lưu nháp</button>
-    <button class="solid" id="btn-publish">Xuất bản</button>
+    <button id="btn-publish" title="Tải file JSON về máy để sao lưu thủ công">Xuất file .json</button>
   </div>
 </div>
 
@@ -161,7 +161,7 @@ td.t small{display:block;font-weight:400;font-size:11px;color:var(--muted);margi
     <span style="display:flex;align-items:center;gap:9px;font-size:13px;color:#b8afa8;padding:9px 10px"><i style="font-style:normal;font-size:11px;opacity:.7">▢</i>Contact<span class="n" style="font-size:8.5px;letter-spacing:.14em;text-transform:uppercase">sắp có</span></span>
     <div class="rail-t">Xem site</div>
     <a href="../guide/index.html" target="_blank"><i>↗</i>Wedding Guide</a>
-    <a href="../NOW Studio.html" target="_blank"><i>↗</i>Trang chủ</a>
+    <a href="../index.html" target="_blank"><i>↗</i>Trang chủ</a>
   </nav>
 
   <div class="main">
@@ -372,7 +372,7 @@ td.t small{display:block;font-weight:400;font-size:11px;color:var(--muted);margi
 <!-- GENERIC MODAL -->
 <div class="mask" id="msg-mask"><div class="modal sm" id="msg-body"></div></div>
 
-<script src="../js/nowcms.publish-api.js"></script>
+<script src="../js/nowcms-publish.js"></script>
 <script>
 const KEY='nowcms.guide.draft', SRC='../content/guide.json';
 const $=id=>document.getElementById(id);
@@ -812,7 +812,7 @@ document.querySelectorAll('th[data-sort]').forEach(th=>th.addEventListener('clic
   const k=th.dataset.sort;sortDir=(sortKey===k)?-sortDir:-1;sortKey=k;renderArticles()}));
 
 /* ══ lưu / xuất bản ══ */
-$('btn-save').addEventListener('click',()=>{localStorage.setItem(KEY,JSON.stringify(D));dirty=false;paintState()});
+$('btn-save').addEventListener('click',()=>{localStorage.setItem(KEY,JSON.stringify(D));dirty=false;paintState();if(window.NOWPUBLISH)NOWPUBLISH.rescan()});
 $('btn-discard').addEventListener('click',()=>{
   if(!confirm('Bỏ mọi thay đổi và trở về nội dung đang chạy trên web?'))return;
   localStorage.removeItem(KEY);D=clone(published);renderAll();dirty=false;paintState()});
@@ -844,30 +844,20 @@ $('btn-publish').addEventListener('click',()=>{
   if(warns.length&&!confirm(warns.length+' cảnh báo (không chặn). Vẫn xuất bản?\n\n'+warns.slice(0,5).join('\n')))return;
   doPublish();
 });
-async function doPublish(){
+function doPublish(){
   const out=Object.assign({},D,{_type:'collection.guide',_id:'guide',
     _rev:new Date().toISOString(),status:'published',
     _note:'Nguồn dữ liệu Wedding Guide. Xuất từ admin/guide.html.'});
-  if(!window.NOWCMSPublish){
-    const a=document.createElement('a');
-    a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));
-    a.download='guide.json';a.click();URL.revokeObjectURL(a.href);
-    localStorage.setItem(KEY,JSON.stringify(D));dirty=false;paintState();
-    modal(`<h3>Đã xuất file guide.json</h3><p>File vừa tải về máy bạn — đưa vào content/ rồi commit lên GitHub.</p>
-      <div class="m-acts"><button class="solid" onclick="document.getElementById('msg-mask').classList.remove('on')">Đã hiểu</button></div>`);
-    return;
-  }
-  $('btn-publish').disabled=true;
-  const res=await NOWCMSPublish.publishFile('content/guide.json',out,'CMS publish: cap nhat guide');
-  $('btn-publish').disabled=false;
-  if(res.ok){
-    localStorage.setItem(KEY,JSON.stringify(D));dirty=false;paintState();
-    modal(`<h3>Đã xuất bản</h3><p>Website sẽ cập nhật trong khoảng 30–60 giây.</p>
-      <div class="m-acts"><button class="solid" onclick="document.getElementById('msg-mask').classList.remove('on')">Đã hiểu</button></div>`);
-  }else{
-    modal(`<h3>Xuất bản lỗi</h3><p>${String(res.error||'Không rõ nguyên nhân').replace(/</g,'&lt;')}</p>
-      <div class="m-acts"><button class="solid" onclick="document.getElementById('msg-mask').classList.remove('on')">Đóng</button></div>`);
-  }
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));
+  a.download='guide.json';a.click();URL.revokeObjectURL(a.href);
+  localStorage.setItem(KEY,JSON.stringify(D));dirty=false;paintState();
+  modal(`<h3>Đã xuất file guide.json</h3><p>File vừa tải về máy bạn. Để website cập nhật:</p>
+    <ol><li>Mở thư mục website → <code>content/</code></li>
+    <li>Ghi đè <code>guide.json</code> bằng file vừa tải</li>
+    <li>Commit / upload lên hosting — bài mới hiện ngay trên <code>/guide</code> và trang chủ</li></ol>
+    <p style="margin-top:12px">Bài <b>Hẹn giờ</b> không cần làm gì thêm: website tự cho hiện khi tới giờ.</p>
+    <div class="m-acts"><button class="solid" onclick="document.getElementById('msg-mask').classList.remove('on')">Đã hiểu</button></div>`);
 }
 
 /* ══ render ══ */
@@ -884,6 +874,8 @@ function renderAll(){
   ['authors','categories','tags','media','articles','redirects'].forEach(k=>{D[k]=D[k]||[]});
   D.site=D.site||{};
   fillSettings();renderAll();paintState();
+  NOWPUBLISH.init({section:'guide',getDoc:()=>D,
+    onSaved:()=>{localStorage.setItem(KEY,JSON.stringify(D));dirty=false;paintState()}});
 })();
 </script>
 </body>

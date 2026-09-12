@@ -96,7 +96,7 @@ code{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold-dark);ba
     <span class="state" id="state">Đang tải…</span>
     <button id="discard">Bỏ nháp</button>
     <button id="save">Lưu nháp</button>
-    <button class="solid" id="publish">Xuất bản</button>
+    <button id="publish" title="Tải file JSON về máy để sao lưu thủ công">Xuất file .json</button>
   </div>
 </div>
 
@@ -109,10 +109,10 @@ code{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold-dark);ba
       <div class="seg"><button type="button" id="bd" class="on">Desktop</button><button type="button" id="bm">Mobile</button></div>
       <div class="sp"></div>
       <button type="button" id="reload">Tải lại</button>
-      <a href="../NOW Studio.html" target="_blank" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase">Trang thật ↗</a>
+      <a href="../index.html" target="_blank" style="font-size:11px;letter-spacing:.14em;text-transform:uppercase">Trang thật ↗</a>
     </div>
     <div class="pv-stage desk" id="stage">
-      <iframe id="pv" src="../NOW Studio.html?cms=preview" title="Xem trước"></iframe>
+      <iframe id="pv" src="../index.html?cms=preview" title="Xem trước"></iframe>
     </div>
   </div>
 
@@ -153,9 +153,9 @@ code{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold-dark);ba
 </div>
 
 <script src="../js/nowcms.schema.js"></script>
-<script src="../js/nowcms.publish-api.js"></script>
 <script>window.NOWCMS_BASE='../';</script>
 <script src="../js/nowcms.js"></script>
+<script src="../js/nowcms-publish.js"></script>
 <script>
 const SEC='hero';
 const S=window.NOWCMS_SCHEMA, DEF=S.sections[SEC];
@@ -325,7 +325,7 @@ function measure(im,after){
 }
 
 /* ── nút ── */
-$('save').addEventListener('click',()=>{localStorage.setItem(KEY,JSON.stringify(doc));mark(false)});
+$('save').addEventListener('click',()=>{localStorage.setItem(KEY,JSON.stringify(doc));mark(false);if(window.NOWPUBLISH)NOWPUBLISH.rescan()});
 $('discard').addEventListener('click',()=>{
   if(!confirm('Bỏ nháp và trở về nội dung đang chạy trên web?'))return;
   localStorage.removeItem(KEY);doc=clone(published);buildForm();mark(false);push();
@@ -333,25 +333,13 @@ $('discard').addEventListener('click',()=>{
 $('publish').addEventListener('click',async()=>{
   const imgs=(doc.fields.slides||[]).filter(s=>isLocal(s.url));
   if(imgs.length&&!confirm(imgs.length+' ảnh kéo từ máy sẽ bị nhúng thẳng vào file (rất nặng). Vẫn xuất bản?'))return;
-  $('publish').disabled=true;
   const res=await NOWCMS.publish(SEC,doc);
-  $('publish').disabled=false;
   if(res.mode==='download'){
     const a=document.createElement('a');
     a.href=URL.createObjectURL(new Blob([res.json],{type:'application/json'}));
     a.download=res.filename;a.click();URL.revokeObjectURL(a.href);
     $('mask').classList.add('on');
     localStorage.setItem(KEY,JSON.stringify(doc));mark(false);
-  } else if(res.mode==='api'){
-    const modal=document.querySelector('#mask .modal');
-    if(res.ok){
-      localStorage.setItem(KEY,JSON.stringify(doc));mark(false);
-      modal.innerHTML='<h3>Đã xuất bản</h3><p>Website sẽ cập nhật trong khoảng 30–60 giây.</p><div class="m-acts"><button type="button" id="mok" class="solid">Đã hiểu</button></div>';
-    }else{
-      modal.innerHTML='<h3>Xuất bản lỗi</h3><p>'+String(res.error||'Không rõ nguyên nhân').replace(/</g,'&lt;')+'</p><div class="m-acts"><button type="button" id="mok" class="solid">Đóng</button></div>';
-    }
-    document.getElementById('mok').addEventListener('click',()=>$('mask').classList.remove('on'));
-    $('mask').classList.add('on');
   }
 });
 $('mok').addEventListener('click',()=>$('mask').classList.remove('on'));
@@ -367,6 +355,8 @@ pv.addEventListener('load',()=>push());
   let draft=null;try{draft=JSON.parse(localStorage.getItem(KEY))}catch(e){}
   doc=NOWCMS.normalizeDoc(SEC,clone(draft||published));
   buildRail();buildForm();paintState();push();
+  NOWPUBLISH.init({section:'hero',getDoc:()=>doc,
+    onSaved:()=>{localStorage.setItem(KEY,JSON.stringify(doc));mark(false)}});
 })();
 </script>
 </body>

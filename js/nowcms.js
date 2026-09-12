@@ -170,26 +170,6 @@
       }
     },
 
-    /* Publish thẳng lên GitHub qua Cloudflare Pages Functions (/api/publish).
-       Đọc dữ liệu giống hệt 'json' — chỉ khác lúc Xuất bản. */
-    github: {
-      label: 'GitHub (tự động qua Cloudflare Pages Functions)',
-      read: function (name, def) { return SOURCES.json.read(name, def); },
-      publish: function (name, doc) {
-        var out = {};
-        out._type = doc._type; out._id = doc._id;
-        out._rev = new Date().toISOString();
-        out.status = 'published';
-        out.updatedAt = out._rev;
-        out.fields = doc.fields;
-        if (!window.NOWCMSPublish) {
-          return Promise.resolve({ mode: 'download', filename: name + '.json', json: JSON.stringify(out, null, 2) });
-        }
-        return window.NOWCMSPublish.publishFile('content/' + name + '.json', out, 'CMS publish: cap nhat ' + name)
-          .then(function (res) { return Object.assign({ mode: 'api' }, res); });
-      }
-    },
-
     /* Bước 2 — CMS online. Chỉ cần điền projectId trong schema.
        Không cần sửa gì trong website: cùng vỏ dữ liệu, cùng ổ cắm. */
     sanity: {
@@ -218,6 +198,7 @@
   function mount(name, root) {
     var def = SCHEMA.sections[name];
     if (!def) return Promise.resolve(null);
+    if (def.external) return Promise.resolve(null);   // section có renderer riêng
     if (PREVIEW) {
       var d = readDraft(name);
       if (d) { var nd = normalizeDoc(name, d); renderSection(name, nd, root); return Promise.resolve(nd); }

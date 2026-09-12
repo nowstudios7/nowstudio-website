@@ -17,7 +17,7 @@ window.NOWCMS_SCHEMA = {
 
   /* Nguồn dữ liệu đang dùng: 'json' (file trong web) hoặc 'sanity' (CMS online).
      Bước 2 chỉ cần đổi dòng này sang 'sanity' và điền config bên dưới. */
-  source: 'github',
+  source: 'json',
 
   sanity: {
     projectId: '',        // điền ở Bước 2
@@ -84,20 +84,32 @@ window.NOWCMS_SCHEMA = {
       ]
     },
 
+    /* Gallery dùng renderer riêng (sections/gallery.js) vì layout được
+       art-direct từng vị trí; loader chung bỏ qua nhờ external: true.
+       Trang quản lý: admin/gallery.html */
     gallery: {
-      title: 'Bộ sưu tập',
+      title: 'Gallery',
       icon: '▤',
+      external: true,
       admin: 'gallery.html',
       source: 'content/gallery.json',
-      sanityType: 'section.gallery'
+      sanityType: 'section.gallery',
+      groups: [],
+      fields: []
     },
 
+    /* Wedding Guide — module đầy đủ: bài viết, danh mục, tags, thư viện ảnh.
+       Có trang quản lý riêng vì là collection nhiều bản ghi, không phải một
+       section cố định — vẫn cùng vỏ dữ liệu và cùng luồng publish. */
     guide: {
       title: 'Wedding Guide',
-      icon: '▥',
+      icon: '◧',
+      external: true,
       admin: 'guide.html',
       source: 'content/guide.json',
-      sanityType: 'collection.guide'
+      sanityType: 'collection.guide',
+      groups: [],
+      fields: []
     }
 
     /* Section tiếp theo làm y hệt — ví dụ:
