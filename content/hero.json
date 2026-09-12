@@ -93,6 +93,15 @@
         "width": 5296,
         "height": 3736,
         "srcset": null
+      },
+      {
+        "_id": "img-dmnh55j",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046758/IMG_7310_1_Original.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center 26%",
+        "width": 5283,
+        "height": 3727,
+        "srcset": null
       }
     ],
     "stats": [
@@ -115,6 +124,6 @@
     "badge": "Award-winning studio · Est. 2016"
   },
   "status": "published",
-  "_rev": "2026-09-12T11:04:05.501Z",
-  "updatedAt": "2026-09-12T11:04:05.501Z"
+  "_rev": "2026-09-12T16:39:59.941Z",
+  "updatedAt": "2026-09-12T16:39:59.941Z"
 }
