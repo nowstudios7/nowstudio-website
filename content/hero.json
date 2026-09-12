@@ -1,9 +1,9 @@
 {
   "_type": "section.hero",
   "_id": "hero",
-  "_rev": "2026-09-10T13:37:56.395Z",
+  "_rev": "2026-09-12T04:17:09.577Z",
   "status": "published",
-  "updatedAt": "2026-09-10T13:37:56.395Z",
+  "updatedAt": "2026-09-12T04:17:09.577Z",
   "fields": {
     "rail": "Cần Thơ · Miền Tây",
     "eyebrow": "Wedding & Portrait Photography",
@@ -37,7 +37,7 @@
       {
         "_id": "img-g88en89",
         "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046757/_MG_0230.jpg",
-        "alt": "Ảnh cưới NOW Studio",
+        "alt": "Ảnh cưới NOW Studio (test publish)",
         "focus": "center",
         "width": 5250,
         "height": 3704,
