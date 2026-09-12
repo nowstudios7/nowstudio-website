@@ -11,7 +11,7 @@ function json(obj, status) {
 export async function onRequestGet(context) {
   const { env, request } = context;
   const authed = await verifySession(request, env.SESSION_SECRET);
-  if (!authed) return json({ ok: false, error: 'Chưa đăng nhập hoặc phiên đã hết hạn' }, 401);
+  if (!authed) return json({ ok: false, code: 'unauthorized', error: 'Chưa đăng nhập hoặc phiên đã hết hạn' }, 401);
 
   const url = new URL(request.url);
   const path = url.searchParams.get('path') || undefined;
@@ -27,6 +27,8 @@ export async function onRequestGet(context) {
       ok: true,
       commits: commits.map((c) => ({
         sha: c.sha,
+        shortSha: String(c.sha || '').slice(0, 7),
+        status: 'published',
         message: c.commit && c.commit.message,
         author: c.commit && c.commit.author && c.commit.author.name,
         date: c.commit && c.commit.author && c.commit.author.date,
