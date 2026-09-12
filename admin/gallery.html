@@ -192,6 +192,7 @@ code{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold-dark);ba
 </div>
 
 <script src="../js/nowcms.schema.js"></script>
+<script src="../js/nowcms.publish-api.js"></script>
 <script>window.NOWCMS_BASE='../';</script>
 <script src="../js/nowcms.js"></script>
 <script>
@@ -507,22 +508,31 @@ $('publish').addEventListener('click',()=>{
   if(soft.length&&!confirm('Có '+soft.length+' cảnh báo (số lượng ảnh khác đề xuất). Vẫn xuất bản?'))return;
   doPublish();
 });
-function doPublish(){
+async function doPublish(){
   renumber();
   const out={_type:'section.gallery',_id:'gallery',_rev:new Date().toISOString(),status:'published',
     updatedAt:new Date().toISOString(),
     _note:'Nội dung 2 gallery homepage. Xuất từ admin/gallery.html.',fields:D};
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));
-  a.download='gallery.json';a.click();URL.revokeObjectURL(a.href);
-  localStorage.setItem(KEY,JSON.stringify({fields:D}));dirty=false;paintState();
-  modal(`<h3>Đã xuất file gallery.json</h3>
-    <p>File vừa tải về máy bạn. Để website đổi:</p>
-    <ol><li>Mở thư mục website → <code>content/</code></li>
-    <li>Ghi đè <code>gallery.json</code> bằng file vừa tải</li>
-    <li>Commit / upload lên hosting — xong</li></ol>
-    <p style="margin-top:12px">Khi nối CMS online (Sanity) ở bước sau, nút này gửi thẳng lên CMS: không tải file, không upload tay.</p>
-    <div class="m-acts"><button type="button" class="solid" onclick="document.getElementById('mask').classList.remove('on')">Đã hiểu</button></div>`);
+  if(!window.NOWCMSPublish){
+    const a=document.createElement('a');
+    a.href=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)],{type:'application/json'}));
+    a.download='gallery.json';a.click();URL.revokeObjectURL(a.href);
+    localStorage.setItem(KEY,JSON.stringify({fields:D}));dirty=false;paintState();
+    modal(`<h3>Đã xuất file gallery.json</h3><p>File vừa tải về máy bạn — đưa vào content/ rồi commit lên GitHub.</p>
+      <div class="m-acts"><button type="button" class="solid" onclick="document.getElementById('mask').classList.remove('on')">Đã hiểu</button></div>`);
+    return;
+  }
+  $('publish').disabled=true;
+  const res=await NOWCMSPublish.publishFile('content/gallery.json',out,'CMS publish: cap nhat gallery');
+  $('publish').disabled=false;
+  if(res.ok){
+    localStorage.setItem(KEY,JSON.stringify({fields:D}));dirty=false;paintState();
+    modal(`<h3>Đã xuất bản</h3><p>Website sẽ cập nhật trong khoảng 30–60 giây.</p>
+      <div class="m-acts"><button type="button" class="solid" onclick="document.getElementById('mask').classList.remove('on')">Đã hiểu</button></div>`);
+  }else{
+    modal(`<h3>Xuất bản lỗi</h3><p>${String(res.error||'Không rõ nguyên nhân').replace(/</g,'&lt;')}</p>
+      <div class="m-acts"><button type="button" class="solid" onclick="document.getElementById('mask').classList.remove('on')">Đóng</button></div>`);
+  }
 }
 
 /* ── preview controls ── */

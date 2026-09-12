@@ -17,7 +17,7 @@ window.NOWCMS_SCHEMA = {
 
   /* Nguồn dữ liệu đang dùng: 'json' (file trong web) hoặc 'sanity' (CMS online).
      Bước 2 chỉ cần đổi dòng này sang 'sanity' và điền config bên dưới. */
-  source: 'json',
+  source: 'github',
 
   sanity: {
     projectId: '',        // điền ở Bước 2
