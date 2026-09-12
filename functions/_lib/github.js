@@ -40,6 +40,58 @@ export async function putFile(env, path, contentStr, message, sha) {
   return res.json();
 }
 
+/* Commit NHIỀU file trong MỘT commit duy nhất (Git Data API).
+   Trả { nochange: true } nếu cây thư mục không đổi — tránh tạo commit rỗng.
+   Không force push: PATCH ref với force = false. */
+export async function commitFiles(env, files, message) {
+  const base = `${API}/repos/${env.GITHUB_OWNER}/${env.GITHUB_REPO}`;
+  const branch = env.GITHUB_BRANCH;
+  const h = authHeaders(env.GITHUB_TOKEN);
+  const jh = Object.assign({ 'Content-Type': 'application/json' }, h);
+
+  async function call(url, init, what) {
+    const res = await fetch(url, init);
+    if (!res.ok) throw new Error(`GitHub ${what} lỗi ${res.status}: ${(await res.text()).slice(0, 300)}`);
+    return res.json();
+  }
+
+  const refUrl = `${base}/git/ref/heads/${branch}`;
+  const ref = await call(refUrl, { headers: h }, `GET ref heads/${branch}`);
+  const parentSha = ref.object && ref.object.sha;
+  if (!parentSha) throw new Error(`Không đọc được HEAD của nhánh ${branch}`);
+
+  const parent = await call(`${base}/git/commits/${parentSha}`, { headers: h }, 'GET commit');
+  const baseTreeSha = parent.tree && parent.tree.sha;
+
+  const tree = await call(`${base}/git/trees`, {
+    method: 'POST', headers: jh,
+    body: JSON.stringify({
+      base_tree: baseTreeSha,
+      tree: files.map((f) => ({ path: f.path, mode: '100644', type: 'blob', content: f.content }))
+    })
+  }, 'POST tree');
+
+  if (tree.sha === baseTreeSha) return { nochange: true, branch, parentSha };
+
+  const commit = await call(`${base}/git/commits`, {
+    method: 'POST', headers: jh,
+    body: JSON.stringify({ message, tree: tree.sha, parents: [parentSha] })
+  }, 'POST commit');
+
+  await call(refUrl, {
+    method: 'PATCH', headers: jh,
+    body: JSON.stringify({ sha: commit.sha, force: false })
+  }, 'PATCH ref');
+
+  return {
+    nochange: false,
+    branch,
+    sha: commit.sha,
+    url: commit.html_url || `https://github.com/${env.GITHUB_OWNER}/${env.GITHUB_REPO}/commit/${commit.sha}`,
+    committedAt: (commit.committer && commit.committer.date) || new Date().toISOString()
+  };
+}
+
 export async function listCommits(env, path, perPage) {
   const params = new URLSearchParams({ sha: env.GITHUB_BRANCH, per_page: String(perPage || 10) });
   if (path) params.set('path', path);
