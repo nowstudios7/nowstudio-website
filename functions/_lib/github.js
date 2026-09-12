@@ -55,8 +55,10 @@ export async function commitFiles(env, files, message) {
     return res.json();
   }
 
-  const refUrl = `${base}/git/ref/heads/${branch}`;
-  const ref = await call(refUrl, { headers: h }, `GET ref heads/${branch}`);
+  // GitHub: ĐỌC ref dùng /git/ref/... (số ít), CẬP NHẬT ref dùng /git/refs/... (số nhiều).
+  const refReadUrl = `${base}/git/ref/heads/${branch}`;
+  const refWriteUrl = `${base}/git/refs/heads/${branch}`;
+  const ref = await call(refReadUrl, { headers: h }, `GET ref heads/${branch}`);
   const parentSha = ref.object && ref.object.sha;
   if (!parentSha) throw new Error(`Không đọc được HEAD của nhánh ${branch}`);
 
@@ -78,7 +80,7 @@ export async function commitFiles(env, files, message) {
     body: JSON.stringify({ message, tree: tree.sha, parents: [parentSha] })
   }, 'POST commit');
 
-  await call(refUrl, {
+  await call(refWriteUrl, {
     method: 'PATCH', headers: jh,
     body: JSON.stringify({ sha: commit.sha, force: false })
   }, 'PATCH ref');
