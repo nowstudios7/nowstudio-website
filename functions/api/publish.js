@@ -63,7 +63,7 @@ export async function onRequestPost(context) {
   }
 
   const missing = REQUIRED_ENV.filter((k) => !env[k]);
-  if (missing.length) return json({ ok: false, code: 'config', error: `Server chưa cấu hình ${missing.join('/')}` }, 500);
+  if (missing.length) return json({ ok: false, code: 'config', error: `Server chưa cấu hình ${missing.join('/')}` }, 424);
 
   const message = (body.message && String(body.message).slice(0, 200)) ||
     `CMS publish: cap nhat ${files.map((f) => f.path).join(', ')}`;
@@ -83,6 +83,8 @@ export async function onRequestPost(context) {
       files: files.map((f) => f.path)
     });
   } catch (e) {
-    return json({ ok: false, code: 'github', error: String((e && e.message) || e) }, 502);
+    // 424 chứ không phải 5xx: Cloudflare thay body 5xx bằng trang lỗi HTML,
+    // khiến frontend không đọc được JSON và chỉ báo "dữ liệu không đọc được".
+    return json({ ok: false, code: 'github', error: String((e && e.message) || e) }, 424);
   }
 }
