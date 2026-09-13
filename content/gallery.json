@@ -15,7 +15,7 @@
       "images": [
         {
           "_id": "fw-1",
-          "src": "https://images.unsplash.com/photo-1519225421980-715cb0215aed",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789311239/IMG_2147.jpg",
           "alt": "Cô dâu chú rể trong nắng chiều",
           "category": "Couple",
           "couple": "Hải & Ngân",
@@ -31,7 +31,7 @@
         },
         {
           "_id": "fw-3",
-          "src": "https://images.unsplash.com/photo-1583939003579-730e3918a45a",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789311246/IMG_2143.jpg",
           "alt": "Cặp đôi nắm tay trên đường quê",
           "category": "Couple",
           "couple": "Duy & Linh",
@@ -55,7 +55,7 @@
         },
         {
           "_id": "fw-6",
-          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046757/IMG_2265.jpg",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/498597371_4108451992721211_7181074481192769110_n.jpg",
           "alt": "Bó hoa cưới và chi tiết váy",
           "category": "Detail",
           "couple": "Minh & Thư",
@@ -79,7 +79,7 @@
         },
         {
           "_id": "fw-9",
-          "src": "https://images.unsplash.com/photo-1537633552985-df8429e8048b",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046757/IMG_1746.jpg",
           "alt": "Cặp đôi trong không gian tiệc cưới",
           "category": "Reception",
           "couple": "Phúc & Trâm",
@@ -120,7 +120,7 @@
         },
         {
           "_id": "ed-3",
-          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046758/J84A9983_20221212054153pm.jpg",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789311240/IMG_2142.jpg",
           "alt": "Cô dâu trong nắng cuối ngày",
           "caption": "",
           "column": "left",
@@ -132,7 +132,7 @@
         },
         {
           "_id": "ed-4",
-          "src": "https://images.unsplash.com/photo-1469371670807-013ccf25f16a",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046757/_MG_0245_20220902105413am.jpg",
           "alt": "Khoảnh khắc candid trong tiệc",
           "caption": "",
           "column": "left",
@@ -317,6 +317,6 @@
     }
   },
   "status": "published",
-  "_rev": "2026-09-13T14:43:35.910Z",
-  "updatedAt": "2026-09-13T14:43:35.910Z"
+  "_rev": "2026-09-13T14:59:07.984Z",
+  "updatedAt": "2026-09-13T14:59:07.984Z"
 }
