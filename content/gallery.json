@@ -31,7 +31,7 @@
         },
         {
           "_id": "fw-3",
-          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789311246/IMG_2143.jpg",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/498597371_4108451992721211_7181074481192769110_n.jpg",
           "alt": "Cặp đôi nắm tay trên đường quê",
           "category": "Couple",
           "couple": "Duy & Linh",
@@ -55,7 +55,7 @@
         },
         {
           "_id": "fw-6",
-          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/498597371_4108451992721211_7181074481192769110_n.jpg",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789311246/IMG_2143.jpg",
           "alt": "Bó hoa cưới và chi tiết váy",
           "category": "Detail",
           "couple": "Minh & Thư",
@@ -317,6 +317,6 @@
     }
   },
   "status": "published",
-  "_rev": "2026-09-13T15:04:55.316Z",
-  "updatedAt": "2026-09-13T15:04:55.316Z"
+  "_rev": "2026-09-13T15:06:44.847Z",
+  "updatedAt": "2026-09-13T15:06:44.847Z"
 }
