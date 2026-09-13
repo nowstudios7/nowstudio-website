@@ -23,7 +23,7 @@
         },
         {
           "_id": "fw-2",
-          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046755/DSC01186-Evoto.jpg",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046756/DSCF1268.jpg",
           "alt": "Chân dung cô dâu ngoài trời",
           "category": "Bride",
           "couple": "Minh & Thư",
@@ -71,7 +71,7 @@
         },
         {
           "_id": "fw-8",
-          "src": "https://images.unsplash.com/photo-1519741497674-611481863552",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/_MG_2363_20220902104918am.jpg",
           "alt": "Khoảnh khắc cười của cặp đôi",
           "category": "Candid",
           "couple": "Hải & Ngân",
@@ -317,6 +317,6 @@
     }
   },
   "status": "published",
-  "_rev": "2026-09-13T14:59:07.984Z",
-  "updatedAt": "2026-09-13T14:59:07.984Z"
+  "_rev": "2026-09-13T15:01:38.959Z",
+  "updatedAt": "2026-09-13T15:01:38.959Z"
 }
