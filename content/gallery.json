@@ -1,9 +1,6 @@
 {
   "_type": "section.gallery",
   "_id": "gallery",
-  "_rev": "2026-09-11T01:53:59.305Z",
-  "status": "published",
-  "updatedAt": "2026-09-11T01:53:59.305Z",
   "_note": "Nội dung 2 gallery homepage. Xuất từ admin/gallery.html.",
   "fields": {
     "featured": {
@@ -26,7 +23,7 @@
         },
         {
           "_id": "fw-2",
-          "src": "https://images.unsplash.com/photo-1606216794074-735e91aa2c92",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046755/DSC01186-Evoto.jpg",
           "alt": "Chân dung cô dâu ngoài trời",
           "category": "Bride",
           "couple": "Minh & Thư",
@@ -50,7 +47,7 @@
         },
         {
           "_id": "fw-5",
-          "src": "https://images.unsplash.com/photo-1511285560929-80b456fea0bc",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046757/IMG_3166.jpg",
           "alt": "Cặp đôi giữa cánh đồng",
           "category": "Couple",
           "couple": "Khoa & Nhi",
@@ -318,5 +315,8 @@
         }
       }
     }
-  }
+  },
+  "status": "published",
+  "_rev": "2026-09-13T01:11:14.280Z",
+  "updatedAt": "2026-09-13T01:11:14.280Z"
 }
