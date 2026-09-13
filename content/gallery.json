@@ -55,7 +55,7 @@
         },
         {
           "_id": "fw-6",
-          "src": "https://images.unsplash.com/photo-1457449940276-e8deed18bfff",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046757/IMG_2265.jpg",
           "alt": "Bó hoa cưới và chi tiết váy",
           "category": "Detail",
           "couple": "Minh & Thư",
@@ -317,6 +317,6 @@
     }
   },
   "status": "published",
-  "_rev": "2026-09-13T01:11:14.280Z",
-  "updatedAt": "2026-09-13T01:11:14.280Z"
+  "_rev": "2026-09-13T01:12:51.398Z",
+  "updatedAt": "2026-09-13T01:12:51.398Z"
 }
