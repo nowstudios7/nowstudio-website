@@ -47,7 +47,7 @@
         },
         {
           "_id": "fw-5",
-          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046757/IMG_3166.jpg",
+          "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046758/IMG_9799_20220902023146pm.jpg",
           "alt": "Cặp đôi giữa cánh đồng",
           "category": "Couple",
           "couple": "Khoa & Nhi",
@@ -317,6 +317,6 @@
     }
   },
   "status": "published",
-  "_rev": "2026-09-13T15:01:38.959Z",
-  "updatedAt": "2026-09-13T15:01:38.959Z"
+  "_rev": "2026-09-13T15:04:55.316Z",
+  "updatedAt": "2026-09-13T15:04:55.316Z"
 }
