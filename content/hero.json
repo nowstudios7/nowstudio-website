@@ -50,6 +50,15 @@
         "srcset": null
       },
       {
+        "_id": "img-wqm3lcg",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046758/J84A9983_20221212054153pm.jpg",
+        "alt": "Ảnh cưới NOW Studio",
+        "focus": "center 26%",
+        "width": 2184,
+        "height": 3096,
+        "srcset": null
+      },
+      {
         "_id": "img-ajtepda",
         "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046758/_MG_2313_20220902104855am.jpg",
         "alt": "Ảnh cưới NOW Studio",
@@ -86,12 +95,12 @@
         "srcset": null
       },
       {
-        "_id": "img-dmnh55j",
-        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046758/IMG_7310_1_Original.jpg",
+        "_id": "img-4g8bq3m",
+        "url": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1789046754/IMG_4291.jpg",
         "alt": "Ảnh cưới NOW Studio",
         "focus": "center 26%",
-        "width": 5283,
-        "height": 3727,
+        "width": 5296,
+        "height": 3736,
         "srcset": null
       }
     ],
@@ -115,6 +124,6 @@
     "badge": "Award-winning studio · Est. 2016"
   },
   "status": "published",
-  "_rev": "2026-09-12T19:19:49.171Z",
-  "updatedAt": "2026-09-12T19:19:49.171Z"
+  "_rev": "2026-09-13T01:00:55.301Z",
+  "updatedAt": "2026-09-13T01:00:55.301Z"
 }
