@@ -31,6 +31,27 @@
         return stamp({ _type: 'section.gallery', _id: 'gallery', _note: 'Nội dung 2 gallery homepage. Xuất từ admin/gallery.html.', fields: fields || {} });
       }
     },
+    services: {
+      path: 'content/services.json', label: 'Dịch vụ', commit: 'Update services section',
+      build: function (draft) {
+        var fields = draft && draft.fields ? draft.fields : draft;
+        return stamp({ _type: 'section.services', _id: 'services', _note: 'Section Dịch vụ trên trang chủ. Xuất từ admin/services.html.', fields: fields || {} });
+      }
+    },
+    feedback: {
+      path: 'content/feedback.json', label: 'Feedback khách', commit: 'Update feedback section',
+      build: function (draft) {
+        var fields = draft && draft.fields ? draft.fields : draft;
+        return stamp({ _type: 'section.feedback', _id: 'feedback', _note: 'Section Feedback trên trang chủ. Xuất từ admin/feedback.html.', fields: fields || {} });
+      }
+    },
+    social: {
+      path: 'content/social.json', label: 'Mạng xã hội', commit: 'Update social links',
+      build: function (draft) {
+        var fields = draft && draft.fields ? draft.fields : draft;
+        return stamp({ _type: 'section.social', _id: 'social', _note: 'Mạng xã hội trong section Đặt Lịch Chụp. Xuất từ admin/social.html.', fields: fields || {} });
+      }
+    },
     guide: {
       path: 'content/guide.json', label: 'Wedding Guide', commit: 'Update Wedding Guide',
       build: function (draft) {
@@ -263,7 +284,11 @@
         if (p) { p.focus(); p.placeholder = 'Nhập mật khẩu CMS rồi bấm Publish ngay'; }
         return;
       }
-      run(files, pass);
+      // trang admin có thể chặn/xác nhận trước (tuỳ chọn — trang khác không bị ảnh hưởng)
+      var gate = S.current && S.current.beforePublish;
+      Promise.resolve(gate ? gate(files) : true).then(function (ok) {
+        if (ok) run(files, pass); else paint();
+      });
     });
   }
 

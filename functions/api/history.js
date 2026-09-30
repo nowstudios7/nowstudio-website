@@ -2,7 +2,14 @@
 import { verifySession } from '../_lib/auth.js';
 import { listCommits } from '../_lib/github.js';
 
-const ALLOWED_PATHS = new Set(['content/hero.json', 'content/gallery.json', 'content/guide.json']);
+const ALLOWED_PATHS = new Set([
+  'content/hero.json',
+  'content/gallery.json',
+  'content/guide.json',
+  'content/services.json',
+  'content/feedback.json',
+  'content/social.json'
+]);
 
 function json(obj, status) {
   return new Response(JSON.stringify(obj), { status: status || 200, headers: { 'Content-Type': 'application/json' } });

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOW·STUDIO — Quản lý Mạng xã hội</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#c9a876;--gold-dark:#a8864f;--bg:#faf8f5;--dark:#1a1714;--mid:#4a4440;--muted:#8a7e76;--line:rgba(201,168,118,.3);--warn:#b4552f;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',Helvetica,sans-serif}
+body{font-family:var(--sans);background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6}
+a{color:var(--gold-dark);text-decoration:none}a:hover{color:var(--dark)}
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px;padding:0 24px;background:rgba(250,248,245,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--serif);font-size:19px;letter-spacing:.12em;white-space:nowrap}
+.brand em{font-style:normal;color:var(--gold)}
+.brand small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.acts{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+button{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--mid);padding:0 16px;min-height:40px;border-radius:2px;transition:background .18s,color .18s,border-color .18s}
+button:hover{border-color:var(--gold);color:var(--dark)}
+button:disabled{opacity:.4;cursor:default}
+button.solid{background:var(--dark);color:#fff;border-color:var(--dark)}
+button.solid:hover{background:var(--gold-dark);border-color:var(--gold-dark);color:#fff}
+button.mini{min-height:28px;padding:0 10px;font-size:10px;letter-spacing:.06em}
+button.danger{color:var(--warn);border-color:#e2c0ae}
+button.danger:hover{background:var(--warn);color:#fff;border-color:var(--warn)}
+.state{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:6px 11px;white-space:nowrap}
+.state.dirty{color:var(--warn);border-color:#e2c0ae}
+.state.saved{color:var(--gold-dark);border-color:var(--gold)}
+.wrap{display:grid;grid-template-columns:184px minmax(0,520px) minmax(0,1fr);align-items:start}
+.rail{border-right:1px solid var(--line);padding:24px 16px 60px;min-height:calc(100vh - 68px)}
+.rail-t{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 8px 12px}
+.rail a,.rail span.off{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--mid);padding:9px 10px;border-radius:2px;margin-bottom:2px}
+.rail a.on{background:var(--dark);color:#fff}
+.rail span.off{color:#b8afa8}
+.rail i{font-style:normal;font-size:11px;opacity:.7}
+.rail .soon{margin-left:auto;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.panel{padding:24px 22px 90px;border-right:1px solid var(--line);min-height:calc(100vh - 68px)}
+.view{display:none}.view.on{display:block}
+.grp{border-top:1px solid var(--line);padding-top:18px;margin-top:24px}
+.grp:first-child{border-top:0;margin-top:0;padding-top:0}
+.grp-t{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:14px}
+.count{font-size:10px;letter-spacing:.12em;color:var(--muted)}
+label{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:13px 0 6px}
+input,textarea,select{width:100%;font-family:var(--sans);font-size:13.5px;color:var(--dark);background:#fff;border:1px solid var(--line);border-radius:2px;padding:10px 11px;line-height:1.5}
+input:focus,textarea:focus,select:focus{outline:0;border-color:var(--gold)}
+input.bad,textarea.bad{border-color:var(--warn);background:#fff8f5}
+textarea{resize:vertical}
+.hint{font-size:11.5px;color:var(--muted);line-height:1.6;margin-top:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rows{display:flex;flex-direction:column;gap:9px}
+.svc{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:14px;background:#fff;border:1px solid var(--line);border-radius:2px}
+.svc.off .svc-ic,.svc.off .svc-n{opacity:.45}
+.svc-ic{width:52px;height:52px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);color:var(--gold)}
+.svc-ic svg{width:30px;height:30px}
+.svc-top{display:flex;align-items:baseline;gap:10px;min-width:0}
+.svc-no{font-family:var(--serif);font-size:15px;color:var(--gold-dark)}
+.svc-n{font-family:var(--serif);font-size:21px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.svc-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.pill{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);color:var(--muted);padding:2px 8px;border-radius:2px}
+.pill.on{color:var(--gold-dark);border-color:var(--gold)}
+.pill.bad{color:var(--warn);border-color:#e2c0ae}
+.svc-acts{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;border-top:1px dotted var(--line);padding-top:11px}
+.svc-acts .sp{flex:1}
+.back{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px}
+.back h2{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.2}
+.icons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.icons button{display:flex;flex-direction:column;align-items:center;gap:6px;min-height:0;padding:12px 4px 9px;font-size:9.5px;letter-spacing:.08em;color:var(--muted)}
+.icons button svg{width:30px;height:30px;color:var(--gold)}
+.icons button.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset;color:var(--dark)}
+.seg{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;background:#fff;width:max-content}
+.seg button{border:0;border-radius:0;min-height:36px}
+.seg button.on{background:var(--dark);color:#fff}
+.checks{display:flex;flex-direction:column;gap:8px}
+.check{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);padding:11px 12px;border-radius:2px;cursor:pointer;font-size:13px;color:var(--mid);margin:0;letter-spacing:0;text-transform:none}
+.check input{width:16px;height:16px;accent-color:var(--gold-dark);flex:none}
+.warnbox{border:1px solid #e2c0ae;background:#fff8f5;border-radius:2px;padding:12px 14px;margin-top:18px}
+.warnbox ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.warnbox li{font-size:12px;color:var(--warn);padding-left:13px;position:relative}
+.warnbox li::before{content:'!';position:absolute;left:0;top:0;font-size:11px}
+.foot{display:flex;justify-content:space-between;gap:10px;margin-top:28px;border-top:1px solid var(--line);padding-top:18px}
+.preview{position:sticky;top:68px;height:calc(100vh - 68px);display:flex;flex-direction:column;background:#e9e6e1}
+.pv-bar{display:flex;align-items:center;gap:10px;padding:11px 18px;border-bottom:1px solid var(--line);background:rgba(250,248,245,.9)}
+.pv-bar .sp{flex:1}
+.pv-bar .seg button{min-height:32px}
+.pv-stage{flex:1;overflow:auto;display:flex;justify-content:center;padding:18px}
+#pv{border:0;background:var(--bg);box-shadow:0 18px 50px rgba(26,23,20,.14)}
+.pv-stage.mob #pv{width:390px;height:100%;border-radius:20px}
+.pv-stage.desk #pv{width:100%;height:100%}
+.mask{position:fixed;inset:0;background:rgba(26,23,20,.55);display:none;align-items:center;justify-content:center;z-index:60;padding:24px}
+.mask.on{display:flex}
+.modal{background:#fff;max-width:520px;width:100%;padding:32px 34px 28px;box-shadow:0 30px 80px rgba(26,23,20,.3);max-height:86vh;overflow:auto}
+.modal h3{font-family:var(--serif);font-weight:400;font-size:27px;margin-bottom:8px}
+.modal p,.modal li{font-size:13.5px;color:var(--mid);line-height:1.7}
+.modal ol,.modal ul{margin:12px 0 0 18px;display:flex;flex-direction:column;gap:6px}
+.modal .m-acts{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+code{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold-dark);background:var(--bg);border:1px solid var(--line);padding:1px 5px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,16px);opacity:0;pointer-events:none;background:var(--dark);color:#fff;font-size:12.5px;padding:12px 18px;border-radius:2px;box-shadow:0 18px 40px rgba(26,23,20,.25);transition:opacity .2s,transform .2s;z-index:90;max-width:calc(100vw - 32px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast.bad{background:var(--warn)}
+@media (max-width:1180px){.wrap{grid-template-columns:minmax(0,1fr)}.rail{border-right:0;min-height:0;display:flex;flex-wrap:wrap;gap:6px;padding:14px 18px;border-bottom:1px solid var(--line)}.rail-t{width:100%;margin:0 0 4px}.panel{border-right:0;min-height:0}.preview{position:relative;top:0;height:78vh;border-top:1px solid var(--line)}}
+.soc{display:grid;grid-template-columns:44px minmax(0,1fr);gap:12px 14px;padding:14px;background:#fff;border:1px solid var(--line);border-radius:2px}
+.soc.off .soc-ic,.soc.off .soc-n{opacity:.45}
+.soc-ic{width:44px;height:44px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);color:var(--mid)}
+.soc-ic svg{width:20px;height:20px}
+.soc-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.soc-n{font-family:var(--serif);font-size:21px;line-height:1.2}
+.soc-top .sp{flex:1}
+.soc .pill{white-space:nowrap}
+.soc-body{grid-column:1/-1}
+.soc-body input{margin-top:0}
+.soc .check{padding:6px 10px;font-size:12px}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="brand">NOW<em>·</em>STUDIO <small>Mạng xã hội — quản lý nội dung</small></div>
+<div class="acts">
+<span class="state" id="state">Đang tải…</span>
+<button type="button" id="discard">Bỏ nháp</button>
+<button type="button" id="save">Lưu nháp</button>
+<button type="button" id="export" title="Tải file JSON về máy để sao lưu thủ công">Xuất file .json</button>
+</div>
+</div>
+<div class="wrap">
+<nav class="rail" id="rail"></nav>
+<div class="panel">
+<div class="grp">
+<div class="grp-t">Tiêu đề khu vực</div>
+<label for="s-label">Dòng chữ nhỏ giữa hai đường kẻ</label><input id="s-label" placeholder="Kết nối với NOW Studio">
+<p class="hint">Hiện ngay dưới Điện thoại · Email · Địa chỉ, phía trên form Đặt lịch.</p>
+</div>
+<div class="grp">
+<div class="grp-t">Liên kết <span class="count" id="count"></span></div>
+<div class="rows" id="list"></div>
+<p class="hint">Dán link trang cá nhân đầy đủ, bắt đầu bằng <code>https://</code> — ví dụ mở trang Facebook của studio rồi copy thanh địa chỉ. Nền tảng chưa có link vẫn hiện icon + tên trên website nhưng <b>chưa bấm được</b>; bỏ tích “Hiện trên website” nếu muốn giấu hẳn. Thứ tự, icon và màu do thiết kế quyết định.</p>
+</div>
+<div class="warnbox" id="warn" style="display:none"><ul></ul></div>
+</div>
+<div class="preview">
+<div class="pv-bar">
+<div class="seg"><button type="button" id="bd" class="on">Desktop</button><button type="button" id="bm">Mobile</button></div>
+<div class="sp"></div>
+<button type="button" id="jump">→ Đặt lịch</button>
+<button type="button" id="reload">Tải lại</button>
+</div>
+<div class="pv-stage desk" id="stage"><iframe id="pv" src="../index.html?cms=preview" title="Xem trước"></iframe></div>
+</div>
+</div>
+<div class="mask" id="mask"><div class="modal" id="modal-body"></div></div>
+<div class="toast" id="toast"></div>
+<script src="../js/nowcms.schema.js"></script>
+<script>window.NOWCMS_BASE='../';</script>
+<script src="../js/nowcms.js"></script>
+<script src="../js/nowcms-publish.js"></script>
+<script src="../sections/social.js"></script>
+<script src="social-admin.js"></script>
+</body>
+</html>

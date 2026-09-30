@@ -186,7 +186,7 @@ function change(){mark(true);push()}
 
 /* ── rail: danh sách section (thể hiện khả năng mở rộng) ── */
 function buildRail(){
-  const soon=['Dịch vụ','Feedback khách','About','Contact'];
+  const soon=['About','Contact'];
   $('rail').innerHTML='<div class="rail-t">Section</div>'+
     Object.keys(S.sections).map(k=>{
       const s=S.sections[k];

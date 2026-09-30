@@ -11,7 +11,14 @@
 import { verifySession } from '../_lib/auth.js';
 import { commitFiles } from '../_lib/github.js';
 
-const ALLOWED_PATHS = new Set(['content/hero.json', 'content/gallery.json', 'content/guide.json']);
+const ALLOWED_PATHS = new Set([
+  'content/hero.json',
+  'content/gallery.json',
+  'content/guide.json',
+  'content/services.json',
+  'content/feedback.json',
+  'content/social.json'
+]);
 const REQUIRED_ENV = ['GITHUB_OWNER', 'GITHUB_REPO', 'GITHUB_BRANCH', 'GITHUB_TOKEN'];
 
 function json(obj, status) {

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lời nhắn từ các cặp đôi | NOW·STUDIO</title>
+<meta name="description" content="Cảm nhận của các cặp đôi đã chụp ảnh cưới, pre-wedding và trang điểm cùng NOW Studio.">
+<link rel="canonical" href="/feedback">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../sections/site-base.css">
+<link rel="stylesheet" href="../sections/feedback.css">
+<style>
+body{background:var(--dark)}
+a{color:var(--gold-dark)}a:hover{color:var(--dark)}
+.fbp-main{padding-top:72px;min-height:100vh;display:flex;flex-direction:column}
+.fbp-kicker{display:flex;align-items:center;justify-content:center;gap:14px;padding:64px 24px 0;font-size:10.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold)}
+.fbp-kicker::before,.fbp-kicker::after{content:'';width:32px;height:1px;background:rgba(201,168,118,.45)}
+#testimonial.fbp{flex:1}
+#testimonial.fbp .t-hero{padding-top:44px}
+.t-empty{padding:120px 24px;text-align:center;font-family:var(--serif);font-style:italic;font-size:24px;color:#cfc6b8}
+.fbp-foot{display:flex;justify-content:center;padding:40px 24px 56px;border-top:1px solid rgba(255,255,255,.08)}
+.fbp-foot a{display:inline-flex;align-items:center;gap:12px;font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-light);text-decoration:none;padding:12px 4px}
+.fbp-foot a:hover{color:#fff}
+@media (max-width:640px){.fbp-main{padding-top:64px}.fbp-kicker{padding-top:44px}#testimonial.fbp .t-hero{padding-top:30px}}
+</style>
+</head>
+<body>
+<header>
+  <a href="../index.html" class="logo" aria-label="Về trang chủ NOW Studio">NOW<span>·</span>STUDIO</a>
+  <nav>
+    <a href="../index.html#featured">Bộ sưu tập</a>
+    <a href="../index.html#services">Dịch vụ</a>
+    <a href="../guide/index.html">Wedding Guide</a>
+    <a href="../index.html#contact" class="nav-cta">Đặt Lịch</a>
+  </nav>
+</header>
+<main class="fbp-main">
+  <h1 class="fbp-kicker">Lời nhắn từ các cặp đôi</h1>
+  <section id="testimonial" class="fbp" aria-roledescription="carousel" aria-label="Cảm nhận của khách hàng">
+    <div class="t-hero">
+      <div class="t-viewport" id="t-viewport" tabindex="0" aria-live="polite" aria-label="Cảm nhận khách hàng — dùng phím mũi tên trái/phải để chuyển"></div>
+      <div class="testimonial-dots" id="t-dots" role="group" aria-label="Chọn cảm nhận"></div>
+    </div>
+    <div class="t-list" id="t-list" role="group" aria-label="Tất cả cảm nhận"></div>
+    <p class="t-empty" id="t-empty" hidden>Những lời nhắn đầu tiên đang được gửi về.</p>
+  </section>
+  <div class="fbp-foot"><a href="../index.html"><svg width="17" height="10" viewBox="0 0 17 10" fill="none" aria-hidden="true"><path d="M16 5H2M7 1L2 5l5 4" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"></path></svg>Về trang chủ</a></div>
+</main>
+<script>window.NOWCMS_BASE='../';window.NOWFEEDBACK_PAGE=true;</script>
+<script src="../sections/feedback-illustrations.js"></script>
+<script src="../sections/feedback.js"></script>
+</body>
+</html>
