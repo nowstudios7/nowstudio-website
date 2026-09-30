@@ -1,0 +1,17 @@
+{
+  "_type": "section.social",
+  "_id": "social",
+  "_rev": "2026-09-30T00:00:00.000Z",
+  "status": "published",
+  "updatedAt": "2026-09-30T00:00:00.000Z",
+  "_note": "Mạng xã hội trong section Đặt Lịch Chụp. Quản lý bằng admin/social.html. Nền tảng chưa có link sẽ không hiện trên website.",
+  "fields": {
+    "label": "Kết nối với NOW Studio",
+    "items": [
+      { "id": "facebook", "url": "", "show": true },
+      { "id": "instagram", "url": "", "show": true },
+      { "id": "tiktok", "url": "", "show": true },
+      { "id": "youtube", "url": "", "show": true }
+    ]
+  }
+}

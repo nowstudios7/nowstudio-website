@@ -1,0 +1,15 @@
+{
+  "_type": "section.feedback",
+  "_id": "feedback",
+  "_rev": "2026-09-30T00:00:00.000Z",
+  "status": "published",
+  "updatedAt": "2026-09-30T00:00:00.000Z",
+  "_note": "Nguồn duy nhất cho Feedback: thanh mini dưới Hero trang chủ, section Feedback trang chủ, trang /feedback. Quản lý tại admin/feedback.html. Thứ tự items = thứ tự hiển thị.",
+  "fields": {
+    "items": [
+      { "_id": "fb-linh-minh", "slug": "linh-minh", "status": "published", "homepage": true, "couple": "Nguyễn Linh & Trần Minh", "displayName": "", "service": "wedding", "eventDate": "", "year": "2024", "location": "", "label": "Đám cưới tháng 3, 2024", "text": "NOW Studio đã biến ngày cưới của chúng tôi thành những bức ảnh đẹp nhất mà chúng tôi từng thấy. Mỗi khoảnh khắc đều được ghi lại hoàn hảo.", "short": "", "illustration": "together", "createdAt": "2026-09-30T00:00:00.000Z", "updatedAt": "2026-09-30T00:00:00.000Z" },
+      { "_id": "fb-thu-hung", "slug": "thu-hung", "status": "published", "homepage": true, "couple": "Phạm Thu & Lê Hùng", "displayName": "", "service": "wedding", "eventDate": "", "year": "2023", "location": "", "label": "Đám cưới tháng 10, 2023", "text": "Đội ngũ chuyên nghiệp, nhiệt tình và rất am hiểu nghệ thuật. Bộ ảnh cưới của chúng tôi vượt xa mọi mong đợi. Cảm ơn NOW Studio!", "short": "", "illustration": "facing", "createdAt": "2026-09-30T00:00:00.000Z", "updatedAt": "2026-09-30T00:00:00.000Z" },
+      { "_id": "fb-huong-le", "slug": "huong-le", "status": "published", "homepage": true, "couple": "Hương Lê", "displayName": "", "service": "prewedding", "eventDate": "", "year": "", "location": "", "label": "Bộ Ảnh HongKong", "text": "Cảm ơn vk ck e Phượng La vì đã dành trọn hết tâm huyết để biến từng khung hình của c thành một thước phim Hong Kong đầy cảm xúc. Góc máy, màu sắc và ánh nhìn đều mang đúng chất hoài niệm rất riêng của NOW Studio. Đối với chị đây là cả Thanh xuân đẹp nhất mà c muốn lưu giữ cho riêng chị hj.", "short": "", "illustration": "lean", "createdAt": "2026-09-30T00:00:00.000Z", "updatedAt": "2026-09-30T00:00:00.000Z" }
+    ]
+  }
+}

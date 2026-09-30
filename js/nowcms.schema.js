@@ -110,6 +110,45 @@ window.NOWCMS_SCHEMA = {
       sanityType: 'collection.guide',
       groups: [],
       fields: []
+    },
+
+    /* Dịch vụ — renderer riêng (sections/services.js): danh sách dịch vụ
+       có thứ tự, ẩn/hiện, hiển thị theo thiết bị. Trang quản lý: admin/services.html */
+    services: {
+      title: 'Dịch vụ',
+      icon: '◇',
+      external: true,
+      admin: 'services.html',
+      source: 'content/services.json',
+      sanityType: 'section.services',
+      groups: [],
+      fields: []
+    },
+
+    /* Feedback khách — renderer riêng (sections/feedback.js + feedback-illustrations.js).
+       Trang quản lý: admin/feedback.html */
+    feedback: {
+      title: 'Feedback khách',
+      icon: '❝',
+      external: true,
+      admin: 'feedback.html',
+      source: 'content/feedback.json',
+      sanityType: 'section.feedback',
+      groups: [],
+      fields: []
+    },
+
+    /* Mạng xã hội trong section Đặt Lịch Chụp — renderer riêng (sections/social.js).
+       Trang quản lý: admin/social.html */
+    social: {
+      title: 'Mạng xã hội',
+      icon: '◎',
+      external: true,
+      admin: 'social.html',
+      source: 'content/social.json',
+      sanityType: 'section.social',
+      groups: [],
+      fields: []
     }
 
     /* Section tiếp theo làm y hệt — ví dụ:

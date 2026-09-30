@@ -1,0 +1,18 @@
+{
+  "_type": "section.services",
+  "_id": "services",
+  "_rev": "2026-09-30T00:00:00.000Z",
+  "status": "published",
+  "updatedAt": "2026-09-30T00:00:00.000Z",
+  "_note": "Section Dịch vụ trên trang chủ. Quản lý bằng admin/services.html. Thứ tự trong mảng items = thứ tự hiển thị; số 01, 02… tự đánh theo dịch vụ đang hiện.",
+  "fields": {
+    "label": "What We Do",
+    "title": "Dịch Vụ\nCủa Chúng Tôi",
+    "items": [
+      { "_id": "svc-photography", "slug": "photography", "name": "Photography", "title": "Photography", "icon": "camera", "status": "published", "showDesktop": true, "showMobile": true, "description": "Hơn 500 cặp đôi, hàng ngàn khoảnh khắc thật. Tụi mình kể lại bằng ánh sáng, địa điểm và những chi tiết nhỏ làm nên câu chuyện riêng của bạn.", "note": "" },
+      { "_id": "svc-makeup", "slug": "makeup", "name": "Makeup", "title": "Makeup", "icon": "makeup", "status": "published", "showDesktop": true, "showMobile": true, "description": "Trang điểm cô dâu, quan trọng là hiểu da và ánh sáng. Từ studio đến ngoài trời, đội ngũ Makeup Artist của NOW giúp bạn đẹp tự nhiên và tự tin trong ngày cưới.", "note": "" },
+      { "_id": "svc-soiree", "slug": "soiree-veston", "name": "Soiree & Veston", "title": "Soiree & Veston", "icon": "dress", "status": "published", "showDesktop": true, "showMobile": true, "description": "Từ váy áo đến những chi tiết cuối cùng, NOW lắng nghe và tư vấn để bạn tìm được lựa chọn vừa vặn với mình. Vì khi thoải mái và tự tin, ánh mắt sẽ nói hết.", "note": "" },
+      { "_id": "svc-retouch", "slug": "hoan-thien-tac-pham", "name": "Hoàn Thiện Tác Phẩm", "title": "Hoàn Thiện Tác Phẩm", "icon": "retouch", "status": "published", "showDesktop": true, "showMobile": true, "description": "Ảnh thô chỉ là khởi đầu. Tụi mình kết hợp A.I và kỹ năng người làm nghề để ảnh vừa tự nhiên, vừa có điểm nhấn. Vì 10 năm sau, bạn vẫn muốn nhìn lại và mỉm cười.", "note": "" }
+    ]
+  }
+}
