@@ -16,7 +16,7 @@ const ALLOWED_PATHS = new Set([
   'content/gallery.json',
   'content/guide.json',
   'content/services.json',
-  'content/feedback.json',
+  'content/feedback-proofs.json',
   'content/social.json'
 ]);
 const REQUIRED_ENV = ['GITHUB_OWNER', 'GITHUB_REPO', 'GITHUB_BRANCH', 'GITHUB_TOKEN'];

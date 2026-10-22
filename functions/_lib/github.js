@@ -65,12 +65,23 @@ export async function commitFiles(env, files, message) {
   const parent = await call(`${base}/git/commits/${parentSha}`, { headers: h }, 'GET commit');
   const baseTreeSha = parent.tree && parent.tree.sha;
 
+  // File chữ (JSON) gửi thẳng `content`; file ảnh (từ /api/upload) có `b64` → tạo blob nhị phân trước.
+  const entries = [];
+  for (const f of files) {
+    if (f.b64) {
+      const blob = await call(`${base}/git/blobs`, {
+        method: 'POST', headers: jh,
+        body: JSON.stringify({ content: f.b64, encoding: 'base64' })
+      }, 'POST blob');
+      entries.push({ path: f.path, mode: '100644', type: 'blob', sha: blob.sha });
+    } else {
+      entries.push({ path: f.path, mode: '100644', type: 'blob', content: f.content });
+    }
+  }
+
   const tree = await call(`${base}/git/trees`, {
     method: 'POST', headers: jh,
-    body: JSON.stringify({
-      base_tree: baseTreeSha,
-      tree: files.map((f) => ({ path: f.path, mode: '100644', type: 'blob', content: f.content }))
-    })
+    body: JSON.stringify({ base_tree: baseTreeSha, tree: entries })
   }, 'POST tree');
 
   if (tree.sha === baseTreeSha) return { nochange: true, branch, parentSha };
