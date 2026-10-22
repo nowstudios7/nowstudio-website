@@ -39,7 +39,7 @@
       }
     },
     feedback: {
-      path: 'content/feedback.json', label: 'Feedback khách', commit: 'Update feedback section',
+      path: 'content/feedback.json', label: 'Feedback đánh máy', commit: 'Update feedback section',
       build: function (draft) {
         var fields = draft && draft.fields ? draft.fields : draft;
         return stamp({ _type: 'section.feedback', _id: 'feedback', _note: 'Section Feedback trên trang chủ. Xuất từ admin/feedback.html.', fields: fields || {} });
@@ -50,6 +50,13 @@
       build: function (draft) {
         var fields = draft && draft.fields ? draft.fields : draft;
         return stamp({ _type: 'section.social', _id: 'social', _note: 'Mạng xã hội trong section Đặt Lịch Chụp. Xuất từ admin/social.html.', fields: fields || {} });
+      }
+    },
+    proofs: {
+      path: 'content/feedback-proofs.json', label: 'Feedback khách hàng', commit: 'Update customer feedback',
+      build: function (draft) {
+        var fields = draft && draft.fields ? draft.fields : draft;
+        return stamp({ _type: 'collection.feedbackProofs', _id: 'feedback-proofs', _note: 'Feedback ảnh thật — section #feedback trang chủ. Xuất từ admin/proofs.html. Chỉ hiện item status=published và consent=true.', fields: fields || {} });
       }
     },
     guide: {

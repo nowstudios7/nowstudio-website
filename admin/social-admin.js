@@ -9,7 +9,7 @@ const pv=$('pv');
 let D=null, published=null, dirty=false;
 const clone=o=>JSON.parse(JSON.stringify(o));
 const esc=s=>String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
-const DEF={label:'Kết nối với NOW Studio',items:SO.order.map(id=>({id,url:'',show:true}))};
+const DEF={label:'Kết nối với NOW Studio',inbox:'',items:SO.order.map(id=>({id,url:'',show:true}))};
 
 let tt;function toast(msg,bad){const t=$('toast');t.textContent=msg;t.className='toast on'+(bad?' bad':'');clearTimeout(tt);tt=setTimeout(()=>t.className='toast'+(bad?' bad':''),2600)}
 function modal(html){$('modal-body').innerHTML=html;$('mask').classList.add('on')}
@@ -89,7 +89,13 @@ function paintMeta(){
   const w=$('warn');w.style.display=probs.length?'block':'none';w.querySelector('ul').innerHTML=probs.map(x=>`<li>${esc(x)}</li>`).join('');
 }
 $('s-label').oninput=e=>{D.label=e.target.value;change()};
-function allProblems(){const o=D.items.map(problem).filter(Boolean);if(!String(D.label||'').trim())o.push('Chưa có tiêu đề khu vực.');return o}
+function inboxProblem(){const u=String(D.inbox||'').trim();if(!u||SO.valid('inbox',u))return'';
+  return /^https:\/\//i.test(u)?'URL Inbox phải là link m.me, messenger.com hoặc facebook.com.':'URL Inbox phải bắt đầu bằng https://'}
+function paintInbox(){const u=String(D.inbox||'').trim(),p=inboxProblem();$('s-inbox').classList.toggle('bad',!!p);
+  $('inbox-st').textContent=!u?'Chưa có — nút Inbox đang ẩn':p?'Link chưa hợp lệ':'Đang dùng'}
+$('s-inbox').oninput=e=>{D.inbox=e.target.value;change();paintInbox()};
+$('s-inbox').onblur=e=>{const v=e.target.value.trim();if(v!==e.target.value){e.target.value=v;D.inbox=v;change();paintInbox()}};
+function allProblems(){const o=D.items.map(problem).filter(Boolean);if(inboxProblem())o.push(inboxProblem());if(!String(D.label||'').trim())o.push('Chưa có tiêu đề khu vực.');return o}
 
 function saveDraft(){localStorage.setItem(KEY,JSON.stringify({fields:D}));dirty=false;paintState()}
 $('save').onclick=()=>{saveDraft();toast('Đã lưu nháp. Khách chưa thấy cho tới khi Publish.');if(window.NOWPUBLISH)NOWPUBLISH.rescan()};
@@ -111,10 +117,10 @@ function beforePublish(files){
     (mine?`<p style="margin-top:12px">${vis.length?'Mạng xã hội hiển thị: <b>'+vis.join(' · ')+'</b>':'Chưa có link nào — khu vực mạng xã hội sẽ ẩn.'}</p>`:''),'Publish ngay').then(ok=>{if(ok&&dirty)saveDraft();return ok});
 }
 
-function normalize(f){const o={label:f&&f.label!=null?f.label:DEF.label,items:[]};
+function normalize(f){const o={label:f&&f.label!=null?f.label:DEF.label,inbox:f&&f.inbox?String(f.inbox):'',items:[]};
   const by={};((f&&f.items)||[]).forEach(x=>{if(x&&x.id)by[x.id]=x});
   o.items=SO.order.map(id=>({id,url:by[id]?String(by[id].url||''):'',show:by[id]?by[id].show!==false:true}));return o}
-function fillAll(){$('s-label').value=D.label||'';drawList()}
+function fillAll(){$('s-label').value=D.label||'';$('s-inbox').value=D.inbox||'';paintInbox();drawList()}
 
 (async function boot(){
   try{const r=await fetch(SRC,{cache:'no-store'});if(r.ok){const j=await r.json();published=normalize(j.fields||j)}}catch(e){}

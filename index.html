@@ -942,6 +942,7 @@
 <meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&h=600&fit=crop&q=80" data-resource-id="gal_portraits"/>
 <meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&h=600&fit=crop&q=80" data-resource-id="gal_sunset"/>
 <link rel="stylesheet" href="sections/feedback.css">
+<link rel="stylesheet" href="sections/proofs.css">
 </head>
 <body>
 
@@ -1026,10 +1027,22 @@
   </div>
 </section>
 
-<!-- ── MINI FEEDBACK STRIP (dữ liệu: content/feedback.json, điều khiển bởi sections/feedback.js) ── -->
-<div class="t-strip-wrap" data-screen-label="Mini Feedback">
-  <div class="t-strip" id="t-strip" aria-roledescription="carousel" aria-label="Lời nhắn từ các cặp đôi" aria-live="off"></div>
-</div>
+<!-- ── FEEDBACK ẢNH THẬT (dữ liệu: content/feedback-proofs.json · CMS: admin/proofs.html · JS: sections/proofs.js) ── -->
+<section id="feedback" data-screen-label="Feedback ảnh thật" aria-labelledby="fr-title">
+  <div class="fr-head">
+    <div class="fr-kicker">Feedback thật</div>
+    <h2 class="fr-title" id="fr-title">Những lời thương <em>gửi lại</em></h2>
+    <p class="fr-lede">Ảnh chụp tin nhắn và bình luận nguyên bản của khách. Thông tin cá nhân đã được che trước khi đăng.</p>
+  </div>
+  <div class="fr-flow" id="fr-flow"></div>
+  <div class="fr-foot" id="fr-foot" hidden><button type="button" class="fr-more" id="fr-more">Xem thêm feedback</button><span class="fr-count" id="fr-count"></span></div>
+  <div class="fr-cta" id="fr-cta">
+    <p class="fr-cta-t">Câu chuyện tiếp theo có thể là <em>của hai bạn</em></p>
+    <a class="fr-btn" id="fr-inbox" hidden>Inbox NOW Studio để được tư vấn</a>
+    <a class="fr-all" href="feedback/index.html">Xem tất cả feedback thật →</a>
+    <p class="fr-inbox-note" id="fr-inbox-note" hidden>Nút Inbox đang ẩn — chưa có URL Inbox. Thêm tại CMS › Mạng xã hội (khách không thấy dòng này).</p>
+  </div>
+</section>
 
 <!-- ══ 1 · FEATURED WORK — dark, 3×3 ══ -->
 <section id="featured" data-screen-label="Featured Work">
@@ -1158,19 +1171,6 @@
   </div>
 </section>
 
-<!-- ── TESTIMONIAL ── -->
-<section id="testimonial" aria-roledescription="carousel" aria-label="Cảm nhận của khách hàng">
-  <div class="t-hero">
-  <div class="t-viewport" id="t-viewport" tabindex="0" aria-live="polite" aria-label="Cảm nhận khách hàng — dùng phím mũi tên trái/phải để chuyển">
-    <div class="t-slide active" role="group" aria-roledescription="slide">
-      <p class="testimonial-quote">Đội ngũ chuyên nghiệp, nhiệt tình và rất am hiểu nghệ thuật. Bộ ảnh cưới của chúng tôi vượt xa mọi mong đợi. Cảm ơn NOW Studio!</p>
-      <div class="testimonial-author">Nguyễn Linh & Trần Minh — Đám cưới tháng 3, 2024</div>
-    </div>
-  </div>
-  <div class="testimonial-dots" id="t-dots" role="group" aria-label="Chọn cảm nhận"></div>
-  </div>
-  <div class="t-list" id="t-list" role="group" aria-label="Tất cả cảm nhận"></div>
-</section>
 
 <!-- ── WEDDING GUIDE (đồng bộ với guide/index.html — dùng chung data + component) ── -->
 <section id="blog" data-screen-label="Wedding Guide">
@@ -1285,6 +1285,7 @@
         <li><a href="#hero">Home</a></li>
         <li><a href="#featured">Portfolio</a></li>
         <li><a href="#services">Services</a></li>
+        <li><a href="feedback/index.html">Feedback khách hàng</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -1718,6 +1719,7 @@ window.Guide&&window.Guide.ready(function(G){
 <script src="sections/social.js"></script>
 <script src="sections/feedback-illustrations.js"></script>
 <script src="sections/feedback.js"></script>
+<script src="sections/proofs.js"></script>
 <script src="js/nowcms.schema.js"></script>
 <script src="js/nowcms.js"></script>
 </body>

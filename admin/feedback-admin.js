@@ -1,7 +1,7 @@
 /* NOW·STUDIO — admin/feedback.html · Feedback / Testimonials
    Nháp: localStorage 'nowcms.feedback.draft' → {fields:{items}}
    Chính thức: content/feedback.json → Publish qua NOWPUBLISH (/api/publish → GitHub → Cloudflare)
-   Một bản ghi dùng cho: thanh mini dưới Hero, section Feedback trang chủ, trang /feedback (?id=slug). */
+   Một bản ghi dùng cho: thanh mini dưới Hero, section Feedback trang chủ. */
 (function(){
 const KEY='nowcms.feedback.draft', SRC='../content/feedback.json';
 const S=window.NOWCMS_SCHEMA, IL=window.NOW_ILLUS, TYPES=window.NOW_SERVICE_TYPES;
@@ -37,7 +37,7 @@ function ask(title,body,okLabel,danger){
 }
 
 /* ── xem trước: Trang chủ / Trang Feedback, Desktop / Mobile ── */
-const pvSrc=()=>target==='page'?'../feedback/index.html?cms=preview'+(cur>=0&&it().slug?'&id='+encodeURIComponent(it().slug):''):'../index.html?cms=preview';
+const pvSrc=()=>target==='page'?'../feedback/loi-nhan.html?cms=preview'+(cur>=0&&it().slug?'&id='+encodeURIComponent(it().slug):''):'../index.html?cms=preview';
 let pt;function push(){clearTimeout(pt);pt=setTimeout(()=>{try{pv.contentWindow.postMessage({type:'nowcms:draft',section:'feedback',data:{fields:D}},'*');setTimeout(showCur,80)}catch(e){}},150)}
 function showCur(){if(cur<0||!isPub(it()))return;try{const F=pv.contentWindow.NOWFEEDBACK;if(F)F.goId(it().slug)}catch(e){}}
 function jump(){
@@ -108,7 +108,7 @@ function drawList(){
       if(a==='up'||a==='down'){const j=a==='up'?i-1:i+1;[D.items[i],D.items[j]]=[D.items[j],D.items[i]];drawList();change()}
       else if(a==='vis'){const was=it.status==='published';it.status=was?'hidden':'published';change(it);drawList();toast(was?'Đã ẩn — bấm Lưu nháp hoặc Publish để áp dụng.':'Đã chuyển sang Published (trong nháp).')}
       else if(a==='del')del(i);
-      else if(a==='pv'){cur=-1;const F=()=>{try{pv.contentWindow.NOWFEEDBACK.goId(it.slug)}catch(e){}};if(target==='page'){pv.src='../feedback/index.html?cms=preview&id='+encodeURIComponent(it.slug)}else{jump();F()}}
+      else if(a==='pv'){cur=-1;const F=()=>{try{pv.contentWindow.NOWFEEDBACK.goId(it.slug)}catch(e){}};if(target==='page'){pv.src='../feedback/loi-nhan.html?cms=preview&id='+encodeURIComponent(it.slug)}else{jump();F()}}
       else openEdit(i);
     });
     box.appendChild(r);
@@ -151,7 +151,7 @@ function openEdit(i){
 function closeEdit(){cur=-1;$('v-edit').classList.remove('on');$('v-list').classList.add('on');drawList()}
 function paintStatus(){$('e-status').querySelectorAll('button').forEach(b=>b.classList.toggle('on',b.dataset.v===(it().status||'draft')))}
 function paintStamp(){const x=it();$('e-stamp').innerHTML=`<span>Tạo: <b>${fmt(x.createdAt)}</b></span><span>Sửa: <b>${fmt(x.updatedAt)}</b></span>`;
-  $('e-link').innerHTML=x.slug?'Link: <code>/feedback?id='+esc(x.slug)+'</code>'+(pubSlugs[x._id]&&pubSlugs[x._id]!==x.slug?' — <span style="color:var(--warn)">đổi mã sẽ làm hỏng link cũ <code>'+esc(pubSlugs[x._id])+'</code></span>':''):'Link tạo tự động từ tên.'}
+  $('e-link').innerHTML=x.slug?'Mã: <code>'+esc(x.slug)+'</code>'+(pubSlugs[x._id]&&pubSlugs[x._id]!==x.slug?' — <span style="color:var(--warn)">đổi mã sẽ làm hỏng link cũ <code>'+esc(pubSlugs[x._id])+'</code></span>':''):'Link tạo tự động từ tên.'}
 function counts(){const n=words($('e-text').value),el=$('e-text-n');el.textContent=n+' chữ';el.style.color=n>90?'var(--warn)':'';
   const s=$('e-short').value.length;$('e-short-n').textContent=s?s+'/180':'';
   const box=$('e-short-auto');box.style.display=$('e-short').value.trim()?'none':'';box.querySelector('span').textContent=autoShort(it())||'—'}

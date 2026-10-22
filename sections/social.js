@@ -15,6 +15,8 @@
       svg: '<rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.3" cy="6.7" r=".6" fill="currentColor" stroke="none"/>' },
     tiktok: { name: 'TikTok', hosts: ['tiktok.com'],
       svg: '<path d="M13.5 3v11.8a3.3 3.3 0 1 1-3.3-3.3"/><path d="M13.5 3c.4 2.7 2.3 4.6 5 4.8"/>' },
+    /* không phải nút mạng xã hội — chỉ để kiểm tra URL Inbox (fields.inbox) cho nút Inbox trong section Feedback trang chủ */
+    inbox: { name: 'Inbox', hosts: ['m.me', 'messenger.com', 'facebook.com', 'fb.com', 'fb.me'], svg: '' },
     youtube: { name: 'YouTube', hosts: ['youtube.com', 'youtu.be'],
       svg: '<rect x="2.5" y="5.5" width="19" height="13" rx="3.5"/><path d="M10.2 9.3v5.4l4.6-2.7z" fill="currentColor" stroke="none"/>' }
   };

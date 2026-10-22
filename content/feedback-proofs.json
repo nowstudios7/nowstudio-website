@@ -1,0 +1,35 @@
+{
+  "_type": "collection.feedbackProofs",
+  "_id": "feedback-proofs",
+  "_rev": "2026-10-22T00:00:00.000Z",
+  "status": "published",
+  "updatedAt": "2026-10-22T00:00:00.000Z",
+  "_note": "Feedback khách hàng (ảnh chụp tin nhắn/bình luận gốc) — section #feedback trang chủ + trang /feedback. Quản lý tại admin/proofs.html. Thứ tự items = thứ tự hiển thị. Chỉ hiện item status=published và consent=true.",
+  "fields": {
+    "heroImage": "https://i.ibb.co/r2t2ZkDZ/IMG-5376.jpg",
+    "ctaImage": "https://i.ibb.co/tP3ktmvh/DSC01065.jpg",
+    "enabled": true,
+    "layout": "gallery",
+    "initial": 8,
+    "sloganEvery": 8,
+    "slogans": [
+      {
+        "text": "Chuyên nghiệp trong từng khung hình. Tận tâm trong từng trải nghiệm.",
+        "show": true
+      },
+      {
+        "text": "Lắng nghe điều bạn mong muốn. Chăm chút từng điều nhỏ nhất.",
+        "show": true
+      },
+      {
+        "text": "Một bộ ảnh đẹp bắt đầu từ sự thấu hiểu.",
+        "show": true
+      },
+      {
+        "text": "Ảnh đẹp là kết quả. Trải nghiệm tốt là điều chúng tôi muốn bạn nhớ.",
+        "show": true
+      }
+    ],
+    "items": []
+  }
+}

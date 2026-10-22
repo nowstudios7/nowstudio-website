@@ -1,7 +1,8 @@
 /* NOW·STUDIO — Feedback renderer (một nguồn dữ liệu, hai nơi hiển thị)
    Nguồn: nháp localStorage (chỉ ?cms=preview) → content/feedback.json → window.FEEDBACK_FALLBACK.
    • Hero + collection (#testimonial): item status === 'published' (bản cũ không có status = published), theo thứ tự mảng.
-   • Mini strip (#t-strip, dưới Hero trang chủ): published + homepage !== false. Autoplay 5s. Click → feedback/index.html?id=<slug>.
+   • Mini strip: bấm → cuộn tới section Feedback ảnh thật (#feedback). Trang chủ không còn #testimonial.
+   • Mini strip (#t-strip, dưới Hero trang chủ): published + homepage !== false. Autoplay 5s.
    • Trang Feedback (window.NOWFEEDBACK_PAGE): đọc ?id=, đồng bộ URL khi chuyển (pushState), hỗ trợ Back/Reload.
    Item: { _id, slug, status, homepage, couple, displayName, service, eventDate, year, location, label, text, short, illustration, createdAt, updatedAt }
    Dữ liệu cũ { text, author } vẫn đọc được. */
@@ -38,7 +39,7 @@
     return s.slice(0, k > 80 ? k : 130).replace(/[,.;:!?\s]+$/, '') + '…';
   }
   function art(it, cls) { if (it.illustration === 'none' || !window.NOW_ILLUS) return ''; return NOW_ILLUS.svg(it.illustration || 'together', cls); }
-  function pageHref(it) { return BASE + 'feedback/index.html?' + (PREVIEW ? 'cms=preview&' : '') + 'id=' + encodeURIComponent(sid(it)); }
+  function pageHref(it) { if (!PAGE) return '#feedback'; return BASE + 'feedback/loi-nhan.html?' + (PREVIEW ? 'cms=preview&' : '') + 'id=' + encodeURIComponent(sid(it)); }
 
   /* ── URL (chỉ trang Feedback) ── */
   function urlId() { var m = location.search.match(/[?&]id=([^&]+)/); return m ? decodeURIComponent(m[1]) : ''; }
@@ -107,9 +108,9 @@
     if (list) {
       list.innerHTML = n > 1 ? items.map(function (it, i) {
         var m = listMeta(it);
-        return '<button type="button" class="t-card' + (i === 0 ? ' active' : '') + '"' + (i === 0 ? ' aria-current="true"' : '') + ' aria-label="Đọc cảm nhận của ' + esc(name(it)) + '">' +
-          '<span class="t-card-art">' + art(it, 't-illus-s') + '</span>' +
-          '<span class="t-card-t"><span class="t-card-n">' + esc(name(it)) + '</span>' + (m ? '<span class="t-card-m">' + esc(m) + '</span>' : '') + '</span></button>';
+        var inner = '<span class="t-card-art">' + art(it, 't-illus-s') + '</span>' +
+          '<span class="t-card-t"><span class="t-card-n">' + esc(name(it)) + '</span>' + (m ? '<span class="t-card-m">' + esc(m) + '</span>' : '') + '</span>';
+        return '<button type="button" class="t-card' + (i === 0 ? ' active' : '') + '"' + (i === 0 ? ' aria-current="true"' : '') + ' aria-label="Đọc cảm nhận của ' + esc(name(it)) + '">' + inner + '</button>';
       }).join('') : '';
       list.style.display = n > 1 ? '' : 'none';
       list.style.setProperty('--t-cols', Math.min(n, 5));
@@ -220,6 +221,11 @@
   }
   function bindStrip() {
     strip.addEventListener('transitionend', onTrackEnd);
+    if (!PAGE) strip.addEventListener('click', function (e) {
+      var a = e.target.closest('.t-strip-btn'), fb = document.getElementById('feedback'); if (!a) return;
+      e.preventDefault(); if (!fb || fb.hidden) return;
+      window.scrollTo({ top: fb.getBoundingClientRect().top + window.pageYOffset - 72, behavior: RM.matches ? 'auto' : 'smooth' });
+    });
     strip.addEventListener('mouseenter', pause); strip.addEventListener('mouseleave', resume);
     strip.addEventListener('focusin', pause); strip.addEventListener('focusout', resume);
     strip.addEventListener('touchstart', function () { schedule(RESUME); }, { passive: true });

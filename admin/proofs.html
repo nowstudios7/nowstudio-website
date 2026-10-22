@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex,nofollow">
+<title>NOW·STUDIO — Feedback khách hàng</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--gold:#c9a876;--gold-dark:#a8864f;--bg:#faf8f5;--dark:#1a1714;--mid:#4a4440;--muted:#8a7e76;--line:rgba(201,168,118,.3);--warn:#b4552f;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',Helvetica,sans-serif}
+body{font-family:var(--sans);background:var(--bg);color:var(--dark);font-size:14px;line-height:1.6}
+a{color:var(--gold-dark);text-decoration:none}a:hover{color:var(--dark)}
+.top{position:sticky;top:0;z-index:30;display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:68px;padding:0 24px;background:rgba(250,248,245,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{font-family:var(--serif);font-size:19px;letter-spacing:.12em;white-space:nowrap}
+.brand em{font-style:normal;color:var(--gold)}
+.brand small{display:block;font-family:var(--sans);font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.acts{display:flex;gap:9px;align-items:center;flex-wrap:wrap;justify-content:flex-end}
+button{font-family:var(--sans);font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;border:1px solid var(--line);background:#fff;color:var(--mid);padding:0 16px;min-height:40px;border-radius:2px;transition:background .18s,color .18s,border-color .18s}
+button:hover{border-color:var(--gold);color:var(--dark)}
+button:disabled{opacity:.4;cursor:default}
+button.solid{background:var(--dark);color:#fff;border-color:var(--dark)}
+button.solid:hover{background:var(--gold-dark);border-color:var(--gold-dark);color:#fff}
+button.mini{min-height:28px;padding:0 10px;font-size:10px;letter-spacing:.06em}
+button.danger{color:var(--warn);border-color:#e2c0ae}
+button.danger:hover{background:var(--warn);color:#fff;border-color:var(--warn)}
+.state{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);border-radius:2px;padding:6px 11px;white-space:nowrap}
+.state.dirty{color:var(--warn);border-color:#e2c0ae}
+.state.saved{color:var(--gold-dark);border-color:var(--gold)}
+.wrap{display:grid;grid-template-columns:184px minmax(0,520px) minmax(0,1fr);align-items:start}
+.rail{border-right:1px solid var(--line);padding:24px 16px 60px;min-height:calc(100vh - 68px)}
+.rail-t{font-size:9.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);margin:0 8px 12px}
+.rail a,.rail span.off{display:flex;align-items:center;gap:9px;font-size:13px;color:var(--mid);padding:9px 10px;border-radius:2px;margin-bottom:2px}
+.rail a.on{background:var(--dark);color:#fff}
+.rail span.off{color:#b8afa8}
+.rail i{font-style:normal;font-size:11px;opacity:.7}
+.rail .soon{margin-left:auto;font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.panel{padding:24px 22px 90px;border-right:1px solid var(--line);min-height:calc(100vh - 68px)}
+.view{display:none}.view.on{display:block}
+.grp{border-top:1px solid var(--line);padding-top:18px;margin-top:24px}
+.grp:first-child{border-top:0;margin-top:0;padding-top:0}
+.grp-t{display:flex;align-items:baseline;justify-content:space-between;gap:12px;font-size:10px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-dark);margin-bottom:14px}
+.count{font-size:10px;letter-spacing:.12em;color:var(--muted)}
+label{display:block;font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:13px 0 6px}
+input,textarea,select{width:100%;font-family:var(--sans);font-size:13.5px;color:var(--dark);background:#fff;border:1px solid var(--line);border-radius:2px;padding:10px 11px;line-height:1.5}
+input:focus,textarea:focus,select:focus{outline:0;border-color:var(--gold)}
+input.bad,textarea.bad{border-color:var(--warn);background:#fff8f5}
+textarea{resize:vertical}
+.hint{font-size:11.5px;color:var(--muted);line-height:1.6;margin-top:6px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.rows{display:flex;flex-direction:column;gap:9px}
+.svc{display:grid;grid-template-columns:52px minmax(0,1fr);gap:14px;padding:14px;background:#fff;border:1px solid var(--line);border-radius:2px}
+.svc.off .svc-ic,.svc.off .svc-n{opacity:.45}
+.svc-ic{width:52px;height:52px;display:flex;align-items:center;justify-content:center;border:1px solid var(--line);color:var(--gold)}
+.svc-ic svg{width:30px;height:30px}
+.svc-top{display:flex;align-items:baseline;gap:10px;min-width:0}
+.svc-no{font-family:var(--serif);font-size:15px;color:var(--gold-dark)}
+.svc-n{font-family:var(--serif);font-size:21px;line-height:1.2;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.svc-meta{display:flex;flex-wrap:wrap;gap:6px;margin-top:6px}
+.pill{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;border:1px solid var(--line);color:var(--muted);padding:2px 8px;border-radius:2px}
+.pill.on{color:var(--gold-dark);border-color:var(--gold)}
+.pill.bad{color:var(--warn);border-color:#e2c0ae}
+.svc-acts{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px;border-top:1px dotted var(--line);padding-top:11px}
+.svc-acts .sp{flex:1}
+.back{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px}
+.back h2{font-family:var(--serif);font-weight:400;font-size:26px;line-height:1.2}
+.icons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.icons button{display:flex;flex-direction:column;align-items:center;gap:6px;min-height:0;padding:12px 4px 9px;font-size:9.5px;letter-spacing:.08em;color:var(--muted)}
+.icons button svg{width:30px;height:30px;color:var(--gold)}
+.icons button.on{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold) inset;color:var(--dark)}
+.seg{display:flex;border:1px solid var(--line);border-radius:2px;overflow:hidden;background:#fff;width:max-content}
+.seg button{border:0;border-radius:0;min-height:36px}
+.seg button.on{background:var(--dark);color:#fff}
+.checks{display:flex;flex-direction:column;gap:8px}
+.check{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);padding:11px 12px;border-radius:2px;cursor:pointer;font-size:13px;color:var(--mid);margin:0;letter-spacing:0;text-transform:none}
+.check input{width:16px;height:16px;accent-color:var(--gold-dark);flex:none}
+.warnbox{border:1px solid #e2c0ae;background:#fff8f5;border-radius:2px;padding:12px 14px;margin-top:18px}
+.warnbox ul{list-style:none;display:flex;flex-direction:column;gap:5px}
+.warnbox li{font-size:12px;color:var(--warn);padding-left:13px;position:relative}
+.warnbox li::before{content:'!';position:absolute;left:0;top:0;font-size:11px}
+.foot{display:flex;justify-content:space-between;gap:10px;margin-top:28px;border-top:1px solid var(--line);padding-top:18px}
+.preview{position:sticky;top:68px;height:calc(100vh - 68px);display:flex;flex-direction:column;background:#e9e6e1}
+.pv-bar{display:flex;align-items:center;gap:10px;padding:11px 18px;border-bottom:1px solid var(--line);background:rgba(250,248,245,.9)}
+.pv-bar .sp{flex:1}
+.pv-bar .seg button{min-height:32px}
+.pv-stage{flex:1;overflow:auto;display:flex;justify-content:center;padding:18px}
+#pv{border:0;background:var(--bg);box-shadow:0 18px 50px rgba(26,23,20,.14)}
+.pv-stage.mob #pv{width:390px;height:100%;border-radius:20px}
+.pv-stage.desk #pv{width:100%;height:100%}
+.mask{position:fixed;inset:0;background:rgba(26,23,20,.55);display:none;align-items:center;justify-content:center;z-index:60;padding:24px}
+.mask.on{display:flex}
+.modal{background:#fff;max-width:520px;width:100%;padding:32px 34px 28px;box-shadow:0 30px 80px rgba(26,23,20,.3);max-height:86vh;overflow:auto}
+.modal h3{font-family:var(--serif);font-weight:400;font-size:27px;margin-bottom:8px}
+.modal p,.modal li{font-size:13.5px;color:var(--mid);line-height:1.7}
+.modal ol,.modal ul{margin:12px 0 0 18px;display:flex;flex-direction:column;gap:6px}
+.modal .m-acts{display:flex;gap:10px;justify-content:flex-end;margin-top:22px}
+code{font-family:ui-monospace,monospace;font-size:12px;color:var(--gold-dark);background:var(--bg);border:1px solid var(--line);padding:1px 5px}
+.toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,16px);opacity:0;pointer-events:none;background:var(--dark);color:#fff;font-size:12.5px;padding:12px 18px;border-radius:2px;box-shadow:0 18px 40px rgba(26,23,20,.25);transition:opacity .2s,transform .2s;z-index:90;max-width:calc(100vw - 32px)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+.toast.bad{background:var(--warn)}
+@media (max-width:1180px){.wrap{grid-template-columns:minmax(0,1fr)}.rail{border-right:0;min-height:0;display:flex;flex-wrap:wrap;gap:6px;padding:14px 18px;border-bottom:1px solid var(--line)}.rail-t{width:100%;margin:0 0 4px}.panel{border-right:0;min-height:0}.preview{position:relative;top:0;height:78vh;border-top:1px solid var(--line)}}
+.tabs{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:20px;flex-wrap:wrap}
+.tabs a{font-size:12px}
+.tb{display:flex;gap:8px;margin-bottom:10px}.tb input{flex:1;min-width:0}
+.flt{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:10px}
+.flt select{padding:8px 9px;font-size:12.5px}
+.stats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.stats .mini.on{background:var(--dark);color:#fff;border-color:var(--dark)}
+.bulk{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:8px 10px;border:1px solid var(--line);border-bottom:0;background:#fbf8f3;font-size:12px;color:var(--mid)}
+.bulk[hidden]{display:none}
+.bulk label{display:flex;align-items:center;gap:7px;margin:0;font-size:12px;letter-spacing:0;text-transform:none;color:var(--mid);cursor:pointer}
+.bulk input,.tr-cb{width:15px;height:15px;accent-color:var(--gold-dark)}
+.sp{flex:1}
+.tbl{display:flex;flex-direction:column;border:1px solid var(--line);background:#fff}
+.tbl .empty{border:0}
+.tr{display:grid;grid-template-columns:16px 52px minmax(0,1fr) 34px;gap:12px;align-items:center;padding:10px 12px;border-top:1px solid var(--line);transition:background .15s}
+.tr:first-child{border-top:0}
+.tr.off .tr-th img{opacity:.55}
+.tr.dragging{opacity:.45}
+.tr.over{box-shadow:inset 0 2px 0 var(--gold)}
+.tr[draggable="true"]{cursor:grab}
+.tr-th{width:52px;height:68px;padding:0;min-height:0;border:1px solid var(--line);overflow:hidden;background:#f1ece5;display:block}
+.tr-th img{width:100%;height:100%;object-fit:cover;object-position:top;display:block}
+.tr-b{min-width:0}
+.tr-t{font-size:13.5px;color:var(--dark);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.tr-t.muted{color:var(--muted);font-style:italic}
+.tr-m{display:flex;flex-wrap:wrap;align-items:center;gap:4px 10px;font-size:11px;color:var(--muted);margin-top:3px}
+.tr-acts{display:flex;flex-wrap:wrap;gap:4px;margin-top:7px}
+.tr-acts .mini{min-height:26px;padding:0 8px}
+.tr-ord{display:flex;flex-direction:column;align-items:center;gap:2px}
+.tr-ord .mini{min-height:22px;width:30px;padding:0}
+.tr-no{font-family:var(--serif);font-size:16px;color:var(--gold-dark);line-height:1.2}
+.pager{display:flex;justify-content:center;align-items:center;gap:10px;margin-top:12px;font-size:12px;color:var(--muted)}
+.pager[hidden]{display:none}
+.drop{border:1.5px dashed var(--gold);background:#fff;padding:28px 18px;text-align:center;border-radius:2px;transition:background .2s}
+.drop.over{background:#fff8ee}
+.drop p{font-size:14px;color:var(--mid);display:flex;flex-wrap:wrap;gap:10px;justify-content:center;align-items:center}
+.drop small{display:block;margin-top:10px;font-size:11.5px;line-height:1.6;color:var(--muted)}
+.drop small.bad{color:var(--warn)}
+.up-list{display:flex;flex-direction:column;gap:6px;margin-top:14px}
+.up{display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:10px;align-items:center;padding:8px 10px;background:#fff;border:1px solid var(--line);font-size:12.5px;color:var(--mid)}
+.up img{width:40px;height:52px;object-fit:cover;object-position:top;display:block;background:#f1ece5}
+.up-n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.up-s{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.up-s.ok{color:var(--gold-dark)}.up-s.bad{color:var(--warn);white-space:normal;text-align:right;max-width:200px}
+details.links{margin-top:18px;border-top:1px solid var(--line);padding-top:14px}
+details.links summary{cursor:pointer;font-size:12.5px;color:var(--gold-dark)}
+details.links textarea{margin-top:10px;min-height:84px;font-family:ui-monospace,monospace;font-size:12px}
+.e-img{max-height:46vh;overflow:auto;border:1px solid var(--line);background:#f1ece5}
+.e-img img{display:block;width:100%;height:auto}
+.e-imgacts{display:flex;align-items:center;gap:6px;margin-top:8px;flex-wrap:wrap;font-size:11.5px;color:var(--muted)}
+.e-row{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:10px;align-items:end}
+.say-row{display:grid;grid-template-columns:18px minmax(0,1fr) auto 30px 30px;gap:6px;align-items:center}
+.say-row .check{padding:7px 10px;font-size:12px}
+.say-row .mini{width:30px;padding:0}
+.big{max-height:62vh;overflow:auto;border:1px solid var(--line);background:#f1ece5;margin-top:12px}
+.big img{display:block;width:100%;height:auto}
+.empty{padding:26px 16px;text-align:center;border:1px dashed var(--line);color:var(--muted);font-size:13px;background:#fff}
+.modal.wide{max-width:640px}
+#demo.on{background:#b4552f;border-color:#b4552f;color:#fff}
+.inbox-st{font-size:13px;color:var(--mid);line-height:1.6;word-break:break-all}
+.inbox-st.bad{color:var(--warn)}
+</style>
+</head>
+<body>
+<div class="top">
+<div class="brand">NOW<em>·</em>STUDIO <small>Feedback khách hàng — quản lý nội dung</small></div>
+<div class="acts">
+<span class="state" id="state">Đang tải…</span>
+<button type="button" id="discard">Bỏ nháp</button>
+<button type="button" id="save">Lưu nháp</button>
+<button type="button" id="export" title="Tải file JSON về máy để sao lưu thủ công">Xuất file .json</button>
+</div>
+</div>
+<div class="wrap">
+<nav class="rail" id="rail"></nav>
+<div class="panel">
+<div class="tabs"><div class="seg"><button type="button" id="tab-list" class="on">Danh sách</button><button type="button" id="tab-cfg">Cấu hình hiển thị</button></div><a href="feedback.html">Feedback đánh máy ↗</a></div>
+<div class="view on" id="v-list">
+<div class="tb"><button type="button" class="solid" id="add">+ Thêm feedback</button><input id="q" type="search" placeholder="Tìm theo tiêu đề hoặc mô tả nội bộ" aria-label="Tìm feedback"></div>
+<div class="flt">
+<select id="f-st" aria-label="Lọc trạng thái"><option value="all">Mọi trạng thái</option><option value="published">Đã xuất bản</option><option value="draft">Bản nháp</option><option value="hidden">Đã ẩn</option></select>
+<select id="f-cat" aria-label="Lọc danh mục"></select>
+<select id="f-sort" aria-label="Sắp xếp"><option value="order">Thứ tự hiển thị</option><option value="created">Mới tạo trước</option><option value="updated">Mới cập nhật trước</option></select>
+</div>
+<div class="stats" id="stats"></div>
+<div class="bulk" id="bulk" hidden><label><input type="checkbox" id="sel-page">Chọn cả trang</label><span id="bulk-n"></span><span class="sp"></span><button type="button" class="mini" data-b="published">Xuất bản</button><button type="button" class="mini" data-b="hidden">Ẩn</button><button type="button" class="mini" data-b="draft">Về nháp</button><button type="button" class="mini danger" data-b="del">Xoá</button></div>
+<div class="tbl" id="list"></div>
+<div class="pager" id="pager" hidden></div>
+<p class="hint" id="order-hint"></p>
+</div>
+<div class="view" id="v-add">
+<div class="back"><h2>Thêm feedback</h2><button type="button" id="add-back">‹ Danh sách</button></div>
+<div class="drop" id="drop">
+<input type="file" id="file" accept="image/png,image/jpeg,image/webp" multiple hidden>
+<p><b>Kéo thả ảnh vào đây</b> hoặc <button type="button" class="mini" id="pick">Chọn ảnh từ máy</button></p>
+<small>PNG, JPG, WebP · tối đa 15 MB mỗi ảnh · chọn nhiều ảnh cùng lúc. Ảnh được nén WebP, giữ nguyên tỷ lệ, không cắt — kèm một bản nhỏ cho danh sách và trang chủ.</small>
+<small id="drop-st"></small>
+</div>
+<div class="two"><div><label for="a-cat">Danh mục cho loạt ảnh</label><select id="a-cat"></select></div><div><label for="a-src">Nguồn (nội bộ)</label><select id="a-src"></select></div></div>
+<div class="up-list" id="up-list"></div>
+<details class="links"><summary>Hoặc dán link ảnh có sẵn (imgbb, Cloudinary)</summary>
+<textarea id="a-urls" spellcheck="false" placeholder="https://i.ibb.co/…/feedback-01.png&#10;Mỗi dòng một link — hoặc dán nguyên mã BBCode / HTML của imgbb"></textarea>
+<div style="margin-top:10px"><button type="button" id="a-go">Thêm từ link</button></div>
+</details>
+<p class="hint">Feedback mới luôn là <b>Bản nháp</b> — kiểm tra trong danh sách rồi mới xuất bản. Trước khi tải lên, <b>che số điện thoại, tên tài khoản, ảnh đại diện</b> của khách.</p>
+</div>
+<div class="view" id="v-edit">
+<div class="back"><h2 id="e-head">Sửa feedback</h2><button type="button" id="e-back">‹ Danh sách</button></div>
+<div class="e-img"><img id="e-img" alt=""></div>
+<div class="e-imgacts"><span id="e-dim"></span><span class="sp"></span><button type="button" class="mini" id="e-replace">Thay ảnh từ máy</button><button type="button" class="mini" id="e-relink">Dùng link khác</button><input type="file" id="e-file" accept="image/png,image/jpeg,image/webp" hidden></div>
+<label for="e-title">Tiêu đề nội bộ</label><input id="e-title" maxlength="120" placeholder="VD: Chị Linh — nhận album tháng 9">
+<label for="e-note">Mô tả nội bộ</label><textarea id="e-note" rows="3" maxlength="500" placeholder="Ghi chú cho đội NOW — khách không thấy"></textarea>
+<div class="two"><div><label for="e-cat">Danh mục</label><select id="e-cat"></select></div><div><label for="e-src">Nguồn (nội bộ)</label><select id="e-src"></select></div></div>
+<div class="e-row"><div><label>Trạng thái</label><div class="seg" id="e-status"><button type="button" data-v="draft">Bản nháp</button><button type="button" data-v="published">Xuất bản</button><button type="button" data-v="hidden">Ẩn</button></div></div><div><label for="e-order">Thứ tự hiển thị</label><select id="e-order"></select></div></div>
+<label class="check" style="margin-top:14px"><input type="checkbox" id="e-consent">Đã che thông tin cá nhân &amp; khách đồng ý đăng</label>
+<p class="hint" id="e-stamp"></p>
+<div class="foot"><div style="display:flex;gap:6px"><button type="button" class="mini" id="e-dup">Nhân bản</button><button type="button" class="mini danger" id="e-del">Xoá</button></div><div style="display:flex;gap:6px"><button type="button" id="e-pv">Xem trên trang chủ</button><button type="button" class="solid" id="e-done">Xong</button></div></div>
+</div>
+<div class="view" id="v-cfg">
+<div class="grp">
+<div class="grp-t">Khu vực trên trang chủ</div>
+<label class="check"><input type="checkbox" id="c-on">Hiển thị khu vực “Feedback thật” trên trang chủ</label>
+<label>Cách hiển thị trên máy tính</label>
+<div class="seg" id="c-layout"><button type="button" data-v="gallery">Lưới ảnh</button><button type="button" data-v="carousel">Dải vuốt ngang</button></div>
+<p class="hint">Trên điện thoại luôn là dải vuốt ngang để ảnh đủ lớn, đọc được chữ.</p>
+<label for="c-init">Số feedback hiện ban đầu (lưới)</label>
+<select id="c-init"></select>
+<p class="hint">Phần còn lại mở bằng nút “Xem thêm feedback” ngay tại trang chủ.</p>
+</div>
+<div class="grp">
+<div class="grp-t">Slogan xen giữa các nhóm ảnh</div>
+<div class="rows" id="say"></div>
+<datalist id="say-ideas"></datalist>
+<div class="two" style="margin-top:10px"><div><label for="say-every">Xen sau mỗi</label><select id="say-every"></select></div><div></div></div>
+<p class="hint">Hiện lần lượt theo thứ tự trên, tối đa 4 câu. Bấm vào ô để chọn câu gợi ý hoặc tự viết. Bỏ tích để tắt. Chỉ ghi điều thật — không ghi số liệu chưa kiểm chứng.</p>
+</div>
+<div class="grp">
+<div class="grp-t">Ảnh trang /feedback</div>
+<label for="img-hero">Ảnh cưới đầu trang</label><input id="img-hero" type="url" spellcheck="false" placeholder="https://i.ibb.co/…">
+<label for="img-cta">Ảnh khu vực Inbox cuối trang</label><input id="img-cta" type="url" spellcheck="false" placeholder="https://i.ibb.co/…">
+<p class="hint">Ảnh ngang, ảnh cưới thật của NOW Studio (nên ≥ 1600px). Bỏ trống = ảnh mặc định. <a href="../feedback/index.html" target="_blank" rel="noopener">Mở trang /feedback ↗</a> · <a href="../feedback/demo.html" target="_blank" rel="noopener">Xem với dữ liệu mẫu ↗</a></p>
+</div>
+<div class="grp">
+<div class="grp-t">Nút “Inbox NOW Studio để được tư vấn”</div>
+<p class="inbox-st" id="inbox-st">Đang kiểm tra…</p>
+<p class="hint">URL Inbox nằm trong cấu hình liên hệ chung của website. <a href="social.html">Sửa tại Mạng xã hội ↗</a></p>
+</div>
+</div>
+<div class="warnbox" id="warn" style="display:none"><ul></ul></div>
+</div>
+<div class="preview">
+<div class="pv-bar">
+<div class="seg"><button type="button" id="bd" class="on">Desktop</button><button type="button" id="bm">Mobile</button></div>
+<div class="sp"></div>
+<button type="button" id="demo" title="Chỉ trong khung xem trước — không lưu, không publish">Xem với dữ liệu mẫu</button>
+<button type="button" id="jump">Tới khu vực Feedback</button>
+<button type="button" id="reload">Tải lại</button>
+</div>
+<div class="pv-stage desk" id="stage"><iframe id="pv" src="../index.html?cms=preview" title="Xem trước trang chủ"></iframe></div>
+</div>
+</div>
+<div class="mask" id="mask"><div class="modal" id="modal-body"></div></div>
+<div class="toast" id="toast"></div>
+<script src="../js/nowcms.schema.js"></script>
+<script>window.NOWCMS_BASE='../';</script>
+<script src="../js/nowcms.js"></script>
+<script src="../js/nowcms-publish.js"></script>
+<script src="../sections/social.js"></script>
+<script src="../sections/proofs.js"></script>
+<script src="../sections/proofs-demo.js"></script>
+<script src="proofs-admin.js"></script>
+</body>
+</html>
