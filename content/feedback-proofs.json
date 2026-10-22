@@ -1,10 +1,7 @@
 {
   "_type": "collection.feedbackProofs",
   "_id": "feedback-proofs",
-  "_rev": "2026-10-22T00:00:00.000Z",
-  "status": "published",
-  "updatedAt": "2026-10-22T00:00:00.000Z",
-  "_note": "Feedback khách hàng (ảnh chụp tin nhắn/bình luận gốc) — section #feedback trang chủ + trang /feedback. Quản lý tại admin/proofs.html. Thứ tự items = thứ tự hiển thị. Chỉ hiện item status=published và consent=true.",
+  "_note": "Feedback ảnh thật — section #feedback trang chủ. Xuất từ admin/proofs.html. Chỉ hiện item status=published và consent=true.",
   "fields": {
     "heroImage": "https://i.ibb.co/r2t2ZkDZ/IMG-5376.jpg",
     "ctaImage": "https://i.ibb.co/tP3ktmvh/DSC01065.jpg",
@@ -30,6 +27,25 @@
         "show": true
       }
     ],
-    "items": []
-  }
+    "items": [
+      {
+        "_id": "fb-20261022-pxanqt",
+        "src": "https://res.cloudinary.com/wzaqnoaz/image/upload/v1792650891/IMG_3579.jpg",
+        "thumb": "",
+        "w": 1242,
+        "h": 1228,
+        "title": "",
+        "note": "",
+        "category": "after-delivery",
+        "source": "messenger",
+        "status": "published",
+        "consent": true,
+        "createdAt": "2026-10-22T06:35:00.259Z",
+        "updatedAt": "2026-10-22T06:37:46.814Z"
+      }
+    ]
+  },
+  "status": "published",
+  "_rev": "2026-10-22T06:47:58.215Z",
+  "updatedAt": "2026-10-22T06:47:58.215Z"
 }
