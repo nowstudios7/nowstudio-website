@@ -38,13 +38,6 @@
         return stamp({ _type: 'section.services', _id: 'services', _note: 'Section Dịch vụ trên trang chủ. Xuất từ admin/services.html.', fields: fields || {} });
       }
     },
-    feedback: {
-      path: 'content/feedback.json', label: 'Feedback đánh máy', commit: 'Update feedback section',
-      build: function (draft) {
-        var fields = draft && draft.fields ? draft.fields : draft;
-        return stamp({ _type: 'section.feedback', _id: 'feedback', _note: 'Section Feedback trên trang chủ. Xuất từ admin/feedback.html.', fields: fields || {} });
-      }
-    },
     social: {
       path: 'content/social.json', label: 'Mạng xã hội', commit: 'Update social links',
       build: function (draft) {

@@ -666,8 +666,6 @@
     line-height: 1.7;
   }
 
-  /* ── TESTIMONIAL → sections/feedback.css ── */
-
   /* ── CONTACT ── */
   #contact { background: var(--white); }
   .contact-inner {
@@ -941,7 +939,6 @@
 <meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1519225421980-715cb0215aed?w=800&h=800&fit=crop&q=80" data-resource-id="gal_dance"/>
 <meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1519046904884-53103b34b206?w=600&h=600&fit=crop&q=80" data-resource-id="gal_portraits"/>
 <meta name="ext-resource-dependency" content="https://images.unsplash.com/photo-1606800052052-a08af7148866?w=600&h=600&fit=crop&q=80" data-resource-id="gal_sunset"/>
-<link rel="stylesheet" href="sections/feedback.css">
 <link rel="stylesheet" href="sections/proofs.css">
 </head>
 <body>
@@ -1583,22 +1580,6 @@ function toggleMenu() {
   document.getElementById('nav-links').classList.toggle('open');
 }
 
-// Testimonials — dữ liệu dự phòng; nguồn chính: content/feedback.json (sections/feedback.js)
-window.FEEDBACK_FALLBACK = [
-  {
-    text: "NOW Studio đã biến ngày cưới của chúng tôi thành những bức ảnh đẹp nhất mà chúng tôi từng thấy. Mỗi khoảnh khắc đều được ghi lại hoàn hảo.",
-    author: "Nguyễn Linh & Trần Minh — Đám cưới tháng 3, 2024", illustration: "together"
-  },
-  {
-    text: "Đội ngũ chuyên nghiệp, nhiệt tình và rất am hiểu nghệ thuật. Bộ ảnh cưới của chúng tôi vượt xa mọi mong đợi. Cảm ơn NOW Studio!",
-    author: "Phạm Thu & Lê Hùng — Đám cưới tháng 10, 2023", illustration: "facing"
-  },
-  {
-    text: "Cảm ơn vk ck e Phượng La vì đã dành trọn hết tâm huyết để biến từng khung hình của c thành một thước phim Hong Kong đầy cảm xúc. Góc máy, màu sắc và ánh nhìn đều mang đúng chất hoài niệm rất riêng của NOW Studio. Đối với chị đây là cả Thanh xuân đẹp nhất mà c muốn lưu giữ cho riêng chị hj.",
-    author: "Hương Lê — Bộ Ảnh HongKong", illustration: "lean"
-  }
-];
-
 // Form submit
 function handleSubmit(e) {
   e.preventDefault();
@@ -1717,8 +1698,6 @@ window.Guide&&window.Guide.ready(function(G){
 <script src="sections/gallery.js"></script>
 <script src="sections/services.js"></script>
 <script src="sections/social.js"></script>
-<script src="sections/feedback-illustrations.js"></script>
-<script src="sections/feedback.js"></script>
 <script src="sections/proofs.js"></script>
 <script src="js/nowcms.schema.js"></script>
 <script src="js/nowcms.js"></script>

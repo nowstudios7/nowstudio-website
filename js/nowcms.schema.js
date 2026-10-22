@@ -125,19 +125,6 @@ window.NOWCMS_SCHEMA = {
       fields: []
     },
 
-    /* Feedback khách — renderer riêng (sections/feedback.js + feedback-illustrations.js).
-       Trang quản lý: admin/feedback.html */
-    feedback: {
-      title: 'Feedback đánh máy',
-      icon: '❝',
-      external: true,
-      admin: 'feedback.html',
-      source: 'content/feedback.json',
-      sanityType: 'section.feedback',
-      groups: [],
-      fields: []
-    },
-
     /* Feedback khách hàng — ảnh chụp tin nhắn/bình luận gốc, hiện trong section #feedback trang chủ
        (sections/proofs.js). Trang quản lý: admin/proofs.html */
     proofs: {
